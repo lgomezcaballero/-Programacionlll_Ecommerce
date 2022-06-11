@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Marca
+    public class Factura
     {
         public int ID { get; set; }
-        public string Nombre { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public Compra Compra { get; set; }
+        public FormaPago FormaPago { get; set; }
         public bool Estado { get; set; }
     }
 }
