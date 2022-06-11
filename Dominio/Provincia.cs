@@ -10,7 +10,7 @@ namespace Dominio
     {
         public int ID { get; set; }
         public string NombreProvincia { get; set; }
-        public string Pais { get; set; }
+        public Pais Pais { get; set; }
         public bool Estado { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace Dominio
         public int DNI { get; set; }
         public string NombreUsuario { get; set; }
         public string Contraseña { get; set; }
-        public int Contacto { get; set; }
-        public int IDLocalidad { get; set; }
+        public Contacto Contacto { get; set; }
+        public Localidad Localidad { get; set; }
         public bool Estado { get; set; }
     }
 }
