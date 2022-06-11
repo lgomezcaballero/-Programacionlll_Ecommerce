@@ -45,7 +45,9 @@
     <Compile Include="ImagenesArticulo.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Marca.cs" />
+    <Compile Include="Pais.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provincia.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
