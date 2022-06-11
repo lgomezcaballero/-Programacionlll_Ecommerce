@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Categoria
     {
-        public int ID { get; set; }
+        public Int16 ID { get; set; }
         public string Nombre { get; set; }
         public DateTime FechaRegistro { get; set; }
         public bool Estado { get; set; }

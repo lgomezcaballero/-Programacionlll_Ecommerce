@@ -25,10 +25,10 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    if (!(datos.Lector["IDArticulo"] is DBNull))
+                        aux.ID = (long)datos.Lector["IDArticulo"];
 
-                    aux.IDProducto = (int)datos.Lector["IDArticulo"];
-
-                    if (!(datos.Lector["Nombre"] is DBNull))
+                    if (!(datos.Lector["Articulo"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Articulo"];
 
                     if (!(datos.Lector["Descripcion"] is DBNull))
@@ -38,7 +38,7 @@ namespace Negocio
                         aux.Precio = (decimal)datos.Lector["Precio"];
 
                     if (!(datos.Lector["Stock"] is DBNull))
-                        aux.Stock = (int)datos.Lector["Stock"];
+                        aux.Stock = (long)datos.Lector["Stock"];
 
                     if (!(datos.Lector["FechaRegistro"] is DBNull))
                         aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
@@ -46,41 +46,41 @@ namespace Negocio
                     if (!(datos.Lector["EstadoArticulo"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticulo"];
 
-                    aux.Marca = new Marca();
-                    if (!(datos.Lector["IDMarca"] is DBNull))
-                        aux.Marca.ID = (int)datos.Lector["IDMarca"];
+                    //aux.Marca = new Marca();
+                    //if (!(datos.Lector["IDMarca"] is DBNull))
+                    //    aux.Marca.ID = (int)datos.Lector["IDMarca"];
 
-                    if (!(datos.Lector["Marca"] is DBNull))
-                        aux.Marca.Nombre = (string)datos.Lector["Marca"];
+                    //if (!(datos.Lector["Marca"] is DBNull))
+                    //    aux.Marca.Nombre = (string)datos.Lector["Marca"];
 
-                    if (!(datos.Lector["FechaRegistroMarca"] is DBNull))
-                        aux.Marca.FechaRegistro = (DateTime)datos.Lector["FechaRegistroMarca"];
+                    //if (!(datos.Lector["FechaRegistroMarca"] is DBNull))
+                    //    aux.Marca.FechaRegistro = (DateTime)datos.Lector["FechaRegistroMarca"];
 
-                    if (!(datos.Lector["EstadoMarca"] is DBNull))
-                        aux.Marca.Estado = (bool)datos.Lector["EstadoMarca"];
+                    //if (!(datos.Lector["EstadoMarca"] is DBNull))
+                    //    aux.Marca.Estado = (bool)datos.Lector["EstadoMarca"];
 
-                    aux.Categoria = new Categoria();
-                    if (!(datos.Lector["IDCategoria"] is DBNull))
-                        aux.Categoria.ID = (int)datos.Lector["IDCategoria"];
+                    //aux.Categoria = new Categoria();
+                    //if (!(datos.Lector["IDCategoria"] is DBNull))
+                    //    aux.Categoria.ID = (int)datos.Lector["IDCategoria"];
 
-                    if (!(datos.Lector["Categoria"] is DBNull))
-                        aux.Categoria.Nombre = (string)datos.Lector["Categoria"];
+                    //if (!(datos.Lector["Categoria"] is DBNull))
+                    //    aux.Categoria.Nombre = (string)datos.Lector["Categoria"];
 
-                    if (!(datos.Lector["FechaRegistroCategoria"] is DBNull))
-                        aux.Categoria.FechaRegistro = (DateTime)datos.Lector["FechaRegistroCategoria"];
+                    //if (!(datos.Lector["FechaRegistroCategoria"] is DBNull))
+                    //    aux.Categoria.FechaRegistro = (DateTime)datos.Lector["FechaRegistroCategoria"];
 
-                    if (!(datos.Lector["EstadoCategoria"] is DBNull))
-                        aux.Categoria.Estado = (bool)datos.Lector["EstadoCategoria"];
+                    //if (!(datos.Lector["EstadoCategoria"] is DBNull))
+                    //    aux.Categoria.Estado = (bool)datos.Lector["EstadoCategoria"];
 
-                    aux.Genero = new Genero();
-                    if (!(datos.Lector["IDGenero"] is DBNull))
-                        aux.Genero.ID = (int)datos.Lector["IDGenero"];
+                    //aux.Genero = new Genero();
+                    //if (!(datos.Lector["IDGenero"] is DBNull))
+                    //    aux.Genero.ID = (int)datos.Lector["IDGenero"];
 
-                    if (!(datos.Lector["Genero"] is DBNull))
-                        aux.Genero.Nombre = (string)datos.Lector["Genero"];
+                    //if (!(datos.Lector["Genero"] is DBNull))
+                    //    aux.Genero.Nombre = (string)datos.Lector["Genero"];
 
-                    if (!(datos.Lector["EstadoGenero"] is DBNull))
-                        aux.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
+                    //if (!(datos.Lector["EstadoGenero"] is DBNull))
+                    //    aux.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
 
                     lista.Add(aux);
 
