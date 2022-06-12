@@ -2,4 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="grillaArticulos" runat="server"></asp:GridView>
+
+
+   
+
+
 </asp:Content>

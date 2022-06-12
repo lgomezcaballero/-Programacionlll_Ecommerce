@@ -5,15 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Dominio;
 
 namespace Aplicacion_Web_Ecommerce
 {
     public partial class _Default : Page
     {
+        public List<Articulo> ListaDeArticulos { get; set; }    
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio listaArticulos = new ArticuloNegocio();
-            grillaArticulos.DataSource = listaArticulos.listar();
+
+            ArticuloNegocio Negocio = new ArticuloNegocio();
+            ListaDeArticulos = Negocio.listar();   
+            grillaArticulos.DataSource = Negocio.listar();
             grillaArticulos.DataBind();
         }
     }
