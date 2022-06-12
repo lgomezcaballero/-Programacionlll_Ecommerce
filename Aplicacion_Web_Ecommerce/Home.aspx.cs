@@ -16,8 +16,8 @@ namespace Aplicacion_Web_Ecommerce
         {
 
             ArticuloNegocio Negocio = new ArticuloNegocio();
-            ListaDeArticulos = Negocio.listar();   
-            grillaArticulos.DataSource = Negocio.listar();
+            ListaDeArticulos = Negocio.listar();
+            grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
         }
     }
