@@ -1,7 +1,7 @@
 Use Master
---go
---Drop Database Ecommerce_Programacionlll
 go
+--Drop Database Ecommerce_Programacionlll
+--go
 Create Database Ecommerce_Programacionlll
 go
 Use Ecommerce_Programacionlll
@@ -31,8 +31,8 @@ Create Table Articulos(
 	IDMarca smallint not null foreign key references Marcas(IDMarca),
 	IDCategoria smallint not null foreign key references Categorias(IDCategoria),
 	IDGenero tinyint not null foreign key references Generos(IDGenero),
-	Nombre varchar(50) not null,
-	Descripcion varchar(100) not null,
+	Nombre varchar(200) not null,
+	Descripcion varchar(500) not null,
 	Precio money not null,
 	Stock bigint not null,
 	FechaRegistro datetime null default(GETDATE()),

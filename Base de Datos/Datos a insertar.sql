@@ -29,7 +29,7 @@ values (2, 2, 2, 'Blusa College Mirta Armesto Acetato Lycra Encaje',
 'Delicada blusa manga larga a la cintura. Detalle de encaje en hombros y mangas.', 6499, 150, GETDATE())
 go
 Insert into Articulos (IDMarca, IDCategoria, IDGenero, Nombre, Descripcion, Precio, Stock, FechaRegistro) 
-values (3, 3, 1, 'Remera Hombre Levis Graphic Set In Neck Batwing Black', ' Hechas de suave tejido de punto Jersey, esta remera tiene un fit slim 
+values (3, 3, 1, 'Remera Hombre Levi´s Graphic Set In Neck Batwing Black', ' Hechas de suave tejido de punto Jersey, esta remera tiene un fit slim 
 y está elaborada 100% de algodón', 6390, 220, GETDATE())
 go
 Insert into Articulos (IDMarca, IDCategoria, IDGenero, Nombre, Descripcion, Precio, Stock, FechaRegistro) 
