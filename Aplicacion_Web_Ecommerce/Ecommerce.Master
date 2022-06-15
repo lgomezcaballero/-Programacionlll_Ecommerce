@@ -48,13 +48,13 @@
 <nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
 <div class="container-fluid">
     <ul class="navbar-nav d-none d-md-flex mr-auto">
+        <li class="nav-item"><a class="nav-link" href="Home.aspx" data-abc="true">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="HomeAdmin.aspx" data-abc="true">Home Admin</a></li>
+        <li class="nav-item"><a class="nav-link" href="Login.aspx" data-abc="true">Login</a></li>
 		<li class="nav-item"><a class="nav-link" href="Busqueda.aspx" data-abc="true">Busqueda</a></li>
 		<li class="nav-item"><a class="nav-link" href="Carrito.aspx" data-abc="true">Carrito</a></li>
 		<li class="nav-item"><a class="nav-link" href="Compra.aspx" data-abc="true">Compra</a></li>
         <li class="nav-item"><a class="nav-link" href="GestionItems.aspx" data-abc="true">Gestion Items</a></li>
-        <li class="nav-item"><a class="nav-link" href="Home.aspx" data-abc="true">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="HomeAdmin.aspx" data-abc="true">Home Admin</a></li>
-        <li class="nav-item"><a class="nav-link" href="Login.aspx" data-abc="true">Login</a></li>
     </ul>
     <%--<ul class="navbar-nav d-flex align-items-center">
         <li class="nav-item">
@@ -74,10 +74,10 @@
 <section class="header-main border-bottom bg-white">
 	<div class="container-fluid">
        <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-           <div class="col-md-2">
-               <img  class="d-none d-md-flex" src="https://i.imgur.com/R8QhGhk.png" width="100">
+           <div class="col-md-1">
+               <img id="logo_negocio" class="d-none d-md-flex" src="https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/180560603/original/ddc699dfaa77013fabdd661c201caeba9444de59.jpg" width="100">
            </div>
-           <div class="col-md-8">
+           <div class="col-md-7">
         <div class="d-flex form-inputs">
         <input class="form-control" type="text" placeholder="Buscar productos, marcas y más">
         <i class="bx bx-search"></i>
