@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Articulo
     {
-        public Int64 ID { get; set; }
+        public long ID { get; set; }
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
         public Genero Genero { get; set; }

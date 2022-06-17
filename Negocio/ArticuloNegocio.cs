@@ -46,6 +46,10 @@ namespace Negocio
                     if (!(datos.Lector["EstadoArticulo"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticulo"];
 
+                    aux.Imagenes = new List<ImagenesArticulo>();
+                    ImagenesArticuloNegocio ImagenesNegocio = new ImagenesArticuloNegocio();
+                    aux.Imagenes = ImagenesNegocio.listar(aux.ID);
+                    //string url = aux.Imagenes[0].URLImagen;
                     //aux.Marca = new Marca();
                     //if (!(datos.Lector["IDMarca"] is DBNull))
                     //    aux.Marca.ID = (int)datos.Lector["IDMarca"];

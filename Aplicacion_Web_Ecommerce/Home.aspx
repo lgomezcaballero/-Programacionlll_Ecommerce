@@ -9,7 +9,7 @@
             {%>
         <div class="col">
             <div class="card">
-                <img src="https://thumbs.dreamstime.com/b/ninguna-imagen-de-la-u%C3%B1a-del-pulgar-placeholder-para-los-foros-blogs-y-las-p%C3%A1ginas-web-148010362.jpg" class="card-img-top" alt="...">
+                <img src="<%: item.Imagenes[0].URLImagen %>" class="card-img-top" alt="https://thumbs.dreamstime.com/b/ninguna-imagen-de-la-u%C3%B1a-del-pulgar-placeholder-para-los-foros-blogs-y-las-p%C3%A1ginas-web-148010362.jpg">
                 <div class="card-body">
                     <h5 class="card-title"><%: item.Nombre %></h5>
                     <p class="card-text"><%:item.Descripcion %></p>
