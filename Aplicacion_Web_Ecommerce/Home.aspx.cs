@@ -19,6 +19,8 @@ namespace Aplicacion_Web_Ecommerce
             ListaDeArticulos = Negocio.listar();
             grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
+
+
         }
     }
 }
