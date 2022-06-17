@@ -66,7 +66,7 @@ Create Table Provincias(
 )
 go
 Create Table Localidad(
-	IDLocalidad bigint not null primary key identity(1, 1),
+	IDLocalidad int not null primary key identity(1, 1),
 	CP varchar(20) not null unique,
 	IDProvincia int not null foreign key references Provincias(IDProvincia),
 	Nombre varchar(150) not null,
@@ -87,7 +87,7 @@ Create Table Usuarios(
 	NombreUsuario varchar(20) not null,
 	Contraseña varchar(30) not null,
 	IDTipoUsuario tinyint not null foreign key references TiposUsuarios(IDTipoUsuario),
-	IDLocalidad bigint not null foreign key references Localidad(IDLocalidad),
+	IDLocalidad int not null foreign key references Localidad(IDLocalidad),
 	Estado bit not null default(1)
 )
 go

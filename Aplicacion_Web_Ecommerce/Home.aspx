@@ -4,19 +4,9 @@
     <asp:GridView style="display:none" ID="grillaArticulos" runat="server"></asp:GridView>
 
 
-<%--            <style>
-
-           #Articulo{
-                margin-left: 40px;
-                margin-right: 40px;
-           }
-
-           </style>--%>
-
     <div id="Articulo" class="row row-cols-1 row-cols-md-5 g-4">
         <% foreach (var item in ListaDeArticulos)
             {%>
-
         <div class="col">
             <div class="card">
                 <img src="https://thumbs.dreamstime.com/b/ninguna-imagen-de-la-u%C3%B1a-del-pulgar-placeholder-para-los-foros-blogs-y-las-p%C3%A1ginas-web-148010362.jpg" class="card-img-top" alt="...">

@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Movimiento
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
         public Usuario Usuario { get; set; }
         public DateTime FechaLogin { get; set; }
         public DateTime FechaLogout { get; set; }

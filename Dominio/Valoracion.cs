@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Valoracion
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
         public Articulo Articulo { get; set; }
         public Usuario Usuario { get; set; }
         public int Puntaje { get; set; }

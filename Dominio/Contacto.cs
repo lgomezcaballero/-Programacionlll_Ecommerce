@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Contacto
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
     }

@@ -45,18 +45,18 @@
 
         <header class="section-header">
 
-<nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
-<div class="container-fluid">
-    <ul class="navbar-nav d-none d-md-flex mr-auto">
-        <li class="nav-item"><a class="nav-link" href="Home.aspx" data-abc="true">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="HomeAdmin.aspx" data-abc="true">Home Admin</a></li>
-        <li class="nav-item"><a class="nav-link" href="Login.aspx" data-abc="true">Login</a></li>
-		<li class="nav-item"><a class="nav-link" href="Busqueda.aspx" data-abc="true">Busqueda</a></li>
-		<li class="nav-item"><a class="nav-link" href="Carrito.aspx" data-abc="true">Carrito</a></li>
-		<li class="nav-item"><a class="nav-link" href="Compra.aspx" data-abc="true">Compra</a></li>
-        <li class="nav-item"><a class="nav-link" href="GestionItems.aspx" data-abc="true">Gestion Items</a></li>
-    </ul>
-    <%--<ul class="navbar-nav d-flex align-items-center">
+            <nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav d-none d-md-flex mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="Home.aspx" data-abc="true">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="HomeAdmin.aspx" data-abc="true">Home Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Login.aspx" data-abc="true">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Busqueda.aspx" data-abc="true">Busqueda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Carrito.aspx" data-abc="true">Carrito</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Compra.aspx" data-abc="true">Compra</a></li>
+                        <li class="nav-item"><a class="nav-link" href="GestionItems.aspx" data-abc="true">Gestion Items</a></li>
+                    </ul>
+                    <%--<ul class="navbar-nav d-flex align-items-center">
         <li class="nav-item">
 		    <div class="d-flex flex-row">
 		        <img src="https://i.imgur.com/EYFtR83.jpg" class="rounded-circle" width="30">
@@ -66,62 +66,65 @@
 		    <a href="#" class="nav-link d-flex align-items-center" data-abc="true"><span>Nantano M</span><i class='bx bxs-chevron-down'></i></a>
 		</li>
 		
-	</ul>--%> <!-- list-inline //  -->
-  </div> <!-- navbar-collapse .// -->
- <!-- container //  -->
-</nav> <!-- header-top-light.// -->
+	</ul>--%>
+                    <!-- list-inline //  -->
+                </div>
+                <!-- navbar-collapse .// -->
+                <!-- container //  -->
+            </nav>
+            <!-- header-top-light.// -->
 
-<section class="header-main border-bottom bg-white">
-	<div class="container-fluid">
-       <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-           <div class="col-md-1">
-               <img id="logo_negocio" class="d-none d-md-flex" src="https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/180560603/original/ddc699dfaa77013fabdd661c201caeba9444de59.jpg" width="100">
-           </div>
-           <div class="col-md-7">
-        <div class="d-flex form-inputs">
-        <input class="form-control" type="text" placeholder="Buscar productos, marcas y más">
-        <i class="bx bx-search"></i>
-        </div>
-           </div>
-           
-           <div class="col-md-2">
-               <div class="d-flex d-none d-md-flex flex-row align-items-center">
-                   <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
-                   <div class="d-flex flex-column ms-2">
-                       <%--<span class="qty">1 Product</span>
+            <section class="header-main border-bottom bg-white">
+                <div class="container-fluid">
+                    <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                        <div class="col-md-1">
+                            <img id="logo_negocio" class="d-none d-md-flex" src="https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/180560603/original/ddc699dfaa77013fabdd661c201caeba9444de59.jpg" width="100">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="d-flex form-inputs">
+                                <input class="form-control" type="text" placeholder="Buscar productos, marcas y más">
+                                <i class="bx bx-search"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="d-flex d-none d-md-flex flex-row align-items-center">
+                                <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
+                                <div class="d-flex flex-column ms-2">
+                                    <%--<span class="qty">1 Product</span>
                        <span class="fw-bold">$27.90</span>--%>
-                   </div>    
-               </div>           
-           </div>
-       </div>
-	</div> 
-</section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Todo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mujer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Hombre</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">Infantil</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">Rebajas</a>
-        </li>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Todo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Mujer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Hombre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Infantil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Rebajas</a>
+                            </li>
 
-        <%--<li class="nav-item dropdown">
+                            <%--<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Mobiles
           </a>
@@ -131,17 +134,15 @@
             <li><a class="dropdown-item" href="#">Mobile Covers</a></li>
           </ul>
         </li>--%>
-      </ul>
-    </div>
-  </div>
-</nav>
-</header>
-
-
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-
-
+        </div>
     </form>
 </body>
 </html>

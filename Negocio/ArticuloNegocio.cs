@@ -27,7 +27,7 @@ namespace Negocio
                     Articulo aux = new Articulo();
                     if (!(datos.Lector["IDArticulo"] is DBNull))
                         aux.ID = (long)datos.Lector["IDArticulo"];
-
+                    
                     if (!(datos.Lector["Articulo"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Articulo"];
 
@@ -39,7 +39,7 @@ namespace Negocio
 
                     if (!(datos.Lector["Stock"] is DBNull))
                         aux.Stock = (long)datos.Lector["Stock"];
-
+                    
                     if (!(datos.Lector["FechaRegistro"] is DBNull))
                         aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
 

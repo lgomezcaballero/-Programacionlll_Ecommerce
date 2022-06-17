@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class TipoUsuario
     {
-        public int ID { get; set; }
+        public byte ID { get; set; }
         public string NombreTipo { get; set; }
         public bool Estado { get; set; }
     }

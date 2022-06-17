@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Pais
     {
-        public int ID { get; set; }
+        public byte ID { get; set; }
         public string NombrePais { get; set; }
         public bool Estado { get; set; }
     }

@@ -9,6 +9,7 @@ namespace Dominio
     public class Factura
     {
         public int ID { get; set; }
+        //todo:  lista de compras
         public Compra Compra { get; set; }
         public FormaPago FormaPago { get; set; }
         public bool Estado { get; set; }
