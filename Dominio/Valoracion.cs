@@ -8,9 +8,8 @@ namespace Dominio
 {
     public class Valoracion
     {
-        public long ID { get; set; }
-        public Articulo Articulo { get; set; }
-        public Usuario Usuario { get; set; }
+        public long IDCompra { get; set; }
+        public long IDArticulo { get; set; }
         public int Puntaje { get; set; }
         public bool Estado { get; set; }
     }
