@@ -20,11 +20,15 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    Marca aux = new Marca();  
-                    aux.ID =  (Int16)datos.Lector["IDMarca"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
-                    aux.Estado = (bool)datos.Lector["Estado"];
+                    Marca aux = new Marca();
+                    if (!(datos.Lector["IDMarca"] is DBNull))
+                        aux.ID =  (Int16)datos.Lector["IDMarca"];
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+                    if (!(datos.Lector["FechaRegistro"] is DBNull))
+                        aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
+                    if (!(datos.Lector["Estado"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux); 
 

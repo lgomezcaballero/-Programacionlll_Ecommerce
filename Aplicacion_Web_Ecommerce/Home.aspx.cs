@@ -12,7 +12,8 @@ namespace Aplicacion_Web_Ecommerce
     public partial class _Default : Page
     {
         public List<Articulo> ListaDeArticulos { get; set; }   
-            
+         
+        public List<Marca> Marcas { get; set; } 
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +21,9 @@ namespace Aplicacion_Web_Ecommerce
             ListaDeArticulos = Negocio.listar();
             grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
+
+            MarcaNegocio marca = new MarcaNegocio();
+            Marcas = marca.listar();        
 
            
         }
