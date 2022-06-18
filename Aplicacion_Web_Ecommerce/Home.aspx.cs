@@ -11,8 +11,8 @@ namespace Aplicacion_Web_Ecommerce
 {
     public partial class _Default : Page
     {
-        public List<Articulo> ListaDeArticulos { get; set; }    
-       
+        public List<Articulo> ListaDeArticulos { get; set; }   
+            
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -21,6 +21,7 @@ namespace Aplicacion_Web_Ecommerce
             grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
 
+           
         }
     }
 }
