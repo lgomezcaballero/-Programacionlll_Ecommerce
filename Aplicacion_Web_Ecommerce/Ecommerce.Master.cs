@@ -18,6 +18,14 @@ namespace Aplicacion_Web_Ecommerce
 
         protected void BarraBuscadora_TextChanged(object sender, EventArgs e)
         {
+
+            string Busqueda =  BarraBuscadora.Text;
+            Session.Add("Busqueda", Busqueda);
+            Response.Redirect("ListaDeArticulosFiltrada.aspx", false);
+
+
+
+
             /*
             List<Articulo> articuloList = new List<Articulo>();
             ArticuloNegocio negocios = new ArticuloNegocio();

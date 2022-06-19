@@ -1,13 +1,12 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Aplicacion_Web_Ecommerce._Default" %>
-
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView style="display:none" ID="grillaArticulos" runat="server"></asp:GridView>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="ListaDeArticulosFiltrada.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.ListaDeArticulosFiltrada" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-   
+    <asp:GridView ID="DgvFiltrada" runat="server"></asp:GridView>
+
 
     <div id="Articulo" class="row row-cols-1 row-cols-md-4 g-4">
-        <% foreach (var item in ListaDeArticulos)
+        <% foreach (var item in ListaFiltrada)
             {%>
         <div class="col">
             <div class="card">
@@ -52,7 +51,6 @@
         </div>
         <%} %>
     </div>
-   
 
 
 </asp:Content>
