@@ -17,26 +17,29 @@ namespace Aplicacion_Web_Ecommerce
          
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
-            {
-            Carrito = new List<Articulo>(); 
-            }
+            
             ArticuloNegocio Negocio = new ArticuloNegocio();
             ListaDeArticulos = Negocio.listar();
-           
-            if(Request.QueryString["ID"] != null) { 
+
+            if (!IsPostBack) { 
+            Carrito = new List<Articulo>();
+            Session.Add("Carrito", Carrito);
+            }
+
+            if (Request.QueryString["ID"] != null) { 
    
             int ID = Int32.Parse(Request.QueryString["ID"].ToString());
 
-            Carrito.Add(ListaDeArticulos.Find(x => x.ID == ID));
+            Carrito = (List<Articulo>)Session["Carrito"];
             Session.Add("Carrito", Carrito);
-
+            Carrito.Add(ListaDeArticulos.Find(x => x.ID == ID));
+            
             grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
 
             }
 
+            
 
         }
     }
