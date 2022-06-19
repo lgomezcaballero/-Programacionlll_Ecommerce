@@ -18,13 +18,23 @@ namespace Aplicacion_Web_Ecommerce
         {
             string Filtro = Session["Busqueda"].ToString();
 
+
             List<Articulo> ListaArticulos = new List<Articulo>();
             ArticuloNegocio ArticulosNegocio = new ArticuloNegocio();
 
             ListaArticulos = ArticulosNegocio.listar();
 
-            ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()));
+            if(Filtro.Length > 2) { 
 
+            ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()));
+                //falta hacer que busque por marca, pero primero hay que agregar la marca del articulos
+                //a la clase negocio de articulo
+            }
+
+            else
+            {
+                ListaFiltrada = new List<Articulo>();
+            }
             /*
             DgvFiltrada.DataSource = ListaFiltrada; 
             DgvFiltrada.DataBind(); 
