@@ -13,17 +13,19 @@ namespace Aplicacion_Web_Ecommerce
     {
         public List<Articulo> ListaDeArticulos { get; set; }   
          
-        public List<Marca> Marcas { get; set; } 
+        public List<Usuario> Usuarios { get; set; } 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             ArticuloNegocio Negocio = new ArticuloNegocio();
             ListaDeArticulos = Negocio.listar();
+
+
             grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
 
-            MarcaNegocio marca = new MarcaNegocio();
-            Marcas = marca.listar();        
+            UsuarioNegocio marca = new UsuarioNegocio();
+            Usuarios = marca.listar();        
 
            
         }
