@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-md-7">
                             <div class="d-flex form-inputs">
-                                <input class="form-control" type="text" placeholder="Buscar productos, marcas y más">
+                                <asp:TextBox class="form-control" ID="BarraBuscadora" runat="server" placeholder="Buscar productos, marcas y más" OnTextChanged="BarraBuscadora_TextChanged"></asp:TextBox>                         
                                 <i class="bx bx-search"></i>
                             </div>
                         </div>

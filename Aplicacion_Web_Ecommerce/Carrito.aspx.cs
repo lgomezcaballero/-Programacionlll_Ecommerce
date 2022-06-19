@@ -11,7 +11,8 @@ namespace Aplicacion_Web_Ecommerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            GrillaArticulos.DataSource = Session["Carrito"];
+            GrillaArticulos.DataBind();     
         }
     }
 }
