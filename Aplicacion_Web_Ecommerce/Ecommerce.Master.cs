@@ -22,7 +22,9 @@ namespace Aplicacion_Web_Ecommerce
             List<Articulo> articuloList = new List<Articulo>();
             ArticuloNegocio negocios = new ArticuloNegocio();
 
+
             articuloList = negocios.listar();
+
 
 
 
