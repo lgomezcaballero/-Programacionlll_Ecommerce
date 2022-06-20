@@ -23,12 +23,12 @@ namespace Negocio
             comando = new SqlCommand();
         }
 
-        public void setConsulta(string consulta)
-        {
-            comando.CommandType = System.Data.CommandType.Text;
-            //comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.CommandText = consulta;
-        }
+        //public void setConsulta(string consulta)
+        //{
+        //    comando.CommandType = System.Data.CommandType.Text;
+        //    //comando.CommandType = System.Data.CommandType.StoredProcedure;
+        //    comando.CommandText = consulta;
+        //}
 
         public void setConsultaSP(string sp)
         {

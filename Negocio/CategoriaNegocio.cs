@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                datos.setConsulta("select c.IDCategoria, c.Nombre, c.FechaRegistro, c.Estado from Categorias as C");
+                datos.setConsultaSP("SP_ListarCategorias");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

@@ -15,7 +15,7 @@ namespace Negocio
 
             try
             {
-                datos.setConsulta("select m.IDMarca, m.Nombre, m.FechaRegistro, m.Estado from Marcas as M ");
+                datos.setConsultaSP("SP_ListarMarcas");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

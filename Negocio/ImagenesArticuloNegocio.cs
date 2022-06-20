@@ -16,7 +16,9 @@ namespace Negocio
 
             try
             {
-                datos.setConsulta("Select IDImagen, URLImagen, Estado From Imagenes Where IDArticulo = " + idArticulo);
+                //datos.setParametros
+                datos.setConsultaSP("SP_ListarImagenesArticulo");
+                datos.setParametros("@idArticulo", Convert.ToString(idArticulo));
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
