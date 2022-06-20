@@ -26,7 +26,8 @@ namespace Aplicacion_Web_Ecommerce
             if (Filtro.Length > 2)
             {
 
-                ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()));
+                ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()) ||
+                x.Marca.Nombre.ToLower().Contains(Filtro.ToLower()));
                 //falta hacer que busque por marca, pero primero hay que agregar la marca del articulos
                 //a la clase negocio de articulo
             }
