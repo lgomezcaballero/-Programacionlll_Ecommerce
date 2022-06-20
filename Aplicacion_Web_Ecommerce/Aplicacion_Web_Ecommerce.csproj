@@ -152,7 +152,6 @@
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="HomeAdmin.aspx" />
     <Content Include="InformacioDelArticulo.aspx" />
-    <Content Include="ListaDeArticulosFiltrada.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -241,13 +240,6 @@
     </Compile>
     <Compile Include="InformacioDelArticulo.aspx.designer.cs">
       <DependentUpon>InformacioDelArticulo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ListaDeArticulosFiltrada.aspx.cs">
-      <DependentUpon>ListaDeArticulosFiltrada.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListaDeArticulosFiltrada.aspx.designer.cs">
-      <DependentUpon>ListaDeArticulosFiltrada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
