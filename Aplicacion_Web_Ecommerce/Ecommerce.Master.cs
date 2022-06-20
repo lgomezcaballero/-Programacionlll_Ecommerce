@@ -19,22 +19,15 @@ namespace Aplicacion_Web_Ecommerce
         protected void BarraBuscadora_TextChanged(object sender, EventArgs e)
         {
 
-            string Busqueda =  BarraBuscadora.Text;
+            string Busqueda = BarraBuscadora.Text;
             Session.Add("Busqueda", Busqueda);
-            Response.Redirect("ListaDeArticulosFiltrada.aspx", false);
-
-
-
+            Response.Redirect("Busqueda.aspx", false);
 
             /*
             List<Articulo> articuloList = new List<Articulo>();
             ArticuloNegocio negocios = new ArticuloNegocio();
 
-
             articuloList = negocios.listar();
-
-
-
 
             List<Articulo> listaFiltrada = new List<Articulo>();
             string Filtro = BarraBuscadora.Text;
@@ -43,7 +36,7 @@ namespace Aplicacion_Web_Ecommerce
                 listaFiltrada = articuloList.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()));
             }
             */
-            
+
         }
     }
 }
