@@ -33,8 +33,8 @@ Create Table Articulos(
 	IDGenero tinyint not null foreign key references Generos(IDGenero),
 	Nombre varchar(200) not null,
 	Descripcion varchar(500) not null,
-	Precio money not null,
-	Stock bigint not null,
+	Precio money not null check(Precio >= 0),
+	Stock bigint not null check(Stock >= 0),
 	FechaRegistro datetime null default(GETDATE()),
 	Estado bit null default(1)
 )

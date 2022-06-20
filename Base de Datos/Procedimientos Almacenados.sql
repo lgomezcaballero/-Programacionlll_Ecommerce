@@ -11,6 +11,66 @@ Begin
 	Inner Join Generos g on a.IDGenero = g.IDGenero
 End
 go
+Create Procedure SP_AgregarArticulo(
+	@idMarca smallint,
+	@idCategoria smallint,
+	@idGenero tinyint,
+	@nombre varchar(200),
+	@descripcion varchar(500),
+	@precio money,
+	@stock bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Articulos (IDMarca, IDCategoria, IDGenero, Nombre, Descripcion, Precio, Stock)
+			values (@idMarca, @idCategoria, @idGenero, @nombre, @descripcion, @precio, @stock)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el articulo', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarArticulo(
+	@idArticulo bigint,
+	@idMarca smallint,
+	@idCategoria smallint,
+	@idGenero tinyint,
+	@nombre varchar(200),
+	@descripcion varchar(500),
+	@precio money,
+	@stock bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Articulos Set IDMarca = @idMarca, IDCategoria = @idCategoria, IDGenero = @idGenero, Nombre = @nombre,
+			Descripcion = @descripcion, Precio = @precio, Stock = @stock Where IDArticulo = @idArticulo
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el articulo', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarArticulo(
+	@idArticulo bigint
+)
+As
+Begin
+	Begin Try
+		Delete From Articulos Where IDArticulo = @idArticulo
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el articulo', 16, 1)
+	End Catch
+End
+go
 Create Procedure SP_ListarCategorias
 As
 Begin
@@ -44,4 +104,4 @@ Begin
 	Inner Join Provincias p on l.IDProvincia = p.IDProvincia
 	Inner Join Pais pa on p.IDPais = pa.IDPais
 End
-exec SP_ListarImagenesArticulo '1'
+go
