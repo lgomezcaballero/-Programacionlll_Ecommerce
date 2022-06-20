@@ -21,7 +21,7 @@ Begin
 End
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
-Create Trigger TR_EliminarCategoria on Articulos
+Create Trigger TR_EliminarCategoria on Categorias
 instead of delete
 As
 Begin
@@ -39,5 +39,3 @@ Begin
 		Rollback Transaction
 	End Catch
 End
-select * from Articulos
-update Articulos set Stock = 10000 where IDCategoria = 1

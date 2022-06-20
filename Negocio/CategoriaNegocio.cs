@@ -184,13 +184,13 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarArticulo(long id)
+        public void eliminarCategoria(Int16 id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_EliminarArticulo");
-                datos.setParametros("@idArticulo", id);
+                datos.setConsultaSP("SP_EliminarCategoria");
+                datos.setParametros("@idCategoria", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

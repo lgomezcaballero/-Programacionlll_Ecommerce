@@ -30,7 +30,7 @@ Create Table Articulos(
 	IDArticulo bigint not null primary key identity(1, 1),
 	IDMarca smallint null foreign key references Marcas(IDMarca),
 	IDCategoria smallint null foreign key references Categorias(IDCategoria),
-	IDGenero tinyint not null foreign key references Generos(IDGenero),
+	IDGenero tinyint null foreign key references Generos(IDGenero),
 	Nombre varchar(200) not null,
 	Descripcion varchar(500) not null,
 	Precio money not null check(Precio >= 0),
