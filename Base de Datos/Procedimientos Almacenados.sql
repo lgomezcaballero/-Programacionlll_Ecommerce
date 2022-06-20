@@ -87,7 +87,7 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			Insert into Articulos (Nombre) values (@nombre)
+			Insert into Categorias (Nombre) values (@nombre)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -136,6 +136,56 @@ Begin
 	Select IDImagen, URLImagen, Estado From Imagenes Where IDArticulo = @idArticulo
 End
 go
+Create Procedure SP_AgregarImagen(
+	@idArticulo bigint,
+	@urlImagen varchar(300)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Imagenes(IDArticulo, URLImagen) values (@idArticulo, @urlImagen)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la imagen', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarImagen(
+	@idImagen bigint,
+	@idArticulo bigint,
+	@urlImagen varchar(300)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Imagenes Set IDArticulo = @idArticulo, URLImagen = @urlImagen Where IDImagen = @idImagen
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la imagen', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarImagen(
+	@idImagen bigint
+)
+As
+Begin
+	Begin Try
+		Delete From Imagenes Where IDImagen = @idImagen
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la imagen de articulo', 16, 1)
+	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarMarcas
 As
 Begin

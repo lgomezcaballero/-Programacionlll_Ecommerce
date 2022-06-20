@@ -39,3 +39,22 @@ Begin
 		Rollback Transaction
 	End Catch
 End
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarImagen on Imagenes
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idImagen bigint
+			Select @idImagen = IDImagen From deleted
+
+			Update Imagenes Set Estado = 0 Where IDImagen = @idImagen
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la categoria', 16, 2)
+		Rollback Transaction
+	End Catch
+End
