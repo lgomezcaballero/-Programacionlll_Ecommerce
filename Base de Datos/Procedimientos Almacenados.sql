@@ -80,6 +80,22 @@ Begin
 	Select IDCategoria, Nombre, FechaRegistro, Estado From Categorias Where Estado = 1
 End
 go
+Create Procedure SP_AgregarCategoria(
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Articulos (Nombre) values (@nombre)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la categoria', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
 Create Procedure SP_ModificarCategoria(
 	@idCategoria smallint,
 	@nombre varchar(50)

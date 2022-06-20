@@ -44,6 +44,25 @@ namespace Negocio
 
 
         }
+        public void agregarCategoria(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsultaSP("SP_AgregarCategoria");
+                datos.setParametros("@nombre", categoria.Nombre);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void modificarCategoria(Categoria categoria)
         {
             AccesoDatos datos = new AccesoDatos();
