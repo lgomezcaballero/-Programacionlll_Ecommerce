@@ -22,8 +22,10 @@ namespace Aplicacion_Web_Ecommerce
             ListaDeArticulos = Negocio.listar();
 
             if (!IsPostBack) { 
-            Carrito = new List<Articulo>();
-            Session.Add("Carrito", Carrito);
+                if(Session["Carrito"] == null) { 
+                Carrito = new List<Articulo>();
+                Session.Add("Carrito", Carrito);
+                }
             }
 
             if (Request.QueryString["ID"] != null) { 
@@ -31,8 +33,8 @@ namespace Aplicacion_Web_Ecommerce
             int ID = Int32.Parse(Request.QueryString["ID"].ToString());
 
             Carrito = (List<Articulo>)Session["Carrito"];
-            Session.Add("Carrito", Carrito);
             Carrito.Add(ListaDeArticulos.Find(x => x.ID == ID));
+            Session.Add("Carrito", Carrito);
             
             grillaArticulos.DataSource = ListaDeArticulos;
             grillaArticulos.DataBind();
