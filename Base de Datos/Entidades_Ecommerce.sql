@@ -28,8 +28,8 @@ Create Table Generos(
 go
 Create Table Articulos(
 	IDArticulo bigint not null primary key identity(1, 1),
-	IDMarca smallint not null foreign key references Marcas(IDMarca),
-	IDCategoria smallint not null foreign key references Categorias(IDCategoria),
+	IDMarca smallint null foreign key references Marcas(IDMarca),
+	IDCategoria smallint null foreign key references Categorias(IDCategoria),
 	IDGenero tinyint not null foreign key references Generos(IDGenero),
 	Nombre varchar(200) not null,
 	Descripcion varchar(500) not null,

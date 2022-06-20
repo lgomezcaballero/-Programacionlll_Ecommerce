@@ -19,3 +19,25 @@ Begin
 		Rollback Transaction
 	End Catch
 End
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarCategoria on Articulos
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idCategoria smallint
+			Select @idCategoria = IDCategoria From deleted
+
+			Update Articulos Set IDCategoria = null Where IDCategoria = @idCategoria
+			Update Categorias Set Estado = 0 Where IDCategoria = @idCategoria
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la categoria', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+select * from Articulos
+update Articulos set Stock = 10000 where IDCategoria = 1

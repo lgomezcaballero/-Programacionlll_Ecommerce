@@ -9,6 +9,7 @@ Begin
 	From Articulos a Inner Join Marcas m on a.IDMarca = m.IDMarca 
 	Inner Join Categorias c on a.IDCategoria = c.IDCategoria 
 	Inner Join Generos g on a.IDGenero = g.IDGenero
+	Where a.Estado = 1
 End
 go
 Create Procedure SP_AgregarArticulo(
@@ -71,12 +72,46 @@ Begin
 	End Catch
 End
 go
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarCategorias
 As
 Begin
-	Select IDCategoria, Nombre, FechaRegistro, Estado From Categorias
+	Select IDCategoria, Nombre, FechaRegistro, Estado From Categorias Where Estado = 1
 End
 go
+Create Procedure SP_ModificarCategoria(
+	@idCategoria smallint,
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Categorias Set Nombre = @nombre Where IDCategoria = @idCategoria
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la categoria', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarCategoria(
+	@idCategoria smallint
+)
+As
+Begin
+	Begin Try
+		Delete From Categorias Where IDCategoria = @idCategoria
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el articulo', 16, 1)
+	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarImagenesArticulo(
 	@idArticulo bigint
 )
