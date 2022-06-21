@@ -4,12 +4,14 @@
     <asp:GridView ID="GrillaArticulos" runat="server"></asp:GridView>
 
 
+    
+
      <% foreach (var item in ListaCarrito)
             {%>
             <div id="Articulo" class="card mb-3" style="height: 200px">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="<%:item.Imagenes[0].URLImagen %>" class="img-fluid rounded-start" alt="..." style="height: 180px">
+      <img id="Imagencita" src="<%:item.Imagenes[0].URLImagen %>" class="img-fluid rounded-start" alt="..." style="height: 180px">
     </div>
     <div class="col-md-8">
       <div class="card-body">
