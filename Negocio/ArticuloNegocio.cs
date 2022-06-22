@@ -82,6 +82,16 @@ namespace Negocio
                     if (!(datos.Lector["EstadoGenero"] is DBNull))
                         aux.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
 
+                    aux.Talla = new Talla();
+                    if (!(datos.Lector["IDTalla"] is DBNull))
+                        aux.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
+
+                    if (!(datos.Lector["Talla"] is DBNull))
+                        aux.Talla.Nombre= (string)datos.Lector["Talla"];
+
+                    if (!(datos.Lector["EstadoTalla"] is DBNull))
+                        aux.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
+
                     lista.Add(aux);
 
                 }

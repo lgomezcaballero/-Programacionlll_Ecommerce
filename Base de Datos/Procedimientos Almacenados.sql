@@ -3,10 +3,12 @@ go
 Create Procedure SP_ListarArticulos
 As
 Begin
-	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio, a.Stock, a.FechaRegistro, a.Estado EstadoArticulo,
-	m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca, m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria,
-	c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria, g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
-	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca 
+	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, t.IDTalla, t.Talla, t.Estado EstadoTalla, a.Precio, a.Stock, 
+	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
+	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
+	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
+	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
+	Left Join Tallas t on a.IDTalla = t.IDTalla
 	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
 	Left Join Generos g on a.IDGenero = g.IDGenero
 	Where a.Estado = 1
@@ -16,6 +18,7 @@ Create Procedure SP_AgregarArticulo(
 	@idMarca smallint,
 	@idCategoria smallint,
 	@idGenero tinyint,
+	@idTalla tinyint,
 	@nombre varchar(200),
 	@descripcion varchar(500),
 	@precio money,
@@ -25,8 +28,8 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			Insert into Articulos (IDMarca, IDCategoria, IDGenero, Nombre, Descripcion, Precio, Stock)
-			values (@idMarca, @idCategoria, @idGenero, @nombre, @descripcion, @precio, @stock)
+			Insert into Articulos (IDMarca, IDCategoria, IDGenero, IDTalla, Nombre, Descripcion, Precio, Stock)
+			values (@idMarca, @idCategoria, @idGenero, @idTalla, @nombre, @descripcion, @precio, @stock)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -40,6 +43,7 @@ Create Procedure SP_ModificarArticulo(
 	@idMarca smallint,
 	@idCategoria smallint,
 	@idGenero tinyint,
+	@idTalla tinyint,
 	@nombre varchar(200),
 	@descripcion varchar(500),
 	@precio money,
@@ -49,7 +53,7 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Articulos Set IDMarca = @idMarca, IDCategoria = @idCategoria, IDGenero = @idGenero, Nombre = @nombre,
+			Update Articulos Set IDMarca = @idMarca, IDCategoria = @idCategoria, IDGenero = @idGenero, IDTalla = @idTalla, Nombre = @nombre,
 			Descripcion = @descripcion, Precio = @precio, Stock = @stock Where IDArticulo = @idArticulo
 		Commit Transaction
 	End Try 
