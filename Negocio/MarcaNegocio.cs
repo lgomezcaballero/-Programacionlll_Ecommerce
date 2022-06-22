@@ -210,13 +210,13 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarImagen(long id)
+        public void eliminarMarca(Int16 id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_EliminarImagen");
-                datos.setParametros("@idImagen", id);
+                datos.setConsultaSP("SP_EliminarMarca");
+                datos.setParametros("@idMarca", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

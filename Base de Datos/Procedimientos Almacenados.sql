@@ -243,3 +243,18 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_EliminarMarca(
+	@idMarca smallint
+)
+As
+Begin
+	Begin Try
+		Delete From Marcas Where IDMarca = @idMarca
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la marca', 16, 1)
+	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------

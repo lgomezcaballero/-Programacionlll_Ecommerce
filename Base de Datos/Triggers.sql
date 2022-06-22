@@ -60,3 +60,26 @@ Begin
 		Rollback Transaction
 	End Catch
 End
+go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarMarca on Marcas
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idMarca smallint
+			Select @idMarca = IDMarca From deleted
+
+			Update Marcas Set Estado = 0 Where IDMarca = @idMarca
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la marca', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
