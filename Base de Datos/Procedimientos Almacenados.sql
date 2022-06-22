@@ -264,6 +264,7 @@ Begin
 		RAISERROR('Error, no se pudo eliminar el usuario', 16, 1)
 	End Catch
 End
+go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarMarcas
@@ -320,3 +321,13 @@ End
 go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarCarrito(
+	@idCliente
+)
+As
+Begin
+	Select *
+	From Carritos c Inner Join Articulos_X_Carritos axl on c.IDCarrito = axl.IDCarrito
+	Inner Join Articulos a on axl.IDArticulo = a.IDArticulo
+End
+go

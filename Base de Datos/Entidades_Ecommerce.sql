@@ -48,7 +48,7 @@ Create Table Articulos(
 go
 Create Table Imagenes(
 	IDImagen bigint not null primary key identity(1, 1),
-	IDArticulo bigint not null foreign key references Articulos(IDArticulo),
+	IDArticulo bigint null foreign key references Articulos(IDArticulo),
 	URLImagen varchar(300) not null,
 	Estado bit null default(1)
 )
@@ -67,7 +67,7 @@ Create Table Pais(
 go
 Create Table Provincias(
 	IDProvincia int not null primary key identity(1, 1),
-	IDPais tinyint not null foreign key references Pais(IDPais),
+	IDPais tinyint null foreign key references Pais(IDPais),
 	Nombre varchar(100) not null,
 	Estado bit not null default(1)
 )
@@ -75,7 +75,7 @@ go
 Create Table Localidad(
 	IDLocalidad int not null primary key identity(1, 1),
 	CP varchar(20) not null unique,
-	IDProvincia int not null foreign key references Provincias(IDProvincia),
+	IDProvincia int null foreign key references Provincias(IDProvincia),
 	Nombre varchar(150) not null,
 	Estado bit not null default(1)
 )
@@ -93,9 +93,22 @@ Create Table Usuarios(
 	DNI varchar(15) not null unique,
 	NombreUsuario varchar(20) not null unique,
 	Contraseña varchar(30) not null,
-	IDTipoUsuario tinyint not null foreign key references TiposUsuarios(IDTipoUsuario),
-	IDLocalidad int not null foreign key references Localidad(IDLocalidad),
+	IDTipoUsuario tinyint null foreign key references TiposUsuarios(IDTipoUsuario),
+	IDLocalidad int null foreign key references Localidad(IDLocalidad),
 	Estado bit not null default(1)
+)
+go
+Create Table Carritos(
+	IDCarrito bigint not null primary key foreign key references Usuarios(IDUsuario),
+	Estado bit not null default(1)
+)
+go
+Create Table Articulos_X_Carritos(
+	IDCarrito bigint not null foreign key references Carritos(IDCarrito),
+	IDArticulo bigint not null foreign key references Articulos(IDArticulo),
+	Cantidad int not null,
+	Estado bit not null default(1)
+	Primary Key(IDCarrito, IDArticulo)
 )
 go
 Create Table Contactos(
@@ -107,7 +120,7 @@ Create Table Contactos(
 go
 Create Table Factura(
 	IDFactura bigint not null primary key identity(1, 1),
-	IDFormaPago tinyint not null foreign key references FormasPagos(IDFormaPago),
+	IDFormaPago tinyint null foreign key references FormasPagos(IDFormaPago),
 	Estado bit not null default(1)
 )
 go
@@ -126,20 +139,6 @@ Create Table Valoraciones(
 	IDCompra bigint not null foreign key references Compras(IDCompra),
 	Puntaje tinyint not null check (Puntaje >=0 AND Puntaje <=10),
 	Estado bit not null default(1)
-)
-go
-Create Table Carritos(
-	IDCarrito bigint not null primary key identity(1, 1),
-	IDUsuario bigint not null foreign key references Usuarios(IDUsuario),
-	Estado bit not null default(1)
-)
-go
-Create Table Articulos_X_Carritos(
-	IDCarrito bigint not null foreign key references Carritos(IDCarrito),
-	IDArticulo bigint not null foreign key references Articulos(IDArticulo),
-	Cantidad int not null,
-	Estado bit not null default(1)
-	Primary Key(IDCarrito, IDArticulo)
 )
 go
 Create Table Movimientos(
