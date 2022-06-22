@@ -83,3 +83,23 @@ End
 go
 --------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarUsuario on Usuarios
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idUsuario bigint
+			Select @idUsuario = IDUsuario From deleted
+
+			Update Usuarios Set Estado = 0 Where IDUsuario = @idUsuario
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el usuario', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------

@@ -190,12 +190,6 @@ End
 go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
-Create Procedure SP_ListarMarcas
-As
-Begin
-	Select IDMarca, Nombre, FechaRegistro, Estado From Marcas
-End
-go
 Create Procedure SP_ListarUsuarios
 As
 Begin
@@ -208,6 +202,74 @@ Begin
 	Inner Join Localidad l on u.IDLocalidad = l.IDLocalidad
 	Inner Join Provincias p on l.IDProvincia = p.IDProvincia
 	Inner Join Pais pa on p.IDPais = pa.IDPais
+End
+go
+Create Procedure SP_AgregarUsuario(
+	@apellidos varchar(100),
+	@nombres varchar(100),
+	@dni varchar(15),
+	@nombreUsuario varchar(20),
+	@contraseña varchar(30),
+	@idTipoUsuario tinyint,
+	@idLocalidad int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Usuarios(Apellidos, Nombres, DNI, NombreUsuario, Contraseña, IDTipoUsuario, IDLocalidad)
+			values (@apellidos, @nombres, @dni, @nombreUsuario, @contraseña, @idTipoUsuario, @idLocalidad)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el usuario', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarUsuario(
+	@idUsuario bigint,
+	@apellidos varchar(100),
+	@nombres varchar(100),
+	@dni varchar(15),
+	@nombreUsuario varchar(20),
+	@contraseña varchar(30),
+	@idTipoUsuario tinyint,
+	@idLocalidad int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Usuarios Set Apellidos = @apellidos, Nombres = @nombres, DNI = @dni, NombreUsuario = @nombreUsuario,
+			Contraseña = @contraseña, IDTipoUsuario = @idTipoUsuario, IDLocalidad = @idLocalidad
+			Where IDUsuario = @idUsuario
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el usuario', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarUsuario(
+	@idUsuario bigint
+)
+As
+Begin
+	Begin Try
+		Delete From Usuarios Where IDUsuario = @idUsuario
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el usuario', 16, 1)
+	End Catch
+End
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarMarcas
+As
+Begin
+	Select IDMarca, Nombre, FechaRegistro, Estado From Marcas
 End
 go
 Create Procedure SP_AgregarMarca(
