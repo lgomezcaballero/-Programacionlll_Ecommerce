@@ -98,19 +98,19 @@ Create Table Contactos(
 	Estado bit not null default(1)
 )
 go
+Create Table Factura(
+	IDFactura bigint not null primary key identity(1, 1),
+	IDFormaPago tinyint not null foreign key references FormasPagos(IDFormaPago),
+	Estado bit not null default(1)
+)
+go
 Create Table Compras(
 	IDCompra bigint not null primary key identity(1, 1),
+	IDFactura bigint not null foreign key references Factura(IDFactura),
 	IDUsuario bigint not null references Usuarios(IDUsuario),
 	IDArticulo bigint not null references Articulos(IDArticulo),
 	Cantidad int not null,
 	PrecioTotal money not null,
-	Estado bit not null default(1)
-)
-go
-Create Table Factura(
-	IDFactura bigint not null primary key identity(1, 1),
-	IDCompra bigint not null foreign key references Compras(IDCompra),
-	IDFormaPago tinyint not null foreign key references FormasPagos(IDFormaPago),
 	Estado bit not null default(1)
 )
 go
