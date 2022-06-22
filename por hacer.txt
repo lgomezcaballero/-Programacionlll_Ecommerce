@@ -1,0 +1,26 @@
+CarritoNegocio
+CompraNegocio
+ContactoNegocio
+FormaPagoNegocio
+GeneroNegocio
+LocalidadNegocio
+MarcaNegocio
+MovimientoNegocio
+PaisNegocio
+ProvinciaNegocio
+TipoUsuarioNegocio
+ValoracionNegocio
+
+Base de datos
+ABM Carrito
+ABM Compra
+ABM Contacto
+ABM FormaPago
+ABM Genero
+ABM Localidad
+ABM Marca
+ABM Movimiento
+ABM Pais
+ABM Provincia
+ABM TipoUsuario
+ABM Usuario

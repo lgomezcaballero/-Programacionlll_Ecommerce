@@ -206,3 +206,36 @@ Begin
 	Inner Join Pais pa on p.IDPais = pa.IDPais
 End
 go
+Create Procedure SP_AgregarMarca(
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Marcas(Nombre) values (@nombre)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la marca', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarMarca(
+	@idMarca smallint,
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Marcas Set Nombre = @nombre Where IDMarca = @idMarca
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la imagen', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go

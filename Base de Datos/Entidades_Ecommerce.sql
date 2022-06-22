@@ -8,7 +8,7 @@ Use Ecommerce_Programacionlll
 go
 Create Table Marcas(
 	IDMarca smallint not null primary key identity(1, 1),
-	Nombre varchar(50) not null,
+	Nombre varchar(50) not null unique,
 	FechaRegistro datetime null default(GETDATE()),
 	Estado bit null default(1),
 )
@@ -22,8 +22,14 @@ Create Table Categorias(
 go
 Create Table Generos(
 	IDGenero tinyint not null primary key identity(1, 1),
-	Nombre varchar(50) not null,
+	Nombre varchar(50) not null unique,
 	Estado bit null default(1)
+)
+go
+Create Table Tallas(
+	IDTalla tinyint not null primary key identity(1, 1),
+	Talla varchar(10) not null unique,
+	Estado bit not null default(1)
 )
 go
 Create Table Articulos(
@@ -31,6 +37,7 @@ Create Table Articulos(
 	IDMarca smallint null foreign key references Marcas(IDMarca),
 	IDCategoria smallint null foreign key references Categorias(IDCategoria),
 	IDGenero tinyint null foreign key references Generos(IDGenero),
+	IDTalla tinyint null foreign key references Tallas(IDTalla),
 	Nombre varchar(200) not null,
 	Descripcion varchar(500) not null,
 	Precio money not null check(Precio >= 0),
@@ -54,7 +61,7 @@ Create Table FormasPagos(
 go
 Create Table Pais(
 	IDPais tinyint not null primary key identity(1, 1),
-	Nombre varchar(50) not null,
+	Nombre varchar(50) not null unique,
 	Estado bit not null default(1)
 )
 go
@@ -83,8 +90,8 @@ Create Table Usuarios(
 	IDUsuario bigint not null primary key identity(1, 1),
 	Apellidos varchar(100) not null,
 	Nombres varchar(100) not null,
-	DNI varchar(15) not null,
-	NombreUsuario varchar(20) not null,
+	DNI varchar(15) not null unique,
+	NombreUsuario varchar(20) not null unique,
 	Contraseña varchar(30) not null,
 	IDTipoUsuario tinyint not null foreign key references TiposUsuarios(IDTipoUsuario),
 	IDLocalidad int not null foreign key references Localidad(IDLocalidad),
