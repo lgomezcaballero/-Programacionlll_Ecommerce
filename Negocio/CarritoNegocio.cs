@@ -65,7 +65,7 @@ namespace Negocio
             }
 
         }
-        public void agregarMarca(Marca marca)
+        /*public void agregarMarca(Marca marca)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -103,7 +103,7 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }
+        }*/
 
         /*public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
@@ -225,7 +225,7 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarMarca(Int16 id)
+        /*public void eliminarMarca(Int16 id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -243,6 +243,6 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }
+        }*/
     }
 }
