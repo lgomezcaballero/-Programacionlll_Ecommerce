@@ -30,12 +30,12 @@ namespace Negocio
                     if (!(datos.Lector["EstadoCarrito"] is DBNull))
                         carrito.Estado = (bool)datos.Lector["EstadoCarrito"];
 
-                    carrito.ArticulosCarrito = new List<ArticulosCarrito>();
+                    carrito.ArticulosCarrito = new List<ArticuloCarrito>();
                 }
 
                 do
                 {
-                    ArticulosCarrito aux = new ArticulosCarrito();
+                    ArticuloCarrito aux = new ArticuloCarrito();
                     aux.Articulo = new Articulo();
                     if (!(datos.Lector["IDArticulo"] is DBNull))
                         aux.Articulo = articuloNegocio.obtenerArticulo((long)datos.Lector["IDArticulo"]);
@@ -65,13 +65,15 @@ namespace Negocio
             }
 
         }
-        /*public void agregarMarca(Marca marca)
+        public void agregarArticuloCarrito(ArticuloCarrito articuloCarrito, long IDUsuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_AgregarMarca");
-                datos.setParametros("@nombre", marca.Nombre);
+                datos.setConsultaSP("SP_AgregarArticuloCarrito");
+                datos.setParametros("@idCarrito", IDUsuario);
+                datos.setParametros("@idArticulo", articuloCarrito.Articulo.ID);
+                datos.setParametros("@cantidad", articuloCarrito.Cantidad);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -85,14 +87,15 @@ namespace Negocio
             }
         }
 
-        public void modificarMarca(Marca marca)
+        public void modificarArticuloCarrito(ArticuloCarrito articuloCarrito, long idUsuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_ModificarMarca");
-                datos.setParametros("@idMarca", marca.ID);
-                datos.setParametros("@nombre", marca.Nombre);
+                datos.setConsultaSP("SP_ModificarArticuloCarrito");
+                datos.setParametros("@idCarrito", idUsuario);
+                datos.setParametros("@idArticulo", articuloCarrito.Articulo.ID);
+                datos.setParametros("@cantidad", articuloCarrito.Cantidad);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -103,7 +106,7 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }*/
+        }
 
         /*public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
@@ -225,13 +228,13 @@ namespace Negocio
             }
         }*/
 
-        /*public void eliminarMarca(Int16 id)
+        public void eliminarArticuloCarrito(long idUsuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_EliminarMarca");
-                datos.setParametros("@idMarca", id);
+                datos.setConsultaSP("SP_EliminarArticuloCarrito");
+                datos.setParametros("@idUsuario", idUsuario);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -243,6 +246,6 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }*/
+        }
     }
 }

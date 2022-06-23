@@ -348,3 +348,51 @@ Begin
 	Where c.IDCarrito = @idUsuario
 End
 go
+Create Procedure SP_AgregarArticuloCarrito(
+	@idCarrito bigint,
+	@idArticulo bigint,
+	@cantidad int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, Cantidad) values (@idCarrito, @idArticulo, @cantidad)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el articulo al carrito', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarArticuloCarrito(
+	@idCarrito bigint,
+	@idArticulo bigint,
+	@cantidad int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Articulos_X_Carritos Set Cantidad = @cantidad Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el articulo en carrito', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarArticuloCarrito(
+	@idUsuario bigint
+)
+As
+Begin
+	Begin Try
+		Update Articulos_X_Carritos Set Estado = 0 Where IDCarrito = @idUsuario
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el articulo del carrito', 16, 1)
+	End Catch
+End
