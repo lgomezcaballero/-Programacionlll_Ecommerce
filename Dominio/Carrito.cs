@@ -9,7 +9,7 @@ namespace Dominio
     public class Carrito
     {
         public long ID { get; set; }
-        public List<ArticulosCarrito> ListaArticulos { get; set; }
+        public List<ArticulosCarrito> ArticulosCarrito { get; set; }
         public bool Estado { get; set; }
     }
 }

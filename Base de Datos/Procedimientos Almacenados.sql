@@ -76,6 +76,22 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_ObtenerArticulo(
+	@idArticulo bigint 
+)
+As
+Begin
+	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, t.IDTalla, t.Talla, t.Estado EstadoTalla, a.Precio, a.Stock, 
+	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
+	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
+	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
+	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
+	Left Join Tallas t on a.IDTalla = t.IDTalla
+	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
+	Left Join Generos g on a.IDGenero = g.IDGenero
+	Where a.IDArticulo = @idArticulo
+End
+go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarCategorias
@@ -322,12 +338,12 @@ go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarCarrito(
-	@idCliente
+	@idUsuario bigint
 )
 As
 Begin
-	Select *
+	Select c.IDCarrito, c.Estado EstadoCarrito, axl.IDArticulo, axl.Cantidad, axl.Estado EstadoArticuloCarrito
 	From Carritos c Inner Join Articulos_X_Carritos axl on c.IDCarrito = axl.IDCarrito
-	Inner Join Articulos a on axl.IDArticulo = a.IDArticulo
+	Where c.IDCarrito = @idUsuario
 End
 go

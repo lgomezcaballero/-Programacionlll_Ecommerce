@@ -297,5 +297,102 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public Articulo obtenerArticulo(long id)
+        {
+            Articulo articulo = new Articulo();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsultaSP("SP_ObtenerArticulo");
+                datos.setParametros("@idArticulo", id);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    //Articulo aux = new Articulo();
+                    if (!(datos.Lector["IDArticulo"] is DBNull))
+                        articulo.ID = (long)datos.Lector["IDArticulo"];
+
+                    if (!(datos.Lector["Articulo"] is DBNull))
+                        articulo.Nombre = (string)datos.Lector["Articulo"];
+
+                    if (!(datos.Lector["Descripcion"] is DBNull))
+                        articulo.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    if (!(datos.Lector["Precio"] is DBNull))
+                        articulo.Precio = (decimal)datos.Lector["Precio"];
+
+                    if (!(datos.Lector["Stock"] is DBNull))
+                        articulo.Stock = (long)datos.Lector["Stock"];
+
+                    if (!(datos.Lector["FechaRegistro"] is DBNull))
+                        articulo.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
+
+                    if (!(datos.Lector["EstadoArticulo"] is DBNull))
+                        articulo.Estado = (bool)datos.Lector["EstadoArticulo"];
+
+                    articulo.Imagenes = new List<ImagenesArticulo>();
+                    ImagenesArticuloNegocio ImagenesNegocio = new ImagenesArticuloNegocio();
+                    articulo.Imagenes = ImagenesNegocio.listar(articulo.ID);
+
+                    articulo.Marca = new Marca();
+                    if (!(datos.Lector["IDMarca"] is DBNull))
+                        articulo.Marca.ID = (Int16)datos.Lector["IDMarca"];
+
+                    if (!(datos.Lector["Marca"] is DBNull))
+                        articulo.Marca.Nombre = (string)datos.Lector["Marca"];
+
+                    if (!(datos.Lector["FechaRegistroMarca"] is DBNull))
+                        articulo.Marca.FechaRegistro = (DateTime)datos.Lector["FechaRegistroMarca"];
+
+                    if (!(datos.Lector["EstadoMarca"] is DBNull))
+                        articulo.Marca.Estado = (bool)datos.Lector["EstadoMarca"];
+
+                    articulo.Categoria = new Categoria();
+                    if (!(datos.Lector["IDCategoria"] is DBNull))
+                        articulo.Categoria.ID = (Int16)datos.Lector["IDCategoria"];
+
+                    if (!(datos.Lector["Categoria"] is DBNull))
+                        articulo.Categoria.Nombre = (string)datos.Lector["Categoria"];
+
+                    if (!(datos.Lector["FechaRegistroCategoria"] is DBNull))
+                        articulo.Categoria.FechaRegistro = (DateTime)datos.Lector["FechaRegistroCategoria"];
+
+                    if (!(datos.Lector["EstadoCategoria"] is DBNull))
+                        articulo.Categoria.Estado = (bool)datos.Lector["EstadoCategoria"];
+
+                    articulo.Genero = new Genero();
+                    if (!(datos.Lector["IDGenero"] is DBNull))
+                        articulo.Genero.ID = (byte)datos.Lector["IDGenero"];
+
+                    if (!(datos.Lector["Genero"] is DBNull))
+                        articulo.Genero.Nombre = (string)datos.Lector["Genero"];
+
+                    if (!(datos.Lector["EstadoGenero"] is DBNull))
+                        articulo.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
+
+                    articulo.Talla = new Talla();
+                    if (!(datos.Lector["IDTalla"] is DBNull))
+                        articulo.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
+
+                    if (!(datos.Lector["Talla"] is DBNull))
+                        articulo.Talla.Nombre = (string)datos.Lector["Talla"];
+
+                    if (!(datos.Lector["EstadoTalla"] is DBNull))
+                        articulo.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
+
+                }
+                return articulo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

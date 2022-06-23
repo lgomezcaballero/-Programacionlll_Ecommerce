@@ -9,37 +9,48 @@ namespace Negocio
 {
     public class CarritoNegocio
     {
-        public List<Carrito> listar()
+        public Carrito mostrarCarrito(long idUsuario)
         {
             Carrito carrito = new Carrito();
             AccesoDatos datos = new AccesoDatos();
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
 
             try
             {
-                /*datos.setConsultaSP("SP_ListarCarrito");
+                datos.setConsultaSP("SP_ListarCarrito");
+                datos.setParametros("@idUsuario", idUsuario);
                 datos.ejecutarLectura();
 
-                datos.Lector.Read();
-                if (!(datos.Lector["IDCarrito"] is DBNull))
-                    aux.ID = (long)datos.Lector["IDCarrito"];
+                //Marca aux = new Marca();
+                if (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["IDCarrito"] is DBNull))
+                        carrito.ID = (long)datos.Lector["IDCarrito"];
 
-                List<Articulo> listaArticulos = new List<Articulo>();
+                    if (!(datos.Lector["EstadoCarrito"] is DBNull))
+                        carrito.Estado = (bool)datos.Lector["EstadoCarrito"];
+
+                    carrito.ArticulosCarrito = new List<ArticulosCarrito>();
+                }
+
                 do
                 {
-
-                    Articulo aux = new Articulo();
+                    ArticulosCarrito aux = new ArticulosCarrito();
+                    aux.Articulo = new Articulo();
                     if (!(datos.Lector["IDArticulo"] is DBNull))
-                        aux = obtenerArticulo((string)datos.Lector["IDArticulo"]);
-                    listaArticulos.Add(aux);
+                        aux.Articulo = articuloNegocio.obtenerArticulo((long)datos.Lector["IDArticulo"]);
 
-                    if (!(datos.Lector["Estado"] is DBNull))
-                        aux.Estado = (bool)datos.Lector["Estado"];
+                    if (!(datos.Lector["Cantidad"] is DBNull))
+                        aux.Cantidad = (int)datos.Lector["Cantidad"];
 
+                    if (!(datos.Lector["EstadoArticuloCarrito"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["EstadoArticuloCarrito"];
+
+                    carrito.ArticulosCarrito.Add(aux);
                 } while (datos.Lector.Read());
-                lista.Add(aux);
 
                 return carrito;
-                */
+
             }
             catch (Exception ex)
             {
