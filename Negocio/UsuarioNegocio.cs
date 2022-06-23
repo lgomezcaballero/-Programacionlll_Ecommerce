@@ -284,13 +284,13 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarMarca(long id)
+        public void eliminarUsuario(long id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_EliminarMarca");
-                datos.setParametros("@idMarca", id);
+                datos.setConsultaSP("SP_EliminarUsuario");
+                datos.setParametros("@idUsuario", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
