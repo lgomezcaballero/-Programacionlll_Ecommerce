@@ -24,3 +24,5 @@ ABM Pais
 ABM Provincia
 ABM TipoUsuario
 ABM Usuario
+
+Crear método en cada clase de negocio para obtener un registro X a través de un id del mismo

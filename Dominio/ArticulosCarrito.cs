@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Carrito
+    public class ArticulosCarrito
     {
-        public long ID { get; set; }
-        public List<ArticulosCarrito> ListaArticulos { get; set; }
+        public Articulo Articulo { get; set; }
+        public int Cantidad { get; set; }
         public bool Estado { get; set; }
     }
 }
