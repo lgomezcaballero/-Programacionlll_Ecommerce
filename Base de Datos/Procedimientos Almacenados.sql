@@ -235,6 +235,7 @@ Begin
 		Begin Transaction
 			Insert into Usuarios(Apellidos, Nombres, DNI, NombreUsuario, Contraseña, IDTipoUsuario, IDLocalidad)
 			values (@apellidos, @nombres, @dni, @nombreUsuario, @contraseña, @idTipoUsuario, @idLocalidad)
+			Insert into Carritos (IDCarrito) values (@@IDENTITY)
 		Commit Transaction
 	End Try
 	Begin Catch

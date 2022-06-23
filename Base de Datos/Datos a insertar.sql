@@ -99,5 +99,13 @@ go
 Insert Into Imagenes (IDArticulo, URLImagen) values (4, 'https://http2.mlstatic.com/D_NQ_NP_756798-MLA49840887741_052022-W.webp')
 go
 Insert Into Imagenes (IDArticulo, URLImagen) values (4, 'https://http2.mlstatic.com/D_614858-MLA49840887742_052022-O.jpg')
-
+go
+Insert into TiposUsuarios (Nombre) values ('Administrador')
+go
+Insert into Pais(Nombre) values ('Argentina')
+go
+Insert into Provincias(IDPais, Nombre) values (1, 'Buenos Aires')
+go
+Insert into Localidad(CP, IDProvincia, Nombre) values ('B1648', 1, 'Tigre')
+go
 select * from Articulos
