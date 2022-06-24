@@ -103,3 +103,21 @@ End
 go
 --------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarContacto on Contactos
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idUsuario bigint
+			Select @idUsuario = IDUsuario From deleted
+
+			Update Contactos Set Estado = 0 Where IDUsuario = @idUsuario
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el contacto', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go

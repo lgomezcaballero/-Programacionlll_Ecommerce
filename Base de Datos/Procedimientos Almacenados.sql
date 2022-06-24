@@ -396,3 +396,63 @@ Begin
 		RAISERROR('Error, no se pudo eliminar el articulo del carrito', 16, 1)
 	End Catch
 End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_MostrarContacto(
+	@idUsuario bigint
+)
+As
+Begin
+	Select IDUsuario, Email, Telefono, Estado From Contactos Where IDUsuario = @idUsuario
+End
+go
+Create Procedure SP_AgregarContacto(
+	@idUsuario bigint,
+	@email varchar(100),
+	@telefono varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Contactos(IDUsuario, Email, Telefono) values (@idUsuario, @email, @telefono)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el contacto', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarContacto(
+	@idUsuario bigint,
+	@email varchar(100),
+	@telefono varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Contactos Set Email = @email, Telefono = @telefono Where IDUsuario = @idUsuario
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el contacto', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarContacto(
+	@idUsuario bigint
+)
+As
+Begin
+	Begin Try
+		Delete From Contactos Where IDUsuario = @idUsuario
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la marca', 16, 1)
+	End Catch
+End
+go
