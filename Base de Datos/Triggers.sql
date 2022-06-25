@@ -161,3 +161,23 @@ Begin
 	End Catch
 End
 go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarTipoUsuario on TiposUsuarios
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idTipoUsuario tinyint
+			Select @idTipoUsuario = IDTipoUsuario From deleted
+
+			Update TiposUsuarios Set Estado = 0 Where IDTipoUsuario = @idTipoUsuario
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el tipo de usuario', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go

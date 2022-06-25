@@ -17,16 +17,16 @@ namespace Negocio
 
             try
             {
-                datos.setConsultaSP("SP_ListarMarcas");
+                datos.setConsultaSP("SP_ListarTipoUsuario");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     TipoUsuario aux = new TipoUsuario();
-                    if (!(datos.Lector["ID"] is DBNull))
-                        aux.ID = (byte)datos.Lector["ID"];
-                    if (!(datos.Lector["NombreTipo"] is DBNull))
-                        aux.NombreTipo = (string)datos.Lector["NombreTipo"];
+                    if (!(datos.Lector["IDTipoUsuario"] is DBNull))
+                        aux.ID = (byte)datos.Lector["IDTipoUsuario"];
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        aux.NombreTipo = (string)datos.Lector["Nombre"];
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
@@ -50,15 +50,15 @@ namespace Negocio
                 datos.cerrarConexion();
             }
 
-        }//Falta probarlo
+        }
 
-        public void agregarTipoUsuario(TipoUsuario Tipo) // Falta probar
+        public void agregarTipoUsuario(TipoUsuario tipoUsuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setConsultaSP("SP_AgregarTipoUsuario");
-                datos.setParametros("@NombreTipo", Tipo.NombreTipo);
+                datos.setParametros("@nombreTipo", tipoUsuario.NombreTipo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -72,14 +72,14 @@ namespace Negocio
             }
         }
 
-        public void modificarTipoUsuario(TipoUsuario Tipo)
+        public void modificarTipoUsuario(TipoUsuario tipoUsuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setConsultaSP("SP_ModificarTipoUsuario");
-                datos.setParametros("@ID", Tipo.ID);
-                datos.setParametros("@NombreTipo", Tipo.NombreTipo);
+                datos.setParametros("@idTipoUsuario", tipoUsuario.ID);
+                datos.setParametros("@nombreTipo", tipoUsuario.NombreTipo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -90,15 +90,15 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }//Falta probar
+        }
 
-        public void eliminarTipoUsuario(byte ID)
+        public void eliminarTipoUsuario(byte idTipoUsuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setConsultaSP("SP_EliminarTipoUsuario");
-                datos.setParametros("@ID", ID);
+                datos.setParametros("@idTipoUsuario", idTipoUsuario);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
