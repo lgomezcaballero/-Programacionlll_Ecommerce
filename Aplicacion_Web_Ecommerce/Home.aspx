@@ -6,6 +6,7 @@
 
    
 
+  
     <div id="Articulo" class="row row-cols-1 row-cols-md-4 g-4">
         <% foreach (var item in ListaDeArticulos)
             {%>
@@ -46,12 +47,14 @@
                 <div class="card-body">
                     <h5 class="card-title"><a style="text-decoration: none" href="InformacioDelArticulo.aspx"><%: item.Nombre %></a></h5>
                     <p class="card-text"><%:item.Descripcion %></p>
-                    <a class="btn btn-primary" href="Home.aspx?id=<%:item.ID %>"> Agregar al carrito</a>
+                    <a class="btn btn-primary" href="Home.aspx?id=<%:item.ID %>"> Agregar al carrito</a>              
                 </div>
             </div>
         </div>
         <%} %>
     </div>
+   
+    <% Response.Redirect("HomeAdmin.aspx", false); %>
    
 
 
