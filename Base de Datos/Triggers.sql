@@ -121,3 +121,43 @@ Begin
 	End Catch
 End
 go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarPais on Pais
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idPais tinyint
+			Select @idPais = IDPais From deleted
+
+			Update Pais Set Estado = 0 Where IDPais = @idPais
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el pais', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarProvincia on Provincias
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idProvincia int
+			Select @idProvincia = IDProvincia From deleted
+
+			Update Provincias Set Estado = 0 Where IDProvincia = @idProvincia
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la provincia', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go
