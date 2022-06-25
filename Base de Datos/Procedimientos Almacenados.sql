@@ -515,3 +515,67 @@ end
 
 
 ---------------------------------------------------
+
+
+--Estos son los procedures de TipoUsuarioNegocio
+go
+Create Procedure SP_ListarTipoUsuario -- Falta crearlo
+As
+Begin
+	Select IDTipoUsuario, Nombre, Estado From TiposUsuarios 
+End
+
+---------------------------------------------------------
+go
+Create Procedure SP_AgregarTipoUsuario( -- creo que hay que pasarle el estado y falta crearlo
+	@NombreTipo varchar(70)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into TiposUsuarios(Nombre) values (@NombreTipo)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el tipo de usuario', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+
+---------------------------------------------------------
+
+Create Procedure SP_ModificarTipoUsuario( -- Falta crearlo
+	@idTipoUsuario tinyint,
+	@NombreTipo varchar(70)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update TiposUsuarios Set Nombre = @NombreTipo Where IDTipoUsuario = @idTipoUsuario
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el tipo de usuario', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+
+--------------------------------------------------------------
+
+Create Procedure SP_EliminarTipoUsuario(
+	@idTipoUsuario tinyint
+)
+As
+Begin
+	Begin Try
+		Delete From TiposUsuarios Where IDTipoUsuario = @idTipoUsuario
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el tipo de usuario', 16, 1)
+	End Catch
+End
+go
