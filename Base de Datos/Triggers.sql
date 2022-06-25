@@ -181,3 +181,63 @@ Begin
 	End Catch
 End
 go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarFormaPago on FormasPagos
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idFormaPago tinyint
+			Select @idFormaPago = IDFormaPago From deleted
+
+			Update FormasPagos Set Estado = 0 Where IDFormaPago = @idFormaPago
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la forma de pago', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarGenero on Generos
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idGenero tinyint
+			Select @idGenero = IDGenero From deleted
+
+			Update Generos Set Estado = 0 Where IDGenero = @idGenero
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el genero', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+Create Trigger TR_EliminarLocalidad on Localidad
+instead of delete
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Declare @idLocalidad int
+			Select @idLocalidad = IDLocalidad From deleted
+
+			Update Localidad Set Estado = 0 Where IDLocalidad = @idLocalidad
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la localidad', 16, 2)
+		Rollback Transaction
+	End Catch
+End
+go

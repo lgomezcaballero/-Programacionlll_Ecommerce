@@ -318,7 +318,7 @@ Begin
 		Commit Transaction
 	End Try 
 	Begin Catch
-		RAISERROR('Error, no se pudo modificar la marca', 16, 1)
+		RAISERROR('Error, no se pudo modificar la imagen', 16, 1)
 		Rollback Transaction
 	End Catch
 End
@@ -453,6 +453,176 @@ Begin
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el contacto', 16, 1)
+	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarFormasPago
+As
+Begin
+	Select IDFormaPago, Nombre, Estado From FormasPagos
+End
+go
+Create Procedure SP_AgregarFormaPago(
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into FormasPagos(Nombre) values (@nombre)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la forma de pago', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarFormaPago(
+	@idFormaPago tinyint,
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update FormasPagos Set Nombre = @nombre Where IDFormaPago = @idFormaPago
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la forma de pago', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarFormaPago(
+	@idFormaPago tinyint
+)
+As
+Begin
+	Begin Try
+		Delete From FormasPagos Where IDFormaPago = @idFormaPago
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la forma de pago', 16, 1)
+	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarGeneros
+As
+Begin
+	Select IDGenero, Nombre, Estado From Generos
+End
+go
+Create Procedure SP_AgregarGenero(
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Generos(Nombre) values (@nombre)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el genero', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarGenero(
+	@idGenero tinyint,
+	@nombre varchar(50)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Generos Set Nombre = @nombre Where IDGenero = @idGenero
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el género', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarGenero(
+	@idGenero tinyint
+)
+As
+Begin
+	Begin Try
+		Delete From Generos Where IDGenero = @idGenero
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el género', 16, 1)
+	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarLocalidades
+As
+Begin
+	Select l.IDLocalidad, l.CP, l.Nombre Localidad, l.Estado EstadoLocalidad,
+	p.IDProvincia, p.Nombre Provincia, p.Estado EstadoProvincia,
+	pa.IDPais, pa.Nombre Pais, pa.Estado EstadoPais
+	From Localidad l Inner Join Provincias p on l.IDProvincia = p.IDProvincia
+	Inner Join Pais pa on p.IDPais = pa.IDPais
+End
+go
+Create Procedure SP_AgregarLocalidad(
+	@CP varchar(20),
+	@idProvincia int,
+	@nombre varchar(150)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Localidad(CP, IDProvincia, Nombre) values (@CP, @idProvincia, @nombre)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la localidad', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarLocalidad(
+	@idLocalidad int,
+	@CP varchar(20),
+	@idProvincia int,
+	@nombre varchar(150)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Localidad Set CP = @CP, IDProvincia = @idProvincia, Nombre = @nombre Where IDLocalidad = @idLocalidad
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la localidad', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarLocalidad(
+	@idLocalidad int
+)
+As
+Begin
+	Begin Try
+		Delete From Localidad Where IDLocalidad = @idLocalidad
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la localidad', 16, 1)
 	End Catch
 End
 go
