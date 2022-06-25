@@ -142,7 +142,7 @@ Begin
 		Delete From Categorias Where IDCategoria = @idCategoria
 	End Try
 	Begin Catch
-		RAISERROR('Error, no se pudo eliminar el articulo', 16, 1)
+		RAISERROR('Error, no se pudo eliminar la categoria', 16, 1)
 	End Catch
 End
 go
@@ -318,7 +318,7 @@ Begin
 		Commit Transaction
 	End Try 
 	Begin Catch
-		RAISERROR('Error, no se pudo modificar la imagen', 16, 1)
+		RAISERROR('Error, no se pudo modificar la marca', 16, 1)
 		Rollback Transaction
 	End Catch
 End
@@ -452,89 +452,80 @@ Begin
 		Delete From Contactos Where IDUsuario = @idUsuario
 	End Try
 	Begin Catch
-		RAISERROR('Error, no se pudo eliminar la marca', 16, 1)
+		RAISERROR('Error, no se pudo eliminar el contacto', 16, 1)
 	End Catch
 End
 go
-
-
---Creo que aca va el pais tambien
-create procedure SP_AgregarPais	--Falta ejecutarlo
-(
-@Nombre varchar(50)
-)
-as 
-begin 
-	begin try 
-	   begin Transaction
-	      insert into Pais(Nombre) values (@Nombre)
-	   commit Transaction
-	end try 
-	begin catch 
-    RAISERROR('Error, no se pudo agregar el pais', 16, 1)
-	end catch
-end
-
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarPais
+As
+Begin
+	Select IDPais, Nombre, Estado From Pais
+End
 go
-
-
-
-create procedure SP_ModificarPais -- Falta ejecutarlo
-(
-@idPais tinyint,
-@NombrePais varchar(50)
+Create procedure SP_AgregarPais(
+	@nombre varchar(50)
 )
-as 
-begin 
-	begin try 
-		begin transaction
-			update Pais set Nombre = @NombrePais where IDPais = @idPais
-		commit transaction
-	end try
-	begin catch
+As 
+Begin 
+	Begin Try 
+	   Begin Transaction
+	      Insert into Pais(Nombre) values (@nombre)
+	   Commit Transaction
+	End Try 
+	Begin Catch 
+		RAISERROR('Error, no se pudo agregar el pais', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarPais(
+	@idPais tinyint,
+	@nombrePais varchar(50)
+)
+As 
+Begin 
+	Begin try 
+		Begin transaction
+			Update Pais Set Nombre = @nombrePais where IDPais = @idPais
+		Commit transaction
+	End Try
+	Begin Catch
 		RAISERROR('Error, no se pudo modificar el pais', 16, 1)
 		Rollback Transaction
-	end catch
-end
-
-
+	End Catch
+End
 go
-create procedure SP_EliminarPais -- falta ejecutar 
-(
- @idPais tinyint
+Create Procedure SP_EliminarPais(
+	@idPais tinyint
 )
-as 
-begin 
-	begin try 
-		delete from Pais where IDPais = @idPais 
-	end try 
-	begin catch
+As 
+Begin 
+	Begin Try
+		Delete From Pais Where IDPais = @idPais 
+	End Try 
+	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el pais', 16, 1)
-	end catch
-end
-
-
----------------------------------------------------
-
-
---Estos son los procedures de TipoUsuarioNegocio
+	End Catch
+End
 go
-Create Procedure SP_ListarTipoUsuario -- Falta crearlo
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarTipoUsuario
 As
 Begin
 	Select IDTipoUsuario, Nombre, Estado From TiposUsuarios 
 End
-
----------------------------------------------------------
 go
-Create Procedure SP_AgregarTipoUsuario( -- creo que hay que pasarle el estado y falta crearlo
-	@NombreTipo varchar(70)
+Create Procedure SP_AgregarTipoUsuario(
+	@nombreTipo varchar(70)
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Insert into TiposUsuarios(Nombre) values (@NombreTipo)
+			Insert into TiposUsuarios(Nombre) values (@nombreTipo)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -543,18 +534,15 @@ Begin
 	End Catch
 End
 go
-
----------------------------------------------------------
-
-Create Procedure SP_ModificarTipoUsuario( -- Falta crearlo
+Create Procedure SP_ModificarTipoUsuario(
 	@idTipoUsuario tinyint,
-	@NombreTipo varchar(70)
+	@nombreTipo varchar(70)
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Update TiposUsuarios Set Nombre = @NombreTipo Where IDTipoUsuario = @idTipoUsuario
+			Update TiposUsuarios Set Nombre = @nombreTipo Where IDTipoUsuario = @idTipoUsuario
 		Commit Transaction
 	End Try 
 	Begin Catch
@@ -563,9 +551,6 @@ Begin
 	End Catch
 End
 go
-
---------------------------------------------------------------
-
 Create Procedure SP_EliminarTipoUsuario(
 	@idTipoUsuario tinyint
 )
@@ -579,22 +564,16 @@ Begin
 	End Catch
 End
 go
-
-
-
-------------------------------------------------------------
---Estos son los procedures de Provincia 
-go
-create procedure SP_listarProvincias -- Falta probar-- creo que es correcto
-as
-begin 
-	select pr.IDProvincia, pr.IDPais, pr.Nombre NombreProvincia, 
-	pr.Estado, p.IDPais, p.Nombre, p.Estado EstadoPais from Provincias pr
-	inner join Pais P
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_listarProvincias
+As
+Begin 
+	Select pr.IDProvincia, pr.IDPais, pr.Nombre NombreProvincia, 
+	pr.Estado, p.IDPais, p.Nombre, p.Estado EstadoPais From Provincias pr
+	Inner Join Pais P
 	on pr.IDPais = p.IDPais where pr.Estado = 1
-end
-
--------------------------------------------------
+End
 go
 Create Procedure SP_AgregarProvincia(
 	@idMarca smallint,

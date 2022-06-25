@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class PaisNegocio
     {
-        public List<Pais> listar() //Tengo que probarlo
+        public List<Pais> listar()
         {
             List<Pais> lista = new List<Pais>();
             AccesoDatos datos = new AccesoDatos();
@@ -24,10 +24,10 @@ namespace Negocio
                 {
                     Pais aux = new Pais();
 
-                    if (!(datos.Lector["ID"] is DBNull))
+                    if (!(datos.Lector["IDPais"] is DBNull))
                         aux.ID = (byte)datos.Lector["ID"];
-                    if (!(datos.Lector["NombrePais"] is DBNull))
-                        aux.NombrePais = (string)datos.Lector["NombrePais"];
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        aux.NombrePais = (string)datos.Lector["Nombre"];
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
@@ -50,19 +50,15 @@ namespace Negocio
 
         }
 
-        public void AgregarPais(Pais pais) //Tengo que probarlo, creo que tengo que ponerle el estado 
+        public void AgregarPais(Pais pais)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                //Creo que aca va el estado
                 datos.setConsultaSP("SP_AgregarPais");
                 datos.setParametros("@NombrePais", pais.NombrePais);
                 datos.ejecutarAccion();
-
-
-
             }
             catch (Exception ex)
             {
@@ -77,14 +73,14 @@ namespace Negocio
 
         }
 
-        public void ModificarPais(Pais pais)  //Falta probar
+        public void ModificarPais(Pais pais)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setConsultaSP("SP_ModificarPais");
-                datos.setParametros("@ID", pais.ID);
-                datos.setParametros("@NombrePais", pais.NombrePais);
+                datos.setParametros("@IDPais", pais.ID);
+                datos.setParametros("@nombrePais", pais.NombrePais);
             }
             catch (Exception ex)
             {
@@ -118,6 +114,6 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }//Falta probar 
+        }
     }
 }
