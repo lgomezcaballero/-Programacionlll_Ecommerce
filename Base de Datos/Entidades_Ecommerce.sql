@@ -37,13 +37,19 @@ Create Table Articulos(
 	IDMarca smallint null foreign key references Marcas(IDMarca),
 	IDCategoria smallint null foreign key references Categorias(IDCategoria),
 	IDGenero tinyint null foreign key references Generos(IDGenero),
-	IDTalla tinyint null foreign key references Tallas(IDTalla),
 	Nombre varchar(200) not null,
 	Descripcion varchar(500) not null,
 	Precio money not null check(Precio >= 0),
-	Stock bigint not null check(Stock >= 0),
 	FechaRegistro datetime null default(GETDATE()),
 	Estado bit null default(1)
+)
+go
+Create Table Articulos_X_Tallas(
+	IDArticulo bigint not null foreign key references Articulos(IDArticulo),
+	IDTalla tinyint not null foreign key references Tallas(IDTalla),
+	Stock bigint not null check(Stock >= 0),
+	Estado bit null default(1),
+	Primary Key(IDArticulo, IDTalla)
 )
 go
 Create Table Imagenes(

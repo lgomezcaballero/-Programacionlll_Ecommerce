@@ -792,3 +792,61 @@ Begin
 	End Catch
 End
 go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_listarProvincias
+As
+Begin 
+	Select pr.IDProvincia, pr.Nombre Provincia, pr.Estado EstadoProvincia,
+	pa.IDPais, pa.Nombre Pais, pa.Estado EstadoPais
+	From Provincias pr Left Join Pais pa on pr.IDPais = pa.IDPais
+End
+go
+Create Procedure SP_AgregarProvincia(
+	@idPais tinyint,
+	@nombre varchar(100)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Provincias(IDPais, Nombre) values (@idPais, @nombre)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la provincia', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarProvincia(
+	@idProvincia int,
+	@idPais tinyint,
+	@nombre varchar(100)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Provincias Set IDPais = @idPais, Nombre = @nombre Where IDProvincia = @idProvincia
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la provincia', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarProvincia(
+	@idProvincia int
+)
+As
+Begin
+	Begin Try
+		Delete From Provincias Where IDProvincia = @idProvincia
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la provincia', 16, 1)
+	End Catch
+End
+go
