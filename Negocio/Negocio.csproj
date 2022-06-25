@@ -49,6 +49,7 @@
     <Compile Include="FormaPagoNegocio.cs" />
     <Compile Include="GeneroNegocio.cs" />
     <Compile Include="ImagenesArticuloNegocio.cs" />
+    <Compile Include="LocalidadNegocio.cs" />
     <Compile Include="MarcaNegocio.cs" />
     <Compile Include="PaisNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
