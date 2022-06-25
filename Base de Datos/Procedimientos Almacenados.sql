@@ -3,33 +3,29 @@ go
 Create Procedure SP_ListarArticulos
 As
 Begin
-	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, t.IDTalla, t.Talla, t.Estado EstadoTalla, a.Precio, a.Stock, 
-	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
-	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
-	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
-	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
-	Left Join Tallas t on a.IDTalla = t.IDTalla
-	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
-	Left Join Generos g on a.IDGenero = g.IDGenero
-	Where a.Estado = 1
+	Select a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio, a.FechaRegistro, a.Estado EstadoArticulo,
+	m.IDMarca, m.Nombre Marca, m.FechaRegistro, m.Estado EstadoMarca,
+	c.IDCategoria, c.Nombre Categoria, c.FechaRegistro, c.Estado EstadoCategoria,
+	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero
+	From Articulos a Inner Join Marcas m on a.IDMarca = m.IDMarca
+	Inner Join Categorias c on a.IDCategoria = c.IDCategoria
+	Inner Join Generos g on a.IDGenero = g.IDGenero
 End
 go
 Create Procedure SP_AgregarArticulo(
 	@idMarca smallint,
 	@idCategoria smallint,
 	@idGenero tinyint,
-	@idTalla tinyint,
 	@nombre varchar(200),
 	@descripcion varchar(500),
-	@precio money,
-	@stock bigint
+	@precio money
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Insert into Articulos (IDMarca, IDCategoria, IDGenero, IDTalla, Nombre, Descripcion, Precio, Stock)
-			values (@idMarca, @idCategoria, @idGenero, @idTalla, @nombre, @descripcion, @precio, @stock)
+			Insert into Articulos (IDMarca, IDCategoria, IDGenero, Nombre, Descripcion, Precio)
+			values (@idMarca, @idCategoria, @idGenero, @nombre, @descripcion, @precio)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -43,18 +39,16 @@ Create Procedure SP_ModificarArticulo(
 	@idMarca smallint,
 	@idCategoria smallint,
 	@idGenero tinyint,
-	@idTalla tinyint,
 	@nombre varchar(200),
 	@descripcion varchar(500),
-	@precio money,
-	@stock bigint
+	@precio money
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Articulos Set IDMarca = @idMarca, IDCategoria = @idCategoria, IDGenero = @idGenero, IDTalla = @idTalla, Nombre = @nombre,
-			Descripcion = @descripcion, Precio = @precio, Stock = @stock Where IDArticulo = @idArticulo
+			Update Articulos Set IDMarca = @idMarca, IDCategoria = @idCategoria, IDGenero = @idGenero, Nombre = @nombre,
+			Descripcion = @descripcion, Precio = @precio Where IDArticulo = @idArticulo
 		Commit Transaction
 	End Try 
 	Begin Catch
@@ -69,27 +63,97 @@ Create Procedure SP_EliminarArticulo(
 As
 Begin
 	Begin Try
-		Delete From Articulos Where IDArticulo = @idArticulo
+		Begin Transaction
+			Update Imagenes Set Estado = 0 Where IDArticulo = @idArticulo
+			Update Articulos_X_Carritos Set Estado = 0 Where IDArticulo = @idArticulo
+			Update Articulos_X_Tallas Set Estado = 0 Where IDArticulo = @idArticulo
+			Update Articulos Set Estado = 0 Where IDArticulo = @idArticulo
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el articulo', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
-Create Procedure SP_ObtenerArticulo(
-	@idArticulo bigint 
+--Create Procedure SP_ObtenerArticulo(
+--	@idArticulo bigint 
+--)
+--As
+--Begin
+--	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio, a.Stock, 
+--	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
+--	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
+--	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
+--	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
+--	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
+--	Left Join Generos g on a.IDGenero = g.IDGenero
+--	Where a.IDArticulo = @idArticulo
+--End
+--go
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarArticulosTallas(
+	@idArticulo bigint
 )
 As
 Begin
-	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, t.IDTalla, t.Talla, t.Estado EstadoTalla, a.Precio, a.Stock, 
-	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
-	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
-	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
-	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
-	Left Join Tallas t on a.IDTalla = t.IDTalla
-	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
-	Left Join Generos g on a.IDGenero = g.IDGenero
-	Where a.IDArticulo = @idArticulo
+	Select axt.IDArticulo, axt.Stock, axt.Estado EstadoTallaArticulo,
+	t.IDTalla, t.Talla, t.Estado EstadoTalla
+	From Articulos_X_Tallas axt Inner Join Tallas t on axt.IDTalla = t.IDTalla
+	Where axt.IDArticulo = @idArticulo
+End
+go
+Create Procedure SP_AgregarArticuloTalla(
+	@idArticulo bigint,
+	@idTalla tinyint,
+	@stock bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Articulos_X_Tallas(IDArticulo, IDTalla, Stock) values (@idArticulo, @idTalla, @stock)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el articulo x talla', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarArticuloTalla(
+	@idArticulo bigint,
+	@idTalla tinyint,
+	@stock bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Articulos_X_Tallas Set Stock = @stock Where IDArticulo = @idArticulo AND IDTalla = @idTalla
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar el articulo x talla', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarArticuloTalla(
+	@idArticulo bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Articulos_X_Tallas Set Estado = 0 Where IDArticulo = @idArticulo
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el articulo x talla', 16, 1)
+		Rollback Transaction
+	End Catch
 End
 go
 -------------------------------------------------------------------------------------------------------------
@@ -139,10 +203,14 @@ Create Procedure SP_EliminarCategoria(
 As
 Begin
 	Begin Try
-		Delete From Categorias Where IDCategoria = @idCategoria
+		Begin Transaction
+			Update Articulos Set IDCategoria = null Where IDCategoria = @idCategoria
+			Update Categorias Set Estado = 0 Where IDCategoria = @idCategoria
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la categoria', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -197,10 +265,13 @@ Create Procedure SP_EliminarImagen(
 As
 Begin
 	Begin Try
-		Delete From Imagenes Where IDImagen = @idImagen
+		Begin Transaction
+			Update Imagenes Set Estado = 0 Where IDImagen = @idImagen
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la imagen de articulo', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -275,10 +346,13 @@ Create Procedure SP_EliminarUsuario(
 As
 Begin
 	Begin Try
-		Delete From Usuarios Where IDUsuario = @idUsuario
+		Begin Transaction
+			Update Usuarios Set Estado = 0 Where IDUsuario = @idUsuario
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el usuario', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -329,10 +403,13 @@ Create Procedure SP_EliminarMarca(
 As
 Begin
 	Begin Try
-		Delete From Marcas Where IDMarca = @idMarca
+		Begin Transaction
+			Update Marcas Set Estado = 0 Where IDMarca = @idMarca
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la marca', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -390,10 +467,13 @@ Create Procedure SP_EliminarArticuloCarrito(
 As
 Begin
 	Begin Try
-		Update Articulos_X_Carritos Set Estado = 0 Where IDCarrito = @idUsuario
+		Begin Transaction
+			Update Articulos_X_Carritos Set Estado = 0 Where IDCarrito = @idUsuario
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el articulo del carrito', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -449,10 +529,13 @@ Create Procedure SP_EliminarContacto(
 As
 Begin
 	Begin Try
-		Delete From Contactos Where IDUsuario = @idUsuario
+		Begin Transaction
+			Update Contactos Set Estado = 0 Where IDUsuario = @idUsuario
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el contacto', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -503,10 +586,13 @@ Create Procedure SP_EliminarFormaPago(
 As
 Begin
 	Begin Try
-		Delete From FormasPagos Where IDFormaPago = @idFormaPago
+		Begin Transaction
+			Update FormasPagos Set Estado = 0 Where IDFormaPago = @idFormaPago
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la forma de pago', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -557,10 +643,13 @@ Create Procedure SP_EliminarGenero(
 As
 Begin
 	Begin Try
-		Delete From Generos Where IDGenero = @idGenero
+		Begin Transaction
+			Update Generos Set Estado = 0 Where IDGenero = @idGenero
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el género', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -619,10 +708,13 @@ Create Procedure SP_EliminarLocalidad(
 As
 Begin
 	Begin Try
-		Delete From Localidad Where IDLocalidad = @idLocalidad
+		Begin Transaction
+			Update Localidad Set Estado = 0 Where IDLocalidad = @idLocalidad
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la localidad', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -673,10 +765,13 @@ Create Procedure SP_EliminarPais(
 As 
 Begin 
 	Begin Try
-		Delete From Pais Where IDPais = @idPais 
+		Begin Transaction
+			Update Pais Set Estado = 0 Where IDPais = @idPais
+		Commit Transaction
 	End Try 
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el pais', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
@@ -727,16 +822,19 @@ Create Procedure SP_EliminarTipoUsuario(
 As
 Begin
 	Begin Try
-		Delete From TiposUsuarios Where IDTipoUsuario = @idTipoUsuario
+		Begin Transaction
+			Update TiposUsuarios Set Estado = 0 Where IDTipoUsuario = @idTipoUsuario
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar el tipo de usuario', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
-Create Procedure SP_listarProvincias
+Create Procedure SP_ListarProvincias
 As
 Begin 
 	Select pr.IDProvincia, pr.Nombre Provincia, pr.Estado EstadoProvincia,
@@ -785,68 +883,15 @@ Create Procedure SP_EliminarProvincia(
 As
 Begin
 	Begin Try
-		Delete From Provincias Where IDProvincia = @idProvincia
+		Begin Transaction
+			Update Provincias Set Estado = 0 Where IDProvincia = @idProvincia
+		Commit Transaction
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la provincia', 16, 1)
+		Rollback Transaction
 	End Catch
 End
 go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
-Create Procedure SP_listarProvincias
-As
-Begin 
-	Select pr.IDProvincia, pr.Nombre Provincia, pr.Estado EstadoProvincia,
-	pa.IDPais, pa.Nombre Pais, pa.Estado EstadoPais
-	From Provincias pr Left Join Pais pa on pr.IDPais = pa.IDPais
-End
-go
-Create Procedure SP_AgregarProvincia(
-	@idPais tinyint,
-	@nombre varchar(100)
-)
-As
-Begin
-	Begin Try
-		Begin Transaction
-			Insert into Provincias(IDPais, Nombre) values (@idPais, @nombre)
-		Commit Transaction
-	End Try
-	Begin Catch
-		RAISERROR('Error, no se pudo agregar la provincia', 16, 1)
-		Rollback Transaction
-	End Catch
-End
-go
-Create Procedure SP_ModificarProvincia(
-	@idProvincia int,
-	@idPais tinyint,
-	@nombre varchar(100)
-)
-As
-Begin
-	Begin Try
-		Begin Transaction
-			Update Provincias Set IDPais = @idPais, Nombre = @nombre Where IDProvincia = @idProvincia
-		Commit Transaction
-	End Try 
-	Begin Catch
-		RAISERROR('Error, no se pudo modificar la provincia', 16, 1)
-		Rollback Transaction
-	End Catch
-End
-go
-Create Procedure SP_EliminarProvincia(
-	@idProvincia int
-)
-As
-Begin
-	Begin Try
-		Delete From Provincias Where IDProvincia = @idProvincia
-	End Try
-	Begin Catch
-		RAISERROR('Error, no se pudo eliminar la provincia', 16, 1)
-	End Catch
-End
-go

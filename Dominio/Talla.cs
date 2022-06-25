@@ -10,6 +10,7 @@ namespace Dominio
     {
         public byte IDTalla { get; set; }
         public string Nombre { get; set; }
+        public long Stock { get; set; }
         public bool Estado { get; set; }
     }
 }

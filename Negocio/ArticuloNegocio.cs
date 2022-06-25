@@ -33,8 +33,8 @@ namespace Negocio
                     if (!(datos.Lector["Precio"] is DBNull))
                         aux.Precio = (decimal)datos.Lector["Precio"];
 
-                    if (!(datos.Lector["Stock"] is DBNull))
-                        aux.Stock = (long)datos.Lector["Stock"];
+                    //if (!(datos.Lector["Stock"] is DBNull))
+                    //    aux.Stock = (long)datos.Lector["Stock"];
                     
                     if (!(datos.Lector["FechaRegistro"] is DBNull))
                         aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
@@ -82,15 +82,15 @@ namespace Negocio
                     if (!(datos.Lector["EstadoGenero"] is DBNull))
                         aux.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
 
-                    aux.Talla = new Talla();
-                    if (!(datos.Lector["IDTalla"] is DBNull))
-                        aux.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
+                    //aux.Talla = new Talla();
+                    //if (!(datos.Lector["IDTalla"] is DBNull))
+                    //    aux.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
 
-                    if (!(datos.Lector["Talla"] is DBNull))
-                        aux.Talla.Nombre= (string)datos.Lector["Talla"];
+                    //if (!(datos.Lector["Talla"] is DBNull))
+                    //    aux.Talla.Nombre= (string)datos.Lector["Talla"];
 
-                    if (!(datos.Lector["EstadoTalla"] is DBNull))
-                        aux.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
+                    //if (!(datos.Lector["EstadoTalla"] is DBNull))
+                    //    aux.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
 
                     lista.Add(aux);
 
@@ -118,7 +118,7 @@ namespace Negocio
                 datos.setParametros("@nombre", articulo.Nombre);
                 datos.setParametros("@descripcion", articulo.Descripcion);
                 datos.setParametros("@precio", articulo.Precio);
-                datos.setParametros("@stock", articulo.Stock);
+                //datos.setParametros("@stock", articulo.Stock);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -142,11 +142,11 @@ namespace Negocio
                 datos.setParametros("@idMarca", articulo.Marca.ID);
                 datos.setParametros("@idCategoria", articulo.Categoria.ID);
                 datos.setParametros("@idGenero", articulo.Genero.ID);
-                datos.setParametros("@idTalla", articulo.Talla.IDTalla);
+                //datos.setParametros("@idTalla", articulo.Talla.IDTalla);
                 datos.setParametros("@nombre", articulo.Nombre);
                 datos.setParametros("@descripcion", articulo.Descripcion);
                 datos.setParametros("@precio", articulo.Precio);
-                datos.setParametros("@stock", articulo.Stock);
+                //datos.setParametros("@stock", articulo.Stock);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -324,8 +324,8 @@ namespace Negocio
                     if (!(datos.Lector["Precio"] is DBNull))
                         articulo.Precio = (decimal)datos.Lector["Precio"];
 
-                    if (!(datos.Lector["Stock"] is DBNull))
-                        articulo.Stock = (long)datos.Lector["Stock"];
+                    //if (!(datos.Lector["Stock"] is DBNull))
+                    //    articulo.Stock = (long)datos.Lector["Stock"];
 
                     if (!(datos.Lector["FechaRegistro"] is DBNull))
                         articulo.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
@@ -373,15 +373,15 @@ namespace Negocio
                     if (!(datos.Lector["EstadoGenero"] is DBNull))
                         articulo.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
 
-                    articulo.Talla = new Talla();
-                    if (!(datos.Lector["IDTalla"] is DBNull))
-                        articulo.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
+                    //articulo.Talla = new Talla();
+                    //if (!(datos.Lector["IDTalla"] is DBNull))
+                    //    articulo.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
 
-                    if (!(datos.Lector["Talla"] is DBNull))
-                        articulo.Talla.Nombre = (string)datos.Lector["Talla"];
+                    //if (!(datos.Lector["Talla"] is DBNull))
+                    //    articulo.Talla.Nombre = (string)datos.Lector["Talla"];
 
-                    if (!(datos.Lector["EstadoTalla"] is DBNull))
-                        articulo.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
+                    //if (!(datos.Lector["EstadoTalla"] is DBNull))
+                    //    articulo.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
 
                 }
                 return articulo;

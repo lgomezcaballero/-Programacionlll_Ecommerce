@@ -13,11 +13,10 @@ namespace Dominio
         public Categoria Categoria { get; set; }
         public Genero Genero { get; set; }
         public List<ImagenesArticulo> Imagenes { get; set; }
-        public Talla Talla { get; set; }
+        public List<Talla> Talla { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
-        public long Stock { get; set; }
         public DateTime FechaRegistro { get; set; }
         public bool Estado { get; set; }
     }

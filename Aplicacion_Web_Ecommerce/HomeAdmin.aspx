@@ -3,6 +3,8 @@
     <asp:GridView runat="server" ID="gvABMArticulos" CssClass="table table-bordered table-responsive table-striped" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField HeaderText="ID" DataField="ID" />
+            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+            <asp:BoundField HeaderText="" DataField="Nombre" />
             <asp:ButtonField HeaderText="" ControlStyle-CssClass="btn btn-warning" ButtonType="Button" Text="editar"/>
             <asp:ButtonField HeaderText="" ControlStyle-CssClass="btn btn-warning" ButtonType="Button" Text="editar"/>
             <asp:ButtonField HeaderText="" ControlStyle-CssClass="btn btn-warning" ButtonType="Button" Text="editar"/>
