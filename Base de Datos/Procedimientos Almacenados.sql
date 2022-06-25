@@ -456,3 +456,62 @@ Begin
 	End Catch
 End
 go
+
+
+--Creo que aca va el pais tambien
+create procedure SP_AgregarPais	--Falta ejecutarlo
+(
+@Nombre varchar(50)
+)
+as 
+begin 
+	begin try 
+	   begin Transaction
+	      insert into Pais(Nombre) values (@Nombre)
+	   commit Transaction
+	end try 
+	begin catch 
+    RAISERROR('Error, no se pudo agregar el pais', 16, 1)
+	end catch
+end
+
+go
+
+
+
+create procedure SP_ModificarPais -- Falta ejecutarlo
+(
+@idPais tinyint,
+@NombrePais varchar(50)
+)
+as 
+begin 
+	begin try 
+		begin transaction
+			update Pais set Nombre = @NombrePais where IDPais = @idPais
+		commit transaction
+	end try
+	begin catch
+		RAISERROR('Error, no se pudo modificar el pais', 16, 1)
+		Rollback Transaction
+	end catch
+end
+
+
+go
+create procedure SP_EliminarPais -- falta ejecutar 
+(
+ @idPais tinyint
+)
+as 
+begin 
+	begin try 
+		delete from Pais where IDPais = @idPais 
+	end try 
+	begin catch
+		RAISERROR('Error, no se pudo eliminar el pais', 16, 1)
+	end catch
+end
+
+
+---------------------------------------------------
