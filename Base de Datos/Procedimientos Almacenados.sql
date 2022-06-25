@@ -579,3 +579,45 @@ Begin
 	End Catch
 End
 go
+
+
+
+------------------------------------------------------------
+--Estos son los procedures de Provincia 
+go
+create procedure SP_listarProvincias -- Falta probar-- creo que es correcto
+as
+begin 
+	select pr.IDProvincia, pr.IDPais, pr.Nombre NombreProvincia, 
+	pr.Estado, p.IDPais, p.Nombre, p.Estado EstadoPais from Provincias pr
+	inner join Pais P
+	on pr.IDPais = p.IDPais where pr.Estado = 1
+end
+
+-------------------------------------------------
+go
+Create Procedure SP_AgregarProvincia(
+	@idMarca smallint,
+	@idCategoria smallint,
+	@idGenero tinyint,
+	@idTalla tinyint,
+	@nombre varchar(200),
+	@descripcion varchar(500),
+	@precio money,
+	@stock bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert into Articulos (IDMarca, IDCategoria, IDGenero, IDTalla, Nombre, Descripcion, Precio, Stock)
+			values (@idMarca, @idCategoria, @idGenero, @idTalla, @nombre, @descripcion, @precio, @stock)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar el articulo', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+
+
