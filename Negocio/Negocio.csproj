@@ -48,7 +48,9 @@
     <Compile Include="ContactoNegocio.cs" />
     <Compile Include="ImagenesArticuloNegocio.cs" />
     <Compile Include="MarcaNegocio.cs" />
+    <Compile Include="PaisNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoUsuarioNegocio.cs" />
     <Compile Include="UsuarioNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
