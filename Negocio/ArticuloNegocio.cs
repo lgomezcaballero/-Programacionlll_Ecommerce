@@ -142,6 +142,9 @@ namespace Negocio
                 datos.setParametros("@idMarca", articulo.Marca.ID);
                 datos.setParametros("@idCategoria", articulo.Categoria.ID);
                 datos.setParametros("@idGenero", articulo.Genero.ID);
+
+                //Aca me pide id talla para que funcione 
+
                 //datos.setParametros("@idTalla", articulo.Talla.IDTalla);
                 datos.setParametros("@nombre", articulo.Nombre);
                 datos.setParametros("@descripcion", articulo.Descripcion);
