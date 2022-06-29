@@ -36,8 +36,8 @@ namespace Negocio
                     //if (!(datos.Lector["Stock"] is DBNull))
                     //    aux.Stock = (long)datos.Lector["Stock"];
                     
-                    if (!(datos.Lector["FechaRegistro"] is DBNull))
-                        aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
+                    if (!(datos.Lector["FechaRegistroArticulo"] is DBNull))
+                        aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistroArticulo"];
 
                     if (!(datos.Lector["EstadoArticulo"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticulo"];

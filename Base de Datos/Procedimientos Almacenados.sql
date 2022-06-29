@@ -76,21 +76,21 @@ Begin
 	End Catch
 End
 go
---Create Procedure SP_ObtenerArticulo(
---	@idArticulo bigint 
---)
---As
---Begin
---	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio, a.Stock, 
---	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
---	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
---	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
---	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
---	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
---	Left Join Generos g on a.IDGenero = g.IDGenero
---	Where a.IDArticulo = @idArticulo
---End
---go
+Create Procedure SP_ObtenerArticulo(
+	@idArticulo bigint 
+)
+As
+Begin
+	select a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio, 
+	a.FechaRegistro, a.Estado EstadoArticulo, m.IDMarca, m.Nombre Marca, m.FechaRegistro FechaRegistroMarca,
+	m.Estado EstadoMarca, c.IDCategoria, c.Nombre Categoria, c.FechaRegistro FechaRegistroCategoria, c.Estado EstadoCategoria,
+	g.IDGenero, g.Nombre Genero, g.Estado EstadoGenero 
+	From Articulos a Left Join Marcas m on a.IDMarca = m.IDMarca
+	Left Join Categorias c on a.IDCategoria = c.IDCategoria 
+	Left Join Generos g on a.IDGenero = g.IDGenero
+	Where a.IDArticulo = @idArticulo
+End
+go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarArticulosTallas(
