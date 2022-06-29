@@ -23,8 +23,8 @@
                    <td><%: item.Genero %></td>
                    <td><%: item.Precio %></td>
                    <td>
-                       <a href="#">Ver</a>
-                       <a href="ModificarArticulo?ID=<%: item.ID %>&Type=e">Editar</a>
+                       <a href="ABMArticulo?ID=<%: item.ID %>&Type=v">Ver</a>
+                       <a href="ABMArticulo?ID=<%: item.ID %>&Type=e">Editar</a>
                        <a href="#">Eliminar</a>
                    </td>
                </tr>
@@ -35,6 +35,6 @@
 
         </tbody>
     </table>
-
+    <a href="ABMArticulo?Type=a">content</a>
 
 </asp:Content>
