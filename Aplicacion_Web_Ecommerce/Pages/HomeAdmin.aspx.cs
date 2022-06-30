@@ -16,7 +16,11 @@ namespace Aplicacion_Web_Ecommerce
 
         //Esto es para el abm de paises
         public List<Pais> listaPaises = new List<Pais>();     
-        PaisNegocio Negocio = new PaisNegocio();    
+        PaisNegocio paisNegocio = new PaisNegocio();
+
+        //Esto lo hago para el abm de provincias
+        public List<Provincia> listaProvincias = new List<Provincia>();
+        ProvinciaNegocio provincianegocio = new ProvinciaNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
             listaArticulos = negocio.listar();
@@ -24,9 +28,14 @@ namespace Aplicacion_Web_Ecommerce
                 Session.Add("listaArticulos", listaArticulos);
 
             //Esto lo hago para guardar el pais en session 
-            listaPaises = Negocio.listar();
+            listaPaises = paisNegocio.listar();
             if (!IsPostBack)
                 Session.Add("listapaises", listaPaises);
+
+            //Esto lo hago para guardar el las provincias en session 
+            listaProvincias = provincianegocio.listar();
+            if (!IsPostBack)
+                Session.Add("listaProvincias", listaProvincias);
         }
     }
 }

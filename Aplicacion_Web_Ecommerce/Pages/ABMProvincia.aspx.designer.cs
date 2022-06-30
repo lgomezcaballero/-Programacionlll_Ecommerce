@@ -33,6 +33,24 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.TextBox txtNombrePais;
 
         /// <summary>
+        /// Control LabelNombreProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelNombreProvincia;
+
+        /// <summary>
+        /// Control TxtNombreProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtNombreProvincia;
+
+        /// <summary>
         /// Control BtnAgregar.
         /// </summary>
         /// <remarks>
@@ -42,30 +60,21 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.Button BtnAgregar;
 
         /// <summary>
-        /// Control lblPais.
+        /// Control lblNombreDelPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPais;
+        protected global::System.Web.UI.WebControls.Label lblNombreDelPais;
 
         /// <summary>
-        /// Control txtPais.
+        /// Control txtNombreDelPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPais;
-
-        /// <summary>
-        /// Control BtnModificar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnModificar;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreDelPais;
     }
 }

@@ -69,5 +69,37 @@
 
 
      <%//Esto muestra la lista de provincias que hay en la base, esto es temporal, las provincias no se tendrian que mostrar en esta pagina %>
+       <table class="table table-bordered table-responsive">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NombrePais</th>  
+                <th scope="col">NombreProvincia</th>
+            </tr>
+        </thead>
+        <tbody>
+           <%foreach (var item in listaProvincias) { %>
+               <tr>
+                   <td><%: item.ID %></td>
+                   <td><%: item.Pais.NombrePais %></td>
+                   <td><%: item.NombreProvincia %></td>
+
+                   <td>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=v">Ver</a>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=e">Editar</a>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=d">Eliminar</a>
+                   </td>
+               </tr>
+               
+               
+               
+               <%} %>
+
+        </tbody>
+    </table>
+
+    <a href="ABMProvincia?Type=a">content</a>
+
+
 
 </asp:Content>
