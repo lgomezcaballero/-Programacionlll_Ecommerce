@@ -15,21 +15,9 @@ namespace Aplicacion_Web_Ecommerce
         ArticuloNegocio negocio = new ArticuloNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if(!IsPostBack)
             listaArticulos = negocio.listar();
-            //if(Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
-            //{
-            //    string id = Request.QueryString["ID"];
-            //    string type = Request.QueryString["Type"];
-
-            //}
-        }
-
-        protected void ModificarArticulo_Click(object sender, EventArgs e)
-        {
-            long idArticulo = long.Parse(((LinkButton)sender).CommandArgument);
-            Articulo aux = new Articulo();
-
+            if (!IsPostBack)
+                Session.Add("listaArticulos", listaArticulos);
         }
     }
 }

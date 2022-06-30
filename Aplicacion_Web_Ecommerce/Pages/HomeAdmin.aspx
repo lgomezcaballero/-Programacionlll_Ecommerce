@@ -25,7 +25,7 @@
                    <td>
                        <a href="ABMArticulo?ID=<%: item.ID %>&Type=v">Ver</a>
                        <a href="ABMArticulo?ID=<%: item.ID %>&Type=e">Editar</a>
-                       <a href="#">Eliminar</a>
+                       <a href="ABMArticulo?ID=<%: item.ID %>&Type=d">Eliminar</a>
                    </td>
                </tr>
                
