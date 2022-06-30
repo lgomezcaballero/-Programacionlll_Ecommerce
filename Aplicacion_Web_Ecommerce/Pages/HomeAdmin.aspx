@@ -37,4 +37,37 @@
     </table>
     <a href="ABMArticulo?Type=a">content</a>
 
+
+    <%//Esto muestra la lista de paises que en la base, esto es temporal, los paises no se tendrian que mostrar en esta pagina %>
+    <table class="table table-bordered table-responsive">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>  
+            </tr>
+        </thead>
+        <tbody>
+           <%foreach (var item in listaPaises) { %>
+               <tr>
+                   <td><%: item.ID %></td>
+                   <td><%: item.NombrePais %></td>
+                   <td>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=v">Ver</a>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=e">Editar</a>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=d">Eliminar</a>
+                   </td>
+               </tr>
+               
+               
+               
+               <%} %>
+
+        </tbody>
+    </table>
+
+    <a href="ABMPais?Type=a">content</a>
+
+
+     <%//Esto muestra la lista de provincias que hay en la base, esto es temporal, las provincias no se tendrian que mostrar en esta pagina %>
+
 </asp:Content>

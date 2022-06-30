@@ -25,7 +25,7 @@ namespace Negocio
                     Pais aux = new Pais();
 
                     if (!(datos.Lector["IDPais"] is DBNull))
-                        aux.ID = (byte)datos.Lector["ID"];
+                        aux.ID = (byte)datos.Lector["IDPais"];
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.NombrePais = (string)datos.Lector["Nombre"];
                     if (!(datos.Lector["Estado"] is DBNull))
@@ -57,7 +57,7 @@ namespace Negocio
             try
             {
                 datos.setConsultaSP("SP_AgregarPais");
-                datos.setParametros("@NombrePais", pais.NombrePais);
+                datos.setParametros("@nombre", pais.NombrePais);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -79,7 +79,7 @@ namespace Negocio
             try
             {
                 datos.setConsultaSP("SP_ModificarPais");
-                datos.setParametros("@IDPais", pais.ID);
+                datos.setParametros("@idPais", pais.ID);
                 datos.setParametros("@nombrePais", pais.NombrePais);
             }
             catch (Exception ex)

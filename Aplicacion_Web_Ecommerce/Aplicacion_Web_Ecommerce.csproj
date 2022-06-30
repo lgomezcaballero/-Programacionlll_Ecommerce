@@ -105,6 +105,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\ABMPais.aspx" />
+    <Content Include="Pages\ABMProvincia.aspx" />
     <Content Include="Pages\Busqueda.aspx" />
     <Content Include="Pages\Carrito.aspx" />
     <Content Include="Pages\Compra.aspx" />
@@ -190,6 +192,20 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Pages\ABMPais.aspx.cs">
+      <DependentUpon>ABMPais.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ABMPais.aspx.designer.cs">
+      <DependentUpon>ABMPais.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ABMProvincia.aspx.cs">
+      <DependentUpon>ABMProvincia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ABMProvincia.aspx.designer.cs">
+      <DependentUpon>ABMProvincia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Busqueda.aspx.cs">
       <DependentUpon>Busqueda.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

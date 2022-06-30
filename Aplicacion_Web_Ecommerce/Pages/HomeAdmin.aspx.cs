@@ -13,11 +13,20 @@ namespace Aplicacion_Web_Ecommerce
     {
         public List<Articulo> listaArticulos = new List<Articulo>();
         ArticuloNegocio negocio = new ArticuloNegocio();
+
+        //Esto es para el abm de paises
+        public List<Pais> listaPaises = new List<Pais>();     
+        PaisNegocio Negocio = new PaisNegocio();    
         protected void Page_Load(object sender, EventArgs e)
         {
             listaArticulos = negocio.listar();
             if (!IsPostBack)
                 Session.Add("listaArticulos", listaArticulos);
+
+            //Esto lo hago para guardar el pais en session 
+            listaPaises = Negocio.listar();
+            if (!IsPostBack)
+                Session.Add("listapaises", listaPaises);
         }
     }
 }

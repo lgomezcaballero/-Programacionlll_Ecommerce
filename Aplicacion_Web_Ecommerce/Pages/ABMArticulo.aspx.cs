@@ -132,7 +132,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             articulo.Categoria.ID = categoria.ID;
 
 
-            //Esto lo hice asi de manera tempporal
+            //Esto lo hice asi de manera temporal
             Talla talla = new Talla();
             talla = BuscarTallaPorNombre(TextBoxNombreTalla.Text);
             lista.Add(talla);
@@ -141,7 +141,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             articuloNegocio.agregarArticulo(articulo);
-
+            Response.Redirect("HomeAdmin.aspx", false);
 
 
 
