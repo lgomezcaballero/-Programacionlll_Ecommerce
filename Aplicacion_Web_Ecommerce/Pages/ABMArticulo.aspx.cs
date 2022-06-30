@@ -29,7 +29,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     tipo = Request.QueryString["Type"];
                 if (tipo == "e")
                 {
+                    //Con esta funciom obtine el articulo que se busca
                     articulo = obtenerArticulo(id);
+                    //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
                     setearCamposModificar(articulo);
                 }
             }
@@ -77,5 +79,134 @@ namespace Aplicacion_Web_Ecommerce.Pages
             negocio.modificarArticulo(articulo);
             Response.Redirect("HomeAdmin.aspx");
         }
+
+
+
+        protected void BtbAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            Articulo articulo = new Articulo();
+            articulo.Nombre = TextBoxNombreArticulo.Text;
+            articulo.Marca = new Marca();
+            //Aca capturo el nombre de la marca que se ingresa por teclado
+            articulo.Marca.Nombre = (TextBoxNombreMarcaArticulo.Text);
+            articulo.Categoria = new Categoria();
+            //Aca capturo el nombre de la categoria que se ingresa por teclado
+            articulo.Categoria.Nombre = TextBoxNombreCategoria.Text;
+            articulo.Genero = new Genero();
+            //Aca capturo el nombre del genero que se ingresa por teclado
+            articulo.Genero.Nombre = TextBoxGenero.Text;
+            articulo.Descripcion = TextBoxDescripcion.Text;
+            //articulo.Precio = decimal.Parse(TextBoxPrecio.Text);
+            //Esto es temporal, hasta que vea como usar el datos de la textbox
+            articulo.Precio = 2;
+            articulo.Talla = new List<Talla>();
+            List<Talla> lista = new List<Talla>();
+            //Todo esto es temporal, lo uso para cargar el articulo
+            //Talla talla = new Talla();
+            //Esto se lo dejo asi por ahora
+
+            //talla.IDTalla = 1;
+            //talla.Nombre = "XS";
+            //talla.Stock = 4;
+            //lista.Add(talla);
+
+
+
+            //Esto esta ok
+            Marca marca = new Marca();
+            marca = BuscarMarcaPorNombre(articulo.Marca.Nombre);
+            //Aca le pongo el id de la marca que encuentra la funcion
+            articulo.Marca.ID = marca.ID;
+
+            //Esto esta ok
+            Genero genero = new Genero();
+            genero = BuscarGeneroPorNombre(articulo.Genero.Nombre);
+            //Aca le pongo el id del Genero que encuentra la funcion
+            articulo.Genero.ID = genero.ID;
+
+
+            //Esto esta ok
+            Categoria categoria = new Categoria();
+            categoria = BuscarCategoriaPorNombre(articulo.Categoria.Nombre);
+            //Aca le pongo el id de la categoria que encuentra la funcion
+            articulo.Categoria.ID = categoria.ID;
+
+
+            //Esto lo hice asi de manera tempporal
+            Talla talla = new Talla();
+            talla = BuscarTallaPorNombre(TextBoxNombreTalla.Text);
+            lista.Add(talla);
+
+
+
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            articuloNegocio.agregarArticulo(articulo);
+
+
+
+
+        }
+
+        // Estas funciones son para poder ingresar el nombre de las entidades y no ingresar sis ID
+
+        protected Categoria BuscarCategoriaPorNombre(string NombreCategoria)
+        {
+
+            Categoria categoria = new Categoria();
+            List<Categoria> lista = new List<Categoria>();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            lista = categoriaNegocio.listar();
+
+            categoria = lista.Find(c => c.Nombre == NombreCategoria);
+
+
+            return categoria;
+        }
+
+
+        protected Marca BuscarMarcaPorNombre(string NombreMarca)
+        {
+
+            Marca marca = new Marca();
+            List<Marca> lista = new List<Marca>();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            lista = marcaNegocio.listar();
+
+            marca = lista.Find(c => c.Nombre == NombreMarca);
+
+
+            return marca;
+        }
+
+
+        protected Genero BuscarGeneroPorNombre(string NombreGenero)
+        {
+
+            Genero genero = new Genero();
+            List<Genero> lista = new List<Genero>();
+            GeneroNegocio generoNegocio = new GeneroNegocio();
+            lista = generoNegocio.listar();
+
+            genero = lista.Find(c => c.Nombre == NombreGenero);
+
+
+            return genero;
+        }
+
+
+        protected Talla BuscarTallaPorNombre(string NombreTalla)
+        {
+
+            Talla talla = new Talla();
+            List<Talla> lista = new List<Talla>();
+            TallaNegocio tallaNegocio = new TallaNegocio();
+            lista = tallaNegocio.listar();
+
+            talla = lista.Find(c => c.Nombre == NombreTalla);
+
+
+            return talla;
+        }
+
     }
 }

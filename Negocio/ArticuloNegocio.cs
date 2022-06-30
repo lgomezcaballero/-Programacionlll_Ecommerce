@@ -23,7 +23,7 @@ namespace Negocio
                     Articulo aux = new Articulo();
                     if (!(datos.Lector["IDArticulo"] is DBNull))
                         aux.ID = (long)datos.Lector["IDArticulo"];
-                    
+
                     if (!(datos.Lector["Articulo"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Articulo"];
 
@@ -35,9 +35,11 @@ namespace Negocio
 
                     //if (!(datos.Lector["Stock"] is DBNull))
                     //    aux.Stock = (long)datos.Lector["Stock"];
-                    
+
+                    /*
                     if (!(datos.Lector["FechaRegistroArticulo"] is DBNull))
                         aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistroArticulo"];
+                    */
 
                     if (!(datos.Lector["EstadoArticulo"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticulo"];
@@ -53,9 +55,11 @@ namespace Negocio
                     if (!(datos.Lector["Marca"] is DBNull))
                         aux.Marca.Nombre = (string)datos.Lector["Marca"];
 
+                    /*
                     if (!(datos.Lector["FechaRegistroMarca"] is DBNull))
                         aux.Marca.FechaRegistro = (DateTime)datos.Lector["FechaRegistroMarca"];
-
+                    */
+                
                     if (!(datos.Lector["EstadoMarca"] is DBNull))
                         aux.Marca.Estado = (bool)datos.Lector["EstadoMarca"];
 
@@ -66,8 +70,10 @@ namespace Negocio
                     if (!(datos.Lector["Categoria"] is DBNull))
                         aux.Categoria.Nombre = (string)datos.Lector["Categoria"];
 
+                    /*
                     if (!(datos.Lector["FechaRegistroCategoria"] is DBNull))
                         aux.Categoria.FechaRegistro = (DateTime)datos.Lector["FechaRegistroCategoria"];
+                    */
 
                     if (!(datos.Lector["EstadoCategoria"] is DBNull))
                         aux.Categoria.Estado = (bool)datos.Lector["EstadoCategoria"];
