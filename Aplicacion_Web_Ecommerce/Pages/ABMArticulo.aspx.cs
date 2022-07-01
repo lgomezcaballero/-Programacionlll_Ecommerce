@@ -17,9 +17,27 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             Articulo articulo = new Articulo();
-            
+
             if (!IsPostBack)
             {
+                MarcaNegocio mNegocio = new MarcaNegocio();
+                ddlMarcas.DataSource = mNegocio.listar();
+                ddlMarcas.DataValueField = "ID";
+                ddlMarcas.DataTextField = "Nombre";
+                ddlMarcas.DataBind();
+                CategoriaNegocio cNegocio = new CategoriaNegocio();
+                ddlCategorias.DataSource = cNegocio.listar();
+                ddlCategorias.DataValueField = "ID";
+                ddlCategorias.DataTextField = "Nombre";
+                ddlCategorias.DataBind();
+                GeneroNegocio gNegocio = new GeneroNegocio();
+                ddlGeneros.DataSource = gNegocio.listar();
+                ddlGeneros.DataValueField = "ID";
+                ddlGeneros.DataTextField = "Nombre";
+                ddlGeneros.DataBind();
+                Session.Add("listaMarcas", mNegocio.listar());
+                Session.Add("listaCategorias", cNegocio.listar());
+                Session.Add("listaGeneros", gNegocio.listar());
                 if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
                 {
                     tipo = Request.QueryString["Type"];
@@ -49,12 +67,12 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void setearCamposModificar(Articulo articulo)
         {
-            txtNombre.Text = articulo.Nombre;
-            txtMarca.Text = articulo.Marca.Nombre;
-            txtCategoria.Text = articulo.Categoria.Nombre;
-            txtGenero.Text = articulo.Genero.Nombre;
-            txtPrecio.Text = articulo.Precio.ToString();
-            txtDescripcion.Text = articulo.Descripcion;
+            e_txtNombre.Text = articulo.Nombre;
+            ddlMarcas.SelectedValue = articulo.Marca.ID.ToString();
+            ddlCategorias.SelectedValue = articulo.Categoria.ID.ToString();
+            ddlGeneros.SelectedValue = articulo.Genero.ID.ToString();
+            e_txtPrecio.Text = articulo.Precio.ToString();
+            e_txtDescripcion.Text = articulo.Descripcion;
         }
         protected void btnAtrás_Click(object sender, EventArgs e)
         {
@@ -65,16 +83,16 @@ namespace Aplicacion_Web_Ecommerce.Pages
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             Articulo articulo = new Articulo();
-
-            articulo.Nombre = txtNombre.Text;
+            articulo.ID = long.Parse(Request.QueryString["ID"]);
             articulo.Marca = new Marca();
-            articulo.Marca.Nombre = txtMarca.Text;
+            articulo.Marca.ID = short.Parse(ddlMarcas.SelectedItem.Value);
             articulo.Categoria = new Categoria();
-            articulo.Categoria.Nombre = txtCategoria.Text;
+            articulo.Categoria.ID = short.Parse(ddlCategorias.SelectedItem.Value);
             articulo.Genero = new Genero();
-            articulo.Genero.Nombre = txtGenero.Text;
-            articulo.Precio = decimal.Parse(txtPrecio.Text);
-            articulo.Descripcion = txtDescripcion.Text;
+            articulo.Genero.ID = byte.Parse(ddlGeneros.SelectedItem.Value);
+            articulo.Nombre = e_txtNombre.Text;
+            articulo.Descripcion = e_txtDescripcion.Text;
+            articulo.Precio = decimal.Parse(e_txtPrecio.Text);
 
             negocio.modificarArticulo(articulo);
             Response.Redirect("HomeAdmin.aspx");

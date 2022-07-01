@@ -42,11 +42,13 @@ Create Procedure SP_ModificarArticulo(
 	@nombre varchar(200),
 	@descripcion varchar(500),
 	@precio money
+	--@urlImagen varchar(300)
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
+			--Update Imagenes Set URLImagen = @urlImagen Where IDArticulo = IDArticulo
 			Update Articulos Set IDMarca = @idMarca, IDCategoria = @idCategoria, IDGenero = @idGenero, Nombre = @nombre,
 			Descripcion = @descripcion, Precio = @precio Where IDArticulo = @idArticulo
 		Commit Transaction
@@ -897,3 +899,63 @@ End
 go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarTallasArticulo(
+	@idArticulo bigint
+)
+As
+Begin 
+	Select IDArticulo, IDTalla, Stock, Estado EstadoArticuloTalla From Articulos_X_Tallas Where IDArticulo = @idArticulo
+End
+go
+Create Procedure SP_AgregarTallaArticulo(
+	@idArticulo bigint,
+	@idTalla tinyint,
+	@stock bigint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Articulos_X_Tallas SET Stock = @stock Where IDArticulo = @idArticulo AND IDTalla = @idTalla
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar los articulos por talle', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ModificarProvincia(
+	@idProvincia int,
+	@idPais tinyint,
+	@nombre varchar(100)
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Provincias Set IDPais = @idPais, Nombre = @nombre Where IDProvincia = @idProvincia
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo modificar la provincia', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_EliminarProvincia(
+	@idProvincia int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Provincias Set Estado = 0 Where IDProvincia = @idProvincia
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar la provincia', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go

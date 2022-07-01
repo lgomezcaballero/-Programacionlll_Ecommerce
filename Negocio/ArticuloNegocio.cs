@@ -59,7 +59,7 @@ namespace Negocio
                     if (!(datos.Lector["FechaRegistroMarca"] is DBNull))
                         aux.Marca.FechaRegistro = (DateTime)datos.Lector["FechaRegistroMarca"];
                     */
-                
+
                     if (!(datos.Lector["EstadoMarca"] is DBNull))
                         aux.Marca.Estado = (bool)datos.Lector["EstadoMarca"];
 
@@ -155,6 +155,7 @@ namespace Negocio
                 datos.setParametros("@nombre", articulo.Nombre);
                 datos.setParametros("@descripcion", articulo.Descripcion);
                 datos.setParametros("@precio", articulo.Precio);
+                //datos.setParametros("@urlImagen", urlImagen);
                 //datos.setParametros("@stock", articulo.Stock);
                 datos.ejecutarAccion();
             }
