@@ -74,14 +74,15 @@ namespace Negocio
             }
         }
 
-        public void modificarFormaPago(Genero genero)
+        public void modificarTallaArticulo(ArticuloTalla articuloTalla)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_ModificarGenero");
-                datos.setParametros("@idGenero", genero.ID);
-                datos.setParametros("@nombre", genero.Nombre);
+                datos.setConsultaSP("SP_ModificarTallaArticulo");
+                datos.setParametros("@idArticulo", articuloTalla.IDArticulo);
+                datos.setParametros("@idTalla", articuloTalla.IDTalla);
+                datos.setParametros("@stock", articuloTalla.Stock);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -214,13 +215,14 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarGenero(byte idGenero)
+        public void eliminarTallaArticulo(ArticuloTalla articuloTalla)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsultaSP("SP_EliminarGenero");
-                datos.setParametros("@idGenero", idGenero);
+                datos.setConsultaSP("SP_EliminarTallaArticulo");
+                datos.setParametros("@idArticulo", articuloTalla.IDArticulo);
+                datos.setParametros("@idTalla", articuloTalla.IDTalla);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

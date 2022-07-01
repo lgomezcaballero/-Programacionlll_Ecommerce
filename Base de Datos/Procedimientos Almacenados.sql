@@ -925,36 +925,37 @@ Begin
 	End Catch
 End
 go
-Create Procedure SP_ModificarProvincia(
-	@idProvincia int,
-	@idPais tinyint,
-	@nombre varchar(100)
+Create Procedure SP_ModificarTallaArticulo(
+	@idArticulo bigint,
+	@idTalla tinyint,
+	@stock bigint
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Provincias Set IDPais = @idPais, Nombre = @nombre Where IDProvincia = @idProvincia
+			Update Articulos_X_Tallas Set Stock = @stock Where IDArticulo = @idArticulo AND IDTalla = @idTalla
 		Commit Transaction
 	End Try 
 	Begin Catch
-		RAISERROR('Error, no se pudo modificar la provincia', 16, 1)
+		RAISERROR('Error, no se pudo modificar los articulos por talle', 16, 1)
 		Rollback Transaction
 	End Catch
 End
 go
-Create Procedure SP_EliminarProvincia(
-	@idProvincia int
+Create Procedure SP_EliminarTallaArticulo(
+	@idArticulo bigint,
+	@idTalla tinyint
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Provincias Set Estado = 0 Where IDProvincia = @idProvincia
+			Update Articulos_X_Tallas Set Estado = 0 Where IDArticulo = @idArticulo AND IDTalla = @idTalla
 		Commit Transaction
 	End Try
 	Begin Catch
-		RAISERROR('Error, no se pudo eliminar la provincia', 16, 1)
+		RAISERROR('Error, no se pudo eliminar los articulos por talle', 16, 1)
 		Rollback Transaction
 	End Catch
 End
