@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\ABMCategoria.aspx" />
+    <Content Include="Pages\ABMMarcas.aspx" />
     <Content Include="Pages\ABMPais.aspx" />
     <Content Include="Pages\ABMProvincia.aspx" />
     <Content Include="Pages\Busqueda.aspx" />
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Pages\ABMCategoria.aspx.designer.cs">
       <DependentUpon>ABMCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ABMMarcas.aspx.cs">
+      <DependentUpon>ABMMarcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ABMMarcas.aspx.designer.cs">
+      <DependentUpon>ABMMarcas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ABMPais.aspx.cs">
       <DependentUpon>ABMPais.aspx</DependentUpon>

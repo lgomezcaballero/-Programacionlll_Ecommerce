@@ -167,4 +167,37 @@
 
 
 
+     <%//Esto muestra la lista de marcas que hay en la base, esto es temporal, las categorias no se tendrian que mostrar en esta pagina %>
+       <table class="table table-bordered table-responsive">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NombreMarca</th>  
+                <th scope="col">FechaRegistro</th>
+            </tr>
+        </thead>
+        <tbody>
+           <%foreach (var item in listademarcas) { %>
+               <tr>
+                   <td><%: item.ID%></td>
+                   <td><%: item.Nombre%></td>
+                   <td><%: item.FechaRegistro %></td>
+
+                   <td>
+                       <a href="ABMMarcas?ID=<%: item.ID %>&Type=v">Ver</a>
+                       <a href="ABMMarcas?ID=<%: item.ID %>&Type=e">Editar</a>
+                       <a href="ABMMarcas?ID=<%: item.ID %>&Type=d">Eliminar</a>
+                   </td>
+               </tr>
+               
+               
+               
+               <%} %>
+
+        </tbody>
+    </table>
+
+    <a href="ABMMarcas?Type=a">content</a>
+
+
 </asp:Content>

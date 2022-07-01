@@ -26,6 +26,10 @@ namespace Aplicacion_Web_Ecommerce
         public List<Categoria> listacategoria = new List<Categoria>();
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
+        //Esto lo hago para el abm de provincias
+        public List<Marca> listademarcas = new List<Marca>();
+        MarcaNegocio marcaNegocio = new MarcaNegocio();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,6 +51,13 @@ namespace Aplicacion_Web_Ecommerce
             listacategoria = categoriaNegocio.listar();
             if (!IsPostBack)
                 Session.Add("listacategoria", listacategoria);
+
+
+            listademarcas = marcaNegocio.listar();
+            if (!IsPostBack)
+                Session.Add("listademarcas", listademarcas);
         }
+
+
     }
 }
