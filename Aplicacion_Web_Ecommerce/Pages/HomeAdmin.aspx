@@ -133,4 +133,38 @@
 
 
 
+      <%//Esto muestra la lista de categorias que hay en la base, esto es temporal, las categorias no se tendrian que mostrar en esta pagina %>
+       <table class="table table-bordered table-responsive">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NombrePais</th>  
+                <th scope="col">NombreProvincia</th>
+            </tr>
+        </thead>
+        <tbody>
+           <%foreach (var item in listacategoria) { %>
+               <tr>
+                   <td><%: item.ID%></td>
+                   <td><%: item.Nombre%></td>
+                   <td><%: item.FechaRegistro %></td>
+
+                   <td>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=v">Ver</a>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=e">Editar</a>
+                       <a href="ABMPais?ID=<%: item.ID %>&Type=d">Eliminar</a>
+                   </td>
+               </tr>
+               
+               
+               
+               <%} %>
+
+        </tbody>
+    </table>
+
+    <a href="ABMCategoria?Type=a">content</a>
+
+
+
 </asp:Content>

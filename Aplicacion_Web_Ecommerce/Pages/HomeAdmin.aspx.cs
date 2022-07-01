@@ -15,12 +15,18 @@ namespace Aplicacion_Web_Ecommerce
         ArticuloNegocio negocio = new ArticuloNegocio();
 
         //Esto es para el abm de paises
-        public List<Pais> listaPaises = new List<Pais>();     
+        public List<Pais> listaPaises = new List<Pais>();
         PaisNegocio paisNegocio = new PaisNegocio();
 
         //Esto lo hago para el abm de provincias
         public List<Provincia> listaProvincias = new List<Provincia>();
         ProvinciaNegocio provincianegocio = new ProvinciaNegocio();
+
+        //Esto lo hago para el abm de provincias
+        public List<Categoria> listacategoria = new List<Categoria>();
+        CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             listaArticulos = negocio.listar();
@@ -36,6 +42,11 @@ namespace Aplicacion_Web_Ecommerce
             listaProvincias = provincianegocio.listar();
             if (!IsPostBack)
                 Session.Add("listaProvincias", listaProvincias);
+
+            //Esto lo hago para guardar las categorias en la session 
+            listacategoria = categoriaNegocio.listar();
+            if (!IsPostBack)
+                Session.Add("listacategoria", listacategoria);
         }
     }
 }
