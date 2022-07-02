@@ -115,6 +115,8 @@ namespace Negocio
         public void agregarArticulo(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
+            ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
+            //ArticuloTalla articuloTalla = new ArticuloTalla();
             try
             {
                 datos.setConsultaSP("SP_AgregarArticulo");
@@ -126,6 +128,11 @@ namespace Negocio
                 datos.setParametros("@precio", articulo.Precio);
                 //datos.setParametros("@stock", articulo.Stock);
                 datos.ejecutarAccion();
+
+                foreach (var item in articulo.Talles)
+                {
+                    atNegocio.agregarTallaArticulo(item);
+                }
             }
             catch (Exception ex)
             {

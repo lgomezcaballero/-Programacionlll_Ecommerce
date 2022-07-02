@@ -47,7 +47,7 @@ go
 Create Table Articulos_X_Tallas(
 	IDArticulo bigint not null foreign key references Articulos(IDArticulo),
 	IDTalla tinyint not null foreign key references Tallas(IDTalla),
-	Stock bigint not null check(Stock >= 0),
+	Stock bigint not null check(Stock >= 0) default(0),
 	Estado bit null default(1),
 	Primary Key(IDArticulo, IDTalla)
 )
