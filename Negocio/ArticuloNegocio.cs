@@ -141,6 +141,7 @@ namespace Negocio
         public void modificarArticulo(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
+            ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
             try
             {
                 datos.setConsultaSP("SP_ModificarArticulo");
@@ -158,6 +159,10 @@ namespace Negocio
                 //datos.setParametros("@urlImagen", urlImagen);
                 //datos.setParametros("@stock", articulo.Stock);
                 datos.ejecutarAccion();
+                foreach (var item in articulo.Talles)
+                {
+                    atNegocio.modificarTallaArticulo(item);
+                }
             }
             catch (Exception ex)
             {

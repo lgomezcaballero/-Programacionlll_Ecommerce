@@ -29,6 +29,8 @@ namespace Negocio
                         aux.IDTalla = (byte)datos.Lector["IDTalla"];
                     if (!(datos.Lector["Stock"] is DBNull))
                         aux.Stock = (long)datos.Lector["Stock"];
+                    if (!(datos.Lector["Talle"] is DBNull))
+                        aux.Talle = (string)datos.Lector["Talle"];
                     if (!(datos.Lector["EstadoArticuloTalla"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticuloTalla"];
 

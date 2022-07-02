@@ -98,12 +98,114 @@
             <div class="col">
                 <asp:Label ID="e_lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
                 <asp:TextBox ID="e_txtDescripcion" TextMode="MultiLine" CssClass="form-control" Rows="3" runat="server"></asp:TextBox>
-                
+
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <asp:Label ID="lblTalles" runat="server" Text="Talles"></asp:Label>
+                </div>
             </div>
 
-        </div>
-        <div class="mb-3 row">
-            <div class="d-grid gap-2 d-md-block">
+            <div class="mb-3 row">
+                <div class="col-1">
+                    <label class="form-label">XS</label>
+                    <asp:TextBox ID="e_txtStockTallaXS" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">S</label>
+                    <asp:TextBox ID="e_txtStockTallaS" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">M</label>
+                    <asp:TextBox ID="e_txtStockTallaM" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">L</label>
+                    <asp:TextBox ID="e_txtStockTallaL" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                                <div class="col-1">
+                    <label class="form-label">XL</label>
+                    <asp:TextBox ID="e_txtStockTallaXL" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">XXL</label>
+                    <asp:TextBox ID="e_txtStockTallaXXL" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">XXXL</label>
+                    <asp:TextBox ID="e_txtStockTallaXXXL" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">30</label>
+                    <asp:TextBox ID="e_txtStockTalla30" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">31</label>
+                    <asp:TextBox ID="e_txtStockTalla31" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">32</label>
+                    <asp:TextBox ID="e_txtStockTalla32" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">33</label>
+                    <asp:TextBox ID="e_txtStockTalla33" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">34</label>
+                    <asp:TextBox ID="e_txtStockTalla34" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">35</label>
+                    <asp:TextBox ID="e_txtStockTalla35" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">36</label>
+                    <asp:TextBox ID="e_txtStockTalla36" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">37</label>
+                    <asp:TextBox ID="e_txtStockTalla37" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">38</label>
+                    <asp:TextBox ID="e_txtStockTalla38" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">39</label>
+                    <asp:TextBox ID="e_txtStockTalla39" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">40</label>
+                    <asp:TextBox ID="e_txtStockTalla40" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">41</label>
+                    <asp:TextBox ID="e_txtStockTalla41" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">42</label>
+                    <asp:TextBox ID="e_txtStockTalla42" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">43</label>
+                    <asp:TextBox ID="e_txtStockTalla43" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">44</label>
+                    <asp:TextBox ID="e_txtStockTalla44" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">45</label>
+                    <asp:TextBox ID="e_txtStockTalla45" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-1">
+                    <label class="form-label">46</label>
+                    <asp:TextBox ID="e_txtStockTalla46" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="d-grid gap-2 d-md-block">
                 <asp:Button ID="btnAtrás" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="btnAtrás_Click" />
                 <asp:Button ID="btnEditar" CssClass="btn btn-primary" runat="server" Text="Editar Articulo" OnClick="btnEditar_Click"/>
             </div>

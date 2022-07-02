@@ -904,7 +904,9 @@ Create Procedure SP_ListarTallasArticulo(
 )
 As
 Begin 
-	Select IDArticulo, IDTalla, Stock, Estado EstadoArticuloTalla From Articulos_X_Tallas Where IDArticulo = @idArticulo
+	Select axt.IDArticulo, axt.IDTalla, axt.Stock, t.Talla Talle, axt.Estado EstadoArticuloTalla From Articulos_X_Tallas axt
+	Inner Join Tallas t on axt.IDTalla = t.IDTalla
+	Where IDArticulo = @idArticulo
 End
 go
 Create Procedure SP_AgregarTallaArticulo(
