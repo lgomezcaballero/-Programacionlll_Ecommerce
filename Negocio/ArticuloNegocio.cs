@@ -98,7 +98,12 @@ namespace Negocio
                     //if (!(datos.Lector["EstadoTalla"] is DBNull))
                     //    aux.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
 
+                    if(aux.Estado == true) 
+                    {
                     lista.Add(aux);
+                    
+                    }
+
 
                 }
                 return lista;

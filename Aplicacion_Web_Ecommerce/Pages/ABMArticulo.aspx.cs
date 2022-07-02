@@ -58,6 +58,14 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
                     setearCamposModificar(articulo);
                 }
+
+                if(Request.QueryString["Type"] == "d") 
+                {
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();    
+                articuloNegocio.eliminarArticulo(id);
+                Response.Redirect("HomeAdmin.aspx", false);
+                
+                }
             }
         }
         protected Articulo obtenerArticulo(long idArticulo)

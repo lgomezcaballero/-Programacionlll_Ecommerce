@@ -16,7 +16,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Pais pais = new Pais();
+            Provincia provincia = new Provincia();
+
+            //TP lean
 
             if (!IsPostBack)
             {
@@ -29,10 +31,18 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     tipo = Request.QueryString["Type"];
                 if (tipo == "e")
                 {
+                    /*
                     //Con esta funciom obtine el articulo que se busca
-                   //pais = obtenerPais(id);
+                    provincia = obtenerProvincia(id);
                     //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                    //setearCamposModificarPais(pais);
+                     setearCamposModificarPais(pais);*/
+                }
+
+                if (Request.QueryString["Type"] == "d")
+                {
+                    ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
+                    provinciaNegocio.eliminarProvincia(id);
+                    Response.Redirect("HomeAdmin.aspx", false);
                 }
             }
         }
@@ -57,12 +67,12 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Aca le pongo el id del pais que encuentra la funcion
             provincia.Pais.ID = pais.ID;
 
-            
+
             //Esto carga la provincia a la base 
             ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
             provinciaNegocio.agregarProvincia(provincia);
             Response.Redirect("HomeAdmin.aspx", false);
-            
+
 
         }
 
@@ -80,5 +90,35 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             return pais;
         }
+
+        protected void BtnEditar_Click(object sender, EventArgs e)
+        {
+
+
+            PaisNegocio paisnegocio = new PaisNegocio();
+            Pais pais = new Pais();
+            ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
+            Provincia provincia = new Provincia();
+
+
+            //Esto lo hice asi para probar, pero aun asi no funciona 
+
+            pais.NombrePais = TxtNombreDelPais.Text;
+            pais = BuscarPaisPorNombre(pais.NombrePais);
+
+            //Aca seteo el pais 
+            provincia.ID = int.Parse(Request.QueryString["ID"]);
+            provincia.Pais = new Pais();
+            provincia.Pais.ID = pais.ID;
+            provincia.Pais.NombrePais = pais.NombrePais;
+            provincia.Pais.Estado = pais.Estado;
+
+            provincia.NombreProvincia = TxtNombreDeLaProvincia.Text;
+
+            provinciaNegocio.modificarProvincia(provincia);
+            Response.Redirect("HomeAdmin.aspx");
+        }
+
+
     }
 }

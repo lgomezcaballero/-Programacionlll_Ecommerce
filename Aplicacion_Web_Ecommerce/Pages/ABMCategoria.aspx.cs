@@ -16,7 +16,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            Categoria categoria = new Categoria();
 
             if (!IsPostBack)
             {
@@ -30,12 +30,40 @@ namespace Aplicacion_Web_Ecommerce.Pages
                 if (tipo == "e")
                 {
                     //Con esta funciom obtine el articulo que se busca
-                    // articulo = obtenerArticulo(id);
+                    categoria = obtenerCategoria(id);
                     //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                    // setearCamposModificar(articulo);
+                    setearCamposModificarCategoria(categoria);
+                }
+
+                if (Request.QueryString["Type"] == "d")
+                {
+                    CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                    categoriaNegocio.eliminarCategoria(id);
+                    Response.Redirect("HomeAdmin.aspx", false);
                 }
             }
         }
+
+
+        //Con esta funcion obtengo lo datos de la categoria seleccionada para editar
+        protected Categoria obtenerCategoria(Int16 idCategoria)
+        {
+            List<Categoria> lista = new List<Categoria>();
+            Categoria aux = new Categoria();
+            lista = (List<Categoria>)Session["listacategoria"];
+
+            aux = lista.Find(x => x.ID == idCategoria);
+
+            return aux;
+        }
+
+
+        protected void setearCamposModificarCategoria(Categoria categoria)
+        {
+
+            TxtCategoriaNombre.Text = categoria.Nombre;
+        }
+
 
         //De aca para abajo todo esto es para la funcionalidad de agregar una categoria
         protected void BtnAgregar_Click(object sender, EventArgs e)
@@ -53,5 +81,20 @@ namespace Aplicacion_Web_Ecommerce.Pages
             Response.Redirect("HomeAdmin.aspx", false);
 
         }
+
+        //Esta funcion edita la categoria
+        protected void BtnEditar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            Categoria categoria = new Categoria();
+
+            categoria.ID = Int16.Parse(Request.QueryString["ID"]);
+            categoria.Nombre = TxtCategoriaNombre.Text;
+            categoriaNegocio.modificarCategoria(categoria);
+            Response.Redirect("HomeAdmin.aspx", false);
+
+        }
+
+
     }
 }

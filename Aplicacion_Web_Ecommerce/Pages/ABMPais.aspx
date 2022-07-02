@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <asp:Button ID="BtnModificar" runat="server" onclick="BtnModificar_Click" Text="Agregar" />
+    <asp:Button ID="BtnModificar" runat="server" onclick="BtnModificar_Click" Text="Editar" />
 
         <%} %>
 

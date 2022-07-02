@@ -15,7 +15,7 @@
                 <asp:TextBox ID="TextBoxNombreMarca" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
-
+   </div>
     <asp:Button ID="BtnAgregar" runat="server" onclick="BtnAgregar_Click" Text="Agregar" />
         
         
@@ -25,6 +25,18 @@
         
         <%} %>
     <%else if(tipo=="e") { %>
+
+
+        <div class="form-control">
+        <div class="mb-3 row">
+            <div class="col">
+                <asp:Label ID="LabelMarca" runat="server" Text="Nombre de la marca"></asp:Label>
+                <asp:TextBox ID="TxtNombreMarca" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+        </div>
+   </div>
+    <asp:Button ID="BtnEditar" runat="server" onclick="BtnEditar_Click" Text="Editar" />
+
                
         <%} %>
 

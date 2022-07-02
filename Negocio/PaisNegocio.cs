@@ -31,7 +31,12 @@ namespace Negocio
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
+
+                    if(aux.Estado == true)
+                    { 
                     lista.Add(aux);
+                    
+                    }
                 }
 
                 return lista;
@@ -221,7 +226,7 @@ namespace Negocio
             try
             {
                 datos.setConsultaSP("SP_EliminarPais");
-                datos.setParametros("@ID", ID);
+                datos.setParametros("@idPais", ID);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

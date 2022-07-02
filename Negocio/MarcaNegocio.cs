@@ -30,7 +30,11 @@ namespace Negocio
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
+                    if(aux.Estado == true)
+                    {
                     lista.Add(aux); 
+
+                    }
 
                 }
 

@@ -43,8 +43,11 @@ namespace Negocio
                     if (!(datos.Lector["EstadoPais"] is DBNull))
                         aux.Pais.Estado = (bool)datos.Lector["EstadoPais"];
 
-
+                    if(aux.Estado == true) 
+                    {
                     lista.Add(aux);
+                    
+                    }
                 }
 
                 return lista;

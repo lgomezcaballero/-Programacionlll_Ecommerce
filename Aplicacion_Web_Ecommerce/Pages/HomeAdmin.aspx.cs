@@ -12,23 +12,32 @@ namespace Aplicacion_Web_Ecommerce
     public partial class HomeAdmin : System.Web.UI.Page
     {
         public List<Articulo> listaArticulos = new List<Articulo>();
-        ArticuloNegocio negocio = new ArticuloNegocio();
+        ArticuloNegocio negocio = new ArticuloNegocio(); //ok
 
         //Esto es para el abm de paises
-        public List<Pais> listaPaises = new List<Pais>();
+        public List<Pais> listaPaises = new List<Pais>(); //ok
         PaisNegocio paisNegocio = new PaisNegocio();
 
         //Esto lo hago para el abm de provincias
-        public List<Provincia> listaProvincias = new List<Provincia>();
+        public List<Provincia> listaProvincias = new List<Provincia>(); //ok
         ProvinciaNegocio provincianegocio = new ProvinciaNegocio();
 
         //Esto lo hago para el abm de provincias
-        public List<Categoria> listacategoria = new List<Categoria>();
+        public List<Categoria> listacategoria = new List<Categoria>(); //ok
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
         //Esto lo hago para el abm de provincias
-        public List<Marca> listademarcas = new List<Marca>();
+        public List<Marca> listademarcas = new List<Marca>(); //ok
         MarcaNegocio marcaNegocio = new MarcaNegocio();
+
+        //Esto lo hago para el abm de localidades
+        public List<Localidad> listalocalidades = new List<Localidad>(); //ok
+        LocalidadNegocio localidadNegocio = new LocalidadNegocio();
+
+        //Esto lo hago para el abm de Usuarios
+        public List<Usuario> listausuarios = new List<Usuario>(); //ok
+        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -56,6 +65,15 @@ namespace Aplicacion_Web_Ecommerce
             listademarcas = marcaNegocio.listar();
             if (!IsPostBack)
                 Session.Add("listademarcas", listademarcas);
+
+            //Esto lo hago para guardar las localidades en la session //ok
+            if (!IsPostBack)
+                Session.Add("listalocalidades", listalocalidades);
+
+            //Esto lo hago para guardar los Usuarios en la session //ok
+            listausuarios = usuarioNegocio.listar();
+            if (!IsPostBack)
+                Session.Add("listausuarios", listausuarios);
         }
 
 

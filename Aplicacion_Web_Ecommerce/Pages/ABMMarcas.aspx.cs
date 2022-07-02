@@ -16,7 +16,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            Marca marca = new Marca();
 
             if (!IsPostBack)
             {
@@ -29,19 +29,30 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     tipo = Request.QueryString["Type"];
                 if (tipo == "e")
                 {
+
+
                     //Con esta funciom obtine el articulo que se busca
-                    // articulo = obtenerArticulo(id);
+                    marca = obtenerMarca(id);
                     //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                    // setearCamposModificar(articulo);
+                    setearCamposModificarMarca(marca);
+
+
+                }
+
+                if(Request.QueryString["Type"] == "d")
+                {
+                    MarcaNegocio marcaNegocio = new MarcaNegocio();
+                    marcaNegocio.eliminarMarca(id);
+                    Response.Redirect("HomeAdmin.aspx", false);
                 }
             }
         }
 
-        //De aca para abajo todo esto es para la funcionalidad de agregar una categoria
+        //De aca para abajo todo esto es para la funcionalidad de agregar una marca
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
 
-            //Esto captura los datos de la categoria que se quiere cargar
+            //Esto captura los datos de la marca que se quiere cargar
             Marca marca = new Marca();
 
             marca.Nombre = TextBoxNombreMarca.Text;
@@ -52,6 +63,40 @@ namespace Aplicacion_Web_Ecommerce.Pages
             marcaNegocio.agregarMarca(marca);
             Response.Redirect("HomeAdmin.aspx", false);
 
+
+        }
+
+        //Esto modifica la marca
+        protected void BtnEditar_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            Marca marca = new Marca();
+
+            marca.ID = Int16.Parse(Request.QueryString["ID"]);
+            marca.Nombre = TxtNombreMarca.Text;
+            marcaNegocio.modificarMarca(marca);
+            Response.Redirect("HomeAdmin.aspx", false);
+
+        }
+
+
+        //Esta funcion obtiene la marca
+        protected Marca obtenerMarca(Int16 IdMarca)
+        {
+            List<Marca> lista = new List<Marca>();
+            Marca aux = new Marca();
+            lista = (List<Marca>)Session["listademarcas"];
+
+            aux = lista.Find(x => x.ID == IdMarca);
+
+            return aux;
+        }
+
+        //Esto setea la marca que se quiere modificar
+        protected void setearCamposModificarMarca(Marca marca)
+        {
+
+            TxtNombreMarca.Text = marca.Nombre;
         }
     }
 }

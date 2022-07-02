@@ -34,6 +34,16 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
                     setearCamposModificarPais(pais);
                 }
+
+                //Esto elimina de manera logica el pais
+                if (Request.QueryString["Type"] == "d")
+                {
+                    PaisNegocio paisNegocio = new PaisNegocio();
+                    paisNegocio.EliminarPais(id);
+                    Response.Redirect("HomeAdmin.aspx", false);
+
+
+                }
             }
         }
 
@@ -61,11 +71,10 @@ namespace Aplicacion_Web_Ecommerce.Pages
             Pais pais = new Pais();
 
             //Esto lo hice asi para probar, pero aun asi no funciona 
-            pais.ID = 5;
+            pais.ID = byte.Parse(Request.QueryString["Type"]);
             pais.NombrePais = txtPais.Text;
             pais.Estado = true;
-            
-        
+
 
             paisnegocio.ModificarPais(pais);
             Response.Redirect("HomeAdmin.aspx");
@@ -79,7 +88,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
         {
             //Esto captura los datos del pais que se quiere cargar
             Pais pais = new Pais();
-           
+
             pais.NombrePais = txtNombrePais.Text;
 
 
@@ -88,9 +97,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
             paisNegocio.AgregarPais(pais);
             Response.Redirect("HomeAdmin.aspx", false);
 
-  
 
-          
+
+
         }
 
     }
