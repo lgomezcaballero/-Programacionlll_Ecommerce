@@ -40,7 +40,7 @@
                         <td><%: item.Nombre %></td>
                         <td><%: item.Marca.Nombre %></td>
                         <td><%: item.Categoria.Nombre %></td>
-                        <td><%: item.Genero %></td>
+                        <td><%: item.Genero.Nombre %></td>
                         <td><%: item.Precio %></td>
                         <td>
                             <a href="ABMArticulo?ID=<%: item.ID %>&Type=v" class="btn">

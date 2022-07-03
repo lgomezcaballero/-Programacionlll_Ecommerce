@@ -121,6 +121,7 @@ namespace Negocio
         {
             AccesoDatos datos = new AccesoDatos();
             ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
+            ImagenesArticuloNegocio imgNegocio = new ImagenesArticuloNegocio();
             //ArticuloTalla articuloTalla = new ArticuloTalla();
             try
             {
@@ -134,9 +135,16 @@ namespace Negocio
                 //datos.setParametros("@stock", articulo.Stock);
                 datos.ejecutarAccion();
 
+                long idArticulo = this.obtenerIDArticuloNuevo();
                 foreach (var item in articulo.Talles)
                 {
+                    item.IDArticulo = idArticulo;
                     atNegocio.agregarTallaArticulo(item);
+                }
+                foreach (var item in articulo.Imagenes)
+                {
+                    item.IDArticulo = idArticulo;
+                    imgNegocio.agregarImagenArticulo(item);
                 }
             }
             catch (Exception ex)
@@ -154,6 +162,7 @@ namespace Negocio
         {
             AccesoDatos datos = new AccesoDatos();
             ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
+            ImagenesArticuloNegocio imgNegocio = new ImagenesArticuloNegocio();
             try
             {
                 datos.setConsultaSP("SP_ModificarArticulo");
@@ -174,6 +183,10 @@ namespace Negocio
                 foreach (var item in articulo.Talles)
                 {
                     atNegocio.modificarTallaArticulo(item);
+                }
+                foreach (var item in articulo.Imagenes)
+                {
+                    imgNegocio.modificarImagen(item);
                 }
             }
             catch (Exception ex)
@@ -415,6 +428,35 @@ namespace Negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public long obtenerIDArticuloNuevo()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            long id;
+            //ArticuloTalla articuloTalla = new ArticuloTalla();
+            try
+            {
+                datos.setConsultaSP("SP_ObtenerIDArticuloNuevo");
+                datos.ejecutarLectura();
+                id = 0;
+                if (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["ID"] is DBNull))
+                        id = (long)datos.Lector["ID"];
+                }
+                return id;
+
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
