@@ -18,8 +18,8 @@ namespace Aplicacion_Web_Ecommerce
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            ArticuloNegocio Negocio = new ArticuloNegocio();
-            ListaDeArticulos = Negocio.listar();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            ListaDeArticulos = negocio.listar();
 
             if (!IsPostBack)
             {
@@ -38,9 +38,6 @@ namespace Aplicacion_Web_Ecommerce
                 Carrito = (List<Articulo>)Session["Carrito"];
                 Carrito.Add(ListaDeArticulos.Find(x => x.ID == ID));
                 Session.Add("Carrito", Carrito);
-
-                grillaArticulos.DataSource = ListaDeArticulos;
-                grillaArticulos.DataBind();
 
             }
 

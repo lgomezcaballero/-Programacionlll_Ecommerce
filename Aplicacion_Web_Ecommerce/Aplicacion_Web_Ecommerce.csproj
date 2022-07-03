@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\7f74110223ad__main_slider_golocal_mix.jpg" />
     <Content Include="Pages\ABMCategoria.aspx" />
     <Content Include="Pages\ABMMarcas.aspx" />
     <Content Include="Pages\ABMPais.aspx" />

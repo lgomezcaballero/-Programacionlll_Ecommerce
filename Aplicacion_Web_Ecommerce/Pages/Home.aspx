@@ -1,12 +1,38 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Aplicacion_Web_Ecommerce._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView style="display:none" ID="grillaArticulos" runat="server"></asp:GridView>
 
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-   
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
 
-  
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../img/carousel1.png" alt="Los Angeles" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="../img/f7a0a085-80c4-461a-9acb-8d31630d078e___cc7d02a0d104e96b6f925e608bf841c8.webp" alt="Los Angeles" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="../img/carousel3.png" alt="Los Angeles" class="d-block w-100">
+    </div>
+  </div>
+
+  <!-- Left and right controls/icons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
     <div id="Articulo" class="row row-cols-1 row-cols-md-4 g-4">
         <% foreach (var item in ListaDeArticulos)
             {%>
@@ -55,7 +81,7 @@
     </div>
    
     <%//Esto lo puse aca para probar la ventana de editar/eliminar y agregar articulo %>
-    <% Response.Redirect("HomeAdmin.aspx", false); %>
+    <% //Response.Redirect("HomeAdmin.aspx", false); %>
 
      <%// Response.Redirect("ABMPais.aspx", false); %>
 

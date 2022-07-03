@@ -23,7 +23,7 @@ namespace Aplicacion_Web_Ecommerce
             Session.Add("Busqueda", Busqueda);
             Response.Redirect("Busqueda.aspx", false);
 
-            
+
             List<Articulo> articuloList = new List<Articulo>();
             ArticuloNegocio negocios = new ArticuloNegocio();
 
@@ -36,7 +36,7 @@ namespace Aplicacion_Web_Ecommerce
                 listaFiltrada = articuloList.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()));
                 Response.Redirect("Busqueda.aspx", false);
             }
-            
+
 
         }
 
