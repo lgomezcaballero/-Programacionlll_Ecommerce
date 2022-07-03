@@ -25,6 +25,8 @@ namespace Negocio
                     ImagenesArticulo auxiliar = new ImagenesArticulo();
                     if (!(datos.Lector["IDImagen"] is DBNull))
                         auxiliar.ID = (long)datos.Lector["IDImagen"];
+                    if (!(datos.Lector["IDArticulo"] is DBNull))
+                        auxiliar.IDArticulo = (long)datos.Lector["IDArticulo"];
                     if (!(datos.Lector["URLImagen"] is DBNull))
                         auxiliar.URLImagen = (string)datos.Lector["URLImagen"];
                     if (!(datos.Lector["Estado"] is DBNull))
