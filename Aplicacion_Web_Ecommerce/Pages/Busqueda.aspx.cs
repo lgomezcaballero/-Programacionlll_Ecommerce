@@ -29,7 +29,7 @@ namespace Aplicacion_Web_Ecommerce
                 ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()) ||
                 x.Marca.Nombre.ToLower().Contains(Filtro.ToLower()) || x.Categoria.Nombre.ToLower().
                 Contains(Filtro.ToLower()) || x.Genero.Nombre.ToLower().Contains(Filtro.ToLower()));
-                
+
             }
 
             else
