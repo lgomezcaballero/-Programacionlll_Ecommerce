@@ -25,9 +25,10 @@ namespace Aplicacion_Web_Ecommerce
 
             if (Filtro.Length > 2)
             {
-
+                //Con esta condicion de aca se pueden buscar articulos por su nombre, por su marca , por su categoria y por su genero
                 ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()) ||
-                x.Marca.Nombre.ToLower().Contains(Filtro.ToLower()));
+                x.Marca.Nombre.ToLower().Contains(Filtro.ToLower()) || x.Categoria.Nombre.ToLower().
+                Contains(Filtro.ToLower()) || x.Genero.Nombre.ToLower().Contains(Filtro.ToLower()));
                 
             }
 
