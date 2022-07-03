@@ -93,6 +93,12 @@ Begin
 	Where a.IDArticulo = @idArticulo
 End
 go
+Create Procedure SP_ObtenerIDArticuloNuevo
+As
+Begin
+	Select Top 1 IDArticulo ID from Articulos Order By IDArticulo desc
+End
+go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarArticulosTallas(
@@ -223,7 +229,7 @@ Create Procedure SP_ListarImagenesArticulo(
 )
 As
 Begin
-	Select IDImagen, URLImagen, Estado From Imagenes Where IDArticulo = @idArticulo
+	Select IDImagen, IDArticulo, URLImagen, Estado From Imagenes Where IDArticulo = @idArticulo
 End
 go
 Create Procedure SP_AgregarImagen(
@@ -918,7 +924,7 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Articulos_X_Tallas SET Stock = @stock Where IDArticulo = @idArticulo AND IDTalla = @idTalla
+			Insert Into Articulos_X_Tallas (IDArticulo, IDTalla, Stock) values (@idArticulo, @idTalla, @stock)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -926,6 +932,7 @@ Begin
 		Rollback Transaction
 	End Catch
 End
+exec SP_AgregarTallaArticulo 5, 2, 30
 go
 Create Procedure SP_ModificarTallaArticulo(
 	@idArticulo bigint,
