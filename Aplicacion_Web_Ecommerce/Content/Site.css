@@ -36,6 +36,11 @@ textarea {
     margin-top: 2vh;
 }
 
+.paddingHome {
+    padding-right:10%;
+    padding-left:10%;
+}
+
 /*#logo_Negocio{
     width: 10%;
 }*/
