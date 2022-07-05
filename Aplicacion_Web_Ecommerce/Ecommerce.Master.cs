@@ -40,6 +40,11 @@ namespace Aplicacion_Web_Ecommerce
 
         }
 
-
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            string Busqueda = BarraBuscadora.Text;
+            Session.Add("Busqueda", Busqueda);
+            Response.Redirect("Busqueda.aspx", false);
+        }
     }
 }

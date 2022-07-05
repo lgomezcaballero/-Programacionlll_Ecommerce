@@ -51,10 +51,11 @@
                     </div>
                     <div class="col-7">
                         <div class="input-group input-group-sm mt-3">
-                            <%//Esta la barra buscadora %>
+                            <%//Esta es la barra buscadora %>
                             <asp:TextBox ID="BarraBuscadora" runat="server" type="text" class="form-control"  placeholder="Recipient's username" aria-label="Recipient's username"  aria-describedby="button-addon2" OnTextChanged="BarraBuscadora_TextChanged"></asp:TextBox>
                             <%//<input type="text" class="form-control" id="BarraBuscadora" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" > %>
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                            <%//Este es el boton %>
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" class="btn btn-outline-secondary" OnClick="BtnBuscar_Click" type="button" />         
                         </div>
                     </div>
                     <div class="col-3">
