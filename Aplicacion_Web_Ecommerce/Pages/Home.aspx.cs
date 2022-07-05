@@ -19,6 +19,7 @@ namespace Aplicacion_Web_Ecommerce
         {
 
             ArticuloNegocio negocio = new ArticuloNegocio();
+            //ListaDeArticulos = new List<Articulo>();
             ListaDeArticulos = negocio.listar();
 
             if (!IsPostBack)

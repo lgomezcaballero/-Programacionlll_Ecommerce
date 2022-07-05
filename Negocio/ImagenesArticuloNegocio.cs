@@ -52,7 +52,7 @@ namespace Negocio
             try
             {
                 datos.setConsultaSP("SP_AgregarImagen");
-                datos.setParametros("@idArticulo", imagenArticulo.ID);
+                datos.setParametros("@idArticulo", imagenArticulo.IDArticulo);
                 datos.setParametros("@urlImagen", imagenArticulo.URLImagen);
                 datos.ejecutarAccion();
             }

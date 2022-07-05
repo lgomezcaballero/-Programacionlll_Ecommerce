@@ -156,8 +156,6 @@
     </div>
 
 
-    
-
     <%//Esto lo puse aca para probar la ventana de editar/eliminar y agregar articulo %>
     <% //Response.Redirect("HomeAdmin.aspx", false); %>
 

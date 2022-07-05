@@ -156,7 +156,7 @@
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Pages\HomeAdmin.aspx" />
-    <Content Include="Pages\InformacioDelArticulo.aspx" />
+    <Content Include="Pages\InformacionDelArticulo.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\ABMArticulo.aspx" />
     <Content Include="Pages\Registro.aspx" />
@@ -269,12 +269,12 @@
     <Compile Include="Pages\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InformacioDelArticulo.aspx.cs">
-      <DependentUpon>InformacioDelArticulo.aspx</DependentUpon>
+    <Compile Include="Pages\InformacionDelArticulo.aspx.cs">
+      <DependentUpon>InformacionDelArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\InformacioDelArticulo.aspx.designer.cs">
-      <DependentUpon>InformacioDelArticulo.aspx</DependentUpon>
+    <Compile Include="Pages\InformacionDelArticulo.aspx.designer.cs">
+      <DependentUpon>InformacionDelArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
