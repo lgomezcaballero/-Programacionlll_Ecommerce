@@ -18,6 +18,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
         {
             if (Session["TeLogueaste"] == null)
             {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);
             }
 

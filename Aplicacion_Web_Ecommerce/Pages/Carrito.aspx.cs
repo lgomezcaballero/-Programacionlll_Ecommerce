@@ -18,20 +18,24 @@ namespace Aplicacion_Web_Ecommerce
         {
             if (Session["TeLogueaste"] == null)
             {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);
             }
 
-            ListaCarrito = (List<Articulo>)Session["Carrito"];
-
-            foreach (var item in ListaCarrito)
+            else
             {
-                PrecioTotal += (float)item.Precio;
-            }
+                ListaCarrito = (List<Articulo>)Session["Carrito"];
 
-            /*
-            GrillaArticulos.DataSource = Session["Carrito"];
-            GrillaArticulos.DataBind();     
-            */
+                foreach (var item in ListaCarrito)
+                {
+                    PrecioTotal += (float)item.Precio;
+                }
+
+                /*
+                GrillaArticulos.DataSource = Session["Carrito"];
+                GrillaArticulos.DataBind();     
+                */
+            }
         }
     }
 }

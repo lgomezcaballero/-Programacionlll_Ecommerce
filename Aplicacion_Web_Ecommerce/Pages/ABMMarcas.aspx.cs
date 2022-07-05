@@ -18,38 +18,41 @@ namespace Aplicacion_Web_Ecommerce.Pages
         {
             if (Session["TeLogueaste"] == null)
             {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);
             }
 
-
-            Marca marca = new Marca();
-
-            if (!IsPostBack)
+            else
             {
-                if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                Marca marca = new Marca();
+
+                if (!IsPostBack)
                 {
-                    tipo = Request.QueryString["Type"];
-                    id = Int16.Parse(Request.QueryString["ID"]);
-                }
-                if (Request.QueryString["Type"] == "a")
-                    tipo = Request.QueryString["Type"];
-                if (tipo == "e")
-                {
+                    if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                    {
+                        tipo = Request.QueryString["Type"];
+                        id = Int16.Parse(Request.QueryString["ID"]);
+                    }
+                    if (Request.QueryString["Type"] == "a")
+                        tipo = Request.QueryString["Type"];
+                    if (tipo == "e")
+                    {
 
 
-                    //Con esta funciom obtine el articulo que se busca
-                    marca = obtenerMarca(id);
-                    //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                    setearCamposModificarMarca(marca);
+                        //Con esta funciom obtine el articulo que se busca
+                        marca = obtenerMarca(id);
+                        //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                        setearCamposModificarMarca(marca);
 
 
-                }
+                    }
 
-                if(Request.QueryString["Type"] == "d")
-                {
-                    MarcaNegocio marcaNegocio = new MarcaNegocio();
-                    marcaNegocio.eliminarMarca(id);
-                    Response.Redirect("HomeAdmin.aspx", false);
+                    if (Request.QueryString["Type"] == "d")
+                    {
+                        MarcaNegocio marcaNegocio = new MarcaNegocio();
+                        marcaNegocio.eliminarMarca(id);
+                        Response.Redirect("HomeAdmin.aspx", false);
+                    }
                 }
             }
         }

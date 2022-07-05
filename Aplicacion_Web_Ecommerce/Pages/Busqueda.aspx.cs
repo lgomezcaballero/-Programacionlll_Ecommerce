@@ -20,33 +20,36 @@ namespace Aplicacion_Web_Ecommerce
             //Si el usuario no esta logueado entra a este if
             if (Session["TeLogueaste"] == null)
             {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);
-            }
-
-
-            List<Articulo> ListaArticulos = new List<Articulo>();
-            ArticuloNegocio ArticulosNegocio = new ArticuloNegocio();
-            if (!IsPostBack)
-            {
-                ListaArticulos = ArticulosNegocio.listar();
-                Session.Add("listaArticulos", ListaArticulos);
-
-            }
-                string Filtro = Session["Busqueda"].ToString();
-
-            if (Filtro.Length > 2)
-            {
-                ListaArticulos = (List<Articulo>)Session["listaArticulos"];
-                //Con esta condicion de aca se pueden buscar articulos por su nombre, por su marca , por su categoria y por su genero
-                ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()) ||
-                x.Marca.Nombre.ToLower().Contains(Filtro.ToLower()) || x.Categoria.Nombre.ToLower().
-                Contains(Filtro.ToLower()) || x.Genero.Nombre.ToLower().Contains(Filtro.ToLower()));
-
             }
 
             else
             {
-                ListaFiltrada = new List<Articulo>();
+                List<Articulo> ListaArticulos = new List<Articulo>();
+                ArticuloNegocio ArticulosNegocio = new ArticuloNegocio();
+                if (!IsPostBack)
+                {
+                    ListaArticulos = ArticulosNegocio.listar();
+                    Session.Add("listaArticulos", ListaArticulos);
+
+                }
+                string Filtro = Session["Busqueda"].ToString();
+
+                if (Filtro.Length > 2)
+                {
+                    ListaArticulos = (List<Articulo>)Session["listaArticulos"];
+                    //Con esta condicion de aca se pueden buscar articulos por su nombre, por su marca , por su categoria y por su genero
+                    ListaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToLower().Contains(Filtro.ToLower()) ||
+                    x.Marca.Nombre.ToLower().Contains(Filtro.ToLower()) || x.Categoria.Nombre.ToLower().
+                    Contains(Filtro.ToLower()) || x.Genero.Nombre.ToLower().Contains(Filtro.ToLower()));
+
+                }
+
+                else
+                {
+                    ListaFiltrada = new List<Articulo>();
+                }
             }
         }
     }

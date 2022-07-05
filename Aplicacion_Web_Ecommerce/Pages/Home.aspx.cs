@@ -20,33 +20,37 @@ namespace Aplicacion_Web_Ecommerce
 
             if (Session["TeLogueaste"] == null)
             {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);
             }
 
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            //ListaDeArticulos = new List<Articulo>();
-            ListaDeArticulos = negocio.listar();
-
-            if (!IsPostBack)
+            else
             {
-                if (Session["Carrito"] == null)
+
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                //ListaDeArticulos = new List<Articulo>();
+                ListaDeArticulos = negocio.listar();
+
+                if (!IsPostBack)
                 {
-                    Carrito = new List<Articulo>();
+                    if (Session["Carrito"] == null)
+                    {
+                        Carrito = new List<Articulo>();
+                        Session.Add("Carrito", Carrito);
+                    }
+                }
+
+                if (Request.QueryString["ID"] != null)
+                {
+
+                    int ID = Int32.Parse(Request.QueryString["ID"].ToString());
+
+                    Carrito = (List<Articulo>)Session["Carrito"];
+                    Carrito.Add(ListaDeArticulos.Find(x => x.ID == ID));
                     Session.Add("Carrito", Carrito);
+
                 }
             }
-
-            if (Request.QueryString["ID"] != null)
-            {
-
-                int ID = Int32.Parse(Request.QueryString["ID"].ToString());
-
-                Carrito = (List<Articulo>)Session["Carrito"];
-                Carrito.Add(ListaDeArticulos.Find(x => x.ID == ID));
-                Session.Add("Carrito", Carrito);
-
-            }
-
 
         }
     }
