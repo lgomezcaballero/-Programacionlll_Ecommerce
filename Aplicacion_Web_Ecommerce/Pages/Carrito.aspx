@@ -5,9 +5,10 @@
 
 
     
-
+       <%if (Session["TeLogueaste"] != null)
+           {%>
      <% foreach (var item in ListaCarrito)
-            {%>
+         {%>
             <div id="Articulo" class="card mb-3" style="height: 200px">
   <div class="row g-0">
     <div class="col-md-4">
@@ -27,5 +28,6 @@
         <%} %>
 
          <span >Precio Total: <%:PrecioTotal%></span>
+    <%} %>
 
 </asp:Content>

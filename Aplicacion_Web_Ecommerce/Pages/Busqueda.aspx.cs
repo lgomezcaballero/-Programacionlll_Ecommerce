@@ -15,6 +15,15 @@ namespace Aplicacion_Web_Ecommerce
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Esto lo hago para validar cuando el usuario quiere ingresar a esta ventana pero no esta logueado
+
+            //Si el usuario no esta logueado entra a este if
+            if (Session["TeLogueaste"] == null)
+            {
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+
             List<Articulo> ListaArticulos = new List<Articulo>();
             ArticuloNegocio ArticulosNegocio = new ArticuloNegocio();
             if (!IsPostBack)

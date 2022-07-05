@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="Busqueda.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.Busqueda" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+       <%//Esto lo hago para validar cuando el usuario quiere ingresar a esta ventana pero no esta logueado %>
+    <%if (Session["TeLogueaste"] != null)
+        {%>
+
+
      <div class="row row-cols-1 row-cols-md-4 g-4" style="padding-left:10%; padding-right:10%;">
 
         <%foreach (var item in ListaFiltrada)
@@ -22,5 +27,6 @@
                </a>
             <%} %>
     </div>
+    <%} %>
 
 </asp:Content>

@@ -16,31 +16,40 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Categoria categoria = new Categoria();
-
-            if (!IsPostBack)
+            if (Session["TeLogueaste"] == null)
             {
-                if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+                Categoria categoria = new Categoria();
+
+                if (!IsPostBack)
                 {
-                    tipo = Request.QueryString["Type"];
-                    id = Int16.Parse(Request.QueryString["ID"]);
-                }
-                if (Request.QueryString["Type"] == "a")
-                    tipo = Request.QueryString["Type"];
-                if (tipo == "e")
-                {
-                    //Con esta funciom obtine el articulo que se busca
-                    categoria = obtenerCategoria(id);
-                    //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                    setearCamposModificarCategoria(categoria);
+                    if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                    {
+                        tipo = Request.QueryString["Type"];
+                        id = Int16.Parse(Request.QueryString["ID"]);
+                    }
+                    if (Request.QueryString["Type"] == "a")
+                        tipo = Request.QueryString["Type"];
+                    if (tipo == "e")
+                    {
+                        //Con esta funciom obtine el articulo que se busca
+                        categoria = obtenerCategoria(id);
+                        //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                        setearCamposModificarCategoria(categoria);
+                    }
+
+                    if (Request.QueryString["Type"] == "d")
+                    {
+                        CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                        categoriaNegocio.eliminarCategoria(id);
+                        Response.Redirect("HomeAdmin.aspx", false);
+                    }
                 }
 
-                if (Request.QueryString["Type"] == "d")
-                {
-                    CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                    categoriaNegocio.eliminarCategoria(id);
-                    Response.Redirect("HomeAdmin.aspx", false);
-                }
             }
         }
 

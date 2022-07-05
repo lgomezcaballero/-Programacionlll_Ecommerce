@@ -16,6 +16,11 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["TeLogueaste"] == null)
+            {
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
             Pais pais = new Pais();
 
             if (!IsPostBack)

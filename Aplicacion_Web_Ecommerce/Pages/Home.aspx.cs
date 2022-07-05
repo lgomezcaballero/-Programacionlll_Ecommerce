@@ -18,6 +18,11 @@ namespace Aplicacion_Web_Ecommerce
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["TeLogueaste"] == null)
+            {
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
             ArticuloNegocio negocio = new ArticuloNegocio();
             //ListaDeArticulos = new List<Articulo>();
             ListaDeArticulos = negocio.listar();

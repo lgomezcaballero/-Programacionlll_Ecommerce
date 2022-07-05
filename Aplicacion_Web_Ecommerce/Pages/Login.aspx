@@ -3,8 +3,8 @@
 
     <form>
   <div class="mb-3">
-      <asp:Label ID="LabelEmail" runat="server" Text="Label" for="TxtEmail" class="form-label">Usuario</asp:Label>
-      <asp:TextBox ID="TxtEmail" runat="server" type="email" class="form-control" aria-describedby="emailHelp"></asp:TextBox>
+      <asp:Label ID="LabelNombreUsuario" runat="server" Text="Label" for="TxtEmail" class="form-label">Usuario</asp:Label>
+      <asp:TextBox ID="TxtNombreUsuario" runat="server" class="form-control" ></asp:TextBox>
     <div id="emailHelp" class="form-text"></div>
   </div>
 
@@ -13,11 +13,19 @@
       <asp:TextBox ID="TxtContraseña" runat="server" type="password" class="form-control"></asp:TextBox>
   </div>
 
+    <%if(SeLogueo == false)
+            { %>
+                <div>
+                <asp:Label ID="Label1" runat="server" Text="Usuario o contraseña incorrectos, intente nuevamente" ></asp:Label>
+                </div>
+           <% } %>
+
   <%--<div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>--%>
-  <button type="submit" class="btn btn-primary">Ingresar</button>
+  <asp:Button ID="Button1" runat="server" Text="Ingresar" type="submit" OnClick="Button1_Click" class="btn btn-primary" />
+  <%--<button type="submit" class="btn btn-primary">Ingresar</button>--%>
 
   <a href="Registro.aspx">Click aqui para registrarse</a>
 </form>

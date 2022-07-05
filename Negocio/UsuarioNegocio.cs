@@ -303,5 +303,55 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public bool Loguear(Usuario usuariologin)
+        {
+            //AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+                //Voy hacer la consulta enbebida por ahora, pero esto tiene que estar en procedimiento  
+                //datos.setConsulta("select u.IDUsuario, u.NombreUsuario, u.Contraseña from Usuarios U where u.NombreUsuario = @NombreUsuario and u.Contraseña = @Contraseña");
+                //datos.setParametros("@NombreUsuario", NombreUsuario);
+                //datos.setParametros("@Contraseña", Contraseña);
+
+
+
+                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                List<Usuario> listausuarios = new List<Usuario>();
+                Usuario usuario = new Usuario();
+                listausuarios = usuarioNegocio.listar();
+
+                foreach (var item in listausuarios)
+                {
+                    if (item.NombreUsuario == usuariologin.NombreUsuario && item.Contraseña == usuariologin.Contraseña)
+                    {
+
+                        return true;
+                    }
+
+                }
+
+                return false;
+
+                //datos.ejecutarLectura();        
+
+                /*
+                while(datos.Lector.Read() == true) 
+                {
+
+                    if()
+                    return true;
+                }*/
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 }

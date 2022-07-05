@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="HomeAdmin.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.HomeAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+     <%if (Session["TeLogueaste"] != null)
+         {  %>
+
     <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item"><a href="HomeAdmin">HomeAdmin</a></li>
         <li class="breadcrumb-item active">Productos</li>
@@ -386,7 +389,7 @@
     </div>
 
 
-
+    <%} %>
 
 
 </asp:Content>

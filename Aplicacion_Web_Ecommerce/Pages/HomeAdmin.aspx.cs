@@ -42,6 +42,15 @@ namespace Aplicacion_Web_Ecommerce
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //No me convence del todo esto
+            if (Session["TeLogueaste"] == null && ((Usuario)Session["TeLogueaste"]).TipoUsuario.NombreTipo != "Administrador")
+            {
+                Session.Add("error", "Solo lo los administradores pueden acceder a la pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+
             listaArticulos = negocio.listar();
             if (!IsPostBack)
                 Session.Add("listaArticulos", listaArticulos);

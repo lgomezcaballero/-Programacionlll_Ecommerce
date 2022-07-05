@@ -2,6 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <%if (Session["Carrito"] != null)
+        {  %>
+
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicators/dots -->
@@ -154,6 +157,8 @@
             </div>
         </div>
     </div>
+
+    <%} %>
 
 
     <%//Esto lo puse aca para probar la ventana de editar/eliminar y agregar articulo %>
