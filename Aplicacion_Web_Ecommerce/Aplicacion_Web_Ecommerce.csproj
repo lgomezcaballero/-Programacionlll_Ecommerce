@@ -111,7 +111,7 @@
     <Content Include="Pages\ABMPais.aspx" />
     <Content Include="Pages\ABMProvincia.aspx" />
     <Content Include="Pages\Busqueda.aspx" />
-    <Content Include="Pages\Carrito.aspx" />
+    <Content Include="Pages\CarritoUsuario.aspx" />
     <Content Include="Pages\Compra.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -232,12 +232,12 @@
     <Compile Include="Pages\Busqueda.aspx.designer.cs">
       <DependentUpon>Busqueda.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Carrito.aspx.cs">
-      <DependentUpon>Carrito.aspx</DependentUpon>
+    <Compile Include="Pages\CarritoUsuario.aspx.cs">
+      <DependentUpon>CarritoUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Carrito.aspx.designer.cs">
-      <DependentUpon>Carrito.aspx</DependentUpon>
+    <Compile Include="Pages\CarritoUsuario.aspx.designer.cs">
+      <DependentUpon>CarritoUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Compra.aspx.cs">
       <DependentUpon>Compra.aspx</DependentUpon>

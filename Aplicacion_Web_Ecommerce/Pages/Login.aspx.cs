@@ -41,10 +41,10 @@ namespace Aplicacion_Web_Ecommerce
                     TipoUsuario = item.TipoUsuario.NombreTipo;
                     usuariologin.TipoUsuario = new TipoUsuario();
                     usuariologin.TipoUsuario.NombreTipo = TipoUsuario;
-
+                    Session.Add("IDUsuarioLogueado", item.ID);
+                    Session.Add("CarritoUsuario", obtenerCarritoUsuario(item.ID));
                 }
             }
-
 
             if (usuarioNegocio.Loguear(usuariologin) == true)
             {
@@ -62,6 +62,14 @@ namespace Aplicacion_Web_Ecommerce
                 //Response.Redirect("ErrorLogin.aspx", false);
             }
 
+        }
+
+        protected Carrito obtenerCarritoUsuario(long idUsuario)
+        {
+            carr carrito = new Carrito();
+
+            CarritoNegocio negocio = new CarritoNegocio();
+            return carrito;
         }
     }
 }

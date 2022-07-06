@@ -293,10 +293,10 @@ Begin
 	c.Estado EstadoContacto, l.IDLocalidad, l.CP CodigoPostal, l.Nombre NombreLocalidad, l.Estado EstadoLocalidad, 
 	p.IDProvincia, p.Nombre Provincia, p.Estado EstadoProvincia, pa.IDPais, pa.Nombre Pais, pa.Estado EstadoPais
 	From Usuarios u Inner Join TiposUsuarios tu on u.IDTipoUsuario = tu.IDTipoUsuario
-	Inner Join Contactos c on u.IDUsuario = c.IDUsuario
-	Inner Join Localidad l on u.IDLocalidad = l.IDLocalidad
-	Inner Join Provincias p on l.IDProvincia = p.IDProvincia
-	Inner Join Pais pa on p.IDPais = pa.IDPais
+	Left Join Contactos c on u.IDUsuario = c.IDUsuario
+	Left Join Localidad l on u.IDLocalidad = l.IDLocalidad
+	Left Join Provincias p on l.IDProvincia = p.IDProvincia
+	Left Join Pais pa on p.IDPais = pa.IDPais
 End
 go
 Create Procedure SP_AgregarUsuario(
@@ -967,5 +967,13 @@ Begin
 		RAISERROR('Error, no se pudo eliminar los articulos por talle', 16, 1)
 		Rollback Transaction
 	End Catch
+End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarTallas
+As
+Begin 
+	Select IDTalla, Talla, Estado From Tallas
 End
 go
