@@ -53,13 +53,14 @@ namespace Aplicacion_Web_Ecommerce
             CarritoNegocio carritoNegocio = new CarritoNegocio();
             ArticuloCarrito artCarrito = new ArticuloCarrito();
             artCarrito.Articulo = new Articulo();
+            artCarrito.Articulo = articulo;
             carritoNegocio.agregarArticuloCarrito(artCarrito, (long)Session["IDUsuarioLogueado"]);
             List<Articulo> lista = new List<Articulo>();
             lista = (List<Articulo>)Session["Carrito"];
             lista.Add(articulo);
             Session.Add("Carrito", lista);
 
-            Response.Redirect("Carrito.aspx", false);
+            //Response.Redirect("Carrito.aspx", false);
         }
     }
 }

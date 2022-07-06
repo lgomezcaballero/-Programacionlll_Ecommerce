@@ -43,6 +43,9 @@ namespace Negocio
                     if (!(datos.Lector["Cantidad"] is DBNull))
                         aux.Cantidad = (int)datos.Lector["Cantidad"];
 
+                    if (!(datos.Lector["IDTalle"] is DBNull))
+                        aux.IDTalle = (byte)datos.Lector["IDTalle"];
+
                     if (!(datos.Lector["EstadoArticuloCarrito"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticuloCarrito"];
 
@@ -74,6 +77,7 @@ namespace Negocio
                 datos.setConsultaSP("SP_AgregarArticuloCarrito");
                 datos.setParametros("@idCarrito", IDUsuario);
                 datos.setParametros("@idArticulo", articuloCarrito.Articulo.ID);
+                datos.setParametros("@idTalle", articuloCarrito.IDTalle);
                 datos.setParametros("@cantidad", articuloCarrito.Cantidad);
                 datos.ejecutarAccion();
             }
@@ -96,6 +100,7 @@ namespace Negocio
                 datos.setConsultaSP("SP_ModificarArticuloCarrito");
                 datos.setParametros("@idCarrito", idUsuario);
                 datos.setParametros("@idArticulo", articuloCarrito.Articulo.ID);
+                datos.setParametros("@idTalle", articuloCarrito.IDTalle);
                 datos.setParametros("@cantidad", articuloCarrito.Cantidad);
                 datos.ejecutarAccion();
             }

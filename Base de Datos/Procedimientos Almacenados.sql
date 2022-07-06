@@ -428,7 +428,7 @@ Create Procedure SP_ListarCarrito(
 )
 As
 Begin
-	Select c.IDCarrito, c.Estado EstadoCarrito, axl.IDArticulo, axl.Cantidad, axl.Estado EstadoArticuloCarrito
+	Select c.IDCarrito, c.Estado EstadoCarrito, axl.IDArticulo, axl.Cantidad, axl.IDTalle, axl.Estado EstadoArticuloCarrito
 	From Carritos c Left Join Articulos_X_Carritos axl on c.IDCarrito = axl.IDCarrito
 	Where c.IDCarrito = @idUsuario
 End
@@ -436,13 +436,14 @@ go
 Create Procedure SP_AgregarArticuloCarrito(
 	@idCarrito bigint,
 	@idArticulo bigint,
+	@idTalle tinyint,
 	@cantidad int
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, Cantidad) values (@idCarrito, @idArticulo, @cantidad)
+			Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, IDTalle, Cantidad) values (@idCarrito, @idArticulo, @idTalle, @cantidad)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -454,13 +455,15 @@ go
 Create Procedure SP_ModificarArticuloCarrito(
 	@idCarrito bigint,
 	@idArticulo bigint,
+	@idTalle tinyint,
 	@cantidad int
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Articulos_X_Carritos Set Cantidad = @cantidad Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo
+			Update Articulos_X_Carritos Set Cantidad = @cantidad 
+			Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo AND IDTalle = @idTalle
 		Commit Transaction
 	End Try 
 	Begin Catch

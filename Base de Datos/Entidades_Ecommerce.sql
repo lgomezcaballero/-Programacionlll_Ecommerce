@@ -112,6 +112,7 @@ go
 Create Table Articulos_X_Carritos(
 	IDCarrito bigint not null foreign key references Carritos(IDCarrito),
 	IDArticulo bigint not null foreign key references Articulos(IDArticulo),
+	IDTalle tinyint not null foreign key references Tallas(IDTalla),
 	Cantidad int not null,
 	Estado bit not null default(1)
 	Primary Key(IDCarrito, IDArticulo)
