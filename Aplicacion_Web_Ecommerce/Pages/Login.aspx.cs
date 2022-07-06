@@ -64,11 +64,12 @@ namespace Aplicacion_Web_Ecommerce
 
         }
 
-        protected Carrito obtenerCarritoUsuario(long idUsuario)
+        protected Dominio.Carrito obtenerCarritoUsuario(long idUsuario)
         {
-            carr carrito = new Carrito();
-
+            Dominio.Carrito carrito = new Dominio.Carrito();
+            carrito.ArticulosCarrito = new List<ArticuloCarrito>();
             CarritoNegocio negocio = new CarritoNegocio();
+            carrito = negocio.mostrarCarrito(idUsuario);
             return carrito;
         }
     }

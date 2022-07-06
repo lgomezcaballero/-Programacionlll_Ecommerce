@@ -429,7 +429,7 @@ Create Procedure SP_ListarCarrito(
 As
 Begin
 	Select c.IDCarrito, c.Estado EstadoCarrito, axl.IDArticulo, axl.Cantidad, axl.Estado EstadoArticuloCarrito
-	From Carritos c Inner Join Articulos_X_Carritos axl on c.IDCarrito = axl.IDCarrito
+	From Carritos c Left Join Articulos_X_Carritos axl on c.IDCarrito = axl.IDCarrito
 	Where c.IDCarrito = @idUsuario
 End
 go
