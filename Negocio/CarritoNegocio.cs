@@ -234,13 +234,15 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarArticuloCarrito(long idUsuario)
+        public void eliminarArticuloCarrito(long idUsuario, long idArticulo, byte idTalle)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setConsultaSP("SP_EliminarArticuloCarrito");
-                datos.setParametros("@idUsuario", idUsuario);
+                datos.setParametros("@idCarrito", idUsuario);
+                datos.setParametros("@idArticulo", idArticulo);
+                datos.setParametros("@idTalle", idTalle);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

@@ -483,13 +483,15 @@ Begin
 End
 go
 Create Procedure SP_EliminarArticuloCarrito(
-	@idUsuario bigint
+	@idCarrito bigint,
+	@idArticulo bigint,
+	@idTalle tinyint
 )
 As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Articulos_X_Carritos Set Estado = 0 Where IDCarrito = @idUsuario
+			Update Articulos_X_Carritos Set Estado = 0 Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo AND IDTalle = @idTalle
 		Commit Transaction
 	End Try
 	Begin Catch

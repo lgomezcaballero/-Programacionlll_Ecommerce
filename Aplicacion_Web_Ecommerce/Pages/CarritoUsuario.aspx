@@ -44,7 +44,7 @@
                             <div class="row"><%: item.Articulo.ID %></div>
                             <div class="row"><%: item.Articulo.Genero.Nombre %></div>
                             <div class="row">
-                                <a href="#">Eliminar Articulo</a>
+                                <a href="CarritoUsuario?IDArt=<%: item.Articulo.ID %>&IDT=<%: item.IDTalle %>">Eliminar Articulo</a>
                             </div>
                         </td>
                         <td>
