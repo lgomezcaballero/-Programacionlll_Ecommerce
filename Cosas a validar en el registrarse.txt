@@ -1,0 +1,12 @@
+limite de caracteres (lo veo dificil, para lo ultimo)
+
+Que el nombre de usuario no existam //ok
+mostrar un mensaje debajo de la trextbox si el nombre de usuario existe
+
+pedir la contraseña 2 veces //ok
+que corrobore que la contraseña se escribio bien las dos veces //ok
+que muestre un mensaje en pantalla cuando las contaseñas no coinciden
+
+validar que el mail que se ingresa no exista en la base 
+mostrar un mensaje debajo de la trextbox si el mail existe
+

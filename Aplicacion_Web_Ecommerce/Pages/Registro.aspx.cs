@@ -64,7 +64,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             catch (Exception ex)
             {
 
-
+                throw ex;
             }
 
 
@@ -81,8 +81,6 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void DropDownListPaises_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
 
             int id = int.Parse(DropDownListPaises.SelectedItem.Value);
 
@@ -114,53 +112,98 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-            Usuario usuario = new Usuario();
+            //Esto valida que usuario el usuario que se ingresar no este repetido en la base
+            if (!validarUsuario(TxtNombreUsuario.Text) == true)
+            {
+                //Valido que la contraseña se escriba bien las dos veces
+                if (validarContraseña(TxtContraseña.Text, TxtRepetirContraseña.Text) == true)
+                {
+
+                    UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                    Usuario usuario = new Usuario();
 
 
-            ContactoNegocio contactoNegocio = new ContactoNegocio();
+                    ContactoNegocio contactoNegocio = new ContactoNegocio();
 
 
-            //Datos Usuario
-            usuario.Apellidos = TxtApellidos.Text;
-            usuario.Nombres = TxtNombres.Text;
-            usuario.DNI = TxtDNI.Text;
-            usuario.NombreUsuario = TxtNombreUsuario.Text;
-            usuario.Contraseña = TxtContraseña.Text;
-
-            //Tipo Usuario
-            //Esto se carga de manera automatica
-            usuario.TipoUsuario = new TipoUsuario();
-            usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
+                    //Datos Usuario
+                    usuario.Apellidos = TxtApellidos.Text;
+                    usuario.Nombres = TxtNombres.Text;
+                    usuario.DNI = TxtDNI.Text;
+                    usuario.NombreUsuario = TxtNombreUsuario.Text;
+                    usuario.Contraseña = TxtContraseña.Text;
 
 
-            //Datos Contacto falta que de alguna forma guarde esto
-            usuario.Contacto = new Contacto();
-            //usuario.Contacto.ID = como hago para obtener el id del usuario?
-
-            usuario.Contacto.Email = TxtEmail.Text;
-            usuario.Contacto.Telefono = TxtTelefono.Text;
-
-            //contactoNegocio.agregarContacto(usuario.Contacto);
-
-            //Localidad
-            usuario.Localidad = new Localidad();
-            usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
-
-            //Localidad > Provincia
-            //usuario.Localidad.Provincia = new Provincia();
-            //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
-            //Localidad > Provincia > Pais
-            // usuario.Localidad.Provincia.Pais = new Pais();
-            //usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownListProvincia.SelectedItem.Value);
+                    //Tipo Usuario
+                    //Esto se carga de manera automatica
+                    usuario.TipoUsuario = new TipoUsuario();
+                    usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
 
 
-            //Agrego el usuario a la base
-            usuarioNegocio.agregarUsuario(usuario);
+                    //Datos Contacto falta que de alguna forma guarde esto
+                    usuario.Contacto = new Contacto();
+                    //usuario.Contacto.ID = como hago para obtener el id del usuario?
 
+                    usuario.Contacto.Email = TxtEmail.Text;
+                    usuario.Contacto.Telefono = TxtTelefono.Text;
+
+                    //contactoNegocio.agregarContacto(usuario.Contacto);
+
+                    //Localidad
+                    usuario.Localidad = new Localidad();
+                    usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
+
+                    //Localidad > Provincia
+                    //usuario.Localidad.Provincia = new Provincia();
+                    //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
+                    //Localidad > Provincia > Pais
+                    // usuario.Localidad.Provincia.Pais = new Pais();
+                    //usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownListProvincia.SelectedItem.Value);
+
+
+                    //Agrego el usuario a la base
+                    usuarioNegocio.agregarUsuario(usuario);
+
+                }
+
+            }
         }
 
-        //Esta es para el dropdownlist de localidad
+        //Este metodo valida que la contraseña este escrita bien las dos veces
+       protected bool validarContraseña(string Contraseña, string ConstraseñaRepetida)
+        {
+            if(Contraseña == ConstraseñaRepetida)
+            { return true; }
+
+            return false;
+        }
+
+        //esto lo dejo para despues 
+        //protected bool MailExiste(string Email)
+        //{
+        //   List<Usuario> usuarioList = new List<Usuario>();     
+        //   UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+
+        
+
+        //}
+
+        protected bool validarUsuario(string NombreDeUsuario) 
+        {
+            List<Usuario> usuarios = new List<Usuario>();       
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+
+            usuarios = usuarioNegocio.listar();
+            foreach(Usuario usuario in usuarios) 
+            { 
+                if(usuario.NombreUsuario == NombreDeUsuario) 
+                { 
+                    return true;    
+                }
+            }
+
+            return false;
+        }  
 
     }
 }

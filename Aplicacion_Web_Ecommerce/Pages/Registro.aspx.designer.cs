@@ -105,6 +105,24 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.TextBox TxtContraseña;
 
         /// <summary>
+        /// Control LabelRepetirContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRepetirContraseña;
+
+        /// <summary>
+        /// Control TxtRepetirContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtRepetirContraseña;
+
+        /// <summary>
         /// Control LabelEmail.
         /// </summary>
         /// <remarks>

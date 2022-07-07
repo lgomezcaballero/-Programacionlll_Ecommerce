@@ -12,24 +12,33 @@
                 <asp:Label ID="LabelNombres" runat="server" Text="Nombres"></asp:Label>
                 <asp:TextBox ID="TxtNombres" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
-        </div>
-         <div class="mb-3 row">
 
             <div class="col">
                 <asp:Label ID="LabelDNI" runat="server" Text="DNI"></asp:Label>
                 <asp:TextBox ID="TxtDNI" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
+        </div>
+         <div class="mb-3 row">
+
 
               <div class="col">
                 <asp:Label ID="LabelNombreUsuario" runat="server" Text="Nombre de usuario"></asp:Label>
                 <asp:TextBox ID="TxtNombreUsuario" CssClass="form-control" runat="server"></asp:TextBox>
               </div>
 
+
               <div class="col">
                 <asp:Label ID="LabelContraseña" runat="server" Text="Contraseña"></asp:Label>
                 <asp:TextBox ID="TxtContraseña" CssClass="form-control" runat="server"></asp:TextBox>
               </div>
-         </div>
+            
+             <div class="col">
+                <asp:Label ID="LabelRepetirContraseña" runat="server" Text="RepetirContraseña"></asp:Label>
+                <asp:TextBox ID="TxtRepetirContraseña" CssClass="form-control" runat="server"></asp:TextBox>
+              </div>
+
+            </div>
+
 
           <div class="mb-3 row">
 
