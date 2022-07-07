@@ -115,7 +115,7 @@ Create Table Articulos_X_Carritos(
 	IDTalle tinyint not null foreign key references Tallas(IDTalla),
 	Cantidad int not null,
 	Estado bit not null default(1)
-	Primary Key(IDCarrito, IDArticulo)
+	Primary Key(IDCarrito, IDArticulo, IDTalle)
 )
 go
 Create Table Contactos(

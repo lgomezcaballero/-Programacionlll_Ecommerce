@@ -443,7 +443,14 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, IDTalle, Cantidad) values (@idCarrito, @idArticulo, @idTalle, @cantidad)
+			if ((Select COUNT(*) From Articulos_X_Carritos 
+			Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo AND IDTalle = @idTalle) > 0) Begin
+				Update Articulos_X_Carritos Set Cantidad = Cantidad + @cantidad Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo
+				AND IDTalle = @idTalle
+			End
+			Else Begin
+				Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, IDTalle, Cantidad) values (@idCarrito, @idArticulo, @idTalle, @cantidad)
+			End
 		Commit Transaction
 	End Try
 	Begin Catch
