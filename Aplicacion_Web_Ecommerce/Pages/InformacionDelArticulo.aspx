@@ -23,9 +23,9 @@
             <div class="row"><p><%: articulo.Precio%></p></div>
             <div class="row"><p>Talles</p></div>
             <div class="row">
-                <asp:DropDownList ID="ddlTalles" runat="server"></asp:DropDownList>
+                <asp:DropDownList CssClass="form-select mb-3" ID="ddlTalles" runat="server"></asp:DropDownList>
             </div>
-            <asp:Button ID="btnComprar" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
+            <asp:Button ID="btnComprar" CssClass="btn btn-primary" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
         </div>
     </div>
 

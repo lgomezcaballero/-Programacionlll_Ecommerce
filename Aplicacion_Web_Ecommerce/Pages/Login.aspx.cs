@@ -43,6 +43,7 @@ namespace Aplicacion_Web_Ecommerce
                     usuariologin.TipoUsuario.NombreTipo = TipoUsuario;
                     Session.Add("IDUsuarioLogueado", item.ID);
                     Session.Add("CarritoUsuario", obtenerCarritoUsuario(item.ID));
+                    continue;
                 }
             }
 

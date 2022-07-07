@@ -1,33 +1,69 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="CarritoUsuario.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.Carrito" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:GridView ID="GrillaArticulos" runat="server"></asp:GridView>
+
+<ol class="breadcrumb mb-4 mt-4">
+        <li class="breadcrumb-item"><a href="HomeAdmin">HomeAdmin</a></li>
+        <li class="breadcrumb-item active">Productos</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>Listado de Productos
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="btn btn-success" href="ABMArticulo?Type=a">Crear Nuevo</a>
+                </div>
+            </div>
+
+            <hr />
+            <table id="tabla" class="display responsive table table-striped" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Categoria</th>  
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%foreach (var item in carrito.ArticulosCarrito)
+                        { %>
+                    <tr>
+                        <td>
+                            <div>
+                                <img src="<%: item.Articulo.Imagenes[0].URLImagen %>" style="width: 15rem;" alt="Alternate Text" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row"><%: item.Articulo.Marca.Nombre %></div>
+                            <div class="row"><%: item.Articulo.Nombre %></div>
+                            <div class="row"><%: item.Articulo.ID %></div>
+                            <div class="row"><%: item.Articulo.Genero.Nombre %></div>
+                            <div class="row">
+                                <a href="#">Eliminar Articulo</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row"><%: item.IDTalle %></div>
+                            <div class="row"><%: item.Cantidad %></div>
+                        </td>
+                        <td>
+                            <div class="row">Precio Unitario    <%: item.Articulo.Precio %></div>
+                            <hr />
+                            <div class="row">Precio Final   <%: (item.Articulo.Precio * item.Cantidad) %></div>
+                        </td>
+                    </tr>
 
 
-    
-       <%if (Session["TeLogueaste"] != null)
-           {%>
-     <% foreach (var item in ListaCarrito)
-         {%>
-            <div id="Articulo" class="card mb-3" style="height: 200px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img id="Imagencita" src="<%:item.Imagenes[0].URLImagen %>" class="img-fluid rounded-start" alt="..." style="height: 180px">
+
+                    <%} %>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><%: item.Nombre %></h5>
-        <p class="card-text"><%:item.Descripcion %></p>
-        <p class="card-title">$<%: item.Precio %> </p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
-      </div>
-    </div>
-  </div>
-</div>
-        <%} %>
-
-         <span >Precio Total: <%:PrecioTotal%></span>
-    <%} %>
 
 </asp:Content>

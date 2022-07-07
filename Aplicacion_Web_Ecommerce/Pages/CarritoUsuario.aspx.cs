@@ -11,7 +11,7 @@ namespace Aplicacion_Web_Ecommerce
 {
     public partial class Carrito : System.Web.UI.Page
     {
-        public List<Articulo> ListaCarrito { get; set; }
+        public Dominio.Carrito carrito { get; set; }
 
         public float PrecioTotal { get; set; }
         protected void Page_Load(object sender, EventArgs e)
@@ -24,17 +24,9 @@ namespace Aplicacion_Web_Ecommerce
 
             else
             {
-                ListaCarrito = (List<Articulo>)Session["Carrito"];
-
-                foreach (var item in ListaCarrito)
-                {
-                    PrecioTotal += (float)item.Precio;
-                }
-
-                /*
-                GrillaArticulos.DataSource = Session["Carrito"];
-                GrillaArticulos.DataBind();     
-                */
+                carrito = new Dominio.Carrito();
+                carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+                carrito = (Dominio.Carrito)Session["CarritoUsuario"];
             }
         }
     }
