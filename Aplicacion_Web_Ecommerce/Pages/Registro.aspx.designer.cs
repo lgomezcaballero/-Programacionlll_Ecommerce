@@ -141,40 +141,22 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.TextBox TxtTelefono;
 
         /// <summary>
-        /// Control LabelCodigoPostal.
+        /// Control LabelPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCodigoPostal;
+        protected global::System.Web.UI.WebControls.Label LabelPais;
 
         /// <summary>
-        /// Control TxtCodigoPostal.
+        /// Control DropDownListPaises.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCodigoPostal;
-
-        /// <summary>
-        /// Control LabelNombreDePais.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelNombreDePais;
-
-        /// <summary>
-        /// Control TxtNombreDePais.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombreDePais;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListPaises;
 
         /// <summary>
         /// Control LabelProvincia.
@@ -186,13 +168,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.Label LabelProvincia;
 
         /// <summary>
-        /// Control TxtProvincia.
+        /// Control DropDownListProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtProvincia;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListProvincia;
 
         /// <summary>
         /// Control LabelLocalidad.
@@ -204,12 +186,21 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.Label LabelLocalidad;
 
         /// <summary>
-        /// Control TxtLocalidad.
+        /// Control DropDownListLocalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtLocalidad;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListLocalidad;
+
+        /// <summary>
+        /// Control BtnAgregarUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAgregarUsuario;
     }
 }

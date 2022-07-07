@@ -298,6 +298,9 @@ Begin
 	Left Join Provincias p on l.IDProvincia = p.IDProvincia
 	Left Join Pais pa on p.IDPais = pa.IDPais
 End
+
+exec SP_AgregarUsuario 'fufu', 'papachon', '12123', 'sdssd', '23232', 2, 1
+
 go
 Create Procedure SP_AgregarUsuario(
 	@apellidos varchar(100),

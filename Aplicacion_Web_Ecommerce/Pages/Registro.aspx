@@ -41,34 +41,33 @@
               <div class="col">
                 <asp:Label ID="LabelTelefono" runat="server" Text="Telefono"></asp:Label>
                 <asp:TextBox ID="TxtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
-              </div>
-
-               <div class="col">
-                <asp:Label ID="LabelCodigoPostal" runat="server" Text="CodigoPostal"></asp:Label>
-                <asp:TextBox ID="TxtCodigoPostal" CssClass="form-control" runat="server"></asp:TextBox>
-              </div>
-         
+              </div>  
           </div>
 
           <div class="mb-3 row">
 
               <div class="col">
-                <asp:Label ID="LabelNombreDePais" runat="server" Text="Pais"></asp:Label>
-                <asp:TextBox ID="TxtNombreDePais" CssClass="form-control" runat="server"></asp:TextBox>
+                  <asp:Label ID="LabelPais" runat="server" Text="Pais"></asp:Label>
+                  <asp:DropDownList ID="DropDownListPaises" runat="server" AutoPostBack="true"
+                      OnSelectedIndexChanged="DropDownListPaises_SelectedIndexChanged"></asp:DropDownList>
               </div>
 
               <div class="col">
                 <asp:Label ID="LabelProvincia" runat="server" Text="Provincia"></asp:Label>
-                <asp:TextBox ID="TxtProvincia" CssClass="form-control" runat="server"></asp:TextBox>
+                  <asp:DropDownList ID="DropDownListProvincia" runat="server" AutoPostBack="true" 
+                      OnSelectedIndexChanged="DropDownListProvincia_SelectedIndexChanged"></asp:DropDownList>
               </div>
 
-               <div class="col">
-                <asp:Label ID="LabelLocalidad" runat="server" Text="Localidad"></asp:Label>
-                <asp:TextBox ID="TxtLocalidad" CssClass="form-control" runat="server"></asp:TextBox>
+                <div class="col">
+               <%-- <asp:Label ID="Label1" runat="server" Text="Provincia"></asp:Label>--%>
+                    <asp:Label ID="LabelLocalidad" runat="server" Text="Localidad"></asp:Label>
+                  <asp:DropDownList ID="DropDownListLocalidad" runat="server" AutoPostBack="true"></asp:DropDownList>
               </div>
           
          
           </div>
    </div>
+
+    <asp:Button ID="BtnAgregarUsuario" runat="server" onclick="BtnAgregarUsuario_Click" Text="Button" />
 
 </asp:Content>
