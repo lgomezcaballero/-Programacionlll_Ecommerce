@@ -133,12 +133,14 @@ Create Table Factura(
 go
 Create Table Compras(
 	IDCompra bigint not null primary key identity(1, 1),
-	IDFactura bigint not null foreign key references Factura(IDFactura),
-	IDUsuario bigint not null references Usuarios(IDUsuario),
-	IDArticulo bigint not null references Articulos(IDArticulo),
-	Cantidad int not null,
+	IDFactura bigint not null,
+	IDUsuario bigint not null,
+	IDArticulo bigint not null,
+	IDTalle tinyint not null,
 	PrecioTotal money not null,
-	Estado bit not null default(1)
+	Estado bit not null default(1),
+	Foreign Key (IDUsuario, IDArticulo, IDTalle) References Articulos_X_Carritos(IDCarrito, IDArticulo, IDTalle),
+	Foreign key (IDFactura) References Factura(IDFactura)
 )
 go
 Create Table Valoraciones(

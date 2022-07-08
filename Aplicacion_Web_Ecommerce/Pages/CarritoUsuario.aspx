@@ -45,9 +45,10 @@
                             <div class="row">Talle: <%: obtenerTalle(item.IDTalle) %></div>
                             <div class="row" style="padding-left: 0px;">Cantidad: </div>
                                 <div class="row" style="padding-left: 0px;">
-                                    <asp:TextBox ID="txtCantidadArtCarrito" runat="server" CssClass="form-control" style="width: 3rem;"></asp:TextBox>
                                     <!--<%: txtCantidadArtCarrito.Text = item.Cantidad.ToString() %>-->
-                                    <!--<%:PrecioTotal+=item.Articulo.Precio*(long.Parse(txtCantidadArtCarrito.Text)) %>-->
+                                    <asp:TextBox ID="txtCantidadArtCarrito" runat="server" CssClass="form-control" style="width: 3rem;"></asp:TextBox>
+
+                                    <!--<%: aux += item.Articulo.Precio * (long.Parse(txtCantidadArtCarrito.Text)) %>-->
                                 </div>
                             <div class="row">
                                 <div class="col" style="padding-left: 0px;">
@@ -56,9 +57,16 @@
                             </div>
                         </td>
                         <td>
-                            <div class="row"><p><s>Precio Unitario    <%: item.Articulo.Precio %></s></p></div>
+                            <div class="row">
+                                <div class="col"><p>Precio Unitario</p></div>
+                                <div class="col"><p><%: aux = string.Format("{0:C}", item.Articulo.Precio) %></p></div>
+                            </div>
                             <hr />
-                            <div class="row"><p>Precio Final   <%: (item.Articulo.Precio * item.Cantidad) %></p></div>
+                            <div class="row">
+                                <div class="col"><p>Precio Final</p></div>
+                                <div class="col"><p><%: aux = string.Format("{0:C}", (item.Articulo.Precio * item.Cantidad)) %></p></div>
+                                <!--<%: PrecioTotal += item.Articulo.Precio * item.Cantidad %>-->
+                            </div>
                         </td>
                     </tr>
 
@@ -67,17 +75,18 @@
                 </tbody>
             </table>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <p>Subtotal</p>
-                    </div>
-                    <div class="col">$<%: PrecioTotal%></div>
+        <div class="card mb-4" style="margin-left: 10%; margin-right: 10%;">
+            <div class="row">
+                <div class="col">
+                    <p>Subtotal</p>
+                </div>
+                <div class="col"><%: aux=string.Format("{0:C}",PrecioTotal)%></div>
+                <div class="col">
+                    <a href="Compra" class="btn btn-success">Realizar compra</a>
                 </div>
             </div>
         </div>
     </div>
 
-    
+
 </asp:Content>
