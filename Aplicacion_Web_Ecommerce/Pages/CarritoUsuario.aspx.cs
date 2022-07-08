@@ -13,7 +13,7 @@ namespace Aplicacion_Web_Ecommerce
     {
         public Dominio.Carrito carrito { get; set; }
 
-        public float PrecioTotal { get; set; }
+        public decimal PrecioTotal { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["TeLogueaste"] == null)
