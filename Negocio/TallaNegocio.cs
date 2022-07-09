@@ -53,7 +53,7 @@ namespace Negocio
 
         }
 
-        public List<Talla> listarTallasDisponibles()
+        public List<Talla> listarTallasDisponibles(Articulo articulo)
         {
             List<Talla> lista = new List<Talla>();
             AccesoDatos datos = new AccesoDatos();
@@ -73,7 +73,7 @@ namespace Negocio
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
-                    if(existeStock(aux))
+                    if(existeStock(aux, articulo))
                         lista.Add(aux);
 
                 }
@@ -95,9 +95,14 @@ namespace Negocio
 
         }
 
-        public bool existeStock(Talla aux)
+        public bool existeStock(Talla aux, Articulo articulo)
         {
-
+            ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
+            ArticuloTalla articuloTalla = new ArticuloTalla();
+            articuloTalla = atNegocio.obtenerArticuloTalla(articulo.ID, aux.IDTalla);
+            if (articuloTalla.Stock < 1)
+                return false;
+            return true;
         }
 
 

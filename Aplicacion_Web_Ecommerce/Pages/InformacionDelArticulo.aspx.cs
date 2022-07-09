@@ -21,16 +21,16 @@ namespace Aplicacion_Web_Ecommerce
             {
                 TallaNegocio tNegocio = new TallaNegocio();
                 Session.Add("Talles", tNegocio.listar());
-                ddlTalles.DataSource = tNegocio.listar();
-                ddlTalles.DataTextField = "Nombre";
-                ddlTalles.DataValueField = "IDTalla";
-                ddlTalles.DataBind();
                 if(Request.QueryString["IDinfoArt"] != null )
                 {
                     articulo = new Articulo();
                     long idArticulo = long.Parse(Request.QueryString["IDinfoArt"]);
                     articulo = obtenerArticulo(idArticulo);
                     Session.Add("articuloAux", articulo);
+                    ddlTalles.DataSource = tNegocio.listarTallasDisponibles(articulo);
+                    ddlTalles.DataTextField = "Nombre";
+                    ddlTalles.DataValueField = "IDTalla";
+                    ddlTalles.DataBind();
                 }
             }
         }
