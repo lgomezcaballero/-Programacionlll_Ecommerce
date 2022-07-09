@@ -56,6 +56,7 @@ namespace Aplicacion_Web_Ecommerce
             artCarrito.Articulo = articulo;
             artCarrito.Cantidad = 1;
             artCarrito.IDTalle = byte.Parse(ddlTalles.SelectedItem.Value);
+            //artCarrito.Estado = true;
             carritoNegocio.agregarArticuloCarrito(artCarrito, (long)Session["IDUsuarioLogueado"]);
             List<Articulo> lista = new List<Articulo>();
             lista = (List<Articulo>)Session["Carrito"];

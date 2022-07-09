@@ -65,7 +65,8 @@ namespace Aplicacion_Web_Ecommerce
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            FacturaNegocio negocio = new FacturaNegocio();
+            CarritoNegocio cNegocio = new CarritoNegocio();
+            FacturaNegocio fNegocio = new FacturaNegocio();
             Factura factura = new Factura();
             factura.FormaPago = new FormaPago();
             factura.FormaPago.ID = 1;
@@ -73,7 +74,12 @@ namespace Aplicacion_Web_Ecommerce
             factura.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
             factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
             factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
-            negocio.comprar(factura);
+            fNegocio.comprar(factura);
+            carrito = new Dominio.Carrito();
+            carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+            carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+            carrito = cNegocio.mostrarCarrito(carrito.ID);
+            Session.Add("CarritoUsuario", carrito);
         }
 
         protected decimal calcularPrecioTotal(List<ArticuloCarrito> carrito)

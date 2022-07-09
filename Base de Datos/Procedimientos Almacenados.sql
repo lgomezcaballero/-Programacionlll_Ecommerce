@@ -448,11 +448,11 @@ Begin
 		Begin Transaction
 			if ((Select COUNT(*) From Articulos_X_Carritos 
 			Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo AND IDTalle = @idTalle) > 0) Begin
-				Update Articulos_X_Carritos Set Cantidad = Cantidad + @cantidad Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo
+				Update Articulos_X_Carritos Set Cantidad = Cantidad + @cantidad, Estado = 1 Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo
 				AND IDTalle = @idTalle
 			End
 			Else Begin
-				Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, IDTalle, Cantidad) values (@idCarrito, @idArticulo, @idTalle, @cantidad)
+				Insert into Articulos_X_Carritos(IDCarrito, IDArticulo, IDTalle, Cantidad, Estado) values (@idCarrito, @idArticulo, @idTalle, @cantidad, 1)
 			End
 		Commit Transaction
 	End Try
@@ -491,7 +491,8 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			Update Articulos_X_Carritos Set Estado = 0 Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo AND IDTalle = @idTalle
+			Update Articulos_X_Carritos Set Cantidad = 0, Estado = 0 
+			Where IDCarrito = @idCarrito AND IDArticulo = @idArticulo AND IDTalle = @idTalle
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -1065,7 +1066,7 @@ go
 exec SP_ObtenerIDFacturaNueva
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
-alter Procedure SP_AgregarCompra(
+Create Procedure SP_AgregarCompra(
 	@idFactura bigint,
 	@idUsuario bigint,
 	@idArticulo bigint,
@@ -1084,8 +1085,8 @@ Begin
 			Else Begin
 				Update Articulos_X_Tallas Set Stock = Stock - @cantidad 
 				Where IDArticulo = @idArticulo AND IDTalla = @idTalle
-				Insert Into Compras (IDFactura, IDUsuario, IDArticulo, IDTalle, PrecioTotal)
-				values (@idFactura, @idUsuario, @idArticulo, @idTalle, @PrecioTotal)
+				Insert Into Compras (IDFactura, IDUsuario, IDArticulo, IDTalle, Cantidad, PrecioTotal)
+				values (@idFactura, @idUsuario, @idArticulo, @idTalle, @cantidad, @PrecioTotal)
 			End
 		Commit Transaction
 	End Try

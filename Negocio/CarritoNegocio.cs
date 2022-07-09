@@ -49,7 +49,7 @@ namespace Negocio
                     if (!(datos.Lector["EstadoArticuloCarrito"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoArticuloCarrito"];
 
-                    if(aux.Articulo != null && aux.Estado)
+                    if(aux.Articulo != null && aux.Estado && aux.Cantidad != 0)
                         carrito.ArticulosCarrito.Add(aux);
                 } while (datos.Lector.Read());
 
