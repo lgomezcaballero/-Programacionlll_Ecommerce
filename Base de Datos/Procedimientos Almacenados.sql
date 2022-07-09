@@ -164,6 +164,15 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_ObtenerArticuloTalla(
+	@idArticulo bigint,
+	@idTalla tinyint
+)
+As
+Begin
+	Select Stock From Articulos_X_Tallas Where IDArticulo = @idArticulo AND IDTalla = @idTalla
+End
+go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarCategorias

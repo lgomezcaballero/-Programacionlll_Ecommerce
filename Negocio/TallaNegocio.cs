@@ -53,6 +53,52 @@ namespace Negocio
 
         }
 
+        public List<Talla> listarTallasDisponibles()
+        {
+            List<Talla> lista = new List<Talla>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsultaSP("SP_ListarTallas");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Talla aux = new Talla();
+                    if (!(datos.Lector["IDTalla"] is DBNull))
+                        aux.IDTalla = (byte)datos.Lector["IDTalla"];
+                    if (!(datos.Lector["Talla"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["Talla"];
+                    if (!(datos.Lector["Estado"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["Estado"];
+
+                    if(existeStock(aux))
+                        lista.Add(aux);
+
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public bool existeStock(Talla aux)
+        {
+
+        }
 
 
     }

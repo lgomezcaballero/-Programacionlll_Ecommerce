@@ -237,5 +237,39 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public ArticuloTalla obtenerArticuloTalla(long idArticulo, byte idTalla)
+        {
+            ArticuloTalla articuloTalla = new ArticuloTalla();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsultaSP("SP_ObtenerArticuloTalla");
+                datos.setParametros("@idArticulo", idArticulo);
+                datos.setParametros("@idTalla", idTalla);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["Stock"] is DBNull))
+                        articuloTalla.Stock = (long)datos.Lector["Stock"];
+                }
+
+                return articuloTalla;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

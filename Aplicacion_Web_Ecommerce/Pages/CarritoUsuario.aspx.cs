@@ -35,11 +35,8 @@ namespace Aplicacion_Web_Ecommerce
                         byte idTalle = byte.Parse(Request.QueryString["IDT"]);
                         negocio.eliminarArticuloCarrito(idUsuario, idArticulo, idTalle);
                     }
-                    carrito = new Dominio.Carrito();
-                    carrito.ArticulosCarrito = new List<ArticuloCarrito>();
-                    carrito = (Dominio.Carrito)Session["CarritoUsuario"];
-                    carrito = negocio.mostrarCarrito(carrito.ID);
-                    Session.Add("CarritoUsuario", carrito);
+                actualizarCarrito();
+
                 //}
             }
         }
@@ -65,7 +62,7 @@ namespace Aplicacion_Web_Ecommerce
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            CarritoNegocio cNegocio = new CarritoNegocio();
+            //CarritoNegocio cNegocio = new CarritoNegocio();
             FacturaNegocio fNegocio = new FacturaNegocio();
             Factura factura = new Factura();
             factura.FormaPago = new FormaPago();
@@ -75,11 +72,7 @@ namespace Aplicacion_Web_Ecommerce
             factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
             factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
             fNegocio.comprar(factura);
-            carrito = new Dominio.Carrito();
-            carrito.ArticulosCarrito = new List<ArticuloCarrito>();
-            carrito = (Dominio.Carrito)Session["CarritoUsuario"];
-            carrito = cNegocio.mostrarCarrito(carrito.ID);
-            Session.Add("CarritoUsuario", carrito);
+            actualizarCarrito();
         }
 
         protected decimal calcularPrecioTotal(List<ArticuloCarrito> carrito)
@@ -90,6 +83,16 @@ namespace Aplicacion_Web_Ecommerce
                 precioTotal += item.Cantidad * item.Articulo.Precio;
             }
             return precioTotal;
+        }
+
+        protected void actualizarCarrito()
+        {
+            CarritoNegocio negocio = new CarritoNegocio();
+            carrito = new Dominio.Carrito();
+            carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+            carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+            carrito = negocio.mostrarCarrito(carrito.ID);
+            Session.Add("CarritoUsuario", carrito);
         }
     }
 }
