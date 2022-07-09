@@ -1009,6 +1009,10 @@ Begin
 	Left Join Articulos_X_Carritos axc on c.IDUsuario = axc.IDCarrito AND c.IDArticulo = axc.IDArticulo AND c.IDTalle = axc.IDTalle
 	Left Join Articulos a on axc.IDArticulo = a.IDArticulo
 	Where f.IDFactura = @idFactura
+
+	Select f.IDFactura, f.IDFormaPago, f.Estado EstadoFactura,
+	c.IDUsuario, c.IDArticulo, c.IDTalle, c.PrecioTotal, c.Estado EstadoCompra
+	From Factura f Inner Join Compras c on f.IDFactura = c.IDFactura
 End
 go
 Create Procedure SP_AgregarFactura(
