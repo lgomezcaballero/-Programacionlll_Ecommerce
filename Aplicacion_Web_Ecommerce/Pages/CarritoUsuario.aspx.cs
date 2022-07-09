@@ -62,5 +62,28 @@ namespace Aplicacion_Web_Ecommerce
             aux = negocio.listar(idArticulo).Find(x => x.IDArticulo.Equals(idArticulo) && x.IDTalla.Equals(idTalla));
             return aux.Stock;
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            FacturaNegocio negocio = new FacturaNegocio();
+            Factura factura = new Factura();
+            factura.FormaPago = new FormaPago();
+            factura.FormaPago.ID = 1;
+            factura.Carrito = new Dominio.Carrito();
+            factura.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+            factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+            factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
+            negocio.comprar(factura);
+        }
+
+        protected decimal calcularPrecioTotal(List<ArticuloCarrito> carrito)
+        {
+            decimal precioTotal = 0;
+            foreach (var item in carrito)
+            {
+                precioTotal += item.Cantidad * item.Articulo.Precio;
+            }
+            return precioTotal;
+        }
     }
 }

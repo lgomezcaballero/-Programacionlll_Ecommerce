@@ -998,21 +998,11 @@ Create Procedure SP_MostrarFactura(
 	@idFactura bigint
 )
 As
-Begin 
-	Select f.IDFactura, 
-	fp.IDFormaPago, fp.Nombre FormaPago, fp.Estado EstadoFormaPago,
-	c.IDUsuario, c.Estado EstadoCompra,
-	a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio,
-	axc.IDTalle, axc.Cantidad
-	From Factura f Left Join FormasPagos fp on f.IDFormaPago = fp.IDFormaPago
-	Left Join Compras c on c.IDFactura = f.IDFactura
-	Left Join Articulos_X_Carritos axc on c.IDUsuario = axc.IDCarrito AND c.IDArticulo = axc.IDArticulo AND c.IDTalle = axc.IDTalle
-	Left Join Articulos a on axc.IDArticulo = a.IDArticulo
-	Where f.IDFactura = @idFactura
-
+Begin
 	Select f.IDFactura, f.IDFormaPago, f.Estado EstadoFactura,
 	c.IDUsuario, c.IDArticulo, c.IDTalle, c.PrecioTotal, c.Estado EstadoCompra
 	From Factura f Inner Join Compras c on f.IDFactura = c.IDFactura
+	Where f.IDFactura = @idFactura
 End
 go
 Create Procedure SP_AgregarFactura(
@@ -1072,9 +1062,10 @@ Begin
 	Select Top 1 IDFactura From Factura Order By IDFactura desc
 End
 go
+exec SP_ObtenerIDFacturaNueva
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
-Create Procedure SP_AgregarCompra(
+alter Procedure SP_AgregarCompra(
 	@idFactura bigint,
 	@idUsuario bigint,
 	@idArticulo bigint,
@@ -1086,20 +1077,20 @@ As
 Begin
 	Begin Try
 		Begin Transaction
-			if (((Select Cantidad From Articulos_X_Carritos 
-			Where IDArticulo = @idArticulo AND IDCarrito = @idUsuario AND IDTalle = @idTalle) - @cantidad) < 0) Begin
+			if (((Select Stock From Articulos_X_Tallas 
+			Where IDArticulo = @idArticulo AND IDTalla = @idTalle) - @cantidad) < 0) Begin
 				Raiserror('Error, no hay stock suficiente', 16, 1)
 			End
 			Else Begin
-				Update Articulos_X_Carritos Set Cantidad = Cantidad - @cantidad 
-				Where IDCarrito = @idUsuario AND IDArticulo = @idArticulo AND IDTalle = @idTalle
+				Update Articulos_X_Tallas Set Stock = Stock - @cantidad 
+				Where IDArticulo = @idArticulo AND IDTalla = @idTalle
 				Insert Into Compras (IDFactura, IDUsuario, IDArticulo, IDTalle, PrecioTotal)
 				values (@idFactura, @idUsuario, @idArticulo, @idTalle, @PrecioTotal)
 			End
 		Commit Transaction
 	End Try
 	Begin Catch
-		RAISERROR('Error, no se pudo agregar la compra', 16, 1)
+		print error_message()
 		Rollback Transaction
 	End Catch
 End

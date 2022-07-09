@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="CarritoUsuario.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.Carrito" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-<ol class="breadcrumb mb-4 mt-4">
+    <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item"><a href="HomeAdmin">HomeAdmin</a></li>
         <li class="breadcrumb-item active">Productos</li>
     </ol>
-
-    <div class="card mb-4" style="margin-left:10%; margin-right:10%;">
+    <div class="card mb-4" style="margin-left: 10%; margin-right: 10%;">
+            <%if (carrito.ArticulosCarrito.Count > 0)
+                { %>
         <div class="card-body">
             <div class="border-bottom row">
                 <p>Listado de artículos en carrito</p>
@@ -44,12 +46,12 @@
                         <td>
                             <div class="row">Talle: <%: obtenerTalle(item.IDTalle) %></div>
                             <div class="row" style="padding-left: 0px;">Cantidad: </div>
-                                <div class="row" style="padding-left: 0px;">
-                                    <!--<%: txtCantidadArtCarrito.Text = item.Cantidad.ToString() %>-->
-                                    <asp:TextBox ID="txtCantidadArtCarrito" runat="server" CssClass="form-control" style="width: 3rem;"></asp:TextBox>
+                            <div class="row" style="padding-left: 0px;">
+                                <!--<%: txtCantidadArtCarrito.Text = item.Cantidad.ToString() %>-->
+                                <asp:TextBox ID="txtCantidadArtCarrito" runat="server" CssClass="form-control" Style="width: 3rem;"></asp:TextBox>
 
-                                    <!--<%: aux += item.Articulo.Precio * (long.Parse(txtCantidadArtCarrito.Text)) %>-->
-                                </div>
+                                <!--<%: aux += item.Articulo.Precio * (long.Parse(txtCantidadArtCarrito.Text)) %>-->
+                            </div>
                             <div class="row">
                                 <div class="col" style="padding-left: 0px;">
                                     <p>(<%:obtenerStock(item.Articulo.ID, item.IDTalle) %> disponibles)</p>
@@ -58,13 +60,21 @@
                         </td>
                         <td>
                             <div class="row">
-                                <div class="col"><p>Precio Unitario</p></div>
-                                <div class="col"><p><%: aux = string.Format("{0:C}", item.Articulo.Precio) %></p></div>
+                                <div class="col">
+                                    <p>Precio Unitario</p>
+                                </div>
+                                <div class="col">
+                                    <p><%: aux = string.Format("{0:C}", item.Articulo.Precio) %></p>
+                                </div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="col"><p>Precio Final</p></div>
-                                <div class="col"><p><%: aux = string.Format("{0:C}", (item.Articulo.Precio * item.Cantidad)) %></p></div>
+                                <div class="col">
+                                    <p>Precio Final</p>
+                                </div>
+                                <div class="col">
+                                    <p><%: aux = string.Format("{0:C}", (item.Articulo.Precio * item.Cantidad)) %></p>
+                                </div>
                                 <!--<%: PrecioTotal += item.Articulo.Precio * item.Cantidad %>-->
                             </div>
                         </td>
@@ -75,17 +85,26 @@
                 </tbody>
             </table>
         </div>
+
         <div class="card mb-4" style="margin-left: 10%; margin-right: 10%;">
             <div class="row">
                 <div class="col">
                     <p>Subtotal</p>
                 </div>
-                <div class="col"><%: aux=string.Format("{0:C}",PrecioTotal)%></div>
+                <div class="col"><%: aux = string.Format("{0:C}", PrecioTotal)%></div>
                 <div class="col">
                     <a href="Compra" class="btn btn-success">Realizar compra</a>
+                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
                 </div>
             </div>
         </div>
+        <%}
+            else
+            {%>
+        <div class="card-body">
+            <h6>No existen artículos agregados al carrito.</h6>
+        </div>
+        <%}%>
     </div>
 
 

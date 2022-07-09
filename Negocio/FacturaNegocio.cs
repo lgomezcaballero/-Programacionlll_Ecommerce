@@ -69,7 +69,6 @@ namespace Negocio
         public void comprar(Factura factura)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
                 datos.setConsultaSP("SP_AgregarFactura");
@@ -77,19 +76,7 @@ namespace Negocio
                 datos.ejecutarAccion();
 
                 long idFactura = this.obtenerIDFacturaNueva();
-                foreach (var item in factura.Carrito.ArticulosCarrito)
-                {
-                    datos.setConsultaSP("SP_AgregarCompra");
-                    datos.setParametros("@idFactura", idFactura);
-                    datos.setParametros("@idUsuario", factura.Carrito.ID);
-                    datos.setParametros("@idArticulo", item.Articulo.ID);
-                    datos.setParametros("@idTalle", item.IDTalle);
-                    datos.setParametros("@cantidad", item.Cantidad);
-                    datos.setParametros("@PrecioTotal", item.Cantidad * item.Articulo.Precio);
-                    datos.ejecutarAccion();
-                }
-
-
+                agregarCompra(idFactura, factura.Carrito);
             }
             catch (Exception ex)
             {
@@ -99,6 +86,24 @@ namespace Negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public void agregarCompra(long idFactura, Carrito carrito)
+        {
+            foreach (var item in carrito.ArticulosCarrito)
+            {
+                AccesoDatos datos = new AccesoDatos();
+                CarritoNegocio cNegocio = new CarritoNegocio();
+                datos.setConsultaSP("SP_AgregarCompra");
+                datos.setParametros("@idFactura", idFactura);
+                datos.setParametros("@idUsuario", carrito.ID);
+                datos.setParametros("@idArticulo", item.Articulo.ID);
+                datos.setParametros("@idTalle", item.IDTalle);
+                datos.setParametros("@cantidad", item.Cantidad);
+                datos.setParametros("@PrecioTotal", item.Cantidad * item.Articulo.Precio);
+                datos.ejecutarAccion();
+                cNegocio.eliminarArticuloCarrito(carrito.ID, item.Articulo.ID, item.IDTalle);
             }
         }
 
@@ -290,7 +295,7 @@ namespace Negocio
             ImagenesArticuloNegocio imgNegocio = new ImagenesArticuloNegocio();
             try
             {
-                datos.setConsultaSP("SP_ObtenerFacturaNueva");
+                datos.setConsultaSP("SP_ObtenerIDFacturaNueva");
                 datos.ejecutarLectura();
                 if (datos.Lector.Read())
                 {
