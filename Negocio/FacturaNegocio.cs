@@ -9,104 +9,53 @@ namespace Negocio
 {
     public class FacturaNegocio
     {
-        public Factura mostrar(long idFactura)
+        public Factura obtenerFactura(long idFactura)
         {
-            Factura factura = new Factura();
+            //Factura factura = new Factura();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
                 datos.setConsultaSP("SP_MostrarFactura");
                 datos.ejecutarLectura();
+
+                Factura aux = new Factura();
+                aux.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
                 while (datos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
+                    aux = new Factura();
+                    if (!(datos.Lector["IDFactura"] is DBNull))
+                        aux.ID = (long)datos.Lector["IDFactura"];
+
+                    aux.FormaPago = new FormaPago();
+                    if (!(datos.Lector["IDFormaPago"] is DBNull))
+                        aux.FormaPago.ID = (byte)datos.Lector["IDFormaPago"];
+
+                    if (!(datos.Lector["EstadoFactura"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["EstadoFactura"];
+
+                    aux.Carrito = new Carrito();
+                    if (!(datos.Lector["IDUsuario"] is DBNull))
+                        aux.Carrito.ID = (long)datos.Lector["IDUsuario"];
+
+                    ArticuloCarrito ac = new ArticuloCarrito();
+                    ac.Articulo = new Articulo();
                     if (!(datos.Lector["IDArticulo"] is DBNull))
-                        aux.ID = (long)datos.Lector["IDArticulo"];
+                        ac.Articulo.ID = (long)datos.Lector["IDArticulo"];
 
-                    if (!(datos.Lector["Articulo"] is DBNull))
-                        aux.Nombre = (string)datos.Lector["Articulo"];
+                    if (!(datos.Lector["IDTalle"] is DBNull))
+                        ac.IDTalle = (byte)datos.Lector["IDTalle"];
 
-                    if (!(datos.Lector["Descripcion"] is DBNull))
-                        aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    if (!(datos.Lector["PrecioTotal"] is DBNull))
+                        aux.PrecioTotal = (byte)datos.Lector["PrecioTotal"];
 
-                    if (!(datos.Lector["Precio"] is DBNull))
-                        aux.Precio = (decimal)datos.Lector["Precio"];
-
-                    //if (!(datos.Lector["Stock"] is DBNull))
-                    //    aux.Stock = (long)datos.Lector["Stock"];
-
-                    /*
-                    if (!(datos.Lector["FechaRegistroArticulo"] is DBNull))
-                        aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistroArticulo"];
-                    */
-
-                    if (!(datos.Lector["EstadoArticulo"] is DBNull))
-                        aux.Estado = (bool)datos.Lector["EstadoArticulo"];
-
-                    aux.Imagenes = new List<ImagenesArticulo>();
-                    ImagenesArticuloNegocio ImagenesNegocio = new ImagenesArticuloNegocio();
-                    aux.Imagenes = ImagenesNegocio.listar(aux.ID);
-
-                    aux.Marca = new Marca();
-                    if (!(datos.Lector["IDMarca"] is DBNull))
-                        aux.Marca.ID = (Int16)datos.Lector["IDMarca"];
-
-                    if (!(datos.Lector["Marca"] is DBNull))
-                        aux.Marca.Nombre = (string)datos.Lector["Marca"];
-
-                    /*
-                    if (!(datos.Lector["FechaRegistroMarca"] is DBNull))
-                        aux.Marca.FechaRegistro = (DateTime)datos.Lector["FechaRegistroMarca"];
-                    */
-
-                    if (!(datos.Lector["EstadoMarca"] is DBNull))
-                        aux.Marca.Estado = (bool)datos.Lector["EstadoMarca"];
-
-                    aux.Categoria = new Categoria();
-                    if (!(datos.Lector["IDCategoria"] is DBNull))
-                        aux.Categoria.ID = (Int16)datos.Lector["IDCategoria"];
-
-                    if (!(datos.Lector["Categoria"] is DBNull))
-                        aux.Categoria.Nombre = (string)datos.Lector["Categoria"];
-
-                    /*
-                    if (!(datos.Lector["FechaRegistroCategoria"] is DBNull))
-                        aux.Categoria.FechaRegistro = (DateTime)datos.Lector["FechaRegistroCategoria"];
-                    */
-
-                    if (!(datos.Lector["EstadoCategoria"] is DBNull))
-                        aux.Categoria.Estado = (bool)datos.Lector["EstadoCategoria"];
-
-                    aux.Genero = new Genero();
-                    if (!(datos.Lector["IDGenero"] is DBNull))
-                        aux.Genero.ID = (byte)datos.Lector["IDGenero"];
-
-                    if (!(datos.Lector["Genero"] is DBNull))
-                        aux.Genero.Nombre = (string)datos.Lector["Genero"];
-
-                    if (!(datos.Lector["EstadoGenero"] is DBNull))
-                        aux.Genero.Estado = (bool)datos.Lector["EstadoGenero"];
-
-                    //aux.Talla = new Talla();
-                    //if (!(datos.Lector["IDTalla"] is DBNull))
-                    //    aux.Talla.IDTalla = (byte)datos.Lector["IDTalla"];
-
-                    //if (!(datos.Lector["Talla"] is DBNull))
-                    //    aux.Talla.Nombre= (string)datos.Lector["Talla"];
-
-                    //if (!(datos.Lector["EstadoTalla"] is DBNull))
-                    //    aux.Talla.Estado = (bool)datos.Lector["EstadoTalla"];
-
-                    if (aux.Estado == true)
-                    {
-                        lista.Add(aux);
-
-                    }
-
+                    if (!(datos.Lector["EstadoCompra"] is DBNull))
+                        aux.Carrito.Estado = (bool)datos.Lector["EstadoCompra"];
+                        
+                    aux.Carrito.ArticulosCarrito.Add(ac);
 
                 }
-                return lista;
+                return aux;
             }
             catch (Exception ex)
             {
@@ -153,7 +102,7 @@ namespace Negocio
             }
         }
 
-        public void modificarArticulo(Articulo articulo)
+        /*public void modificarArticulo(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
             ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
@@ -314,7 +263,7 @@ namespace Negocio
             }
         }*/
 
-        public void eliminarArticulo(long id)
+        /*public void eliminarArticulo(long id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -332,7 +281,7 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }
+        }*/
         public long obtenerIDFacturaNueva()
         {
             long idFactura = -1;

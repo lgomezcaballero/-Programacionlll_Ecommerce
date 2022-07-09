@@ -1070,3 +1070,33 @@ End
 go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
+Create Procedure SP_AgregarCompra(
+	@idFactura bigint,
+	@idUsuario bigint,
+	@idArticulo bigint,
+	@idTalle tinyint,
+	@cantidad int,
+	@PrecioTotal money
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			if (((Select Cantidad From Articulos_X_Carritos 
+			Where IDArticulo = @idArticulo AND IDCarrito = @idUsuario AND IDTalle = @idTalle) - @cantidad) < 0) Begin
+				Raiserror('Error, no hay stock suficiente', 16, 1)
+			End
+			Else Begin
+				Update Articulos_X_Carritos Set Cantidad = Cantidad - @cantidad 
+				Where IDCarrito = @idUsuario AND IDArticulo = @idArticulo AND IDTalle = @idTalle
+				Insert Into Compras (IDFactura, IDUsuario, IDArticulo, IDTalle, PrecioTotal)
+				values (@idFactura, @idUsuario, @idArticulo, @idTalle, @PrecioTotal)
+			End
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la compra', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
