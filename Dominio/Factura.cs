@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Compra
+    public class Factura
     {
         public long ID { get; set; }
         public FormaPago FormaPago { get; set; }

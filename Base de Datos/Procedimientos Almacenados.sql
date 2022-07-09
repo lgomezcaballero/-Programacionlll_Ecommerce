@@ -992,3 +992,81 @@ Begin
 	Select IDTalla, Talla, Estado From Tallas
 End
 go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_MostrarFactura(
+	@idFactura bigint
+)
+As
+Begin 
+	Select f.IDFactura, 
+	fp.IDFormaPago, fp.Nombre FormaPago, fp.Estado EstadoFormaPago,
+	c.IDUsuario, c.Estado EstadoCompra,
+	a.IDArticulo, a.Nombre Articulo, a.Descripcion, a.Precio,
+	axc.IDTalle, axc.Cantidad
+	From Factura f Left Join FormasPagos fp on f.IDFormaPago = fp.IDFormaPago
+	Left Join Compras c on c.IDFactura = f.IDFactura
+	Left Join Articulos_X_Carritos axc on c.IDUsuario = axc.IDCarrito AND c.IDArticulo = axc.IDArticulo AND c.IDTalle = axc.IDTalle
+	Left Join Articulos a on axc.IDArticulo = a.IDArticulo
+	Where f.IDFactura = @idFactura
+End
+go
+Create Procedure SP_AgregarFactura(
+	@idFormaPago tinyint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Insert Into Factura(IDFormaPago) values (@idFormaPago)
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo agregar la Factura', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+--Create Procedure SP_ModificarTallaArticulo(
+--	@idArticulo bigint,
+--	@idTalla tinyint,
+--	@stock bigint
+--)
+--As
+--Begin
+--	Begin Try
+--		Begin Transaction
+--			Update Articulos_X_Tallas Set Stock = @stock Where IDArticulo = @idArticulo AND IDTalla = @idTalla
+--		Commit Transaction
+--	End Try 
+--	Begin Catch
+--		RAISERROR('Error, no se pudo modificar los articulos por talle', 16, 1)
+--		Rollback Transaction
+--	End Catch
+--End
+--go
+--Create Procedure SP_EliminarTallaArticulo(
+--	@idArticulo bigint,
+--	@idTalla tinyint
+--)
+--As
+--Begin
+--	Begin Try
+--		Begin Transaction
+--			Update Articulos_X_Tallas Set Estado = 0 Where IDArticulo = @idArticulo AND IDTalla = @idTalla
+--		Commit Transaction
+--	End Try
+--	Begin Catch
+--		RAISERROR('Error, no se pudo eliminar los articulos por talle', 16, 1)
+--		Rollback Transaction
+--	End Catch
+--End
+go
+Create Procedure SP_ObtenerIDFacturaNueva
+As
+Begin
+	Select Top 1 IDFactura From Factura Order By IDFactura desc
+End
+go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
