@@ -112,9 +112,20 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            //Esto valida que usuario el usuario que se ingresar no este repetido en la base
-            if (!validarUsuario(TxtNombreUsuario.Text) == true)
+
+
+            if (CompletarCampos() == false)
             {
+                LabelErrorCampos.Text = "Complete todos los campos";
+            }
+            else {
+                //Esto valida que usuario el usuario que se ingresar no este repetido en la base
+                if (validarUsuario(TxtNombreUsuario.Text) == true)
+                {
+                    LabelErrorCampos.Text = "Ese nombre de usuario ya esta en uso, intente con otro nombre";
+                }
+
+                else { 
                 //Valido que la contraseña se escriba bien las dos veces
                 if (validarContraseña(TxtContraseña.Text, TxtRepetirContraseña.Text) == true)
                 {
@@ -153,6 +164,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     usuario.Localidad = new Localidad();
                     usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
 
+
                     //Localidad > Provincia
                     //usuario.Localidad.Provincia = new Provincia();
                     //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
@@ -166,11 +178,37 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
                 }
 
+
+            }
+
+        }
+
+            
+        }
+
+
+        protected bool CompletarCampos()
+        {
+            if (TxtApellidos.Text == "" ||
+                TxtNombres.Text == "" ||
+                TxtDNI.Text == "" ||
+                TxtNombreUsuario.Text == "" ||
+                TxtContraseña.Text == "" ||
+                TxtRepetirContraseña.Text == "" ||
+                TxtEmail.Text == "" ||
+                TxtTelefono.Text == "") 
+            { 
+                return false;
+            }
+
+            else
+            {
+                return true;    
             }
         }
 
         //Este metodo valida que la contraseña este escrita bien las dos veces
-       protected bool validarContraseña(string Contraseña, string ConstraseñaRepetida)
+        protected bool validarContraseña(string Contraseña, string ConstraseñaRepetida)
         {
             if(Contraseña == ConstraseñaRepetida)
             { return true; }

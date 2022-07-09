@@ -79,4 +79,6 @@
 
     <asp:Button ID="BtnAgregarUsuario" runat="server" onclick="BtnAgregarUsuario_Click" Text="Button" />
 
+    <asp:Label ID="LabelErrorCampos" runat="server" Text=""></asp:Label>
+
 </asp:Content>
