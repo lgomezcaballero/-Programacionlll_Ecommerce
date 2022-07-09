@@ -46,5 +46,11 @@ namespace Aplicacion_Web_Ecommerce
             Session.Add("Busqueda", Busqueda);
             Response.Redirect("Busqueda.aspx", false);
         }
+
+        protected void BtnCerrarSession_Click(object sender, EventArgs e)
+        {
+            Session["TeLogueaste"] = null;
+            Response.Redirect("Login.aspx", false);
+        }
     }
 }

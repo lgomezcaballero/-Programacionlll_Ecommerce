@@ -57,9 +57,9 @@ namespace Aplicacion_Web_Ecommerce
             {
                 SeLogueo = false;
                 Session.Add("error", "Usuario o contraseña incorrectos");
+                //LabelDatosIncorrectos.Text = "Usuario o contraseña incorrectos";
+                //Response.Redirect("Login", false);
                 Response.Redirect("ErrorLogin.aspx", false);
-
-
                 //Response.Redirect("ErrorLogin.aspx", false);
             }
 

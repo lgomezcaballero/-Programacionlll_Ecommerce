@@ -28,6 +28,10 @@
   <%--<button type="submit" class="btn btn-primary">Ingresar</button>--%>
 
   <a href="Registro.aspx">Click aqui para registrarse</a>
+
+    <div>
+        <asp:Label ID="LabelDatosIncorrectos" runat="server" Text=""></asp:Label>
+    </div>
 </form>
 
 
