@@ -110,6 +110,7 @@
     <Content Include="Pages\ABMMarcas.aspx" />
     <Content Include="Pages\ABMPais.aspx" />
     <Content Include="Pages\ABMProvincia.aspx" />
+    <Content Include="Pages\AMBUsuarios.aspx" />
     <Content Include="Pages\Busqueda.aspx" />
     <Content Include="Pages\CarritoUsuario.aspx" />
     <Content Include="Pages\Compra.aspx" />
@@ -158,6 +159,12 @@
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Pages\HomeAdmin.aspx" />
     <Content Include="Pages\InformacionDelArticulo.aspx" />
+    <Content Include="Pages\ListarArticulos.aspx" />
+    <Content Include="Pages\ListarCategorias.aspx" />
+    <Content Include="Pages\ListarMarcas.aspx" />
+    <Content Include="Pages\ListarPaises.aspx" />
+    <Content Include="Pages\ListarProvincia.aspx" />
+    <Content Include="Pages\ListarUsuarios.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\ABMArticulo.aspx" />
     <Content Include="Pages\Registro.aspx" />
@@ -225,6 +232,13 @@
     <Compile Include="Pages\ABMProvincia.aspx.designer.cs">
       <DependentUpon>ABMProvincia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AMBUsuarios.aspx.cs">
+      <DependentUpon>AMBUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AMBUsuarios.aspx.designer.cs">
+      <DependentUpon>AMBUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Busqueda.aspx.cs">
       <DependentUpon>Busqueda.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +297,48 @@
     </Compile>
     <Compile Include="Pages\InformacionDelArticulo.aspx.designer.cs">
       <DependentUpon>InformacionDelArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListarArticulos.aspx.cs">
+      <DependentUpon>ListarArticulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListarArticulos.aspx.designer.cs">
+      <DependentUpon>ListarArticulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListarCategorias.aspx.cs">
+      <DependentUpon>ListarCategorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListarCategorias.aspx.designer.cs">
+      <DependentUpon>ListarCategorias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListarMarcas.aspx.cs">
+      <DependentUpon>ListarMarcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListarMarcas.aspx.designer.cs">
+      <DependentUpon>ListarMarcas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListarPaises.aspx.cs">
+      <DependentUpon>ListarPaises.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListarPaises.aspx.designer.cs">
+      <DependentUpon>ListarPaises.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListarProvincia.aspx.cs">
+      <DependentUpon>ListarProvincia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListarProvincia.aspx.designer.cs">
+      <DependentUpon>ListarProvincia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListarUsuarios.aspx.cs">
+      <DependentUpon>ListarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListarUsuarios.aspx.designer.cs">
+      <DependentUpon>ListarUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
