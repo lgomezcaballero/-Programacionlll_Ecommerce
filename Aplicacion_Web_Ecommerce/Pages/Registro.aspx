@@ -5,17 +5,17 @@
         <div class="mb-3 row">
             <div class="col">
                 <asp:Label ID="LabelApellidos" runat="server" Text="Apellidos del usuario"></asp:Label>
-                <asp:TextBox ID="TxtApellidos" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtApellidos" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/,'')" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
 
              <div class="col">
                 <asp:Label ID="LabelNombres" runat="server" Text="Nombres"></asp:Label>
-                <asp:TextBox ID="TxtNombres" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtNombres" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/,'')" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="col">
                 <asp:Label ID="LabelDNI" runat="server" Text="DNI"></asp:Label>
-                <asp:TextBox ID="TxtDNI" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtDNI" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/,'')" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
          <div class="mb-3 row">
@@ -29,12 +29,12 @@
 
               <div class="col">
                 <asp:Label ID="LabelContraseña" runat="server" Text="Contraseña"></asp:Label>
-                <asp:TextBox ID="TxtContraseña" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtContraseña" type="password" CssClass="form-control" runat="server"></asp:TextBox>
               </div>
             
              <div class="col">
-                <asp:Label ID="LabelRepetirContraseña" runat="server" Text="RepetirContraseña"></asp:Label>
-                <asp:TextBox ID="TxtRepetirContraseña" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:Label ID="LabelRepetirContraseña" runat="server"  Text="RepetirContraseña"></asp:Label>
+                <asp:TextBox ID="TxtRepetirContraseña" type="password" CssClass="form-control" runat="server"></asp:TextBox>
               </div>
 
             </div>
@@ -48,8 +48,8 @@
               </div>
 
               <div class="col">
-                <asp:Label ID="LabelTelefono" runat="server" Text="Telefono"></asp:Label>
-                <asp:TextBox ID="TxtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:Label ID="LabelTelefono"  runat="server" Text="Telefono"></asp:Label>
+                <asp:TextBox ID="TxtTelefono" oninput="this.value = this.value.replace(/[^0-9+]/,'')" CssClass="form-control" runat="server"></asp:TextBox>
               </div>  
           </div>
 
@@ -77,8 +77,8 @@
           </div>
    </div>
 
-    <asp:Button ID="BtnAgregarUsuario" runat="server" onclick="BtnAgregarUsuario_Click" Text="Button" />
+    <asp:Button ID="BtnAgregarUsuario" runat="server" Class="btn btn-primary" onclick="BtnAgregarUsuario_Click" Text="Registrarse" />
 
-    <asp:Label ID="LabelErrorCampos" runat="server" Text=""></asp:Label>
+    <asp:Label ID="LabelErrorCampos" runat="server" Text="" style="color:red"></asp:Label>
 
 </asp:Content>
