@@ -93,8 +93,7 @@
                 </div>
                 <div class="col"><%: aux = string.Format("{0:C}", PrecioTotal)%></div>
                 <div class="col">
-                    <a href="Compra" class="btn btn-success">Realizar compra</a>
-                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                    <asp:Button ID="btnCompra" CssClass="btn btn-success" runat="server" Text="Realizar Compra" OnClick="btnCompra_Click" />
                 </div>
             </div>
         </div>
