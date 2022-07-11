@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="Compra.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.Compra" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row">
+    <div class="row" style="margin-top: 1rem;">
         <div class="col-7">
             <div class="row">
                 <h4>Datos de Contacto</h4>
             </div>
-            <table class="table">
+            <table class="table w-75">
                 <tbody>
                     <tr>
                         <td><p>Nombre y Apellido:</p></td>
@@ -35,10 +35,17 @@
                         <td><p>Pais:</p></td>
                         <td><p><%: usuario.Localidad.Provincia.Pais.NombrePais%></p></td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Envío (a acordar con el vendedor)</p>
+                            <p>Retirar en la dirección del vendedor</p>
+                            <p>Puede retirar desde el <%: fechaHoy %></p>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-5">
+        <div class="col-5 overflow-auto">
             <%foreach (var item in factura.Carrito.ArticulosCarrito)
                 {%>
             <div class="row">

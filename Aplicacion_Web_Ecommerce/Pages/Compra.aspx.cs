@@ -13,10 +13,12 @@ namespace Aplicacion_Web_Ecommerce
     {
         public Factura factura { get; set; }
         public Usuario usuario { get; set; }
+        public string fechaHoy { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             precargarCompra();
             obtenerUsuario(factura.Carrito.ID);
+            fechaHoy = DateTime.Now.ToString("dd-MM-yyyy");
         }
 
         protected void precargarCompra()
