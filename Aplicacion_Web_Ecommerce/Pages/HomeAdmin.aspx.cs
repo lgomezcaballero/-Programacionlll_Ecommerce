@@ -44,7 +44,7 @@ namespace Aplicacion_Web_Ecommerce
         {
 
             //No me convence del todo esto
-            if (Session["TeLogueaste"] == null /*&& ((Usuario)Session["TeLogueaste"]).TipoUsuario.NombreTipo != "Administrador"*/)
+            if (Session["TeLogueaste"] == null || Session["Admin"] == null/*&& ((Usuario)Session["TeLogueaste"]).TipoUsuario.NombreTipo != "Administrador"*/)
             {
                 Session.Add("error", "Solo lo los administradores pueden acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);

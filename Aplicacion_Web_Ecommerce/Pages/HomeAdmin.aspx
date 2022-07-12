@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="HomeAdmin.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.HomeAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-     <%if (Session["TeLogueaste"] != null)
+     <%if (Session["TeLogueaste"] != null && Session["Admin"]!= null)
          {  %>
     <div class="row">
          <div class="col-4">

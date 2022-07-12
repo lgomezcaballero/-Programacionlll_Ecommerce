@@ -67,6 +67,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                 if(TipousuarioNumero == 1)
                     {
                         Response.Redirect("HomeAdmin.aspx", false);
+                        Session.Add("Admin", TipousuarioNumero);
                     }
                     else
                     {
