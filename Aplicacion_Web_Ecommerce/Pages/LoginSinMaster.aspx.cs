@@ -44,11 +44,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
             usuariologin.NombreUsuario = TxtNombreUsuario.Text;
             usuariologin.Contraseña = TxtContraseña.Text;
             string TipoUsuario;
+            byte TipousuarioNumero = 0; //Con esta variable obtengo el numero del tipo de usuario que se haya logueado
 
             foreach (var item in listaUsuarios)
             {
                 if (item.NombreUsuario == usuariologin.NombreUsuario && item.Contraseña == usuariologin.Contraseña)
                 {
+                    TipousuarioNumero = (byte)item.TipoUsuario.ID; //Aca lo guardo
                     TipoUsuario = item.TipoUsuario.NombreTipo;
                     usuariologin.TipoUsuario = new TipoUsuario();
                     usuariologin.TipoUsuario.NombreTipo = TipoUsuario;
@@ -62,7 +64,14 @@ namespace Aplicacion_Web_Ecommerce.Pages
             {
                 SeLogueo = true;
                 Session.Add("TeLogueaste", usuariologin);
-                Response.Redirect("Home.aspx", false);
+                if(TipousuarioNumero == 1)
+                    {
+                        Response.Redirect("HomeAdmin.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("Home.aspx", false);
+                    }
             }
             else
             {
