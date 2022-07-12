@@ -48,7 +48,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     {
                         PaisNegocio paisNegocio = new PaisNegocio();
                         paisNegocio.EliminarPais(id);
-                        Response.Redirect("HomeAdmin.aspx", false);
+                        Response.Redirect("ListarPaises.aspx", false);
 
 
                     }
@@ -80,13 +80,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
             Pais pais = new Pais();
 
             //Esto lo hice asi para probar, pero aun asi no funciona 
-            pais.ID = byte.Parse(Request.QueryString["Type"]);
+            pais.ID = byte.Parse(Request.QueryString["ID"]);
             pais.NombrePais = txtPais.Text;
             pais.Estado = true;
 
 
             paisnegocio.ModificarPais(pais);
-            Response.Redirect("HomeAdmin.aspx");
+            Response.Redirect("ListarPaises.aspx");
         }
 
         //--------------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Esto carga el pais a la base 
             PaisNegocio paisNegocio = new PaisNegocio();
             paisNegocio.AgregarPais(pais);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarPaises.aspx", false);
 
 
 

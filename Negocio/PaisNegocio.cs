@@ -86,6 +86,7 @@ namespace Negocio
                 datos.setConsultaSP("SP_ModificarPais");
                 datos.setParametros("@idPais", pais.ID);
                 datos.setParametros("@nombrePais", pais.NombrePais);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

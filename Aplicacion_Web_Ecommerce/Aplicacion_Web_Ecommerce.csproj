@@ -167,6 +167,7 @@
     <Content Include="Pages\ListarUsuarios.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\ABMArticulo.aspx" />
+    <Content Include="Pages\LoginSinMaster.aspx" />
     <Content Include="Pages\Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -204,6 +205,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="LoginMaster.Master.cs">
+      <DependentUpon>LoginMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginMaster.Master.designer.cs">
+      <DependentUpon>LoginMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ABMCategoria.aspx.cs">
       <DependentUpon>ABMCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -354,6 +362,13 @@
     <Compile Include="Pages\ABMArticulo.aspx.designer.cs">
       <DependentUpon>ABMArticulo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LoginSinMaster.aspx.cs">
+      <DependentUpon>LoginSinMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LoginSinMaster.aspx.designer.cs">
+      <DependentUpon>LoginSinMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -388,6 +403,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LoginMaster.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />

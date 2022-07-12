@@ -47,7 +47,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     {
                         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
                         categoriaNegocio.eliminarCategoria(id);
-                        Response.Redirect("HomeAdmin.aspx", false);
+                        Response.Redirect("ListarCategorias.aspx", false);
                     }
                 }
 
@@ -88,7 +88,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Esto carga el pais a la base 
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             categoriaNegocio.agregarCategoria(categoria);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarCategorias.aspx", false);
 
         }
 
@@ -101,7 +101,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             categoria.ID = Int16.Parse(Request.QueryString["ID"]);
             categoria.Nombre = TxtCategoriaNombre.Text;
             categoriaNegocio.modificarCategoria(categoria);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarCategorias.aspx", false);
 
         }
 

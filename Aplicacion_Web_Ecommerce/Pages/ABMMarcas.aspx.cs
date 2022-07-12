@@ -51,7 +51,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     {
                         MarcaNegocio marcaNegocio = new MarcaNegocio();
                         marcaNegocio.eliminarMarca(id);
-                        Response.Redirect("HomeAdmin.aspx", false);
+                        Response.Redirect("ListarMarcas.aspx", false);
                     }
                 }
             }
@@ -70,7 +70,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Esto carga el pais a la base 
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             marcaNegocio.agregarMarca(marca);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarMarcas.aspx", false);
 
 
         }
@@ -84,7 +84,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             marca.ID = Int16.Parse(Request.QueryString["ID"]);
             marca.Nombre = TxtNombreMarca.Text;
             marcaNegocio.modificarMarca(marca);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarMarcas.aspx", false);
 
         }
 
