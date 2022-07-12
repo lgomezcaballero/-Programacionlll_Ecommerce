@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+<style>
+    body {background-color: black;} 
+</style>
 
     <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
@@ -14,21 +17,21 @@
             <div class="mb-md-5 mt-md-4 pb-5">
 
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+              <p class="text-white-50 mb-5">Ingrese su usuario y contraseña</p>
 
               <div class="form-outline form-white mb-4">
               <asp:TextBox ID="TxtNombreUsuario" runat="server" class="form-control"  ></asp:TextBox>
-                <label class="form-label" for="typeEmailX">Email</label>
+                <label class="form-label" for="typeEmailX">Nombre de usuario</label>
               </div>
 
               <div class="form-outline form-white mb-4">
                  <asp:TextBox ID="TxtContraseña" type="password"  class="form-control form-control-lg"  runat="server"></asp:TextBox>
-                <label class="form-label" for="typePasswordX">Password</label>
+                <label class="form-label" for="typePasswordX">Contraseña</label>
               </div>
                 <div>
                     <asp:Label ID="LabelError" runat="server" Text="" style="color:red"></asp:Label>
                 </div>
-              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">¿Olvidaste tu contraseña?</a></p>
 
              <asp:Button ID="Button1" runat="server" class="btn btn-outline-light btn-lg px-5"  Text="Ingresar" type="submit" OnClick="Button1_Click"/>
 
@@ -41,7 +44,7 @@
             </div>
 
             <div>
-              <p class="mb-0">¿No tenes cuenta, registrate? <a href="Registro.aspx" class="text-white-50 fw-bold">Registrarse</a>
+              <p class="mb-0">¿No tenes cuenta? <a href="Registrarse.aspx" class="text-white-50 fw-bold">Registrarse</a>
               </p>
             </div>
 

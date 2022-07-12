@@ -168,6 +168,7 @@
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\ABMArticulo.aspx" />
     <Content Include="Pages\LoginSinMaster.aspx" />
+    <Content Include="Pages\Registrarse.aspx" />
     <Content Include="Pages\Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -369,6 +370,13 @@
     <Compile Include="Pages\LoginSinMaster.aspx.designer.cs">
       <DependentUpon>LoginSinMaster.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Registrarse.aspx.cs">
+      <DependentUpon>Registrarse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Registrarse.aspx.designer.cs">
+      <DependentUpon>Registrarse.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -383,6 +391,13 @@
     </Compile>
     <Compile Include="Ecommerce.Master.designer.cs">
       <DependentUpon>Ecommerce.Master</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroMaster.Master.cs">
+      <DependentUpon>RegistroMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroMaster.Master.designer.cs">
+      <DependentUpon>RegistroMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
@@ -411,6 +426,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="RegistroMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
