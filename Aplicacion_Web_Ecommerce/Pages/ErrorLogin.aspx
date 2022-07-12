@@ -3,6 +3,6 @@
 
     <asp:Label ID="Label1" runat="server" Text="text"></asp:Label>
 
-    <a href="Login.aspx">Volver al menu de login</a>
+    <a href="LoginSinMaster.aspx">Volver al menu de login</a>
 
 </asp:Content>
