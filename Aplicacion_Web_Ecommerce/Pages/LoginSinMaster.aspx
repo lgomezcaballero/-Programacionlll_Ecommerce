@@ -25,7 +25,9 @@
                  <asp:TextBox ID="TxtContraseña" type="password"  class="form-control form-control-lg"  runat="server"></asp:TextBox>
                 <label class="form-label" for="typePasswordX">Password</label>
               </div>
-
+                <div>
+                    <asp:Label ID="LabelError" runat="server" Text="" style="color:red"></asp:Label>
+                </div>
               <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
 
              <asp:Button ID="Button1" runat="server" class="btn btn-outline-light btn-lg px-5"  Text="Ingresar" type="submit" OnClick="Button1_Click"/>

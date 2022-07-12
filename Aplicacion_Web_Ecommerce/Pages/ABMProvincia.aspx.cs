@@ -51,7 +51,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     {
                         ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
                         provinciaNegocio.eliminarProvincia(id);
-                        Response.Redirect("HomeAdmin.aspx", false);
+                        Response.Redirect("ListarProvincia.aspx", false);
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Esto carga la provincia a la base 
             ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
             provinciaNegocio.agregarProvincia(provincia);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarProvincia.aspx", false);
 
 
         }
@@ -126,7 +126,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             provincia.NombreProvincia = TxtNombreDeLaProvincia.Text;
 
             provinciaNegocio.modificarProvincia(provincia);
-            Response.Redirect("HomeAdmin.aspx");
+            Response.Redirect("ListarProvincia.aspx");
         }
 
 

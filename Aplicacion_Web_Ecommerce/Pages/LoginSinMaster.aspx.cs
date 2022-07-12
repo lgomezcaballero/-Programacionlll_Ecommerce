@@ -21,6 +21,16 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            if(TxtNombreUsuario.Text == "" ||
+                TxtContraseña.Text == "")
+            {
+                LabelError.Text = "Debe llenar los campos";
+            }
+
+
+            else
+            {
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario usuariologin = new Usuario();
 
@@ -60,8 +70,11 @@ namespace Aplicacion_Web_Ecommerce.Pages
                 Session.Add("error", "Usuario o contraseña incorrectos");
                 //LabelDatosIncorrectos.Text = "Usuario o contraseña incorrectos";
                 //Response.Redirect("Login", false);
-                Response.Redirect("ErrorLogin.aspx", false);
+                LabelError.Text = "Usuario o contraseña incorrectos";
                 //Response.Redirect("ErrorLogin.aspx", false);
+                //Response.Redirect("ErrorLogin.aspx", false);
+            }
+
             }
 
         }

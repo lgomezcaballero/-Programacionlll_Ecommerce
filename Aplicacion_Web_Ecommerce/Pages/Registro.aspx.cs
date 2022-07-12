@@ -87,6 +87,10 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Esta es la dropdown de provincia
 
             DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaprovincia"]).FindAll(x => x.Pais.ID == id);
+            //if(DropDownListProvincia.DataSource[)
+            //{
+
+            //}
             DropDownListProvincia.DataValueField = "ID";
             DropDownListProvincia.DataTextField = "NombreProvincia";
             DropDownListProvincia.DataBind();
