@@ -24,6 +24,14 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             else
             {
+
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorLogin.aspx", false);
+                }
+
+                else { 
                 Marca marca = new Marca();
 
                 if (!IsPostBack)
@@ -54,6 +62,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                         Response.Redirect("ListarMarcas.aspx", false);
                     }
                 }
+              }
             }
         }
 
