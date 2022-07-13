@@ -17,10 +17,29 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //Esto lo hago para guardar el las provincias en session 
-            listaProvincias = provincianegocio.listar();
-            if (!IsPostBack)
-                Session.Add("listaProvincias", listaProvincias);
+            if (Session["TeLogueaste"] == null)
+            {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
+
+                else
+                {
+                    //Esto lo hago para guardar el las provincias en session 
+                    listaProvincias = provincianegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listaProvincias", listaProvincias);
+
+                }
+            }
 
         }
     }
