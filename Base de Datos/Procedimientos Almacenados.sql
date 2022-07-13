@@ -318,7 +318,9 @@ Create Procedure SP_AgregarUsuario(
 	@nombreUsuario varchar(20),
 	@contraseña varchar(30),
 	@idTipoUsuario tinyint,
-	@idLocalidad int
+	@idLocalidad int,
+	@email varchar(100),
+	@telefono varchar(50)
 )
 As
 Begin
@@ -326,7 +328,9 @@ Begin
 		Begin Transaction
 			Insert into Usuarios(Apellidos, Nombres, DNI, NombreUsuario, Contraseña, IDTipoUsuario, IDLocalidad)
 			values (@apellidos, @nombres, @dni, @nombreUsuario, @contraseña, @idTipoUsuario, @idLocalidad)
-			Insert into Carritos (IDCarrito) values (@@IDENTITY)
+			Declare @idUsuario bigint SET @idUsuario = @@IDENTITY
+			Insert into Carritos (IDCarrito) values (@idUsuario)
+			Insert into Contactos (IDUsuario, Email, Telefono) values (@idUsuario, @email, @telefono)
 		Commit Transaction
 	End Try
 	Begin Catch
@@ -368,6 +372,20 @@ Begin
 	Begin Try
 		Begin Transaction
 			Update Usuarios Set Estado = 0 Where IDUsuario = @idUsuario
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo eliminar el usuario', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_ObtenerIDUsuarioNuevo
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Select @@IDENTITY
 		Commit Transaction
 	End Try
 	Begin Catch
