@@ -44,7 +44,7 @@ namespace Aplicacion_Web_Ecommerce
         {
 
             //No me convence del todo esto
-            if (Session["TeLogueaste"] == null || Session["Admin"] == null/*&& ((Usuario)Session["TeLogueaste"]).TipoUsuario.NombreTipo != "Administrador"*/)
+            if (Session["TeLogueaste"] == null/*&& ((Usuario)Session["TeLogueaste"]).TipoUsuario.NombreTipo != "Administrador"*/)
             {
                 Session.Add("error", "Solo lo los administradores pueden acceder a esta pagina");
                 Response.Redirect("ErrorLogin.aspx", false);
@@ -52,40 +52,50 @@ namespace Aplicacion_Web_Ecommerce
 
             else
             {
-                listaArticulos = negocio.listar();
-                if (!IsPostBack)
-                    Session.Add("listaArticulos", listaArticulos);
 
-                //Esto lo hago para guardar el pais en session 
-                listaPaises = paisNegocio.listar();
-                if (!IsPostBack)
-                    Session.Add("listapaises", listaPaises);
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
 
-                //Esto lo hago para guardar el las provincias en session 
-                listaProvincias = provincianegocio.listar();
-                if (!IsPostBack)
-                    Session.Add("listaProvincias", listaProvincias);
+                else
+                {
+                    listaArticulos = negocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listaArticulos", listaArticulos);
 
-                //Esto lo hago para guardar las categorias en la session 
-                listacategoria = categoriaNegocio.listar();
-                if (!IsPostBack)
-                    Session.Add("listacategoria", listacategoria);
+                    //Esto lo hago para guardar el pais en session 
+                    listaPaises = paisNegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listapaises", listaPaises);
+
+                    //Esto lo hago para guardar el las provincias en session 
+                    listaProvincias = provincianegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listaProvincias", listaProvincias);
+
+                    //Esto lo hago para guardar las categorias en la session 
+                    listacategoria = categoriaNegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listacategoria", listacategoria);
 
 
-                listademarcas = marcaNegocio.listar();
-                if (!IsPostBack)
-                    Session.Add("listademarcas", listademarcas);
+                    listademarcas = marcaNegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listademarcas", listademarcas);
 
-                //Esto lo hago para guardar las localidades en la session //ok
-                if (!IsPostBack)
-                    Session.Add("listalocalidades", listalocalidades);
+                    //Esto lo hago para guardar las localidades en la session //ok
+                    if (!IsPostBack)
+                        Session.Add("listalocalidades", listalocalidades);
 
-                //Esto lo hago para guardar los Usuarios en la session //ok
-                listausuarios = usuarioNegocio.listar();
-                if (!IsPostBack)
-                    Session.Add("listausuarios", listausuarios);
+                    //Esto lo hago para guardar los Usuarios en la session //ok
+                    listausuarios = usuarioNegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listausuarios", listausuarios);
+                }
+
             }
-
         }
     }
 }
