@@ -37,13 +37,67 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p>Envío (a acordar con el vendedor)</p>
-                            <p>Retirar en la dirección del vendedor</p>
-                            <p>Puede retirar desde el <%: fechaHoy %></p>
+                            <div class="bg-opacity-10 bg-success p-2 rounded row text-dark" style="margin-bottom: 0.5rem;">
+                                <div class="col-1">
+                                    <asp:RadioButton ID="rdbEnvio" Text="" runat="server" GroupName="Entrega"/>
+                                </div>
+                                <div class="col">
+                                    <p>Envío (a acordar con el vendedor)</p>
+                                </div>
+                            </div>
+                            <div class="bg-opacity-10 bg-success p-2 rounded row text-dark">
+                                <div class="col-1">
+                                    <asp:RadioButton ID="rdbRetiro" Text="" runat="server" GroupName="Entrega" />
+                                </div>
+                                <div class="col">
+                                    <p>Retirar en la dirección del vendedor</p>                                    
+                                    <p>Puede retirar desde el <%: fechaHoy %></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="bg-opacity-10 bg-success p-2 rounded row text-dark" style="margin-bottom: 0.5rem;">
+                                <div class="col-1">
+                                    <asp:RadioButton ID="rdbEfectivo" Text="" Checked="true" runat="server" GroupName="FormaPago"/>
+                                </div>
+                                <div class="col">
+                                    <p>Efectivo</p>
+                                </div>
+                            </div>
+                            <div class="bg-opacity-10 bg-success p-2 rounded row text-dark">
+                                <div class="col-1">
+                                    <asp:RadioButton ID="rdbMP" Text="" runat="server" GroupName="FormaPago" />
+                                </div>
+                                <div class="col">
+                                    <p>Mercado Pago</p>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <asp:Button ID="btnCompra" CssClass="btn btn-success" runat="server" Text="Finalizar Compra" 
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop" OnClick="btnCompra_Click"/>
+
+<%--            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>--%>
         </div>
         <div class="col-5 overflow-auto">
             <%foreach (var item in factura.Carrito.ArticulosCarrito)

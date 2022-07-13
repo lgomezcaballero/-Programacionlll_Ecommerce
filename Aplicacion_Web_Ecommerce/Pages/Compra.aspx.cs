@@ -65,7 +65,7 @@ namespace Aplicacion_Web_Ecommerce
             talla = negocio.listar();
             foreach (var item in talla)
             {
-                if(item.IDTalla == idTalle)
+                if (item.IDTalla == idTalle)
                 {
                     nombre = item.Nombre;
                     continue;
@@ -82,6 +82,72 @@ namespace Aplicacion_Web_Ecommerce
             carrito = (Dominio.Carrito)Session["CarritoUsuario"];
             carrito = negocio.mostrarCarrito(carrito.ID);
             Session.Add("CarritoUsuario", carrito);
+        }
+
+        protected void btnCompra_Click(object sender, EventArgs e)
+        {
+            Dominio.Carrito carro = new Dominio.Carrito();
+            carro = (Dominio.Carrito)Session["CarritoUsuario"];
+            //foreach (var item in carro.ArticulosCarrito)
+            //{
+            //    //if ((obtenerStock(item.Articulo.ID, item.IDTalle) - item.Cantidad) < 0)
+            //}
+            //Response.Redirect("Compra.aspx", false);
+
+
+            CarritoNegocio cNegocio = new CarritoNegocio();
+            FacturaNegocio fNegocio = new FacturaNegocio();
+            Factura factura = new Factura();
+            factura.FormaPago = new FormaPago();
+            factura.FormaPago.ID = obtenerIDFormaPago();
+            factura.Carrito = new Dominio.Carrito();
+            factura.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+            factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+            factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
+            fNegocio.comprar(factura);
+            actualizarCarrito();
+
+            OutlookAutomation mail = new OutlookAutomation();
+            string body = @"<style>
+                            h1{color:dodgerblue;}
+                            h2{color:darkorange;}
+                            </style>
+                            <h1>Este es el body del correo</h1></br>
+                            <h2>Este es el segundo párrafo</h2>";
+            mail.enviarMail("leandrogomez343@gmail.com", "Este correo fue enviado via C-sharp", body);
+
+            Response.Redirect("WebForm1.aspx", false);
+        }
+
+        protected byte obtenerIDFormaPago()
+        {
+            byte idFormaPago = 0;
+            FormaPagoNegocio negocio = new FormaPagoNegocio();
+            List<FormaPago> aux = new List<FormaPago>();
+            aux = negocio.listar();
+            if (rdbEfectivo.Checked)
+            {
+                foreach (var item in aux)
+                {
+                    if (item.Nombre.Equals("Efectivo"))
+                    {
+                        idFormaPago = item.ID;
+                        break;
+                    }
+                }
+            }
+            else if (rdbMP.Checked)
+            {
+                foreach (var item in aux)
+                {
+                    if (item.Nombre.Equals("MercadoPago"))
+                    {
+                        idFormaPago = item.ID;
+                        break;
+                    }
+                }
+            }
+            return idFormaPago;
         }
     }
 }
