@@ -24,33 +24,43 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             else
             {
-                Pais pais = new Pais();
-
-                if (!IsPostBack)
+                if (Session["Admin"] == null)
                 {
-                    if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
-                    {
-                        tipo = Request.QueryString["Type"];
-                        id = byte.Parse(Request.QueryString["ID"]);
-                    }
-                    if (Request.QueryString["Type"] == "a")
-                        tipo = Request.QueryString["Type"];
-                    if (tipo == "e")
-                    {
-                        //Con esta funciom obtine el articulo que se busca
-                        pais = obtenerPais(id);
-                        //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                        setearCamposModificarPais(pais);
-                    }
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
 
-                    //Esto elimina de manera logica el pais
-                    if (Request.QueryString["Type"] == "d")
+                else
+                {
+
+                    Pais pais = new Pais();
+
+                    if (!IsPostBack)
                     {
-                        PaisNegocio paisNegocio = new PaisNegocio();
-                        paisNegocio.EliminarPais(id);
-                        Response.Redirect("ListarPaises.aspx", false);
+                        if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                        {
+                            tipo = Request.QueryString["Type"];
+                            id = byte.Parse(Request.QueryString["ID"]);
+                        }
+                        if (Request.QueryString["Type"] == "a")
+                            tipo = Request.QueryString["Type"];
+                        if (tipo == "e")
+                        {
+                            //Con esta funciom obtine el articulo que se busca
+                            pais = obtenerPais(id);
+                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                            setearCamposModificarPais(pais);
+                        }
+
+                        //Esto elimina de manera logica el pais
+                        if (Request.QueryString["Type"] == "d")
+                        {
+                            PaisNegocio paisNegocio = new PaisNegocio();
+                            paisNegocio.EliminarPais(id);
+                            Response.Redirect("ListarPaises.aspx", false);
 
 
+                        }
                     }
                 }
             }
