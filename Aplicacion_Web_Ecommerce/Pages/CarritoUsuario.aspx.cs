@@ -27,14 +27,14 @@ namespace Aplicacion_Web_Ecommerce
             {
                 //if (!IsPostBack)
                 //{
-                    CarritoNegocio negocio = new CarritoNegocio();
-                    if(Request.QueryString["IDArt"] != null && Request.QueryString["IDT"] != null)
-                    {
-                        long idUsuario = (long)Session["IDUsuarioLogueado"];
-                        long idArticulo = long.Parse(Request.QueryString["IDArt"]);
-                        byte idTalle = byte.Parse(Request.QueryString["IDT"]);
-                        negocio.eliminarArticuloCarrito(idUsuario, idArticulo, idTalle);
-                    }
+                CarritoNegocio negocio = new CarritoNegocio();
+                if (Request.QueryString["IDArt"] != null && Request.QueryString["IDT"] != null)
+                {
+                    long idUsuario = (long)Session["IDUsuarioLogueado"];
+                    long idArticulo = long.Parse(Request.QueryString["IDArt"]);
+                    byte idTalle = byte.Parse(Request.QueryString["IDT"]);
+                    negocio.eliminarArticuloCarrito(idUsuario, idArticulo, idTalle);
+                }
                 actualizarCarrito();
 
                 //}
@@ -84,7 +84,7 @@ namespace Aplicacion_Web_Ecommerce
             //actualizarCarrito();
         }
 
-        
+
 
         protected void actualizarCarrito()
         {

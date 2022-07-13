@@ -14,14 +14,14 @@ namespace Aplicacion_Web_Ecommerce
         public Articulo articulo { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack && Session["articuloAux"] != null) 
+            if (IsPostBack && Session["articuloAux"] != null)
                 articulo = (Articulo)Session["articuloAux"];
 
             if (!IsPostBack)
             {
                 TallaNegocio tNegocio = new TallaNegocio();
                 Session.Add("Talles", tNegocio.listar());
-                if(Request.QueryString["IDinfoArt"] != null )
+                if (Request.QueryString["IDinfoArt"] != null)
                 {
                     articulo = new Articulo();
                     long idArticulo = long.Parse(Request.QueryString["IDinfoArt"]);
