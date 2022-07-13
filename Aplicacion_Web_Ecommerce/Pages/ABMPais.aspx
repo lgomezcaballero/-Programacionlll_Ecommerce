@@ -20,7 +20,14 @@
 
      <%//Cuando apreto el boton para agregar la pantalla se pone en blanco, ver eso%>
 
-    <asp:Button ID="BtnAgregar" runat="server" onclick="BtnAgregar_Click" Text="Agregar" />
+    
+
+       <div class="mb-3 row">
+            <div class="d-grid gap-2 d-md-block">
+                <asp:Button ID="BtnAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="BtnAtras_Click" />
+                <asp:Button ID="BtnAgregar" runat="server" onclick="BtnAgregar_Click" Text="Agregar" CssClass="btn btn-primary"/>     
+            </div>
+        </div>
         
      <%//----------------------------------------------------------------------------------------------- %>
 
@@ -38,8 +45,14 @@
         </div>
     </div>
 
-    <asp:Button ID="BtnModificar" runat="server" onclick="BtnModificar_Click" Text="Editar" />
+   
 
+        <div class="mb-3 row">
+            <div class="d-grid gap-2 d-md-block">
+                <asp:Button ID="ButtonAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="BtnAtras_Click" />
+                <asp:Button ID="BtnModificar" runat="server" onclick="BtnModificar_Click" Text="Editar" CssClass="btn btn-primary"/>
+            </div>
+        </div>
         <%} %>
 
 </asp:Content>

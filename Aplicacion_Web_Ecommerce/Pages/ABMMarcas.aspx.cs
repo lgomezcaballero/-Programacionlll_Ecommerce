@@ -116,5 +116,10 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             TxtNombreMarca.Text = marca.Nombre;
         }
+
+        protected void ButtonAtras_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarMarcas.aspx", false);
+        }
     }
 }

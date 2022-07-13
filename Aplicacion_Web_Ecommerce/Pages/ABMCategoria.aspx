@@ -15,9 +15,22 @@
                 <asp:TextBox ID="TextBoxNombreCategoria" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
+
+        
+
     </div>
 
-    <asp:Button ID="BtnAgregar" runat="server" onclick="BtnAgregar_Click" Text="Aceptar" />
+
+         <div class="mb-3 row">
+            <div class="d-grid gap-2 d-md-block">
+                <asp:Button ID="ButtonAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="btnAtrás_Click" />
+                <asp:Button ID="BtnAgregar" runat="server" onclick="BtnAgregar_Click" Text="Aceptar" CssClass="btn btn-primary"/>
+            </div>
+        </div>
+
+    <div>
+    <a href="ListarCategorias.aspx"> Volver Atras</a>
+    </div>
         
         
         
@@ -35,9 +48,20 @@
                 <asp:TextBox ID="TxtCategoriaNombre" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
+
+              <div class="mb-3 row">
+            <div class="d-grid gap-2 d-md-block">
+                <asp:Button ID="btnAtrás" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="btnAtrás_Click" />
+                <asp:Button ID="BtnEditar" runat="server" onclick="BtnEditar_Click" Text="Editar" CssClass="btn btn-primary"/>
+            </div>
+        </div>
+
     </div>
 
-    <asp:Button ID="BtnEditar" runat="server" onclick="BtnEditar_Click" Text="Editar" />
+    
+<%--    <div>
+    <a href="ListarCategorias.aspx"> Volver Atras</a>
+    </div>--%>
 
 
                

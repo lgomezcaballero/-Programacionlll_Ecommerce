@@ -33,6 +33,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.TextBox TextBoxNombreCategoria;
 
         /// <summary>
+        /// Control ButtonAtras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAtras;
+
+        /// <summary>
         /// Control BtnAgregar.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtCategoriaNombre;
+
+        /// <summary>
+        /// Control btnAtrás.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAtrás;
 
         /// <summary>
         /// Control BtnEditar.

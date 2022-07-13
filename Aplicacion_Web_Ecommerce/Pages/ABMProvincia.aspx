@@ -19,10 +19,14 @@
     </div>
 
 
-
-    <asp:Button ID="BtnAgregar" runat="server" OnClick="BtnAgregar_Click" Text="Agregar" />
-    
         
+           <div class="mb-3 row">
+            <div class="d-grid gap-2 d-md-block">
+                <asp:Button ID="ButtonAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="ButtonAtras_Click" />
+                <asp:Button ID="BtnAgregar" runat="server" OnClick="BtnAgregar_Click" Text="Agregar" CssClass="btn btn-primary"/>             
+            </div>
+        </div>
+
      <%//----------------------------------------------------------------------------------------------- %>
 
         
@@ -43,7 +47,13 @@
         </div>
     </div>
 
-    <asp:Button ID="BtnEditar" runat="server" onclick="BtnEditar_Click" Text="Editar" />
+
+      <div class="mb-3 row">
+            <div class="d-grid gap-2 d-md-block">
+                <asp:Button ID="BtnAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="ButtonAtras_Click" />
+                <asp:Button ID="Button2" runat="server" OnClick="BtnEditar_Click" Text="Agregar" CssClass="btn btn-primary"/>             
+            </div>
+        </div>
     
 
         <%} %>

@@ -129,6 +129,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
             Response.Redirect("ListarProvincia.aspx");
         }
 
-
+        protected void ButtonAtras_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarProvincia.aspx", false);
+        }
     }
 }

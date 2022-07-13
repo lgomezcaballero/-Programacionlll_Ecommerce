@@ -105,6 +105,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         }
 
-
+        protected void btnAtrás_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarCategorias.aspx", false);
+        }
     }
 }

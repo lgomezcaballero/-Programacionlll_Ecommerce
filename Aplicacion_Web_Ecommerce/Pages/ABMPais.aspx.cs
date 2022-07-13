@@ -111,5 +111,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         }
 
+        protected void BtnAtras_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarPaises.aspx", false);
+        }
     }
 }

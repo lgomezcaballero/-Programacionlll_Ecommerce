@@ -110,7 +110,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
 
-
+                
         }
         public void agregarUsuario(Usuario usuario)
         {
