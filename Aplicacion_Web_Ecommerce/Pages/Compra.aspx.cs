@@ -106,17 +106,38 @@ namespace Aplicacion_Web_Ecommerce
             factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
             fNegocio.comprar(factura);
             actualizarCarrito();
+            enviarMail(factura);
+        }
 
+        protected void enviarMail(Factura factura)
+        {
             OutlookAutomation mail = new OutlookAutomation();
             string body = @"<style>
                             h1{color:dodgerblue;}
                             h2{color:darkorange;}
                             </style>
                             <h1>Este es el body del correo</h1></br>
-                            <h2>Este es el segundo párrafo</h2>";
-            mail.enviarMail("leandrogomez343@gmail.com", "Este correo fue enviado via C-sharp", body);
+                            <h2>Este es el segundo párrafo</h2>
+                            <p>" + factura.PrecioTotal + "</p>";
+            mail.enviarMail(obtenerEmail(factura.Carrito.ID), "Detalle - Compra - Tienda Virtual", body);
 
-            Response.Redirect("WebForm1.aspx", false);
+            Response.Redirect("FinalCompra.aspx", false);
+        }
+
+        protected string obtenerEmail(long idUsuario)
+        {
+            string email = null;
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            //List<Usuario> usuario = new List<Usuario>();
+            foreach (var item in negocio.listar())
+            {
+                if (item.ID == idUsuario)
+                {
+                    email = item.Contacto.Email;
+                    continue;
+                }
+            }
+            return email;
         }
 
         protected byte obtenerIDFormaPago()
