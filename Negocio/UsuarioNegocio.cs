@@ -11,7 +11,7 @@ namespace Negocio
     {
         public List<Usuario> listar()
         {
-            List<Usuario> lista = new List<Usuario>();  
+            List<Usuario> lista = new List<Usuario>();
             AccesoDatos datos = new AccesoDatos();
 
             try
@@ -41,7 +41,7 @@ namespace Negocio
 
                     if (!(datos.Lector["EstadoUsuario"] is DBNull))
                         aux.Estado = (bool)datos.Lector["EstadoUsuario"];
-                    
+
                     aux.TipoUsuario = new TipoUsuario();
                     aux.TipoUsuario.ID = (byte)datos.Lector["IDTipoUsuario"]; //ok
 
@@ -97,7 +97,7 @@ namespace Negocio
 
                 }
 
-                return lista;   
+                return lista;
             }
             catch (Exception ex)
             {
@@ -110,7 +110,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
 
-                
+
         }
         public void agregarUsuario(Usuario usuario)
         {
@@ -125,7 +125,10 @@ namespace Negocio
                 datos.setParametros("@contraseña", usuario.Contraseña);
                 datos.setParametros("@idTipoUsuario", usuario.TipoUsuario.ID);
                 datos.setParametros("@idLocalidad", usuario.Localidad.ID);
+                datos.setParametros("@email", usuario.Contacto.Email);
+                datos.setParametros("@telefono", usuario.Contacto.Telefono);
                 datos.ejecutarAccion();
+                //agregarContacto(usuario);
             }
             catch (Exception ex)
             {
@@ -353,5 +356,38 @@ namespace Negocio
             }
 
         }
+
+        //public void agregarContacto(Usuario usuario)
+        //{
+        //    ContactoNegocio negocio = new ContactoNegocio();
+        //    usuario.Contacto.ID = this.obtenerIDUsuarioNuevo(usuario.Contacto);
+        //    negocio.agregarContacto(usuario.Contacto);
+        //}
+
+        //public long obtenerIDUsuarioNuevo(Contacto contacto)
+        //{
+        //    AccesoDatos datos = new AccesoDatos();
+        //    try
+        //    {
+        //        datos.setConsultaSP("SP_ObtenerIDUsuarioNuevo");
+        //        datos.ejecutarLectura();
+        //        if (datos.Lector.Read())
+        //        {
+        //            if (!(datos.Lector["IDUsuario"] is DBNull))
+        //                contacto.ID = (long)datos.Lector["IDUsuario"]; //ok
+
+        //        }
+        //        return contacto.ID;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
     }
 }
