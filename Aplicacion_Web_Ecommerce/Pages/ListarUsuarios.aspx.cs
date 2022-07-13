@@ -17,10 +17,34 @@ namespace Aplicacion_Web_Ecommerce.Pages
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["TeLogueaste"] == null)
+            {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
+
+                else
+                {
+
+
+                }
+                listausuarios = usuarioNegocio.listar();
+                if (!IsPostBack)
+                    Session.Add("listausuarios", listausuarios);
+
+            }
+
+
             //Esto lo hago para guardar los Usuarios en la session //ok
-            listausuarios = usuarioNegocio.listar();
-            if (!IsPostBack)
-                Session.Add("listausuarios", listausuarios);
         }
     }
 }
