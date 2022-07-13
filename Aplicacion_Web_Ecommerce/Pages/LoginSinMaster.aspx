@@ -3,6 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
 <style>
     body {background-color: black;} 
 </style>
@@ -28,12 +30,25 @@
                  <asp:TextBox ID="TxtContraseña" type="password"  class="form-control form-control-lg"  runat="server"></asp:TextBox>
                 <label class="form-label" for="typePasswordX">Contraseña</label>
               </div>
+
+
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
                 <div>
                     <asp:Label ID="LabelError" runat="server" Text="" style="color:red"></asp:Label>
                 </div>
+            </ContentTemplate>
+    </asp:UpdatePanel>
+
+                
               <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">¿Olvidaste tu contraseña?</a></p>
 
-             <asp:Button ID="Button1" runat="server" class="btn btn-outline-light btn-lg px-5"  Text="Ingresar" type="submit" OnClick="Button1_Click"/>
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+             <asp:Button ID="Button1" runat="server" class="btn btn-outline-light btn-lg px-5"  Text="Ingresar" type="submit" OnClick="Button1_Click"/>        
+            </ContentTemplate>
+    </asp:UpdatePanel>
+
 
               <div class="d-flex justify-content-center text-center mt-4 pt-1">
                 <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
