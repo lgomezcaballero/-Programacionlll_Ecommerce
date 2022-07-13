@@ -16,10 +16,30 @@ namespace Aplicacion_Web_Ecommerce.Pages
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listacategoria = categoriaNegocio.listar();
-            if (!IsPostBack)
-                Session.Add("listacategoria", listacategoria);
 
+            if (Session["TeLogueaste"] == null)
+            {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+
+
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
+
+                else
+                {
+                    listacategoria = categoriaNegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listacategoria", listacategoria);
+                }
+            }
         }
     }
 }
