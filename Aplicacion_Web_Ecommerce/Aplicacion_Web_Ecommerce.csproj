@@ -131,6 +131,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Pages\ErrorAcceso.aspx" />
     <Content Include="Pages\ErrorLogin.aspx" />
     <Content Include="Pages\GestionItems.aspx" />
     <Content Include="Pages\Home.aspx" />
@@ -206,6 +207,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ErrorMaster.Master.cs">
+      <DependentUpon>ErrorMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorMaster.Master.designer.cs">
+      <DependentUpon>ErrorMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="LoginMaster.Master.cs">
       <DependentUpon>LoginMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -268,6 +276,13 @@
     </Compile>
     <Compile Include="Pages\Compra.aspx.designer.cs">
       <DependentUpon>Compra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ErrorAcceso.aspx.cs">
+      <DependentUpon>ErrorAcceso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ErrorAcceso.aspx.designer.cs">
+      <DependentUpon>ErrorAcceso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ErrorLogin.aspx.cs">
       <DependentUpon>ErrorLogin.aspx</DependentUpon>
@@ -419,6 +434,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LoginMaster.Master" />
+    <Content Include="ErrorMaster.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
