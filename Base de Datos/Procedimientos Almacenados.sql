@@ -380,20 +380,6 @@ Begin
 	End Catch
 End
 go
-Create Procedure SP_ObtenerIDUsuarioNuevo
-As
-Begin
-	Begin Try
-		Begin Transaction
-			Select @@IDENTITY
-		Commit Transaction
-	End Try
-	Begin Catch
-		RAISERROR('Error, no se pudo eliminar el usuario', 16, 1)
-		Rollback Transaction
-	End Catch
-End
-go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarMarcas
