@@ -25,33 +25,43 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             else
             {
-                Provincia provincia = new Provincia();
 
-                //TP lean
-
-                if (!IsPostBack)
+                if (Session["Admin"] == null)
                 {
-                    if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
-                    {
-                        tipo = Request.QueryString["Type"];
-                        id = int.Parse(Request.QueryString["ID"]);
-                    }
-                    if (Request.QueryString["Type"] == "a")
-                        tipo = Request.QueryString["Type"];
-                    if (tipo == "e")
-                    {
-                        /*
-                        //Con esta funciom obtine el articulo que se busca
-                        provincia = obtenerProvincia(id);
-                        //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                         setearCamposModificarPais(pais);*/
-                    }
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
 
-                    if (Request.QueryString["Type"] == "d")
+                else
+                {
+                    Provincia provincia = new Provincia();
+
+                    //TP lean
+
+                    if (!IsPostBack)
                     {
-                        ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
-                        provinciaNegocio.eliminarProvincia(id);
-                        Response.Redirect("ListarProvincia.aspx", false);
+                        if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                        {
+                            tipo = Request.QueryString["Type"];
+                            id = int.Parse(Request.QueryString["ID"]);
+                        }
+                        if (Request.QueryString["Type"] == "a")
+                            tipo = Request.QueryString["Type"];
+                        if (tipo == "e")
+                        {
+                            /*
+                            //Con esta funciom obtine el articulo que se busca
+                            provincia = obtenerProvincia(id);
+                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                             setearCamposModificarPais(pais);*/
+                        }
+
+                        if (Request.QueryString["Type"] == "d")
+                        {
+                            ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
+                            provinciaNegocio.eliminarProvincia(id);
+                            Response.Redirect("ListarProvincia.aspx", false);
+                        }
                     }
                 }
             }
