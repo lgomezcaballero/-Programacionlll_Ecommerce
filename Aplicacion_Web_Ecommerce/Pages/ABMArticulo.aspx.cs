@@ -25,64 +25,75 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             else
             {
-                Articulo articulo = new Articulo();
 
-                if (!IsPostBack)
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
+
+                else
                 {
 
-                    MarcaNegocio mNegocio = new MarcaNegocio();
+                    Articulo articulo = new Articulo();
 
-                    CategoriaNegocio cNegocio = new CategoriaNegocio();
-
-                    GeneroNegocio gNegocio = new GeneroNegocio();
-
-
-                    Session.Add("listaMarcas", mNegocio.listar());
-                    Session.Add("listaCategorias", cNegocio.listar());
-                    Session.Add("listaGeneros", gNegocio.listar());
-                    if (Request.QueryString["Type"] != null)
+                    if (!IsPostBack)
                     {
-                        tipo = Request.QueryString["Type"];
-                        if (Request.QueryString["ID"] != null)
-                            id = long.Parse(Request.QueryString["ID"]);
 
-                        ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
-                        articulo.Talles = new List<ArticuloTalla>();
-                        articulo.Talles = atNegocio.listar(id);
-                        Session.Add("tallesArticulo", articulo.Talles);
-                        if (tipo == "a")
+                        MarcaNegocio mNegocio = new MarcaNegocio();
+
+                        CategoriaNegocio cNegocio = new CategoriaNegocio();
+
+                        GeneroNegocio gNegocio = new GeneroNegocio();
+
+
+                        Session.Add("listaMarcas", mNegocio.listar());
+                        Session.Add("listaCategorias", cNegocio.listar());
+                        Session.Add("listaGeneros", gNegocio.listar());
+                        if (Request.QueryString["Type"] != null)
                         {
-                            a_ddlMarcas.DataSource = mNegocio.listar();
-                            a_ddlMarcas.DataValueField = "ID";
-                            a_ddlMarcas.DataTextField = "Nombre";
-                            a_ddlMarcas.DataBind();
-                            a_ddlCategorias.DataSource = cNegocio.listar();
-                            a_ddlCategorias.DataValueField = "ID";
-                            a_ddlCategorias.DataTextField = "Nombre";
-                            a_ddlCategorias.DataBind();
-                            a_ddlGeneros.DataSource = gNegocio.listar();
-                            a_ddlGeneros.DataValueField = "ID";
-                            a_ddlGeneros.DataTextField = "Nombre";
-                            a_ddlGeneros.DataBind();
-                        }
-                        if (tipo == "e")
-                        {
-                            ddlMarcas.DataSource = mNegocio.listar();
-                            ddlMarcas.DataValueField = "ID";
-                            ddlMarcas.DataTextField = "Nombre";
-                            ddlMarcas.DataBind();
-                            ddlCategorias.DataSource = cNegocio.listar();
-                            ddlCategorias.DataValueField = "ID";
-                            ddlCategorias.DataTextField = "Nombre";
-                            ddlCategorias.DataBind();
-                            ddlGeneros.DataSource = gNegocio.listar();
-                            ddlGeneros.DataValueField = "ID";
-                            ddlGeneros.DataTextField = "Nombre";
-                            ddlGeneros.DataBind();
-                            //Con esta funciom obtine el articulo que se busca
-                            articulo = obtenerArticulo(id);
-                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                            setearCamposModificar(articulo);
+                            tipo = Request.QueryString["Type"];
+                            if (Request.QueryString["ID"] != null)
+                                id = long.Parse(Request.QueryString["ID"]);
+
+                            ArticuloTallaNegocio atNegocio = new ArticuloTallaNegocio();
+                            articulo.Talles = new List<ArticuloTalla>();
+                            articulo.Talles = atNegocio.listar(id);
+                            Session.Add("tallesArticulo", articulo.Talles);
+                            if (tipo == "a")
+                            {
+                                a_ddlMarcas.DataSource = mNegocio.listar();
+                                a_ddlMarcas.DataValueField = "ID";
+                                a_ddlMarcas.DataTextField = "Nombre";
+                                a_ddlMarcas.DataBind();
+                                a_ddlCategorias.DataSource = cNegocio.listar();
+                                a_ddlCategorias.DataValueField = "ID";
+                                a_ddlCategorias.DataTextField = "Nombre";
+                                a_ddlCategorias.DataBind();
+                                a_ddlGeneros.DataSource = gNegocio.listar();
+                                a_ddlGeneros.DataValueField = "ID";
+                                a_ddlGeneros.DataTextField = "Nombre";
+                                a_ddlGeneros.DataBind();
+                            }
+                            if (tipo == "e")
+                            {
+                                ddlMarcas.DataSource = mNegocio.listar();
+                                ddlMarcas.DataValueField = "ID";
+                                ddlMarcas.DataTextField = "Nombre";
+                                ddlMarcas.DataBind();
+                                ddlCategorias.DataSource = cNegocio.listar();
+                                ddlCategorias.DataValueField = "ID";
+                                ddlCategorias.DataTextField = "Nombre";
+                                ddlCategorias.DataBind();
+                                ddlGeneros.DataSource = gNegocio.listar();
+                                ddlGeneros.DataValueField = "ID";
+                                ddlGeneros.DataTextField = "Nombre";
+                                ddlGeneros.DataBind();
+                                //Con esta funciom obtine el articulo que se busca
+                                articulo = obtenerArticulo(id);
+                                //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                                setearCamposModificar(articulo);
+                            }
                         }
                     }
                 }
