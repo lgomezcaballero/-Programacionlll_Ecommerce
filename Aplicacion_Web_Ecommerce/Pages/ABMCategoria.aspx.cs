@@ -24,33 +24,41 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             else
             {
-                Categoria categoria = new Categoria();
-
-                if (!IsPostBack)
+                if (Session["Admin"] == null)
                 {
-                    if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
-                    {
-                        tipo = Request.QueryString["Type"];
-                        id = Int16.Parse(Request.QueryString["ID"]);
-                    }
-                    if (Request.QueryString["Type"] == "a")
-                        tipo = Request.QueryString["Type"];
-                    if (tipo == "e")
-                    {
-                        //Con esta funciom obtine el articulo que se busca
-                        categoria = obtenerCategoria(id);
-                        //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                        setearCamposModificarCategoria(categoria);
-                    }
-
-                    if (Request.QueryString["Type"] == "d")
-                    {
-                        CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                        categoriaNegocio.eliminarCategoria(id);
-                        Response.Redirect("ListarCategorias.aspx", false);
-                    }
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
                 }
 
+                else
+                {
+                    Categoria categoria = new Categoria();
+
+                    if (!IsPostBack)
+                    {
+                        if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                        {
+                            tipo = Request.QueryString["Type"];
+                            id = Int16.Parse(Request.QueryString["ID"]);
+                        }
+                        if (Request.QueryString["Type"] == "a")
+                            tipo = Request.QueryString["Type"];
+                        if (tipo == "e")
+                        {
+                            //Con esta funciom obtine el articulo que se busca
+                            categoria = obtenerCategoria(id);
+                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                            setearCamposModificarCategoria(categoria);
+                        }
+
+                        if (Request.QueryString["Type"] == "d")
+                        {
+                            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                            categoriaNegocio.eliminarCategoria(id);
+                            Response.Redirect("ListarCategorias.aspx", false);
+                        }
+                    }
+                }
             }
         }
 
