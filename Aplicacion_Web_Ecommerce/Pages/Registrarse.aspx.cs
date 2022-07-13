@@ -284,5 +284,23 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             return false;
         }
+
+        /*
+        protected bool ValidaEmail()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            usuarios = usuarioNegocio.listar();
+
+            foreach (Usuario usuario in usuarios)
+            {
+                if (TxtEmail.Text == usuario.)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }*/
     }
 }
