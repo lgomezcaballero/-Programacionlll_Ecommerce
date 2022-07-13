@@ -17,9 +17,31 @@ namespace Aplicacion_Web_Ecommerce.Pages
         MarcaNegocio marcaNegocio = new MarcaNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listademarcas = marcaNegocio.listar();
-            if (!IsPostBack)
-                Session.Add("listademarcas", listademarcas);
+            if (Session["TeLogueaste"] == null)
+            {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+
+                if (Session["Admin"] == null)
+                {
+                    Session.Add("error", "solo los administradores pueden acceder a esta pagina");
+                    Response.Redirect("ErrorAcceso.aspx", false);
+                }
+
+                else
+                {
+                    listademarcas = marcaNegocio.listar();
+                    if (!IsPostBack)
+                        Session.Add("listademarcas", listademarcas);
+
+                }
+
+            }
+
         }
     }
 }
