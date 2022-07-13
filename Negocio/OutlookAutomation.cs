@@ -13,13 +13,14 @@ namespace Negocio
         public bool enviarMail(string to, string asunto, string body)
         {
             //string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde.";
-            string from = "leandro.gomez3@alumnos.frgp.utn.edu.ar";
-            string displayName = "Nombre Para Mostrar";
+            string from = "tiendavirtual-frpg2022@hotmail.com";
+            string displayName = "Tienda Virtual";
             try
             {
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(from, displayName);
                 mail.To.Add(to);
+                //mail.Bcc()
 
                 mail.Subject = asunto;
                 mail.Body = body;
@@ -27,7 +28,7 @@ namespace Negocio
 
 
                 SmtpClient client = new SmtpClient("smtp.office365.com", 587); //Aquí debes sustituir tu servidor SMTP y el puerto
-                client.Credentials = new NetworkCredential(from, "");
+                client.Credentials = new NetworkCredential(from, "12345a++");
                 client.EnableSsl = true;//En caso de que tu servidor de correo no utilice cifrado SSL,poner en false
 
 
