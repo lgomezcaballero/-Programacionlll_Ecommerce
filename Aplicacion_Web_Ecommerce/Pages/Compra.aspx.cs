@@ -107,27 +107,75 @@ namespace Aplicacion_Web_Ecommerce
             fNegocio.comprar(factura);
             actualizarCarrito();
             enviarMail(factura);
+            recibirMail(factura);
         }
 
         protected void enviarMail(Factura factura)
         {
             OutlookAutomation mail = new OutlookAutomation();
             string EntregaCompra = "";
-            if (factura.FormaPago.ID == 1)
-                EntregaCompra = "<h2>Podés pasar a retirar tu compra desde este momento por la sucursal mas cercana</h2>"
-            else if(factura.FormaPago.ID == 2)
-                EntregaCompra = "<h2>Será contactado/a a la brevedad por vendedor para coordinar el envio</h2>";
+            if (rdbRetiro.Checked)
+                EntregaCompra = "<h2>Podés pasar a retirar tu compra desde este momento por la sucursal mas cercana</h2>";
+            else if (rdbEnvio.Checked)
+                EntregaCompra = "<h2>Serás contactado/a a la brevedad por vendedor para coordinar el envio</h2>";
             
             string body = @"<style>
                             h1{color:dodgerblue;}
                             h2{color:darkorange;}
                             </style>
-                            <h1>"+obtenerNombreUsuario(factura.Carrito.ID)+"Tu pedido ha sido recibido.</h1>"+
+                            <h1>"+obtenerNombreUsuario(factura.Carrito.ID)+", Tu pedido ha sido recibido.</h1>"+
                             EntregaCompra+
-                            "<h2>Valor total de la compra: " + factura.PrecioTotal.ToString() + "</h2>"+
-                            "<p>" + factura.PrecioTotal + "</p></br>"+
-                            "<p>Gracias por elegirnos!</p>";
+                            "<h2>Valor total de la compra: " + string.Format("{0:C}", factura.PrecioTotal) + "</h2></br>"+
+                            "<h3>Gracias por elegirnos!</h3>";
             mail.enviarMail(obtenerEmail(factura.Carrito.ID), "Detalle - Compra - Tienda Virtual", body);
+
+            //Response.Redirect("FinalCompra.aspx", false);
+        }
+
+        protected void recibirMail(Factura factura)
+        {
+            OutlookAutomation mail = new OutlookAutomation();
+            FacturaNegocio fNegocio = new FacturaNegocio();
+            string EntregaCompra = "";
+            string FormaPago = "";
+            if (rdbRetiro.Checked)
+                EntregaCompra = "<h2>El cliente retirará el pedido en la sucursal</h2>";
+            else if (rdbEnvio.Checked)
+                EntregaCompra = "<h2>El cliente solicita envío de pedido</h2>";
+
+            if (rdbEfectivo.Checked)
+                FormaPago = "Efectivo";
+            else if (rdbMP.Checked)
+                FormaPago = "Mercado Pago;";
+
+            string articulo = "";
+            foreach (var item in factura.Carrito.ArticulosCarrito)
+            {
+                articulo += @"<h5>Código Articulo: " + item.Articulo.ID + "</h5>"+
+                              "<h5>Articulo: " + item.Articulo.Nombre + "</h5>"+
+                              "<h5>Marca: " + item.Articulo.Marca.Nombre + "</h5>"+
+                              "<h5>Categoria: " + item.Articulo.Categoria.Nombre + "</h5>"+
+                              "<h5>Género: " + item.Articulo.Genero.Nombre + "</h5>"+
+                              "<h5>Precio: " + item.Articulo.Precio + "</h5>"+
+                              "<h5>Talle: " + obtenerTalla(item.IDTalle) + "</h5>"+
+                              "<h5>Cantidad: " + item.Cantidad + "</h5>"+
+                              "<h5>---------------------------------------------------------</h5>";
+            }
+
+            string body = @"<style>
+                            h1{color:dodgerblue;}
+                            h2{color:darkorange;}
+                            </style>
+                            <h1> Se ha registrado un pedido</h1>
+                            <h5>Cliente: "+ usuario.Nombres + ", " + usuario.Apellidos +"</h5>"+
+                            "<h5>Email: " + usuario.Contacto.Email + "</h5>"+
+                            "<h5>Teléfono: " + usuario.Contacto.Telefono + "</h5>"+
+                             articulo +
+                            "<h5>Forma de pago: " + FormaPago + "</h5>"+
+                            "<h5>Tipo de entrega: " + EntregaCompra + "</h5>"+
+                            "<h2>Valor total de la compra: " + string.Format("{0:C}", factura.PrecioTotal) + "</h2></br>" +
+                            "<h3>Contactar al usuario.</h3>";
+            mail.enviarMail("tiendavirtual-frpg2022@hotmail.com", "Correo interno - Nueva Pedido(#"+fNegocio.obtenerIDFacturaNueva().ToString()+")", body);
 
             Response.Redirect("FinalCompra.aspx", false);
         }
