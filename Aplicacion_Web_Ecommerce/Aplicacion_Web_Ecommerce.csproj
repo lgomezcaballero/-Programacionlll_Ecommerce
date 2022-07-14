@@ -133,6 +133,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Pages\ErrorAcceso.aspx" />
     <Content Include="Pages\ErrorLogin.aspx" />
+    <Content Include="Pages\FinalCompra.aspx" />
     <Content Include="Pages\GestionItems.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="favicon.ico" />
@@ -290,6 +291,13 @@
     </Compile>
     <Compile Include="Pages\ErrorLogin.aspx.designer.cs">
       <DependentUpon>ErrorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FinalCompra.aspx.cs">
+      <DependentUpon>FinalCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\FinalCompra.aspx.designer.cs">
+      <DependentUpon>FinalCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\GestionItems.aspx.cs">
       <DependentUpon>GestionItems.aspx</DependentUpon>

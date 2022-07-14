@@ -112,13 +112,21 @@ namespace Aplicacion_Web_Ecommerce
         protected void enviarMail(Factura factura)
         {
             OutlookAutomation mail = new OutlookAutomation();
+            string EntregaCompra = "";
+            if (factura.FormaPago.ID == 1)
+                EntregaCompra = "<h2>Podés pasar a retirar tu compra desde este momento por la sucursal mas cercana</h2>"
+            else if(factura.FormaPago.ID == 2)
+                EntregaCompra = "<h2>Será contactado/a a la brevedad por vendedor para coordinar el envio</h2>";
+            
             string body = @"<style>
                             h1{color:dodgerblue;}
                             h2{color:darkorange;}
                             </style>
-                            <h1>Este es el body del correo</h1></br>
-                            <h2>Este es el segundo párrafo</h2>
-                            <p>" + factura.PrecioTotal + "</p>";
+                            <h1>"+obtenerNombreUsuario(factura.Carrito.ID)+"Tu pedido ha sido recibido.</h1>"+
+                            EntregaCompra+
+                            "<h2>Valor total de la compra: " + factura.PrecioTotal.ToString() + "</h2>"+
+                            "<p>" + factura.PrecioTotal + "</p></br>"+
+                            "<p>Gracias por elegirnos!</p>";
             mail.enviarMail(obtenerEmail(factura.Carrito.ID), "Detalle - Compra - Tienda Virtual", body);
 
             Response.Redirect("FinalCompra.aspx", false);
@@ -138,6 +146,22 @@ namespace Aplicacion_Web_Ecommerce
                 }
             }
             return email;
+        }
+
+        protected string obtenerNombreUsuario(long idUsuario)
+        {
+            string nombre = null;
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            //List<Usuario> usuario = new List<Usuario>();
+            foreach (var item in negocio.listar())
+            {
+                if (item.ID == idUsuario)
+                {
+                    nombre = item.Nombres;
+                    continue;
+                }
+            }
+            return nombre;
         }
 
         protected byte obtenerIDFormaPago()
