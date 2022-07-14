@@ -47,7 +47,7 @@
                             </div>
                             <div class="bg-opacity-10 bg-success p-2 rounded row text-dark">
                                 <div class="col-1">
-                                    <asp:RadioButton ID="rdbRetiro" Text="" runat="server" GroupName="Entrega" />
+                                    <asp:RadioButton ID="rdbRetiro" Checked Text="" runat="server" GroupName="Entrega" />
                                 </div>
                                 <div class="col">
                                     <p>Retirar en la dirección del vendedor</p>                                    
