@@ -117,7 +117,7 @@ namespace Aplicacion_Web_Ecommerce
             if (rdbRetiro.Checked)
                 EntregaCompra = "<h2>Podés pasar a retirar tu compra desde este momento por la sucursal mas cercana</h2>";
             else if (rdbEnvio.Checked)
-                EntregaCompra = "<h2>Serás contactado/a a la brevedad por vendedor para coordinar el envio</h2>";
+                EntregaCompra = "<h2>Serás contactado/a a la brevedad por el vendedor para coordinar envío</h2>";
             
             string body = @"<style>
                             h1{color:dodgerblue;}
@@ -146,7 +146,7 @@ namespace Aplicacion_Web_Ecommerce
             if (rdbEfectivo.Checked)
                 FormaPago = "Efectivo";
             else if (rdbMP.Checked)
-                FormaPago = "Mercado Pago;";
+                FormaPago = "Mercado Pago";
 
             string articulo = "";
             foreach (var item in factura.Carrito.ArticulosCarrito)
@@ -167,15 +167,16 @@ namespace Aplicacion_Web_Ecommerce
                             h2{color:darkorange;}
                             </style>
                             <h1> Se ha registrado un pedido</h1>
-                            <h5>Cliente: "+ usuario.Nombres + ", " + usuario.Apellidos +"</h5>"+
+                            <h5>Cliente: "+ usuario.Apellidos + ", " + usuario.Nombres +"</h5>"+
                             "<h5>Email: " + usuario.Contacto.Email + "</h5>"+
                             "<h5>Teléfono: " + usuario.Contacto.Telefono + "</h5>"+
+                            "<h5>---------------------------------------------------------</h5>" +
                              articulo +
                             "<h5>Forma de pago: " + FormaPago + "</h5>"+
                             "<h5>Tipo de entrega: " + EntregaCompra + "</h5>"+
                             "<h2>Valor total de la compra: " + string.Format("{0:C}", factura.PrecioTotal) + "</h2></br>" +
                             "<h3>Contactar al usuario.</h3>";
-            mail.enviarMail("tiendavirtual-frpg2022@hotmail.com", "Correo interno - Nueva Pedido(#"+fNegocio.obtenerIDFacturaNueva().ToString()+")", body);
+            mail.enviarMail("tiendavirtual-frpg2022@hotmail.com", "Correo interno - Nuevo Pedido(#"+fNegocio.obtenerIDFacturaNueva().ToString()+")", body);
 
             Response.Redirect("FinalCompra.aspx", false);
         }

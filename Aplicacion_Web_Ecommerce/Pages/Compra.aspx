@@ -108,7 +108,7 @@
                 <div class="col-9">
                     <div class ="row">
                     <div class="col-8"><%: item.Articulo.Nombre %></div>
-                    <div class="col-4"><%: item.Articulo.Precio %></div>
+                    <div class="col-4"><%: string.Format("{0:C}", item.Articulo.Precio) %></div>
                     </div>
                     <div class="row"><p>(Talla <%: obtenerTalla(item.IDTalle) %>) x <%: item.Cantidad %></p></div>
                 </div>
@@ -116,11 +116,11 @@
             <%} %>
             <div class="row">
                 <div class="col-9"><p>Subtotal</p></div>
-                <div class="col-3"><%: factura.PrecioTotal %></div>
+                <div class="col-3"><%: string.Format("{0:C}", factura.PrecioTotal) %></div>
             </div>
             <div class="row">
                 <div class="col-9"><p>Total</p></div>
-                <div class="col-3"><%: factura.PrecioTotal %></div>
+                <div class="col-3"><%: string.Format("{0:C}", factura.PrecioTotal) %></div>
             </div>
 
         </div>
