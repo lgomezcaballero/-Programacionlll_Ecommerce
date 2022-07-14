@@ -93,7 +93,13 @@ namespace Negocio
                     if (!(datos.Lector["EstadoPais"] is DBNull))
                         aux.Localidad.Provincia.Pais.Estado = (bool)datos.Lector["EstadoPais"];
 
-                    lista.Add(aux);
+                    //Esto valida que se cargue a la lista un usuario que este con estado false
+
+                    if(aux.Estado == true)
+                    {
+                      lista.Add(aux);
+                    }
+
 
                 }
 
