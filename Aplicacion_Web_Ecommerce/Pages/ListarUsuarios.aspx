@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
-                    <a class="btn btn-success" href="ABMUsuario?Type=a">Crear Usuarios</a>
+                    <a class="btn btn-success" href="AMBUsuarios?Type=a">Crear Usuarios</a>
                 </div>
             </div>
 
