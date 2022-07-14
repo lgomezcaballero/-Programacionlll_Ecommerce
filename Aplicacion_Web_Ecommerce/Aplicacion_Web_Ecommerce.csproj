@@ -206,6 +206,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMSMaster.Master.cs">
+      <DependentUpon>ABMSMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ABMSMaster.Master.designer.cs">
+      <DependentUpon>ABMSMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ErrorMaster.Master.cs">
@@ -443,6 +450,7 @@
   <ItemGroup>
     <Content Include="LoginMaster.Master" />
     <Content Include="ErrorMaster.Master" />
+    <Content Include="ABMSMaster.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />

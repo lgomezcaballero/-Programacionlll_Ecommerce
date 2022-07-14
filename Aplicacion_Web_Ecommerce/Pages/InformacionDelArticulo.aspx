@@ -25,7 +25,18 @@
             <div class="row">
                 <asp:DropDownList CssClass="form-select mb-3" ID="ddlTalles" runat="server"></asp:DropDownList>
             </div>
-            <asp:Button ID="btnComprar" CssClass="btn btn-primary" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
+
+            <%if(Session["Admin"] != null)
+            {%>
+                <asp:Button ID="button1" Visible="false" CssClass="btn btn-primary" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
+           <% }%>
+
+
+            <%else
+            {%>
+            <asp:Button ID="btnComprar"  CssClass="btn btn-primary" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
+           <% } %>
+
         </div>
     </div>
 
