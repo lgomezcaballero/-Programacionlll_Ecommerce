@@ -187,11 +187,11 @@ namespace Aplicacion_Web_Ecommerce
             OutlookAutomation mail = new OutlookAutomation();
             FacturaNegocio fNegocio = new FacturaNegocio();
             obtenerUsuario(factura.Carrito.ID);
-            string EntregaCompra = "";
-            if (rdbRetiro.Checked)
-                EntregaCompra = "<h2>Podés pasar a retirar tu compra desde este momento por la sucursal mas cercana</h2>";
-            else if (rdbEnvio.Checked)
-                EntregaCompra = "<h2>Serás contactado/a a la brevedad por el vendedor para coordinar envío</h2>";
+            string articulo="";
+            foreach (var item in factura.Carrito.ArticulosCarrito)
+            {
+                articulo += @"<p style=\"+"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> " + item.Articulo.Nombre + " Talle " + obtenerTalla(item.IDTalle) + " </span> " + string.Format("{0:C}", item.Articulo.Precio*item.Cantidad) + " <b style=\"font-size:12px;font-weight:300;\"> / " + item.Cantidad + " x " + item.Articulo.Precio + " </b></p>";
+            }
 
             string body = @"<html>" +
 
@@ -210,7 +210,7 @@ namespace Aplicacion_Web_Ecommerce
 "<tr>" +
 "<td colspan=\"2\" style=\"border: solid 1px #ddd; padding:10px 20px;\">" +
 "<p style=\"font-size:14px;margin:0 0 6px 0;\"><span style=\"font-weight:bold;display:inline-block;min-width:150px\"> Estado del pedido </span><b style=\"color:green;font-weight:normal;margin:0\"> Pagado </b></p>" +
-"<p style=\"font-size:14px;margin:0 0 6px 0;\"><span style=\"font-weight:bold;display:inline-block;min-width:146px\"> Numero Factura </span> " + factura.ID.ToString() + " </ p >"+
+"<p style=\"font-size:14px;margin:0 0 6px 0;\"><span style=\"font-weight:bold;display:inline-block;min-width:146px\"> Numero Factura </span> " + fNegocio.obtenerIDFacturaNueva().ToString() + " </ p >"+
 "<p style=\"font-size:14px;margin:0 0 0 0;\"><span style=\"font-weight:bold;display:inline-block;min-width:146px\"> Precio Total </span> " + string.Format("{0:C}", factura.PrecioTotal) + " </ p >"+
 "</td>"+
 "</tr>"+
@@ -225,24 +225,17 @@ namespace Aplicacion_Web_Ecommerce
 "<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Teléfono </span> " + usuario.Contacto.Telefono + " </p>"+
 "</td>"+
 "<td style=\"width:50%;padding:20px;vertical-align:top\" >"+
-"<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Localidad </span> 2556 - 1259 - 9842 </p>"+
-"<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Codigo Postal </span> Khudiram Pally, Malbazar, West Bengal, India, 735221 </p>"+
-"<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Provincia </span> 2 </p>"+
+"<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Localidad </span> " + usuario.Localidad.NombreLocalidad + " </p>"+
+"<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Codigo Postal </span> " + usuario.Localidad.CodigoPostal + " </p>"+
+"<p style=\"margin:0 0 10px 0;padding:0;font-size:14px;\"><span style=\"display:block;font-weight:bold;font-size:13px;\"> Provincia </span> " + usuario.Localidad.Provincia.NombreProvincia + " </p>"+
 "</td>"+
 "</tr>"+
 "<tr>"+
-"<td colspan=\"2\" style=\"font-size:20px;padding:30px 15px 0 15px;\" > Items </td>"+
+"<td colspan=\"2\" style=\"font-size:20px;padding:30px 15px 0 15px;\" > Productos </td>"+
 "</tr>"+
 "<tr>"+
 "<td colspan=\"2\" style=\"padding:15px;\">"+
-"<p style=\"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\">"+
-"<span style=\"display:block;font-size:13px;font-weight:normal;\"> Homestay with fooding &lodging </span> Rs. 3500 <b style=\"font-size:12px;font-weight:300;\"> / person / day </b>"+
-"</p>"+
-"<p style=\"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> Pickup & Drop </span> Rs. 2000 <b style=\"font-size:12px;font-weight:300;\"> / person / day </b></p>"+
-"<p style=\"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> Local site seeing with guide</span> Rs. 800 <b style=\"font-size:12px;font-weight:300;\"> / person / day </b></p>"+
-"<p style=\"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> Tea tourism with guide </span> Rs. 500 <b style=\"font-size:12px;font-weight:300;\"> / person / day </ b ></p>"+
-"<p style=\"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> River side camping with guide</span> Rs. 1500 <b style=\"font-size:12px;font-weight:300;\"> / person / day </b></p>"+
-"<p style=\"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> Trackking and hiking with guide</span> Rs. 1000 <b style=\"font-size:12px;font-weight:300;\"> / person / day </b></p>"+
+articulo+
 "</td>"+
 "</tr>"+
 "</tbody>"+
