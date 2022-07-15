@@ -157,7 +157,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
         }
         protected void btnAtrás_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HomeAdmin.aspx");
+            Response.Redirect("ListarArticulos.aspx", false);
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -210,7 +210,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         protected void a_btnAtrás_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarArticulos.aspx", false);
         }
 
         protected void a_btnCrear_Click(object sender, EventArgs e)
