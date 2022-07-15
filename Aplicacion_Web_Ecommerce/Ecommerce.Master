@@ -196,7 +196,7 @@
         </header>
 
 
-        <div class="container">
+        <div class="container" style="min-height: 100vh;">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -211,7 +211,7 @@
           style="background-color: #1c2331; margin-top: 1rem;"
           >
     <!-- Section: Social media -->
-    <section
+    <%--<section
              class="d-flex justify-content-between p-4 row"
              style="background-color: #6351ce"
              >
@@ -243,7 +243,7 @@
         </a>
       </div>
       <!-- Right -->
-    </section>
+    </section>--%>
     <!-- Section: Social media -->
 
     <!-- Section: Links  -->
@@ -254,15 +254,13 @@
           <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
-            <h6 class="text-uppercase fw-bold">Company name</h6>
+            <h6 class="text-uppercase fw-bold">Tienda Virtual</h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              Here you can use rows and columns to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit.
+             Esta es una tienda virtual desarrollada por estudiantes de la Universidad Tecnológica Nacional.
             </p>
           </div>
           <!-- Grid column -->
@@ -270,22 +268,22 @@
           <!-- Grid column -->
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Products</h6>
+            <h6 class="text-uppercase fw-bold">Productos</h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              <a href="#!" class="text-white">MDBootstrap</a>
+              <a href="#!" class="text-white">Camperas</a>
             </p>
             <p>
-              <a href="#!" class="text-white">MDWordPress</a>
+              <a href="#!" class="text-white">Remeras</a>
             </p>
             <p>
-              <a href="#!" class="text-white">BrandFlow</a>
+              <a href="#!" class="text-white">Zapatillas</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Bootstrap Angular</a>
+              <a href="#!" class="text-white">Jeans</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -293,22 +291,22 @@
           <!-- Grid column -->
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Useful links</h6>
+            <h6 class="text-uppercase fw-bold">Sobre la Tienda</h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              <a href="#!" class="text-white">Your Account</a>
+              <a href="#!" class="text-white">Atención al cliente</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Become an Affiliate</a>
+              <a href="#!" class="text-white">Cambios y devoluciones</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Shipping Rates</a>
+              <a href="#!" class="text-white">Sea nuestro proveedor</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Help</a>
+              <a href="#!" class="text-white">Dudas Frecuentes</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -316,15 +314,15 @@
           <!-- Grid column -->
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Contact</h6>
+            <h6 class="text-uppercase fw-bold">Contacto</h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
-            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <p><i class="fas fa-home mr-3"></i> General Pacheco, Buenos Aires, Argentina</p>
+            <p><i class="fas fa-envelope mr-3"></i> tiendavirtual-frpg2022@hotmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +541112345678</p>
+            <p><i class="fas fa-print mr-3"></i> +541191234567</p>
           </div>
           <!-- Grid column -->
         </div>
@@ -338,10 +336,9 @@
          class="text-center p-3"
          style="background-color: rgba(0, 0, 0, 0.2)"
          >
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/"
-         >MDBootstrap.com</a
-        >
+      © 2022 Copyright:
+      <a class="text-white">Iaconis-Gómez</a>
+        <p>Todos los derechos reservados.</p>
     </div>
     <!-- Copyright -->
   </footer>
