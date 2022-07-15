@@ -47,7 +47,7 @@
 
 
 
-        <header>
+        <header class="bg-dark p-3 text-white" style="margin-bottom: 0.5rem;">
             <%--<div class="container">--%>
                 <div class="row">
                     <div class="col-2">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             <%--</div>--%>
-            <nav class="navbar navbar-expand-lg bg-light">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <%--    <a class="navbar-brand" href="#">Navbar</a>--%>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,16 +87,105 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown
+                            <li class="nav-item dropdown" style="margin-left: 8rem; margin-right:3rem;">
+                                <a class="dropdown-toggle nav-link text-white" href="#" id="nbMujer" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mujer
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <ul class="dropdown-menu" aria-labelledby="nbMujer">
+                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="#">Blusas</a></li>
+                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+<%--                                    
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" style="margin-left: 3rem; margin-right:3rem;">
+                                <a class="dropdown-toggle nav-link text-white" href="#" id="ngHombre" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hombre
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="ngHombre">
+                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <%--                                    
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" style="margin-left: 3rem; margin-right:3rem;">
+                                <a class="dropdown-toggle nav-link text-white" href="#" id="nbInfantil" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infantil
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="nbInfantil">
+                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <%--                                    
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" style="margin-left: 3rem; margin-right:3rem;">
+                                <a class="dropdown-toggle nav-link text-white" href="#" id="nbDeportes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Deportes
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="nbDeportes">
+                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <%--                                    
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" style="margin-left: 3rem; margin-right:3rem;">
+                                <a class="dropdown-toggle nav-link text-white" href="#" id="nbBelleza" role="button" data-bs-toggle="dropdown" aria-expanded="false">Belleza
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="nbBelleza">
+                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <%--                                    
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown" style="margin-left: 3rem; margin-right:3rem;">
+                                <a class="dropdown-toggle nav-link text-white" href="#" id="nbRebajas" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rebajas
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="nbRebajas">
+                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <%--                                    
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
                                 </ul>
                             </li>
 
@@ -119,7 +208,7 @@
   <!-- Footer -->
   <footer
           class="text-center text-lg-start text-white"
-          style="background-color: #1c2331"
+          style="background-color: #1c2331; margin-top: 1rem;"
           >
     <!-- Section: Social media -->
     <section

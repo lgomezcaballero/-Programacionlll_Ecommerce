@@ -9,7 +9,7 @@
      <div class="row row-cols-1 row-cols-md-4 g-4" style="padding-left:10%; padding-right:10%;">
 
         <%foreach (var item in ListaFiltrada)
-            {%><a href="InformacionDelArticulo?IDinfoArt=<%: item.ID%>">
+            {%><a href="InformacionDelArticulo?IDinfoArt=<%: item.ID%>" class="text-decoration-none">
                 <div class="col">
                     <div class="card h-100">
                         <img src="<%: item.Imagenes[0].URLImagen %>" class="card-img-top" style="max-width:100%;" alt="...">
