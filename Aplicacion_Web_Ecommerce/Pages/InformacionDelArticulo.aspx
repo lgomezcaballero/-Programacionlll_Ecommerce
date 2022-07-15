@@ -6,11 +6,11 @@
 
 
     <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="Home.aspx">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Genero.Nombre%>"><%: articulo.Genero.Nombre %></a></li>
-        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Categoria.Nombre%>"><%: articulo.Categoria.Nombre %></a></li>
-        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Marca.Nombre%>"><%: articulo.Marca.Nombre %></a></li>
-        <li class="breadcrumb-item active"><a href="Busqueda.aspx"><%: articulo.Nombre %></a></li>
+        <li class="breadcrumb-item"><a href="Home.aspx" style="text-decoration: none;">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Genero.Nombre%>" style="text-decoration: none;"><%: articulo.Genero.Nombre %></a></li>
+        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Categoria.Nombre%>" style="text-decoration: none;"><%: articulo.Categoria.Nombre %></a></li>
+        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Marca.Nombre%>" style="text-decoration: none;"><%: articulo.Marca.Nombre %></a></li>
+        <li class="breadcrumb-item active"><%: articulo.Nombre %></li>
     </ol>
 
     <div class="row">
