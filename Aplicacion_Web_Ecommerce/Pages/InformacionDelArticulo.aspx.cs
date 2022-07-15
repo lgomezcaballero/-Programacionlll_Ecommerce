@@ -62,7 +62,7 @@ namespace Aplicacion_Web_Ecommerce
             lista = (List<Articulo>)Session["Carrito"];
             lista.Add(articulo);
             Session.Add("Carrito", lista);
-
+            //lblAgregado.Visible = true;
             //Response.Redirect("Carrito.aspx", false);
         }
     }

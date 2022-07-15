@@ -47,14 +47,14 @@
 
 
 
-        <header class="bg-dark text-white" style="margin-bottom: 0.5rem;">
+        <header class="bg-black text-white" style="margin-bottom: 0.5rem;">
             <%--<div class="container">--%>
                 <div class="row">
-                    <div class="col-2">
-                        <a href="Home.aspx"><img src="https://www.seekpng.com/png/detail/428-4289671_logo-e-commerce-good-e-commerce-logo.png" class="img-fluid" alt="Logo Ecommerce"/></a>
+                    <div class="col-1">
+                        <a href="Home.aspx"><img src="https://img.freepik.com/premium-vector/ecommerce-minimal-vector-line-icon-3d-button-isolated-black-background-premium-vector_570929-1055.jpg?w=360" class="img-fluid" alt="Logo Ecommerce" style="width: 5rem;"/></a>
                     </div>
-                    <div class="col-7">
-                        <div class="input-group input-group-sm mt-3">
+                    <div class="col-8">
+                        <div class="input-group mt-3">
                             <%//Esta es la barra buscadora %>
                             <asp:TextBox ID="BarraBuscadora" runat="server" type="text" class="form-control"  placeholder="Recipient's username" aria-label="Recipient's username"  aria-describedby="button-addon2" OnTextChanged="BarraBuscadora_TextChanged"></asp:TextBox>
                             <%//<input type="text" class="form-control" id="BarraBuscadora" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" > %>

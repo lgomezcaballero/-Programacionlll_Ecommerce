@@ -22,19 +22,20 @@
             <div class="row"><p><%: articulo.Nombre %></p></div>
             <div class="row"><p><%: articulo.Precio%></p></div>
             <div class="row"><p>Talles</p></div>
-            <div class="row">
+            <div class="col-4 row">
                 <asp:DropDownList CssClass="form-select mb-3" ID="ddlTalles" runat="server"></asp:DropDownList>
             </div>
 
             <%if(Session["Admin"] != null)
             {%>
-                <asp:Button ID="button1" Visible="false" CssClass="btn btn-primary" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
+                <asp:Button ID="button1" Visible="false" CssClass="btn btn-primary" runat="server" Text="Agregar al carrito" onclick="btnComprar_Click"/>
            <% }%>
 
 
             <%else
             {%>
-            <asp:Button ID="btnComprar"  CssClass="btn btn-primary" runat="server" Text="Comprar" onclick="btnComprar_Click"/>
+            <asp:Button ID="btnComprar"  CssClass="btn btn-primary" runat="server" Text="Agregar al carrito" onclick="btnComprar_Click"/>
+            <%--<asp:Label ID="lblAgregado" Text="Artículo agregado al carrito" Visible="false" runat="server" />--%>
            <% } %>
 
         </div>
