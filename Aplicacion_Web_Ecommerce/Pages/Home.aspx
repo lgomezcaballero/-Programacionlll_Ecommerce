@@ -17,7 +17,7 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="#"><img src="../img/carousel1.png" alt="Los Angeles" class="d-block w-100"></a>
+                <a href="Busqueda?value=Femenino"><img src="../img/carousel1.png" alt="Los Angeles" class="d-block w-100"></a>
                 
             </div>
             <div class="carousel-item">
@@ -52,13 +52,15 @@
                 <div class="border-0 card col">
                     <img src="../img/home_2.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Portsaid</p>
+                        <p class="card-text">New Collection AW 22</p>
                     </div>
                 </div>
                 <div class="border-0 card col">
                     <img src="../img/home_3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Lady Stork Winter 22</p>
+                        <p class="card-text">Collection</p>
                     </div>
                 </div>
             </div>
@@ -66,13 +68,15 @@
                 <div class="border-0 card col" style="margin-top: 1rem;">
                     <img src="../img/home_4.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Elegí Prune</p>
+                        <p class="card-text">New In</p>
                     </div>
                 </div>
                 <div class="border-0 card col" style="margin-top: 1rem;">
                     <img src="../img/home_5.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">XL: Bolsos, Billeteras y Más</p>
+                        <p class="card-text">New Collection</p>
                     </div>
                 </div>
             </div>
@@ -90,7 +94,8 @@
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_6.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">People Make Icons-FW22</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
@@ -98,7 +103,8 @@
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_7.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Otoño Invierno '22</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
@@ -106,7 +112,8 @@
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_8.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Perspective: Fall Winter 2022</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
@@ -114,7 +121,8 @@
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_9.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Urban Spirit F/W 2022</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
@@ -127,33 +135,37 @@
     <div class="row" style="padding-left:10%; padding-right:10%;">
         <div class="col">
             <div class="border-0 card col" style="margin-top: 1rem;">
-                <img src="../img/home_6.jpg" class="card-img-top" alt="...">
+                <img src="../img/home_10.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Zapatillas Infantiles</p>
+                        <p class="card-text">Hasta 30% OFF</p>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="border-0 card col" style="margin-top: 1rem;">
-                <img src="../img/home_7.jpg" class="card-img-top" alt="...">
+                <img src="../img/home_11.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">¡Para todas sus aventuras!</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="border-0 card col" style="margin-top: 1rem;">
-                <img src="../img/home_8.jpg" class="card-img-top" alt="...">
+                <img src="../img/home_12.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">¡Hasta 40% OFF!</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="border-0 card col" style="margin-top: 1rem;">
-                <img src="../img/home_9.jpg" class="card-img-top" alt="...">
+                <img src="../img/home_13.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Hasta 40% OFF</p>
+                        <p class="card-text">Shop Now</p>
                 </div>
             </div>
         </div>
