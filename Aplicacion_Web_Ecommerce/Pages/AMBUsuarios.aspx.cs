@@ -90,11 +90,10 @@ namespace Aplicacion_Web_Ecommerce.Pages
                             tipo = Request.QueryString["Type"];
                         if (tipo == "e")
                         {
-                            /*
                             //Con esta funciom obtine el articulo que se busca
-                            provincia = obtenerProvincia(id);
+                            usuario = ObtenerUsuario(id);
                             //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                             setearCamposModificarPais(pais);*/
+                            setearCamposModificarUsuario(usuario);
                         }
 
                         if (Request.QueryString["Type"] == "d")
@@ -313,6 +312,52 @@ namespace Aplicacion_Web_Ecommerce.Pages
             }
 
             return false;
+        }
+
+        protected Usuario ObtenerUsuario(long id)
+        {
+
+            List<Usuario> lista = new List<Usuario>();
+            Usuario aux = new Usuario();
+
+
+            //Aca se agrega en session pero ya no me acuerdo para que 
+            lista = (List<Usuario>)Session["listausuarios"];
+            aux = lista.Find(x => x.ID == id);
+
+
+            return aux;
+
+        }
+
+
+        protected void setearCamposModificarUsuario(Usuario usuario)
+        {
+            //Datos Usuario
+            TextBoxApellidos.Text = usuario.Apellidos;
+            TextBoxNombres.Text = usuario.Nombres;
+            txtDni.Text = usuario.DNI;
+            txtNombreUsuario.Text = usuario.NombreUsuario;
+            txtContraseña.Text = usuario.Contraseña;
+            TxtBoxRepetirContraseña.Text = usuario.Contraseña;
+            TxtBoxEmail.Text = usuario.Contacto.Email;
+            TxtBoxTelefono.Text = usuario.Contacto.Telefono;
+
+        }
+
+        protected void BtnEditar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario.ID = id;
+            usuario.Apellidos = txtApellidos.Text;
+            usuario.Nombres = TextBoxNombres.Text;
+            usuario.DNI = txtDni.Text;  
+            usuario.NombreUsuario = TextBoxNombreUsuario.Text;
+            usuario.Contraseña = txtContraseña.Text;
+            usuario.Contacto = new Contacto();  
+            usuario.Contacto.Email = TxtBoxEmail.Text;
+            usuario.Contacto.Telefono = TxtBoxTelefono.Text;
+
         }
 
         /*

@@ -119,22 +119,98 @@
             <div class="form-control">
         <div class="mb-3 row">
             <div class="col">
-                <asp:Label ID="LabelNombreDelPais" runat="server" Text="NombrePais"></asp:Label>
-                <asp:TextBox ID="TxtNombreDelPais" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Apellidos"></asp:Label>
+                <asp:TextBox ID="TextBoxApellidos" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
                <div class="col">
-                <asp:Label ID="LabelNombreDeLaProvincia" runat="server" Text="Nombre de la provincia"></asp:Label>
-                <asp:TextBox ID="TxtNombreDeLaProvincia" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" Text="Nombres"></asp:Label>
+                <asp:TextBox ID="TextBoxNombres" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
-        </div>
-    </div>
+
+            <div class="col">
+                <asp:Label ID="Label3" runat="server" Text="Dni"></asp:Label>
+                <asp:TextBox ID="txtDni" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+             </div>
+
+          <div class="mb-3 row">
+            <div class="col">
+                <asp:Label ID="Label4" runat="server" Text="NombreUsuario"></asp:Label>
+                <asp:TextBox ID="txtNombreUsuario" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+
+             <div class="col">
+                <asp:Label ID="Label5" runat="server" Text="Contraseña"></asp:Label>
+                <asp:TextBox ID="txtContraseña" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
 
 
-      <div class="mb-3 row">
-            <div class="d-grid gap-2 d-md-block">
-                <%--<asp:Button ID="BtnAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="ButtonAtras_Click" />--%>
-                <%--<asp:Button ID="Button2" runat="server" OnClick="BtnEditar_Click" Text="Agregar" CssClass="btn btn-primary"/>  --%>           
+            <div class="col">
+                <asp:Label ID="Label6" runat="server" Text="RepetirContraseña"></asp:Label>
+                <asp:TextBox ID="TxtBoxRepetirContraseña" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
+              <%//En tipo usuario va una dropdonw %>
+          </div>
+
+        
+                <%//Datos del contacto %>
+              <div class="mb-3 row">
+               <div class="col">
+                   <asp:Label ID="Label7" runat="server" Text="Email"></asp:Label>
+                   <asp:TextBox ID="TxtBoxEmail" CssClass="form-control" runat="server"></asp:TextBox>
+               </div>
+
+                <div class="col">
+                   <asp:Label ID="Label8" runat="server" Text="Telefono"></asp:Label>
+                   <asp:TextBox ID="TxtBoxTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+               </div>
+
+             
+             </div>
+
+<%--              <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+            <ContentTemplate>
+             <div class="mb-3 row">
+                  <div class="col">
+                      <asp:Label ID="Label9" runat="server" Text="Pais"></asp:Label>
+                      <asp:DropDownList ID="DropDownPaises" runat="server" AutoPostBack="true"
+                          OnSelectedIndexChanged="DropDownPaises_SelectedIndexChanged"></asp:DropDownList>
+                  </div>
+
+                  <div class="col">
+                    <asp:Label ID="Label10" runat="server" Text="Provincia"></asp:Label>
+                      <asp:DropDownList ID="DropDownProvincia" runat="server" AutoPostBack="true"
+                          OnSelectedIndexChanged="DropDownProvincia_SelectedIndexChanged"></asp:DropDownList>
+                  </div>
+
+                    <div class="col">
+                  
+                        <asp:Label ID="Label11" runat="server" Text="Localidad"></asp:Label>
+                      <asp:DropDownList ID="DropDownLocalidades" runat="server" AutoPostBack="true"></asp:DropDownList>
+                  </div>
+              </div>  
+            </ContentTemplate>
+        </asp:UpdatePanel>--%>
+
+
+        <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                  <ContentTemplate>
+                    <div>
+                      <asp:Button ID="BtnEditar" runat="server" class="btn btn-primary"  onclick="BtnEditar_Click" Text="Editar" type="submit"/>        
+                    </div>      
+                  </ContentTemplate>         
+        </asp:UpdatePanel>
+
+
+
+          <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                    <ContentTemplate>
+                    <div>
+                        <asp:Label ID="Label12" runat="server" Text="" style="color:red"></asp:Label>
+                    </div>         
+                    </ContentTemplate>         
+          </asp:UpdatePanel>
+
         </div>
     
 
