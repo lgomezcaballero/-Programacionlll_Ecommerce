@@ -27,10 +27,6 @@
                 <asp:Button ID="BtnAgregar" runat="server" onclick="BtnAgregar_Click" Text="Aceptar" CssClass="btn btn-primary"/>
             </div>
         </div>
-
-    <div>
-    <a href="ListarCategorias.aspx"> Volver Atras</a>
-    </div>
         
         
         

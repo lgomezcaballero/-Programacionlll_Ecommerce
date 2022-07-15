@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="ListarPaises.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.Pages.ListarPaises" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-     <ol class="breadcrumb mb-4 mt-4">
+    <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item"><a href="HomeAdmin.aspx">Inicio</a></li>
         <li class="breadcrumb-item active">Paises</li>
     </ol>
@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>   
+                        <th>Nombre</th>
                         <%--<th>Stock</th>--%>
                         <%--<th>Acciones</th>--%>
                         <th></th>
@@ -58,7 +58,7 @@
                 </tbody>
             </table>
         </div>
-
+    </div>
 
 
 </asp:Content>
