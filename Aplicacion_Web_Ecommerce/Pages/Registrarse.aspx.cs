@@ -190,6 +190,8 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
                             //Agrego el usuario a la base
                             usuarioNegocio.agregarUsuario(usuario);
+                            Response.Redirect("LoginSinMaster.aspx", false);
+                                
 
                         }
 

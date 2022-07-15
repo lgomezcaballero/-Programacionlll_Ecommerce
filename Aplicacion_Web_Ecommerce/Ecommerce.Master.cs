@@ -50,6 +50,7 @@ namespace Aplicacion_Web_Ecommerce
         protected void BtnCerrarSession_Click(object sender, EventArgs e)
         {
             Session["TeLogueaste"] = null;
+            Session["Admin"] = null;
             Response.Redirect("LoginSinMaster.aspx", false);
         }
     }
