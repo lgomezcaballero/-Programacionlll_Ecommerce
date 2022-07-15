@@ -168,29 +168,29 @@
              
              </div>
 
-<%--              <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+              <asp:UpdatePanel ID="UpdatePanel4" runat="server">
             <ContentTemplate>
              <div class="mb-3 row">
                   <div class="col">
-                      <asp:Label ID="Label9" runat="server" Text="Pais"></asp:Label>
-                      <asp:DropDownList ID="DropDownPaises" runat="server" AutoPostBack="true"
-                          OnSelectedIndexChanged="DropDownPaises_SelectedIndexChanged"></asp:DropDownList>
+                      <asp:Label ID="LabelPaises" runat="server" Text="Pais"></asp:Label>
+                      <asp:DropDownList ID="DropDownDePaises" runat="server" AutoPostBack="true"
+                          ></asp:DropDownList>
                   </div>
 
-                  <div class="col">
-                    <asp:Label ID="Label10" runat="server" Text="Provincia"></asp:Label>
-                      <asp:DropDownList ID="DropDownProvincia" runat="server" AutoPostBack="true"
+                 <%-- <div class="col">
+                    <asp:Label ID="LblProvincia" runat="server" Text="Provincia"></asp:Label>
+                      <asp:DropDownList ID="DropDownDeProvincia" runat="server" AutoPostBack="true"
                           OnSelectedIndexChanged="DropDownProvincia_SelectedIndexChanged"></asp:DropDownList>
-                  </div>
+                  </div>--%>
 
-                    <div class="col">
+                <%--    <div class="col">
                   
                         <asp:Label ID="Label11" runat="server" Text="Localidad"></asp:Label>
                       <asp:DropDownList ID="DropDownLocalidades" runat="server" AutoPostBack="true"></asp:DropDownList>
-                  </div>
+                  </div>--%>
               </div>  
             </ContentTemplate>
-        </asp:UpdatePanel>--%>
+        </asp:UpdatePanel>
 
 
         <asp:UpdatePanel ID="UpdatePanel5" runat="server">

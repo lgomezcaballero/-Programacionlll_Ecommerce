@@ -48,34 +48,45 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     if (!IsPostBack)
                     {
                         List<Provincia> listaprovincia = new List<Provincia>();
-                    ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
-                    listaprovincia = provinciaNegocio.listar();
-                    Session.Add("listaprovincia", listaprovincia);
+                        ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
+                        listaprovincia = provinciaNegocio.listar();
+                        Session.Add("listaDeprovincia", listaprovincia);
 
-                    //Esto es para el dropdownlist de localidad
-                    List<Localidad> listalocalidad = new List<Localidad>();
-                    LocalidadNegocio localidadNegocio = new LocalidadNegocio();
-                    listalocalidad = localidadNegocio.listar();
-                    Session.Add("listalocalidad", listalocalidad);
+                        //Esto es para el dropdownlist de localidad
+                        List<Localidad> listalocalidad = new List<Localidad>();
+                        LocalidadNegocio localidadNegocio = new LocalidadNegocio();
+                        listalocalidad = localidadNegocio.listar();
+                        Session.Add("listaDelocalidad", listalocalidad);
 
 
-                    listapaises = paisNegocio.listar();
-                    DropDownListPaises.DataSource = listapaises;
-                    DropDownListPaises.DataTextField = "NombrePais";
-                    DropDownListPaises.DataValueField = "ID";
-                    DropDownListPaises.DataBind();
+                        listapaises = paisNegocio.listar();
+                        DropDownListPaises.DataSource = listapaises;
+                        DropDownListPaises.DataTextField = "NombrePais";
+                        DropDownListPaises.DataValueField = "ID";
+                        DropDownListPaises.DataBind();
 
-                    //Esto precarga las provincias solo por primera vez
-                    int ID = int.Parse(DropDownListPaises.SelectedItem.Value);
-                    DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaprovincia"]).FindAll(x => x.Pais.ID == ID);
-                    DropDownListProvincia.DataValueField = "ID";
-                    DropDownListProvincia.DataTextField = "NombreProvincia";
-                    DropDownListProvincia.DataBind();
+                        //Esto precarga las provincias solo por primera vez
+                        int ID = int.Parse(DropDownListPaises.SelectedItem.Value);
+                        DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == ID);
+                        DropDownListProvincia.DataValueField = "ID";
+                        DropDownListProvincia.DataTextField = "NombreProvincia";
+                        DropDownListProvincia.DataBind();
+
+
+                    ///////////////////////////////////////////////////////////////////////////////////////////
+                    //Esto precarga la dropdown de paises en editar de abmusuarios
+                    DropDownDePaises.DataSource = listapaises;
+                    DropDownDePaises.DataTextField = "NombrePais";
+                    DropDownDePaises.DataValueField= "ID";
+                    DropDownDePaises.DataBind();
+
+
+                    ///////////////////////////////////////////////////////////////////////////////////////////
 
                     //Esto precarga las localidades solo por primera vez
                     int idLocalidad = int.Parse(DropDownListProvincia.SelectedItem.Value);
 
-                    DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listalocalidad"]).FindAll(x => x.Provincia.ID == ID);
+                    DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == idLocalidad);
                     DropDownListLocalidad.DataValueField = "ID";
                     DropDownListLocalidad.DataTextField = "NombreLocalidad";
                     DropDownListLocalidad.DataBind();
@@ -107,6 +118,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
             }
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                             //Este es el dropdown de agregar
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         protected void DropDownListPaises_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -115,7 +129,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esta es la dropdown de provincia
 
-            DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaprovincia"]).FindAll(x => x.Pais.ID == id);
+            DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == id);
             //if(DropDownListProvincia.DataSource[)
             //{
 
@@ -128,13 +142,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         }
 
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                            //Este es el dropdown de agregar
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         protected void DropDownListProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int id = int.Parse(DropDownListProvincia.SelectedItem.Value);
 
-            DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listalocalidad"]).FindAll(x => x.Provincia.ID == id);
+            DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == id);
             DropDownListLocalidad.DataValueField = "ID";
             DropDownListLocalidad.DataTextField = "NombreLocalidad";
             DropDownListLocalidad.DataBind();
@@ -324,6 +340,8 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Aca se agrega en session pero ya no me acuerdo para que 
             lista = (List<Usuario>)Session["listausuarios"];
             aux = lista.Find(x => x.ID == id);
+            //Aca me guardo el usuario obtenido en sesion para usarlo en editar de abmUsuario
+       
 
 
             return aux;
@@ -348,7 +366,11 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected void BtnEditar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            usuario.ID = id;
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+
+            Usuario UsuarioObtenido = new Usuario(); 
+
+            usuario.ID = int.Parse(Request.QueryString["ID"]);
             usuario.Apellidos = txtApellidos.Text;
             usuario.Nombres = TextBoxNombres.Text;
             usuario.DNI = txtDni.Text;  
@@ -357,6 +379,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
             usuario.Contacto = new Contacto();  
             usuario.Contacto.Email = TxtBoxEmail.Text;
             usuario.Contacto.Telefono = TxtBoxTelefono.Text;
+            usuario.Localidad = new Localidad();
+            usuario.Localidad.ID = int.Parse(DropDownDePaises.SelectedItem.Value);
+            usuario.TipoUsuario = new TipoUsuario();
+
+            //Llamo a esta funcion para obtener el id del Usuario que se esta modificando
+            UsuarioObtenido = ObtenerUsuario(id);
+
+            usuario.TipoUsuario.ID = 2;
+            usuarioNegocio.modificarUsuario(usuario); 
 
         }
 
