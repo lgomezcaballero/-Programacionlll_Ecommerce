@@ -84,7 +84,8 @@
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                   <ContentTemplate>
                     <div>
-                      <asp:Button ID="BtnAgregarUsuario" runat="server" class="btn btn-primary" onclick="BtnAgregarUsuario_Click" Text="Registrarse" type="submit"/>        
+                        <asp:Button ID="btnAtras" runat="server" CssClass="btn btn-primary" Text="Atrás" OnClick="btnAtras_Click"/>
+                      <asp:Button ID="BtnAgregarUsuario" runat="server" class="btn btn-primary" onclick="BtnAgregarUsuario_Click" Text="Agregar" type="submit"/>        
                     </div>         
                   </ContentTemplate>         
         </asp:UpdatePanel>
@@ -196,6 +197,7 @@
         <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                   <ContentTemplate>
                     <div>
+                        <asp:Button ID="e_btnAtras" runat="server" Text="Atrás" CssClass="btn btn-primary" OnClick="btnAtras_Click1"/>
                       <asp:Button ID="BtnEditar" runat="server" class="btn btn-primary"  onclick="BtnEditar_Click" Text="Editar" type="submit"/>        
                     </div>      
                   </ContentTemplate>         

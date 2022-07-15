@@ -393,6 +393,16 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         }
 
+        protected void btnAtras_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarUsuarios.aspx", false);
+        }
+
+        protected void btnAtras_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarUsuarios.aspx", false);
+        }
+
         /*
         protected bool ValidaEmail()
         {

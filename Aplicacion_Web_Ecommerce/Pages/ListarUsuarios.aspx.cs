@@ -46,5 +46,10 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esto lo hago para guardar los Usuarios en la session //ok
         }
+
+        protected void btnAtras_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("HomeAdmin.aspx", false);
+        }
     }
 }
