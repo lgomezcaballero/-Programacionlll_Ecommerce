@@ -75,10 +75,10 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
                     ///////////////////////////////////////////////////////////////////////////////////////////
                     //Esto precarga la dropdown de paises en editar de abmusuarios
-                    DropDownDePaises.DataSource = listapaises;
-                    DropDownDePaises.DataTextField = "NombrePais";
-                    DropDownDePaises.DataValueField= "ID";
-                    DropDownDePaises.DataBind();
+                    //DropDownDePaises.DataSource = listapaises;
+                    //DropDownDePaises.DataTextField = "NombrePais";
+                    //DropDownDePaises.DataValueField= "ID";
+                    //DropDownDePaises.DataBind();
 
 
                     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -368,26 +368,28 @@ namespace Aplicacion_Web_Ecommerce.Pages
             Usuario usuario = new Usuario();
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 
-            Usuario UsuarioObtenido = new Usuario(); 
+            Usuario UsuarioObtenido = new Usuario();
 
             usuario.ID = int.Parse(Request.QueryString["ID"]);
-            usuario.Apellidos = txtApellidos.Text;
+            usuario.Apellidos = TextBoxApellidos.Text;
             usuario.Nombres = TextBoxNombres.Text;
-            usuario.DNI = txtDni.Text;  
-            usuario.NombreUsuario = TextBoxNombreUsuario.Text;
+            usuario.DNI = txtDni.Text;
+            usuario.NombreUsuario = txtNombreUsuario.Text;
             usuario.Contraseña = txtContraseña.Text;
-            usuario.Contacto = new Contacto();  
+            usuario.Contacto = new Contacto();
             usuario.Contacto.Email = TxtBoxEmail.Text;
             usuario.Contacto.Telefono = TxtBoxTelefono.Text;
-            usuario.Localidad = new Localidad();
-            usuario.Localidad.ID = int.Parse(DropDownDePaises.SelectedItem.Value);
             usuario.TipoUsuario = new TipoUsuario();
+            usuario.Localidad = new Localidad();
 
             //Llamo a esta funcion para obtener el id del Usuario que se esta modificando
-            UsuarioObtenido = ObtenerUsuario(id);
+            UsuarioObtenido = ObtenerUsuario(usuario.ID);
+            usuario.Localidad.ID = UsuarioObtenido.Localidad.ID;
 
-            usuario.TipoUsuario.ID = 2;
-            usuarioNegocio.modificarUsuario(usuario); 
+            usuario.TipoUsuario.ID = UsuarioObtenido.TipoUsuario.ID;
+            usuarioNegocio.modificarUsuario(usuario);
+
+            Response.Redirect("ListarUsuarios.aspx", false);
 
         }
 
