@@ -242,8 +242,8 @@ articulo+
 "<tfooter>"+
 "<tr>"+
 "<td colspan=\"2\" style = \"font-size:14px;padding:50px 15px 0 15px;\">"+
-"<strong style=\"display:block;margin:0 0 10px 0;\"> Regards </strong> Bachana Tours<br> Gorubathan, Pin/ Zip - 735221, Darjeeling, West bengal, India<br><br>"+
-"<b> Phone:</ b > 03552 - 222011 <br>"+                                                                                                                                                                                                                                         "<b> Email:</b> contact@bachanatours.in"+
+"<strong style=\"display:block;margin:0 0 10px 0;\"> Tienda Virtual </strong> Lo que querés al alcance de un click<br> Calle Falsa 123, Gral. Pacheco, Buenos Aires, Argentina<br><br>"+
+"<b> Teléfono:</ b > 03552 - 222011 <br>"+ "<b> Email:</b> tiendavirtual-frpg2022@hotmail.com" +
         "</td >"+
       "</tr>"+
     "</tfooter>"+
