@@ -163,7 +163,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                             //Tipo Usuario
                             //Esto se carga de manera automatica
                             usuario.TipoUsuario = new TipoUsuario();
-                            usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
+                            usuario.TipoUsuario.ID = 3; // 2 = Normal 1 = Admin
 
 
                             //Datos Contacto falta que de alguna forma guarde esto

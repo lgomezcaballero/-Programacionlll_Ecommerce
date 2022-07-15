@@ -17,7 +17,8 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../img/carousel1.png" alt="Los Angeles" class="d-block w-100">
+                <a href="#"><img src="../img/carousel1.png" alt="Los Angeles" class="d-block w-100"></a>
+                
             </div>
             <div class="carousel-item">
                 <img src="../img/carousel2.png" alt="Los Angeles" class="d-block w-100">

@@ -57,6 +57,7 @@
                     <%} %>
                 </tbody>
             </table>
+            <asp:Button ID="btnAtrás" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="btnAtrás_Click"/>
         </div>
     </div>
 

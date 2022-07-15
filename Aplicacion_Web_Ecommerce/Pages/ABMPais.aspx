@@ -11,7 +11,7 @@
         
              <div class="form-control">
         <div class="mb-3 row">
-            <div class="col">
+            <div class="col-4">
                 <asp:Label ID="lblNombrePais" runat="server" Text="NombrePais"></asp:Label>
                 <asp:TextBox ID="txtNombrePais" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
@@ -38,7 +38,7 @@
         
     <div class="form-control">
         <div class="mb-3 row">
-            <div class="col">
+            <div class="col-4">
                 <asp:Label ID="lblPais" runat="server" Text="Nombre"></asp:Label>
                 <asp:TextBox ID="txtPais" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
