@@ -3,7 +3,7 @@
 
 
         <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="HomeAdmin">HomeAdmin</a></li>
+        <li class="breadcrumb-item"><a href="HomeAdmin.aspx">Inicio</a></li>
         <li class="breadcrumb-item active">Categorias</li>
     </ol>
 
