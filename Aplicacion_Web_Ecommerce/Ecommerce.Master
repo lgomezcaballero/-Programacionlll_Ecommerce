@@ -91,11 +91,11 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="nbMujer" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mujer
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="nbMujer">
-                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
-                                    <li><a class="dropdown-item" href="#">Blusas</a></li>
-                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
-                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
-                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=calzado">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=blusas">Blusas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=jeans">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=camperas">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
 <%--                                    
                                     <li>
                                         <hr class="dropdown-divider">
@@ -108,11 +108,11 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="ngHombre" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hombre
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="ngHombre">
-                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
-                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
-                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
-                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
-                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=remeras">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=jeans">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=calzado">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=camperas">Camperas</a></li>
                                     <%--                                    
                                     <li>
                                         <hr class="dropdown-divider">
@@ -125,11 +125,11 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="nbInfantil" role="button" data-bs-toggle="dropdown" aria-expanded="false">Infantil
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="nbInfantil">
-                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
-                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
-                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
-                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
-                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=remeras">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=Calzado">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=jeans">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=camperas">Camperas</a></li>
                                     <%--                                    
                                     <li>
                                         <hr class="dropdown-divider">
@@ -142,11 +142,11 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="nbDeportes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Deportes
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="nbDeportes">
-                                    <li><a class="dropdown-item" href="#">Buzos</a></li>
-                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
-                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
-                                    <li><a class="dropdown-item" href="#">Calzas</a></li>
-                                    <li><a class="dropdown-item" href="#">Medias</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=buzos">Buzos</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=re,eras">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=calzas">Calzas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=medias">Medias</a></li>
                                     <%--                                    
                                     <li>
                                         <hr class="dropdown-divider">
@@ -159,11 +159,11 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="nbTemporada" role="button" data-bs-toggle="dropdown" aria-expanded="false">Temporada
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="nbTemporada">
-                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
-                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
-                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
-                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
-                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=jeans">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=camperas">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=remeras">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=calzado">Calzado</a></li>
                                     <%--                                    
                                     <li>
                                         <hr class="dropdown-divider">
@@ -176,11 +176,11 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="nbRebajas" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rebajas
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="nbRebajas">
-                                    <li><a class="dropdown-item" href="#">Camperas</a></li>
-                                    <li><a class="dropdown-item" href="#">Jeans</a></li>
-                                    <li><a class="dropdown-item" href="#">Remeras</a></li>
-                                    <li><a class="dropdown-item" href="#">Calzado</a></li>
-                                    <li><a class="dropdown-item" href="#">Zapatillas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=camperas">Camperas</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=jeans">Jeans</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=remeras">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=calzado">Calzado</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
                                     <%--                                    
                                     <li>
                                         <hr class="dropdown-divider">

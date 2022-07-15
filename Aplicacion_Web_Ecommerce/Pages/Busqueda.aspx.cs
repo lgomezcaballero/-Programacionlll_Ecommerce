@@ -34,9 +34,11 @@ namespace Aplicacion_Web_Ecommerce
                     Session.Add("listaArticulos", ListaArticulos);
 
                 }
-                string Filtro = Session["Busqueda"].ToString();
+                string Filtro;
                 if (Request.QueryString["value"] != null)
                     Filtro = Request.QueryString["value"].ToString();
+                else
+                    Filtro = Session["Busqueda"].ToString();
 
                 if (Filtro.Length > 2)
                 {
