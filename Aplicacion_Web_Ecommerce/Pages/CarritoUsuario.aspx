@@ -4,7 +4,7 @@
 
 
     <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="HomeAdmin">HomeAdmin</a></li>
+        <li class="breadcrumb-item"><a href="Home.aspx">Inicio</a></li>
         <li class="breadcrumb-item active">Productos</li>
     </ol>
     <div class="card mb-4" style="margin-left: 10%; margin-right: 10%;">

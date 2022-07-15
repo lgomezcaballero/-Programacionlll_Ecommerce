@@ -6,10 +6,10 @@
 
 
     <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-        <li class="breadcrumb-item"><a href="Busqueda.aspx"><%: articulo.Genero.Nombre %></a></li>
-        <li class="breadcrumb-item"><a href="Busqueda.aspx"><%: articulo.Categoria.Nombre %></a></li>
-        <li class="breadcrumb-item"><a href="Busqueda.aspx"><%: articulo.Marca.Nombre %></a></li>
+        <li class="breadcrumb-item"><a href="Home.aspx">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Genero.Nombre%>"><%: articulo.Genero.Nombre %></a></li>
+        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Categoria.Nombre%>"><%: articulo.Categoria.Nombre %></a></li>
+        <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Marca.Nombre%>"><%: articulo.Marca.Nombre %></a></li>
         <li class="breadcrumb-item active"><a href="Busqueda.aspx"><%: articulo.Nombre %></a></li>
     </ol>
 
