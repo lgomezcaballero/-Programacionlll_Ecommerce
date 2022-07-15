@@ -35,6 +35,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                 else
                 {
                     Provincia provincia = new Provincia();
+                    provincia.Pais = new Pais();
 
                     //TP lean
 
@@ -49,11 +50,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
                             tipo = Request.QueryString["Type"];
                         if (tipo == "e")
                         {
-                            /*
+                            
                             //Con esta funciom obtine el articulo que se busca
                             provincia = obtenerProvincia(id);
-                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                             setearCamposModificarPais(pais);*/
+                            TxtNombreDelPais.Text = provincia.Pais.NombrePais;
+                            TxtNombreDeLaProvincia.Text = provincia.NombreProvincia;
+                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar*/
+                             //setearCamposModificarPais(pais);
                         }
 
                         if (Request.QueryString["Type"] == "d")
@@ -67,7 +70,17 @@ namespace Aplicacion_Web_Ecommerce.Pages
             }
         }
 
-
+        protected Provincia obtenerProvincia(int id)
+        {
+            ProvinciaNegocio pNegocio = new ProvinciaNegocio();
+            Provincia aux = new Provincia();
+            foreach (var item in pNegocio.listar())
+            {
+                if (item.ID == id)
+                    aux = item;
+            }
+            return aux;
+        }
 
 
         //De aca para abajo todo esto es para la funcionalidad de agregar una provincia
