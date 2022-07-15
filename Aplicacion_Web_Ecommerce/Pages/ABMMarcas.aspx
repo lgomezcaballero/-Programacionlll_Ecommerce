@@ -10,7 +10,7 @@
 
     <div class="form-control">
         <div class="mb-3 row">
-            <div class="col">
+            <div class="col-4">
                 <asp:Label ID="LabelNombreMarca" runat="server" Text="Nombre de la marca"></asp:Label>
                 <asp:TextBox ID="TextBoxNombreMarca" CssClass="form-control" runat="server"></asp:TextBox>
             </div>

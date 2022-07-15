@@ -3,7 +3,7 @@
 
 
         <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="HomeAdmin.aspx">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="HomeAdmin.aspx" style="text-decoration: none;">Inicio</a></li>
         <li class="breadcrumb-item active">Marcas</li>
     </ol>
 
@@ -59,6 +59,7 @@
                     <%} %>
                 </tbody>
             </table>
+            <asp:Button ID="btnAtras" CssClass="btn btn-primary" runat="server" Text="Atrás" OnClick="btnAtras_Click" />
         </div>
     </div>
 
