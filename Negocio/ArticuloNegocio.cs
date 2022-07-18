@@ -136,15 +136,15 @@ namespace Negocio
                 datos.ejecutarAccion();
 
                 long idArticulo = this.obtenerIDArticuloNuevo();
-                foreach (var item in articulo.Talles)
-                {
-                    item.IDArticulo = idArticulo;
-                    atNegocio.agregarTallaArticulo(item);
-                }
                 foreach (var item in articulo.Imagenes)
                 {
                     item.IDArticulo = idArticulo;
                     imgNegocio.agregarImagenArticulo(item);
+                }
+                foreach (var item in articulo.Talles)
+                {
+                    item.IDArticulo = idArticulo;
+                    atNegocio.agregarTallaArticulo(item);
                 }
             }
             catch (Exception ex)

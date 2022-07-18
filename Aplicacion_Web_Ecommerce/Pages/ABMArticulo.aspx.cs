@@ -94,6 +94,12 @@ namespace Aplicacion_Web_Ecommerce.Pages
                                 //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
                                 setearCamposModificar(articulo);
                             }
+                            if (tipo == "d")
+                            {
+                                ArticuloNegocio aNegocio = new ArticuloNegocio();
+                                aNegocio.eliminarArticulo(id);
+                                Response.Redirect("ListarArticulos", false);
+                            }
                         }
                     }
                 }

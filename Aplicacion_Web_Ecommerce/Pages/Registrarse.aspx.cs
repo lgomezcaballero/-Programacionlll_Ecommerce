@@ -54,7 +54,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     //Esto precarga las localidades solo por primera vez
                     int idLocalidad = int.Parse(DropDownListProvincia.SelectedItem.Value);
 
-                    DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listalocalidad"]).FindAll(x => x.Provincia.ID == id);
+                    DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listalocalidad"]).FindAll(x => x.Provincia.ID == idLocalidad);
                     DropDownListLocalidad.DataValueField = "ID";
                     DropDownListLocalidad.DataTextField = "NombreLocalidad";
                     DropDownListLocalidad.DataBind();
@@ -163,7 +163,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                             //Tipo Usuario
                             //Esto se carga de manera automatica
                             usuario.TipoUsuario = new TipoUsuario();
-                            usuario.TipoUsuario.ID = 3; // 2 = Normal 1 = Admin
+                            usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
 
 
                             //Datos Contacto falta que de alguna forma guarde esto

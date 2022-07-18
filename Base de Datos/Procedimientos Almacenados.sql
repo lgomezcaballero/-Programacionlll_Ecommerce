@@ -962,7 +962,6 @@ Begin
 		Rollback Transaction
 	End Catch
 End
-exec SP_AgregarTallaArticulo 5, 2, 30
 go
 Create Procedure SP_ModificarTallaArticulo(
 	@idArticulo bigint,
@@ -1078,6 +1077,7 @@ Begin
 End
 go
 exec SP_ObtenerIDFacturaNueva
+go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 Create Procedure SP_AgregarCompra(

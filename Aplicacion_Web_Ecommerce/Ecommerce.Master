@@ -144,7 +144,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="nbDeportes">
                                     <li><a class="dropdown-item" href="Busqueda?value=buzos">Buzos</a></li>
                                     <li><a class="dropdown-item" href="Busqueda?value=zapatillas">Zapatillas</a></li>
-                                    <li><a class="dropdown-item" href="Busqueda?value=re,eras">Remeras</a></li>
+                                    <li><a class="dropdown-item" href="Busqueda?value=remeras">Remeras</a></li>
                                     <li><a class="dropdown-item" href="Busqueda?value=calzas">Calzas</a></li>
                                     <li><a class="dropdown-item" href="Busqueda?value=medias">Medias</a></li>
                                     <%--                                    
