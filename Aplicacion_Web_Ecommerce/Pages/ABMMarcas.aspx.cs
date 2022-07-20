@@ -78,10 +78,22 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esto carga el pais a la base 
             MarcaNegocio marcaNegocio = new MarcaNegocio();
-            marcaNegocio.agregarMarca(marca);
+            if(!existeMarca(marca.Nombre, marcaNegocio))
+                marcaNegocio.agregarMarca(marca);
             Response.Redirect("ListarMarcas.aspx", false);
+        }
 
-
+        protected bool existeMarca(string marca, MarcaNegocio marcaNegocio)
+        {
+            foreach (var item in marcaNegocio.listar(true))
+            {
+                if (item.Nombre.Equals(marca))
+                {
+                    marcaNegocio.RestaurarMarca(item);
+                    return true;
+                }
+            }
+            return false;
         }
 
         //Esto modifica la marca

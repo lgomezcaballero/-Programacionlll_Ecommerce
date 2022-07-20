@@ -8,7 +8,7 @@ namespace Negocio
 {
     public class MarcaNegocio
     {
-        public List<Marca> listar()
+        public List<Marca> listar(bool b = false)
         {
             List<Marca> lista = new List<Marca>();      
             AccesoDatos datos = new AccesoDatos();
@@ -22,7 +22,7 @@ namespace Negocio
                 {
                     Marca aux = new Marca();
                     if (!(datos.Lector["IDMarca"] is DBNull))
-                        aux.ID =  (Int16)datos.Lector["IDMarca"];
+                        aux.ID = (Int16)datos.Lector["IDMarca"];
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
                     if (!(datos.Lector["FechaRegistro"] is DBNull))
@@ -30,15 +30,20 @@ namespace Negocio
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
-                    if(aux.Estado == true)
+                    if (!b)
                     {
-                    lista.Add(aux); 
-
+                        if (aux.Estado == true)
+                        {
+                            lista.Add(aux);
+                        }
                     }
-
+                    else
+                    {
+                        lista.Add(aux);
+                    }
                 }
 
-            return lista;
+                return lista;
 
             }
             catch (Exception ex)
@@ -232,6 +237,28 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void RestaurarMarca(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsultaSP("SP_RestaurarMarca");
+                datos.setParametros("@idMarca", marca.ID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
     }
 }

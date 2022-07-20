@@ -437,6 +437,22 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_RestaurarMarca(
+	@idMarca smallint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Marcas Set Estado = 1 Where IDMarca = @idMarca
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo restaurar la marca', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarCarrito(
