@@ -113,12 +113,23 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esto carga el pais a la base 
             PaisNegocio paisNegocio = new PaisNegocio();
-            paisNegocio.AgregarPais(pais);
+
+            if (!existePais(pais.NombrePais, paisNegocio))
+                paisNegocio.AgregarPais(pais);
             Response.Redirect("ListarPaises.aspx", false);
+        }
 
-
-
-
+        protected bool existePais(string nombre, PaisNegocio paisNegocio)
+        {
+            foreach (var item in paisNegocio.listar(true))
+            {
+                if (item.NombrePais.Equals(nombre))
+                {
+                    paisNegocio.RestaurarPais(item);
+                    return true;
+                }
+            }
+            return false;
         }
 
         protected void BtnAtras_Click(object sender, EventArgs e)

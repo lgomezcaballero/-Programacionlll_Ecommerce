@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class PaisNegocio
     {
-        public List<Pais> listar()
+        public List<Pais> listar(bool b = false)
         {
             List<Pais> lista = new List<Pais>();
             AccesoDatos datos = new AccesoDatos();
@@ -31,11 +31,16 @@ namespace Negocio
                     if (!(datos.Lector["Estado"] is DBNull))
                         aux.Estado = (bool)datos.Lector["Estado"];
 
-
-                    if(aux.Estado == true)
-                    { 
-                    lista.Add(aux);
-                    
+                    if (!b)
+                    {
+                        if (aux.Estado == true)
+                        {
+                            lista.Add(aux);
+                        }
+                    }
+                    else
+                    {
+                        lista.Add(aux);
                     }
                 }
 
@@ -240,6 +245,28 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void RestaurarPais(Pais pais)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsultaSP("SP_RestaurarPais");
+                datos.setParametros("@idPais", pais.ID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
     }
 }
