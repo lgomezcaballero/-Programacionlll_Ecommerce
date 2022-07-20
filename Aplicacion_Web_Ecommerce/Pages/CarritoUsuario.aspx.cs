@@ -47,7 +47,7 @@ namespace Aplicacion_Web_Ecommerce
                     else if(int.Parse(Request.QueryString["updateArt"]) == -1)
                     {
                         cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), -1);
-                        cantidad = -1;
+                        //cantidad = -1;
                     }
                 }
                 actualizarCarrito();

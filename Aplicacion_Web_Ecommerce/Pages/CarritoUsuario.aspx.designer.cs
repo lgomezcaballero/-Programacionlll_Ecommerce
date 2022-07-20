@@ -15,13 +15,13 @@ namespace Aplicacion_Web_Ecommerce
     {
 
         /// <summary>
-        /// Control txtCantidadArtCarrito.
+        /// Control lblCantidadArtCarrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidadArtCarrito;
+        protected global::System.Web.UI.WebControls.Label lblCantidadArtCarrito;
 
         /// <summary>
         /// Control btnCompra.

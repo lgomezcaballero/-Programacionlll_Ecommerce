@@ -46,13 +46,16 @@
                         <td>
                             <div class="row">Talle: <%: obtenerTalle(item.IDTalle) %></div>
                             <div class="row" style="padding-left: 0px;">Cantidad: </div>
-                            <div class="row" style="padding-left: 0px;">
-                                <div class="col">
-                                    <a href="CarritoUsuario?updateArt=-1&idA=<%: item.Articulo.ID %>">menos</a>
+                            <div class="row col-8" style="padding-left: 0px;">
+                                <div class="col" style="padding-left:0px;">
+                                    <a href="CarritoUsuario?updateArt=-1&idA=<%: item.Articulo.ID %>" class="btn btn-danger" style="max-width:100%; max-height:100%;"><b>-</b>
+                                    </a>
                                 </div>
-                                <div class="col">
-                                    <!--<%: txtCantidadArtCarrito.Text = item.Cantidad.ToString() %>-->
-                                    <asp:TextBox ID="txtCantidadArtCarrito" runat="server" CssClass="form-control" Style="width: 3rem;"></asp:TextBox>
+                                <div class="col" style="padding-left:0px; padding-right:0px; padding-top: .4rem;">
+<%--                                    <!--<%: txtCantidadArtCarrito.Text = item.Cantidad.ToString() %>-->
+                                    <asp:TextBox ID="txtCantidadArtCarrito" runat="server" CssClass="form-control" Style="width: 100%;"></asp:TextBox>--%>
+                                    <!--<%: lblCantidadArtCarrito.Text = item.Cantidad.ToString() %>-->
+                                    <asp:Label ID="lblCantidadArtCarrito" runat="server" />
                                     <%if (Request.QueryString["updateArt"] != null)
                                         { %>
                                     <%if (int.Parse(Request.QueryString["updateArt"]) == -1)
@@ -62,19 +65,19 @@
                                     <%} %>
                                     <%else
                                     { %>
-                                    <!--<%: valor += item.Articulo.Precio * (long.Parse(txtCantidadArtCarrito.Text)) %>-->
+                                    <!--<%: valor += item.Articulo.Precio * (long.Parse(lblCantidadArtCarrito.Text)) %>-->
                                     <%} %>
                                     <!--<%: aux = valor.ToString() %>-->
 
                                     <%}%>
                                 </div>
-                                <div class="col">
-                                    <a href="CarritoUsuario?updateArt=1&idA=<%: item.Articulo.ID %>">mas</a>
+                                <div class="col" style="padding-left:0px;">
+                                    <a href="CarritoUsuario?updateArt=1&idA=<%: item.Articulo.ID %>" class="btn btn-success" style="max-width:100%; max-height:100%;"><b>+</b></a>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col" style="padding-left: 0px;">
-                                    <p>(<%:obtenerStock(item.Articulo.ID, item.IDTalle)-int.Parse(txtCantidadArtCarrito.Text) %> disponibles)</p>
+                                    <p>(<%:obtenerStock(item.Articulo.ID, item.IDTalle)-int.Parse(lblCantidadArtCarrito.Text) %> disponibles)</p>
                                 </div>
                             </div>
                         </td>
