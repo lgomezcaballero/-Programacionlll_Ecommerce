@@ -15,6 +15,8 @@ namespace Aplicacion_Web_Ecommerce
 
         public decimal PrecioTotal { get; set; }
         public string aux { get; set; }
+        public decimal valor { get; set; }
+        public int cantidad { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["TeLogueaste"] == null)
@@ -35,9 +37,39 @@ namespace Aplicacion_Web_Ecommerce
                     byte idTalle = byte.Parse(Request.QueryString["IDT"]);
                     negocio.eliminarArticuloCarrito(idUsuario, idArticulo, idTalle);
                 }
+                if(Request.QueryString["updateArt"] != null && Request.QueryString["idA"] != null)
+                {
+                    if(int.Parse(Request.QueryString["updateArt"]) == 1)
+                    {
+                        cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), 1);
+                        //cantidad = 1;
+                    }
+                    else if(int.Parse(Request.QueryString["updateArt"]) == -1)
+                    {
+                        cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), -1);
+                        cantidad = -1;
+                    }
+                }
                 actualizarCarrito();
 
                 //}
+            }
+        }
+
+        protected void cambiarCantidadPedido(long idArticulo, int cantidad)
+        {
+            CarritoNegocio negocio = new CarritoNegocio();
+            carrito = new Dominio.Carrito();
+            carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+            carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+            foreach (var item in carrito.ArticulosCarrito)
+            {
+                if(item.Articulo.ID == idArticulo)
+                {
+                    item.Cantidad += cantidad;
+                    negocio.modificarArticuloCarrito(item, carrito.ID);
+                    return;
+                }
             }
         }
 

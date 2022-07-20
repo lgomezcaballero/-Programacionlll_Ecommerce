@@ -16,8 +16,11 @@ namespace Aplicacion_Web_Ecommerce.Pages
         public bool SeLogueo = true;
         protected void Page_Load(object sender, EventArgs e)
         {
-            TxtNombreUsuario.Text = "Admin";
-            TxtContraseña.Text = "123";
+            if (!IsPostBack)
+            {
+                TxtNombreUsuario.Text = "lgomez";
+                TxtContraseña.Text = "123";
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
