@@ -24,13 +24,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.Label lblNombrePais;
 
         /// <summary>
-        /// Control txtNombrePais.
+        /// Control ddlPaises.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombrePais;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPaises;
 
         /// <summary>
         /// Control LabelNombreProvincia.
@@ -78,13 +78,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected global::System.Web.UI.WebControls.Label LabelNombreDelPais;
 
         /// <summary>
-        /// Control TxtNombreDelPais.
+        /// Control e_ddlPaises.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombreDelPais;
+        protected global::System.Web.UI.WebControls.DropDownList e_ddlPaises;
 
         /// <summary>
         /// Control LabelNombreDeLaProvincia.

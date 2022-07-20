@@ -36,11 +36,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
                 {
                     Provincia provincia = new Provincia();
                     provincia.Pais = new Pais();
-
                     //TP lean
 
                     if (!IsPostBack)
                     {
+                        PaisNegocio pNegocio = new PaisNegocio();
+                        ddlPaises.DataSource = pNegocio.listar();
+                        ddlPaises.DataTextField = "NombrePais";
+                        ddlPaises.DataValueField = "ID";
+                        ddlPaises.DataBind();
                         if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
                         {
                             tipo = Request.QueryString["Type"];
@@ -50,10 +54,14 @@ namespace Aplicacion_Web_Ecommerce.Pages
                             tipo = Request.QueryString["Type"];
                         if (tipo == "e")
                         {
-                            
+                            e_ddlPaises.DataSource = pNegocio.listar();
+                            e_ddlPaises.DataTextField = "NombrePais";
+                            e_ddlPaises.DataValueField = "ID";
+                            e_ddlPaises.DataBind();
                             //Con esta funciom obtine el articulo que se busca
                             provincia = obtenerProvincia(id);
-                            TxtNombreDelPais.Text = provincia.Pais.NombrePais;
+                            e_ddlPaises.SelectedValue = provincia.Pais.ID.ToString();
+                            //TxtNombreDelPais.Text = provincia.Pais.NombrePais;
                             TxtNombreDeLaProvincia.Text = provincia.NombreProvincia;
                             //Esto lo que hace es precargar los datos con el articulo que se quiere modificar*/
                              //setearCamposModificarPais(pais);
@@ -91,7 +99,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Capturo los datos del front 
             provincia.Pais = new Pais();
-            provincia.Pais.NombrePais = txtNombrePais.Text;
+            provincia.Pais.NombrePais = ddlPaises.SelectedItem.Text;
             provincia.NombreProvincia = TxtNombreProvincia.Text;
 
             //Esto lo hago para que el usuario puede ingresar el nombre del pais y no el id
@@ -149,7 +157,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esto lo hice asi para probar, pero aun asi no funciona 
 
-            pais.NombrePais = TxtNombreDelPais.Text;
+            pais.NombrePais = e_ddlPaises.SelectedItem.Text;
             pais = BuscarPaisPorNombre(pais.NombrePais);
 
             //Aca seteo el pais 

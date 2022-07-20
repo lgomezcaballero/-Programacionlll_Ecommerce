@@ -9,7 +9,8 @@
         <div class="mb-3 row">
             <div class="col">
                 <asp:Label ID="lblNombrePais" runat="server" Text="NombrePais"></asp:Label>
-                <asp:TextBox ID="txtNombrePais" CssClass="form-control" runat="server"></asp:TextBox>
+                <%--<asp:TextBox ID="txtNombrePais" CssClass="form-control" runat="server"></asp:TextBox>--%>
+                <asp:DropDownList ID="ddlPaises" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
                <div class="col">
                 <asp:Label ID="LabelNombreProvincia" runat="server" Text="Nombre de la provincia"></asp:Label>
@@ -38,7 +39,7 @@
         <div class="mb-3 row">
             <div class="col">
                 <asp:Label ID="LabelNombreDelPais" runat="server" Text="NombrePais"></asp:Label>
-                <asp:TextBox ID="TxtNombreDelPais" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:DropDownList ID="e_ddlPaises" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
                <div class="col">
                 <asp:Label ID="LabelNombreDeLaProvincia" runat="server" Text="Nombre de la provincia"></asp:Label>
