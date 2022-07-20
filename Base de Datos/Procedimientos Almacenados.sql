@@ -815,6 +815,22 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_RestaurarPais(
+	@idPais tinyint
+)
+As 
+Begin 
+	Begin Try
+		Begin Transaction
+			Update Pais Set Estado = 1 Where IDPais = @idPais
+		Commit Transaction
+	End Try 
+	Begin Catch
+		RAISERROR('Error, no se pudo restaurar el pais', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarTipoUsuario
