@@ -981,6 +981,22 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_RestaurarProvincia(
+	@idProvincia int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Provincias Set Estado = 1 Where IDProvincia = @idProvincia
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo restaurar la provincia', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarTallasArticulo(

@@ -103,12 +103,25 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esto carga la provincia a la base 
             ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
-            provinciaNegocio.agregarProvincia(provincia);
+
+            if(!existeProvincia(provincia.NombreProvincia, provincia.Pais.NombrePais, provinciaNegocio))
+                provinciaNegocio.agregarProvincia(provincia);
+
             Response.Redirect("ListarProvincia.aspx", false);
-
-
         }
 
+        protected bool existeProvincia(string provincia, string pais, ProvinciaNegocio provinciaNegocio)
+        {
+            foreach (var item in provinciaNegocio.listar(true))
+            {
+                if(item.NombreProvincia.Equals(provincia) && item.Pais.NombrePais.Equals(pais))
+                {
+                    provinciaNegocio.restaurarProvincia(item);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         protected Pais BuscarPaisPorNombre(string NombrePais)
         {
