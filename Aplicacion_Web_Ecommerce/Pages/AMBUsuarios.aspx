@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Ecommerce.Master" AutoEventWireup="true" CodeBehind="AMBUsuarios.aspx.cs" Inherits="Aplicacion_Web_Ecommerce.Pages.AMBUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
       <%if (tipo == "a")
         { %>
         
@@ -56,29 +55,29 @@
              
              </div>
 
-              <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-            <ContentTemplate>
+<%--              <asp:UpdatePanel runat="server">
+            <ContentTemplate>--%>
              <div class="mb-3 row">
                   <div class="col">
                       <asp:Label ID="LabelPais" runat="server" Text="Pais"></asp:Label>
-                      <asp:DropDownList ID="DropDownListPaises" runat="server" AutoPostBack="true"
+                      <asp:DropDownList ID="DropDownListPaises" CssClass="form-select" runat="server" AutoPostBack="true"
                           OnSelectedIndexChanged="DropDownListPaises_SelectedIndexChanged"></asp:DropDownList>
                   </div>
 
                   <div class="col">
                     <asp:Label ID="LabelProvincia" runat="server" Text="Provincia"></asp:Label>
-                      <asp:DropDownList ID="DropDownListProvincia" runat="server" AutoPostBack="true" 
+                      <asp:DropDownList ID="DropDownListProvincia" CssClass="form-select" runat="server" AutoPostBack="true" 
                           OnSelectedIndexChanged="DropDownListProvincia_SelectedIndexChanged"></asp:DropDownList>
                   </div>
 
                     <div class="col">
                    <%-- <asp:Label ID="Label1" runat="server" Text="Provincia"></asp:Label>--%>
                         <asp:Label ID="LabelLocalidad" runat="server" Text="Localidad"></asp:Label>
-                      <asp:DropDownList ID="DropDownListLocalidad" runat="server" AutoPostBack="true"></asp:DropDownList>
+                      <asp:DropDownList ID="DropDownListLocalidad" CssClass="form-select" runat="server" AutoPostBack="true"></asp:DropDownList>
                   </div>
               </div>  
-            </ContentTemplate>
-        </asp:UpdatePanel>
+<%--            </ContentTemplate>
+        </asp:UpdatePanel>--%>
 
 
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">

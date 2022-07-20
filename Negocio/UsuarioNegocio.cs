@@ -9,7 +9,7 @@ namespace Negocio
 {
     public class UsuarioNegocio
     {
-        public List<Usuario> listar()
+        public List<Usuario> listar(bool b = false)
         {
             List<Usuario> lista = new List<Usuario>();
             AccesoDatos datos = new AccesoDatos();
@@ -95,14 +95,18 @@ namespace Negocio
 
                     //Esto valida que se cargue a la lista un usuario que este con estado false
 
-                    if(aux.Estado == true)
+                    if (!b)
                     {
-                      lista.Add(aux);
+                        if (aux.Estado)
+                        {
+                            lista.Add(aux);
+                        }
                     }
-
-
+                    else
+                    {
+                        lista.Add(aux);
+                    }
                 }
-
                 return lista;
             }
             catch (Exception ex)
@@ -361,6 +365,32 @@ namespace Negocio
                 throw ex;
             }
 
+        }
+
+        public void RestaurarUsuario(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsultaSP("SP_RestaurarUsuario");
+                datos.setParametros("@idUsuario", usuario.ID);
+                datos.setParametros("@apellidos", usuario.Apellidos);
+                datos.setParametros("@nombres", usuario.Nombres);
+                datos.setParametros("@dni", usuario.DNI);
+                datos.setParametros("@nombreUsuario", usuario.NombreUsuario);
+                datos.setParametros("@contraseña", usuario.Contraseña);
+                datos.setParametros("@idTipoUsuario", usuario.TipoUsuario.ID);
+                datos.setParametros("@idLocalidad", usuario.Localidad.ID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
         //public void agregarContacto(Usuario usuario)

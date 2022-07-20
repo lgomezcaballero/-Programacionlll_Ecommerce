@@ -12,8 +12,8 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
     public partial class AMBUsuarios : System.Web.UI.Page
     {
-    public long id;
-    public string tipo;
+        public long id;
+        public string tipo;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -72,54 +72,49 @@ namespace Aplicacion_Web_Ecommerce.Pages
                         DropDownListProvincia.DataTextField = "NombreProvincia";
                         DropDownListProvincia.DataBind();
 
+                        //Esto precarga las localidades solo por primera vez
+                        int idLocalidad = int.Parse(DropDownListProvincia.SelectedItem.Value);
 
-                    ///////////////////////////////////////////////////////////////////////////////////////////
-                    //Esto precarga la dropdown de paises en editar de abmusuarios
-                    //DropDownDePaises.DataSource = listapaises;
-                    //DropDownDePaises.DataTextField = "NombrePais";
-                    //DropDownDePaises.DataValueField= "ID";
-                    //DropDownDePaises.DataBind();
-
-
-                    ///////////////////////////////////////////////////////////////////////////////////////////
-
-                    //Esto precarga las localidades solo por primera vez
-                    int idLocalidad = int.Parse(DropDownListProvincia.SelectedItem.Value);
-
-                    DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == idLocalidad);
-                    DropDownListLocalidad.DataValueField = "ID";
-                    DropDownListLocalidad.DataTextField = "NombreLocalidad";
-                    DropDownListLocalidad.DataBind();
+                        DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == idLocalidad);
+                        DropDownListLocalidad.DataValueField = "ID";
+                        DropDownListLocalidad.DataTextField = "NombreLocalidad";
+                        DropDownListLocalidad.DataBind();
 
 
-                        if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
-                        {
-                            tipo = Request.QueryString["Type"];
-                            id = long.Parse(Request.QueryString["ID"]);
-                        }
-                        if (Request.QueryString["Type"] == "a")
-                            tipo = Request.QueryString["Type"];
-                        if (tipo == "e")
-                        {
-                            //Con esta funciom obtine el articulo que se busca
-                            usuario = ObtenerUsuario(id);
-                            //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
-                            setearCamposModificarUsuario(usuario);
-                        }
 
-                        if (Request.QueryString["Type"] == "d")
-                        {
-                            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-                            usuarioNegocio.eliminarUsuario(id);
-                            Response.Redirect("ListarUsuarios.aspx", false);
-                        }
                     }
+                    if (Request.QueryString["ID"] != null && Request.QueryString["Type"] != null)
+                    {
+                        tipo = Request.QueryString["Type"];
+                        id = long.Parse(Request.QueryString["ID"]);
+                    }
+                    if (Request.QueryString["Type"] == "a")
+                        tipo = Request.QueryString["Type"];
+                    if (tipo == "e")
+                    {
+                        //Con esta funciom obtine el articulo que se busca
+                        usuario = ObtenerUsuario(id);
+                        //Esto lo que hace es precargar los datos con el articulo que se quiere modificar
+                        setearCamposModificarUsuario(usuario);
+                    }
+
+                    if (Request.QueryString["Type"] == "d")
+                    {
+                        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                        usuarioNegocio.eliminarUsuario(id);
+                        Response.Redirect("ListarUsuarios.aspx", false);
+                    }
+                    //else
+                    //{
+                    //    DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == id);
+                    //    DropDownListProvincia.DataBind();
+                    //}
                 }
             }
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                             //Este es el dropdown de agregar
+        //Este es el dropdown de agregar
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         protected void DropDownListPaises_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,20 +125,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
             //Esta es la dropdown de provincia
 
             DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == id);
-            //if(DropDownListProvincia.DataSource[)
-            //{
-
-            //}
-            DropDownListProvincia.DataValueField = "ID";
-            DropDownListProvincia.DataTextField = "NombreProvincia";
             DropDownListProvincia.DataBind();
-            string nombre = DropDownListProvincia.SelectedItem.Value;
-
+            DropDownListLocalidad.DataSource= ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == id);
+            DropDownListLocalidad.DataBind();
+            //string nombre = DropDownListProvincia.SelectedItem.Value;
 
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                            //Este es el dropdown de agregar
+        //Este es el dropdown de agregar
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         protected void DropDownListProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -151,8 +141,8 @@ namespace Aplicacion_Web_Ecommerce.Pages
             int id = int.Parse(DropDownListProvincia.SelectedItem.Value);
 
             DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == id);
-            DropDownListLocalidad.DataValueField = "ID";
-            DropDownListLocalidad.DataTextField = "NombreLocalidad";
+            //DropDownListLocalidad.DataValueField = "ID";
+            //DropDownListLocalidad.DataTextField = "NombreLocalidad";
             DropDownListLocalidad.DataBind();
             //string nombre = DropDownListLocalidad.SelectedItem.Value;
         }
@@ -232,7 +222,8 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
 
                             //Agrego el usuario a la base
-                            usuarioNegocio.agregarUsuario(usuario);
+                            if (!existeUsuario(usuario, usuarioNegocio))
+                                usuarioNegocio.agregarUsuario(usuario);
 
                         }
 
@@ -245,16 +236,25 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     }
 
 
-
                 }
 
             }
 
-
-
-
+            Response.Redirect("ListarUsuarios.aspx", false);
         }
 
+        protected bool existeUsuario(Usuario usuario, UsuarioNegocio usuarioNegocio)
+        {
+            foreach (var item in usuarioNegocio.listar(true))
+            {
+                if (item.NombreUsuario.Equals(usuario.NombreUsuario))
+                {
+                    usuarioNegocio.RestaurarUsuario(usuario);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         protected bool CompletarCampos()
         {
@@ -341,7 +341,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             lista = (List<Usuario>)Session["listausuarios"];
             aux = lista.Find(x => x.ID == id);
             //Aca me guardo el usuario obtenido en sesion para usarlo en editar de abmUsuario
-       
+
 
 
             return aux;

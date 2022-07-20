@@ -396,6 +396,31 @@ Begin
 	End Catch
 End
 go
+Create Procedure SP_RestaurarUsuario(
+	@idUsuario bigint,
+	@apellidos varchar(100),
+	@nombres varchar(100),
+	@dni varchar(15),
+	@nombreUsuario varchar(20),
+	@contraseña varchar(30),
+	@idTipoUsuario tinyint,
+	@idLocalidad int
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Usuarios Set Apellidos = @apellidos, Nombres = @nombres, DNI = @dni,
+			Contraseña = @contraseña, IDTipoUsuario = @idTipoUsuario, IDLocalidad = @idLocalidad, Estado = 1
+			Where NombreUsuario = @nombreUsuario
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo restaurar el usuario', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 Create Procedure SP_ListarMarcas
