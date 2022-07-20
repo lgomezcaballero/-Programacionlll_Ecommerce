@@ -56,7 +56,7 @@
                     <div class="col-8">
                         <div class="input-group mt-3">
                             <%//Esta es la barra buscadora %>
-                            <asp:TextBox ID="BarraBuscadora" runat="server" type="text" class="form-control"  placeholder="Recipient's username" aria-label="Recipient's username"  aria-describedby="button-addon2" OnTextChanged="BarraBuscadora_TextChanged"></asp:TextBox>
+                            <asp:TextBox ID="BarraBuscadora" runat="server" type="text" class="form-control"  placeholder="Buscar articulo por nombre, marca, categoria o genero" aria-label="Recipient's username"  aria-describedby="button-addon2" OnTextChanged="BarraBuscadora_TextChanged"></asp:TextBox>
                             <%//<input type="text" class="form-control" id="BarraBuscadora" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" > %>
                             <%//Este es el boton %>
                             <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" class="btn btn-secondary" OnClick="BtnBuscar_Click" type="button" />         
