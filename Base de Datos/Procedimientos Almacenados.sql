@@ -178,7 +178,7 @@ go
 Create Procedure SP_ListarCategorias
 As
 Begin
-	Select IDCategoria, Nombre, FechaRegistro, Estado From Categorias Where Estado = 1
+	Select IDCategoria, Nombre, FechaRegistro, Estado From Categorias
 End
 go
 Create Procedure SP_AgregarCategoria(
@@ -227,6 +227,22 @@ Begin
 	End Try
 	Begin Catch
 		RAISERROR('Error, no se pudo eliminar la categoria', 16, 1)
+		Rollback Transaction
+	End Catch
+End
+go
+Create Procedure SP_RestaurarCategoria(
+	@idCategoria smallint
+)
+As
+Begin
+	Begin Try
+		Begin Transaction
+			Update Categorias Set Estado = 1 Where IDCategoria = @idCategoria
+		Commit Transaction
+	End Try
+	Begin Catch
+		RAISERROR('Error, no se pudo restaurar la categoria', 16, 1)
 		Rollback Transaction
 	End Catch
 End

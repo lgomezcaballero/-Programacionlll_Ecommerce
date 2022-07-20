@@ -95,9 +95,24 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             //Esto carga el pais a la base 
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            categoriaNegocio.agregarCategoria(categoria);
+            if(!existeCategoria(categoria.Nombre, categoriaNegocio))
+                categoriaNegocio.agregarCategoria(categoria);
+
             Response.Redirect("ListarCategorias.aspx", false);
 
+        }
+
+        protected bool existeCategoria(string categoria, CategoriaNegocio categoriaNegocio)
+        {
+            foreach (var item in categoriaNegocio.listar(true))
+            {
+                if (item.Nombre.Equals(categoria))
+                {
+                    categoriaNegocio.RestaurarCategoria(item);
+                    return true;
+                }
+            }
+            return false;
         }
 
         //Esta funcion edita la categoria

@@ -9,7 +9,7 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
-        public List<Categoria> listar()
+        public List<Categoria> listar(bool b = false)
         {
             List<Categoria> lista = new List<Categoria>();
             AccesoDatos datos = new AccesoDatos();
@@ -21,16 +21,26 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Categoria aux = new Categoria();
-                    if(!(datos.Lector["IDCategoria"] is DBNull))
-                    aux.ID = (Int16)datos.Lector["IDCategoria"];
-                    if(!(datos.Lector["Nombre"] is DBNull))
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    if(!(datos.Lector["FechaRegistro"] is DBNull))
-                    aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
-                    if(!(datos.Lector["Estado"] is DBNull))
-                    aux.Estado = (bool)datos.Lector["Estado"];
+                    if (!(datos.Lector["IDCategoria"] is DBNull))
+                        aux.ID = (Int16)datos.Lector["IDCategoria"];
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+                    if (!(datos.Lector["FechaRegistro"] is DBNull))
+                        aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
+                    if (!(datos.Lector["Estado"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["Estado"];
 
-                    lista.Add(aux);
+                    if (!b)
+                    {
+                        if (aux.Estado == true)
+                        {
+                            lista.Add(aux);
+                        }
+                    }
+                    else
+                    {
+                        lista.Add(aux);
+                    }
                 }
 
                 return lista;
@@ -41,7 +51,10 @@ namespace Negocio
 
                 throw ex;
             }
-
+            finally
+            {
+                datos.cerrarConexion();
+            }
 
         }
         public void agregarCategoria(Categoria categoria)
@@ -221,6 +234,28 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void RestaurarCategoria(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsultaSP("SP_RestaurarCategoria");
+                datos.setParametros("@idCategoria", categoria.ID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
     }
 }
