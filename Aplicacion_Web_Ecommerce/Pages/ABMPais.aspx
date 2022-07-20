@@ -13,7 +13,7 @@
         <div class="mb-3 row">
             <div class="col-4">
                 <asp:Label ID="lblNombrePais" runat="server" Text="NombrePais"></asp:Label>
-                <asp:TextBox ID="txtNombrePais" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtNombrePais" CssClass="form-control" oninput="this.value = this.value.replace(/[^a-zA-Z0]/,'')" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
         <div class="mb-3 row">
             <div class="col-4">
                 <asp:Label ID="lblPais" runat="server" Text="Nombre"></asp:Label>
-                <asp:TextBox ID="txtPais" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtPais" CssClass="form-control" oninput="this.value = this.value.replace(/[^a-zA-Z0]/,'')" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
