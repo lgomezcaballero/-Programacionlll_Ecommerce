@@ -14,7 +14,7 @@
             </div>
                <div class="col">
                 <asp:Label ID="LabelNombreProvincia" runat="server" Text="Nombre de la provincia"></asp:Label>
-                <asp:TextBox ID="TxtNombreProvincia" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtNombreProvincia" CssClass="form-control" oninput="this.value = this.value.replace(/[^a-zA-Z0]/,'')" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
             </div>
                <div class="col">
                 <asp:Label ID="LabelNombreDeLaProvincia" runat="server" Text="Nombre de la provincia"></asp:Label>
-                <asp:TextBox ID="TxtNombreDeLaProvincia" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtNombreDeLaProvincia" CssClass="form-control" oninput="this.value = this.value.replace(/[^a-zA-Z0]/,'')" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
