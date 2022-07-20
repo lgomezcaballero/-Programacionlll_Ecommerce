@@ -90,6 +90,7 @@
     </div>
 
     <div class="row" style="padding-left:10%; padding-right:10%;">
+        
         <div class="col">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_6.jpg" class="card-img-top" alt="...">
