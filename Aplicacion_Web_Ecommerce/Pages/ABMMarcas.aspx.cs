@@ -28,7 +28,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                 if (Session["Admin"] == null)
                 {
                     Session.Add("error", "solo los administradores pueden acceder a esta pagina");
-                    Response.Redirect("ErrorLogin.aspx", false);
+                    Response.Redirect("ErrorAcceso.aspx", false);
                 }
 
                 else { 

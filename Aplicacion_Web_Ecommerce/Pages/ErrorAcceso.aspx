@@ -3,8 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-      <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+     <%-- <asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
 
-    <a href="Home.aspx">Volver a home</a>
+    
+      <a href="Home.aspx" style="text-decoration: none">
+        <h3 class="fw-semibold">Volver al home</h3>
+    </a>
 
 </asp:Content>
