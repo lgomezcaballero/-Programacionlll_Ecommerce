@@ -14,23 +14,33 @@ namespace Aplicacion_Web_Ecommerce
         public Articulo articulo { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack && Session["articuloAux"] != null)
-                articulo = (Articulo)Session["articuloAux"];
 
-            if (!IsPostBack)
+            if (Session["TeLogueaste"] == null)
             {
-                TallaNegocio tNegocio = new TallaNegocio();
-                Session.Add("Talles", tNegocio.listar());
-                if (Request.QueryString["IDinfoArt"] != null)
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+                if (IsPostBack && Session["articuloAux"] != null)
+                    articulo = (Articulo)Session["articuloAux"];
+
+                if (!IsPostBack)
                 {
-                    articulo = new Articulo();
-                    long idArticulo = long.Parse(Request.QueryString["IDinfoArt"]);
-                    articulo = obtenerArticulo(idArticulo);
-                    Session.Add("articuloAux", articulo);
-                    ddlTalles.DataSource = tNegocio.listarTallasDisponibles(articulo);
-                    ddlTalles.DataTextField = "Nombre";
-                    ddlTalles.DataValueField = "IDTalla";
-                    ddlTalles.DataBind();
+                    TallaNegocio tNegocio = new TallaNegocio();
+                    Session.Add("Talles", tNegocio.listar());
+                    if (Request.QueryString["IDinfoArt"] != null)
+                    {
+                        articulo = new Articulo();
+                        long idArticulo = long.Parse(Request.QueryString["IDinfoArt"]);
+                        articulo = obtenerArticulo(idArticulo);
+                        Session.Add("articuloAux", articulo);
+                        ddlTalles.DataSource = tNegocio.listarTallasDisponibles(articulo);
+                        ddlTalles.DataTextField = "Nombre";
+                        ddlTalles.DataValueField = "IDTalla";
+                        ddlTalles.DataBind();
+                    }
                 }
             }
         }
