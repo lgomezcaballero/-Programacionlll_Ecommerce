@@ -6,8 +6,18 @@
      <%-- <asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
 
     
-      <a href="Home.aspx" style="text-decoration: none">
-        <h3 class="fw-semibold">Volver al home</h3>
-    </a>
+  
+    <%if(Session["Admin"]!= null)
+            {%>
+                  <a href="HomeAdmin.aspx" style="text-decoration: none">
+                  <h3 class="fw-semibold">Volver al homeadmin</h3>
+                  </a>
+           <% }%>
 
+    <%      else
+            {%>
+        <a href="Home.aspx" style="text-decoration: none">
+        <h3 class="fw-semibold">Volver al home</h3>
+        </a>
+            <%} %>
 </asp:Content>
