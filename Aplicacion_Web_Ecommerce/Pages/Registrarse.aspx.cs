@@ -141,70 +141,80 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
                     else
                     {
-                        //Valido que la contraseña se escriba bien las dos veces
-                        if (validarContraseña(TxtContraseña.Text, TxtRepetirContraseña.Text) == true)
+
+                        if (ValidaEmail() == true)
                         {
-
-                            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-                            Usuario usuario = new Usuario();
-
-
-                            ContactoNegocio contactoNegocio = new ContactoNegocio();
-
-
-                            //Datos Usuario
-                            usuario.Apellidos = TxtApellidos.Text;
-                            usuario.Nombres = TxtNombres.Text;
-                            usuario.DNI = TxtDNI.Text;
-                            usuario.NombreUsuario = TxtNombreUsuario.Text;
-                            usuario.Contraseña = TxtContraseña.Text;
-
-
-                            //Tipo Usuario
-                            //Esto se carga de manera automatica
-                            usuario.TipoUsuario = new TipoUsuario();
-                            usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
-
-
-                            //Datos Contacto falta que de alguna forma guarde esto
-                            usuario.Contacto = new Contacto();
-                            //usuario.Contacto.ID = como hago para obtener el id del usuario?
-
-                            usuario.Contacto.Email = TxtEmail.Text;
-                            usuario.Contacto.Telefono = TxtTelefono.Text;
-
-                            //contactoNegocio.agregarContacto(usuario.Contacto);
-
-                            //Localidad
-                            usuario.Localidad = new Localidad();
-                            usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
-
-
-                            //Localidad > Provincia
-                            //usuario.Localidad.Provincia = new Provincia();
-                            //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
-                            //Localidad > Provincia > Pais
-                            // usuario.Localidad.Provincia.Pais = new Pais();
-                            //usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownListProvincia.SelectedItem.Value);
-
-
-                            //Agrego el usuario a la base
-                            usuarioNegocio.agregarUsuario(usuario);
-                            Response.Redirect("LoginSinMaster.aspx", false);
-                                
-
+                            LabelErrorCampos.Text = "El mail que ingresso ya esta en uso, intente con otro mail";
                         }
+
 
                         else
                         {
-                            LabelErrorCampos.Text = "Las contraseñas ingresadas no coinciden";
+                            //Valido que la contraseña se escriba bien las dos veces
+                            if (validarContraseña(TxtContraseña.Text, TxtRepetirContraseña.Text) == true)
+                            {
+
+                                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                                Usuario usuario = new Usuario();
+
+
+                                ContactoNegocio contactoNegocio = new ContactoNegocio();
+
+
+                                //Datos Usuario
+                                usuario.Apellidos = TxtApellidos.Text;
+                                usuario.Nombres = TxtNombres.Text;
+                                usuario.DNI = TxtDNI.Text;
+                                usuario.NombreUsuario = TxtNombreUsuario.Text;
+                                usuario.Contraseña = TxtContraseña.Text;
+
+
+                                //Tipo Usuario
+                                //Esto se carga de manera automatica
+                                usuario.TipoUsuario = new TipoUsuario();
+                                usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
+
+
+                                //Datos Contacto falta que de alguna forma guarde esto
+                                usuario.Contacto = new Contacto();
+                                //usuario.Contacto.ID = como hago para obtener el id del usuario?
+
+                                usuario.Contacto.Email = TxtEmail.Text;
+                                usuario.Contacto.Telefono = TxtTelefono.Text;
+
+                                //contactoNegocio.agregarContacto(usuario.Contacto);
+
+                                //Localidad
+                                usuario.Localidad = new Localidad();
+                                usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
+
+
+                                //Localidad > Provincia
+                                //usuario.Localidad.Provincia = new Provincia();
+                                //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
+                                //Localidad > Provincia > Pais
+                                // usuario.Localidad.Provincia.Pais = new Pais();
+                                //usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownListProvincia.SelectedItem.Value);
+
+
+                                //Agrego el usuario a la base
+                                usuarioNegocio.agregarUsuario(usuario);
+                                Response.Redirect("LoginSinMaster.aspx", false);
+
+
+                            }
+
+                            else
+                            {
+                                LabelErrorCampos.Text = "Las contraseñas ingresadas no coinciden";
+                            }
+
+
                         }
 
 
+
                     }
-
-
-
                 }
 
             }
@@ -287,7 +297,6 @@ namespace Aplicacion_Web_Ecommerce.Pages
             return false;
         }
 
-        /*
         protected bool ValidaEmail()
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -296,13 +305,13 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             foreach (Usuario usuario in usuarios)
             {
-                if (TxtEmail.Text == usuario.)
+                if (TxtEmail.Text == usuario.Contacto.Email)
                 {
                     return true;
                 }
             }
 
             return false;
-        }*/
+        }
     }
 }
