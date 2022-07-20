@@ -309,7 +309,7 @@ articulo+
             {
                 foreach (var item in aux)
                 {
-                    if (item.Nombre.Equals("MercadoPago"))
+                    if (item.Nombre.Equals("Mercado Pago"))
                     {
                         idFormaPago = item.ID;
                         break;
