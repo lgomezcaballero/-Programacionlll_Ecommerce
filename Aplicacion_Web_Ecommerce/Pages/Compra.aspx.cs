@@ -16,9 +16,19 @@ namespace Aplicacion_Web_Ecommerce
         public string fechaHoy { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            precargarCompra();
-            obtenerUsuario(factura.Carrito.ID);
-            fechaHoy = DateTime.Now.ToString("dd-MM-yyyy");
+
+            if (Session["TeLogueaste"] == null)
+            {
+                Session.Add("error", "Debe loguearse para acceder a esta pagina");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+
+            else
+            {
+                precargarCompra();
+                obtenerUsuario(factura.Carrito.ID);
+                fechaHoy = DateTime.Now.ToString("dd-MM-yyyy");
+            }
         }
 
         protected void precargarCompra()
