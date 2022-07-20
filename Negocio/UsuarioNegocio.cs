@@ -373,7 +373,7 @@ namespace Negocio
             try
             {
                 datos.setConsultaSP("SP_RestaurarUsuario");
-                datos.setParametros("@idUsuario", usuario.ID);
+                datos.setParametros("@idUsuario", obtenerUsuario(usuario.NombreUsuario));
                 datos.setParametros("@apellidos", usuario.Apellidos);
                 datos.setParametros("@nombres", usuario.Nombres);
                 datos.setParametros("@dni", usuario.DNI);
@@ -381,6 +381,8 @@ namespace Negocio
                 datos.setParametros("@contraseña", usuario.Contraseña);
                 datos.setParametros("@idTipoUsuario", usuario.TipoUsuario.ID);
                 datos.setParametros("@idLocalidad", usuario.Localidad.ID);
+                datos.setParametros("@email", usuario.Contacto.Email);
+                datos.setParametros("@telefono", usuario.Contacto.Telefono);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -391,6 +393,16 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        protected long obtenerUsuario(string nombre)
+        {
+            foreach (var item in listar(true))
+            {
+                if (item.NombreUsuario.Equals(nombre))
+                    return item.ID;
+            }
+            return -1;
         }
 
         //public void agregarContacto(Usuario usuario)

@@ -404,7 +404,9 @@ Create Procedure SP_RestaurarUsuario(
 	@nombreUsuario varchar(20),
 	@contraseña varchar(30),
 	@idTipoUsuario tinyint,
-	@idLocalidad int
+	@idLocalidad int,
+	@email varchar(100),
+	@telefono varchar(50)
 )
 As
 Begin
@@ -413,6 +415,7 @@ Begin
 			Update Usuarios Set Apellidos = @apellidos, Nombres = @nombres, DNI = @dni,
 			Contraseña = @contraseña, IDTipoUsuario = @idTipoUsuario, IDLocalidad = @idLocalidad, Estado = 1
 			Where NombreUsuario = @nombreUsuario
+			Update Contactos Set Email = @email, Telefono = @telefono Where IDUsuario = @idUsuario
 		Commit Transaction
 	End Try
 	Begin Catch
