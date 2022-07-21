@@ -1168,7 +1168,13 @@ Begin
 	Select Top 1 IDFactura From Factura Order By IDFactura desc
 End
 go
-exec SP_ObtenerIDFacturaNueva
+Create Procedure SP_ListarFacturas
+As
+Begin
+	Select f.IDFactura, f.IDFormaPago, c.IDArticulo, c.Cantidad, c.PrecioTotal
+	From Factura f 
+	Inner Join Compras c on f.IDFactura = c.IDFactura
+End
 go
 -------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------
@@ -1202,3 +1208,14 @@ Begin
 	End Catch
 End
 go
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Create Procedure SP_ListarArticuloMasVendido
+As
+Begin
+	Select Top 1 c.IDArticulo, COUNT(*) CantidadVentas
+	From Factura f 
+	Inner Join Compras c on f.IDFactura = c.IDFactura
+	Group By c.IDArticulo
+	Order By CantidadVentas desc
+End

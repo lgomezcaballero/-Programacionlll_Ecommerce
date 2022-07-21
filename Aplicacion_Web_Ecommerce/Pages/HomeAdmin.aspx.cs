@@ -38,7 +38,10 @@ namespace Aplicacion_Web_Ecommerce
         public List<Usuario> listausuarios = new List<Usuario>(); //ok
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 
-
+        public long cantidadVentas { get; set; }
+        public decimal recaudado { get; set; }
+        public string articulo { get; set; }
+        public string FormaPago { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -61,41 +64,82 @@ namespace Aplicacion_Web_Ecommerce
 
                 else
                 {
-                    listaArticulos = negocio.listar();
                     if (!IsPostBack)
+                    {
+                        listaArticulos = negocio.listar();
                         Session.Add("listaArticulos", listaArticulos);
 
-                    //Esto lo hago para guardar el pais en session 
-                    listaPaises = paisNegocio.listar();
-                    if (!IsPostBack)
+                        //Esto lo hago para guardar el pais en session 
+                        listaPaises = paisNegocio.listar();
                         Session.Add("listapaises", listaPaises);
 
-                    //Esto lo hago para guardar el las provincias en session 
-                    listaProvincias = provincianegocio.listar();
-                    if (!IsPostBack)
+                        //Esto lo hago para guardar el las provincias en session 
+                        listaProvincias = provincianegocio.listar();
                         Session.Add("listaProvincias", listaProvincias);
 
-                    //Esto lo hago para guardar las categorias en la session 
-                    listacategoria = categoriaNegocio.listar();
-                    if (!IsPostBack)
+                        //Esto lo hago para guardar las categorias en la session 
+                        listacategoria = categoriaNegocio.listar();
                         Session.Add("listacategoria", listacategoria);
 
 
-                    listademarcas = marcaNegocio.listar();
-                    if (!IsPostBack)
+                        listademarcas = marcaNegocio.listar();
                         Session.Add("listademarcas", listademarcas);
 
-                    //Esto lo hago para guardar las localidades en la session //ok
-                    if (!IsPostBack)
+                        //Esto lo hago para guardar las localidades en la session //ok
                         Session.Add("listalocalidades", listalocalidades);
 
-                    //Esto lo hago para guardar los Usuarios en la session //ok
-                    listausuarios = usuarioNegocio.listar();
-                    if (!IsPostBack)
+                        //Esto lo hago para guardar los Usuarios en la session //ok
+                        listausuarios = usuarioNegocio.listar();
                         Session.Add("listausuarios", listausuarios);
-                }
 
+                        obtenerEstadisticas();
+                    }
+                }
             }
+        }
+
+        protected void obtenerEstadisticas()
+        {
+            FacturaNegocio negocio = new FacturaNegocio();
+            obtenerCantidadVentas(negocio);
+            obtenerTotalRecaudado(negocio);
+            obtenerArticuloMasVendido(negocio);
+            obtenerFormaPago(negocio);
+        }
+        protected void obtenerCantidadVentas(FacturaNegocio negocio)
+        {
+            cantidadVentas = negocio.listar().Count;
+        }
+
+        protected void obtenerTotalRecaudado(FacturaNegocio negocio)
+        {
+            foreach (var item in negocio.listar())
+            {
+                recaudado += item.precioTotal;
+            }
+        }
+
+        protected void obtenerArticuloMasVendido(FacturaNegocio negocio)
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            long idArticulo = negocio.listarArticuloMasVendido();
+            articulo = (artNegocio.obtenerArticulo(idArticulo)).Nombre;
+        }
+
+        protected void obtenerFormaPago(FacturaNegocio negocio)
+        {
+            int e = 0, mp = 0;
+            foreach (var item in negocio.listar())
+            {
+                if (item.IDFormaPago == 1)
+                    e++;
+                else if (item.IDFormaPago == 2)
+                    mp++;
+            }
+            if (e > mp)
+                FormaPago = "Efectivo";
+            else if (mp > e)
+                FormaPago = "Mercado Pago";
         }
     }
 }

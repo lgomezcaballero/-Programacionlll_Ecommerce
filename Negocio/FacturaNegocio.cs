@@ -47,7 +47,7 @@ namespace Negocio
                         ac.IDTalle = (byte)datos.Lector["IDTalle"];
 
                     if (!(datos.Lector["PrecioTotal"] is DBNull))
-                        aux.PrecioTotal = (byte)datos.Lector["PrecioTotal"];
+                        aux.PrecioTotal = (decimal)datos.Lector["PrecioTotal"];
 
                     if (!(datos.Lector["EstadoCompra"] is DBNull))
                         aux.Carrito.Estado = (bool)datos.Lector["EstadoCompra"];
@@ -315,6 +315,77 @@ namespace Negocio
                 datos.cerrarConexion();
             }
 
+        }
+
+        public List<Estadisticas> listar()
+        {
+            List<Estadisticas> lista = new List<Estadisticas>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsultaSP("SP_ListarFacturas");
+                datos.ejecutarLectura();
+
+                Estadisticas aux = new Estadisticas();
+                while (datos.Lector.Read())
+                {
+                    aux = new Estadisticas();
+
+                    if (!(datos.Lector["IDFactura"] is DBNull))
+                        aux.IDFactura= (long)datos.Lector["IDFactura"];
+
+                    if (!(datos.Lector["IDFormaPago"] is DBNull))
+                        aux.IDFormaPago = (byte)datos.Lector["IDFormaPago"];
+
+                    if (!(datos.Lector["IDArticulo"] is DBNull))
+                        aux.IDArticulo = (long)datos.Lector["IDArticulo"];
+
+                    if (!(datos.Lector["Cantidad"] is DBNull))
+                        aux.cantidad = (int)datos.Lector["Cantidad"];
+
+                    if (!(datos.Lector["PrecioTotal"] is DBNull))
+                        aux.precioTotal = (decimal)datos.Lector["PrecioTotal"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public long listarArticuloMasVendido()
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsultaSP("SP_ListarFacturas");
+                datos.ejecutarLectura();
+
+                long idArticulo = -1;
+                if (datos.Lector.Read())
+                { 
+                    if (!(datos.Lector["IDArticulo"] is DBNull))
+                        idArticulo = (long)datos.Lector["IDArticulo"];
+                }
+                return idArticulo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

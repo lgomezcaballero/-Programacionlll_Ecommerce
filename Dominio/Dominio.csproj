@@ -46,6 +46,7 @@
     <Compile Include="ArticuloTalla.cs" />
     <Compile Include="Carrito.cs" />
     <Compile Include="Categoria.cs" />
+    <Compile Include="Estadisticas.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Contacto.cs" />
     <Compile Include="FormaPago.cs" />
