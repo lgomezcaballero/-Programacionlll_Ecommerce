@@ -51,7 +51,7 @@
                             <div class="row" style="padding-left: 0px;">Cantidad: </div>
                             <div class="row col-8" style="padding-left: 0px;">
                                 <div class="col" style="padding-left:0px;">
-                                    <a href="CarritoUsuario?updateArt=-1&idA=<%: item.Articulo.ID %>" class="btn btn-danger" style="max-width:100%; max-height:100%;"><b>-</b>
+                                    <a href="CarritoUsuario?updateArt=-1&idA=<%: item.Articulo.ID %>&idT=<%: item.IDTalle %>" class="btn btn-danger" style="max-width:100%; max-height:100%;"><b>-</b>
                                     </a>
                                 </div>
                                 <div class="col" style="padding-left:0px; padding-right:0px; padding-top: .4rem;">
@@ -75,7 +75,7 @@
                                     <%}%>
                                 </div>
                                 <div class="col" style="padding-left:0px;">
-                                    <a href="CarritoUsuario?updateArt=1&idA=<%: item.Articulo.ID %>" class="btn btn-success" style="max-width:100%; max-height:100%;"><b>+</b></a>
+                                    <a href="CarritoUsuario?updateArt=1&idA=<%: item.Articulo.ID %>&idT=<%: item.IDTalle %>" class="btn btn-success" style="max-width:100%; max-height:100%;"><b>+</b></a>
                                 </div>
                             </div>
                             <div class="row">

@@ -37,16 +37,17 @@ namespace Aplicacion_Web_Ecommerce
                     byte idTalle = byte.Parse(Request.QueryString["IDT"]);
                     negocio.eliminarArticuloCarrito(idUsuario, idArticulo, idTalle);
                 }
-                if(Request.QueryString["updateArt"] != null && Request.QueryString["idA"] != null)
+                if(Request.QueryString["updateArt"] != null && Request.QueryString["idA"] != null 
+                    && Request.QueryString["idT"] != null)
                 {
                     if(int.Parse(Request.QueryString["updateArt"]) == 1)
                     {
-                        cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), 1);
+                        cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), 1, byte.Parse(Request.QueryString["idT"]));
                         //cantidad = 1;
                     }
                     else if(int.Parse(Request.QueryString["updateArt"]) == -1)
                     {
-                        cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), -1);
+                        cambiarCantidadPedido(long.Parse(Request.QueryString["idA"]), -1, byte.Parse(Request.QueryString["idT"]));
                         //cantidad = -1;
                     }
                 }
@@ -56,21 +57,37 @@ namespace Aplicacion_Web_Ecommerce
             }
         }
 
-        protected void cambiarCantidadPedido(long idArticulo, int cantidad)
+        protected void cambiarCantidadPedido(long idArticulo, int cantidad, byte idTalle)
         {
             CarritoNegocio negocio = new CarritoNegocio();
             carrito = new Dominio.Carrito();
             carrito.ArticulosCarrito = new List<ArticuloCarrito>();
             carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+            long aux = obtenerNuevaCantidad(idArticulo, idTalle);
             foreach (var item in carrito.ArticulosCarrito)
             {
                 if(item.Articulo.ID == idArticulo)
                 {
-                    item.Cantidad += cantidad;
+                    if(item.Cantidad > 0 && cantidad == -1)
+                    {
+                        item.Cantidad += cantidad;
+                    }
+                    else if((item.Cantidad+cantidad) <= (aux))
+                    {
+                        item.Cantidad += cantidad;
+                    }
                     negocio.modificarArticuloCarrito(item, carrito.ID);
                     return;
                 }
             }
+        }
+
+        protected long obtenerNuevaCantidad(long idArticulo, byte idTalle)
+        {
+            ArticuloTallaNegocio negocio = new ArticuloTallaNegocio();
+            ArticuloTalla articuloTalla = new ArticuloTalla();
+            articuloTalla = negocio.obtenerArticuloTalla(idArticulo, idTalle);
+            return articuloTalla.Stock;
         }
 
         protected string obtenerTalle(byte idTalle)
