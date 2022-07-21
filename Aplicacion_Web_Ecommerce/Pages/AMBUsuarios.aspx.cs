@@ -90,7 +90,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                     }
                     if (Request.QueryString["Type"] == "a")
                         tipo = Request.QueryString["Type"];
-                    if (tipo == "e")
+                    if (tipo == "e" && !IsPostBack)
                     {
                         //Con esta funciom obtine el articulo que se busca
                         usuario = ObtenerUsuario(id);
@@ -361,6 +361,28 @@ namespace Aplicacion_Web_Ecommerce.Pages
             TxtBoxEmail.Text = usuario.Contacto.Email;
             TxtBoxTelefono.Text = usuario.Contacto.Telefono;
 
+            PaisNegocio pNegocio = new PaisNegocio();
+            DropDownDePaises.DataSource = pNegocio.listar();
+            DropDownDePaises.DataTextField = "NombrePais";
+            DropDownDePaises.DataValueField = "ID";
+            DropDownDePaises.DataBind();
+            DropDownDePaises.SelectedValue = usuario.Localidad.Provincia.Pais.ID.ToString();
+
+            int ID = int.Parse(DropDownDePaises.SelectedItem.Value);
+            DropDownDeProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == ID);
+            DropDownDeProvincia.DataValueField = "ID";
+            DropDownDeProvincia.DataTextField = "NombreProvincia";
+            DropDownDeProvincia.DataBind();
+            DropDownDeProvincia.SelectedValue = usuario.Localidad.Provincia.ID.ToString();
+
+            //Esto precarga las localidades solo por primera vez
+            int idLocalidad = int.Parse(DropDownDeProvincia.SelectedItem.Value);
+
+            DropDownLocalidades.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == idLocalidad);
+            DropDownLocalidades.DataValueField = "ID";
+            DropDownLocalidades.DataTextField = "NombreLocalidad";
+            DropDownLocalidades.DataBind();
+            DropDownLocalidades.SelectedValue = usuario.Localidad.ID.ToString();
         }
 
         protected void BtnEditar_Click(object sender, EventArgs e)
@@ -381,10 +403,15 @@ namespace Aplicacion_Web_Ecommerce.Pages
             usuario.Contacto.Telefono = TxtBoxTelefono.Text;
             usuario.TipoUsuario = new TipoUsuario();
             usuario.Localidad = new Localidad();
+            usuario.Localidad.Provincia = new Provincia();
+            usuario.Localidad.Provincia.Pais = new Pais();
+            usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownDePaises.SelectedItem.Value);
+            usuario.Localidad.Provincia.ID = int.Parse(DropDownDeProvincia.SelectedItem.Value);
+            usuario.Localidad.ID = int.Parse(DropDownLocalidades.SelectedItem.Value);
 
             //Llamo a esta funcion para obtener el id del Usuario que se esta modificando
             UsuarioObtenido = ObtenerUsuario(usuario.ID);
-            usuario.Localidad.ID = UsuarioObtenido.Localidad.ID;
+            //usuario.Localidad.ID = UsuarioObtenido.Localidad.ID;
 
             usuario.TipoUsuario.ID = UsuarioObtenido.TipoUsuario.ID;
             usuarioNegocio.modificarUsuario(usuario);
@@ -401,6 +428,28 @@ namespace Aplicacion_Web_Ecommerce.Pages
         protected void btnAtras_Click1(object sender, EventArgs e)
         {
             Response.Redirect("ListarUsuarios.aspx", false);
+        }
+
+        protected void DropDownDePaises_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = int.Parse(DropDownDePaises.SelectedItem.Value);
+
+            DropDownDeProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == id);
+            DropDownDeProvincia.DataBind();
+            if (DropDownDeProvincia.Items.Count > 0)
+            {
+                DropDownLocalidades.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll
+                    (x => x.Provincia.ID == int.Parse(DropDownDeProvincia.SelectedItem.Value));
+                DropDownLocalidades.DataBind();
+            }
+        }
+
+        protected void DropDownDeProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = int.Parse(DropDownDeProvincia.SelectedItem.Value);
+
+            DropDownLocalidades.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == id);
+            DropDownLocalidades.DataBind();
         }
 
         /*

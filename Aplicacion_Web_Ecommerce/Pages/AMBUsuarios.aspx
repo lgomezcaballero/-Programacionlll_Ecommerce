@@ -164,37 +164,34 @@
                    <asp:Label ID="Label8" runat="server" Text="Telefono"></asp:Label>
                    <asp:TextBox ID="TxtBoxTelefono" CssClass="form-control" runat="server"></asp:TextBox>
                </div>
+              </div>
 
-             
-             </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <asp:Label ID="LabelPaises" runat="server" Text="Pais"></asp:Label>
+                        <asp:DropDownList ID="DropDownDePaises" CssClass="form-select" runat="server" AutoPostBack="true"
+                            OnSelectedIndexChanged="DropDownDePaises_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </div>
 
-              <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-            <ContentTemplate>
-             <div class="mb-3 row">
-               <%--   <div class="col">
-                      <asp:Label ID="LabelPaises" runat="server" Text="Pais"></asp:Label>
-                      <asp:DropDownList ID="DropDownDePaises" runat="server" AutoPostBack="true"
-                          ></asp:DropDownList>
-                  </div>--%>
+                    <div class="col">
+                        <asp:Label ID="LblProvincia" runat="server" Text="Provincia"></asp:Label>
+                        <asp:DropDownList ID="DropDownDeProvincia" CssClass="form-select" runat="server" AutoPostBack="true"
+                            OnSelectedIndexChanged="DropDownDeProvincia_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </div>
 
-                 <%-- <div class="col">
-                    <asp:Label ID="LblProvincia" runat="server" Text="Provincia"></asp:Label>
-                      <asp:DropDownList ID="DropDownDeProvincia" runat="server" AutoPostBack="true"
-                          OnSelectedIndexChanged="DropDownProvincia_SelectedIndexChanged"></asp:DropDownList>
-                  </div>--%>
+                    <div class="col">
 
-                <%--    <div class="col">
-                  
                         <asp:Label ID="Label11" runat="server" Text="Localidad"></asp:Label>
-                      <asp:DropDownList ID="DropDownLocalidades" runat="server" AutoPostBack="true"></asp:DropDownList>
-                  </div>--%>
-              </div>  
-            </ContentTemplate>
-        </asp:UpdatePanel>
+                        <asp:DropDownList ID="DropDownLocalidades" CssClass="form-select" runat="server" AutoPostBack="true"></asp:DropDownList>
+                    </div>
+                </div>
 
 
-        <asp:UpdatePanel ID="UpdatePanel5" runat="server">
-                  <ContentTemplate>
+
+                <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                    <ContentTemplate>
                     <div>
                         <asp:Button ID="e_btnAtras" runat="server" Text="Atrás" CssClass="btn btn-primary" OnClick="btnAtras_Click1"/>
                       <asp:Button ID="BtnEditar" runat="server" class="btn btn-primary"  onclick="BtnEditar_Click" Text="Editar" type="submit"/>        
