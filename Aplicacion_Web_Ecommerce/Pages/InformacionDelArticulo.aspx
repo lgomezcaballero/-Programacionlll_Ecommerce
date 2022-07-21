@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     
-
-
-
+      <% if (Session["TeLogueaste"] != null)
+              {%>
+     
     <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item"><a href="Home.aspx" style="text-decoration: none;">Inicio</a></li>
         <li class="breadcrumb-item"><a href="Busqueda?value=<%:articulo.Genero.Nombre%>" style="text-decoration: none;"><%: articulo.Genero.Nombre %></a></li>
@@ -40,5 +40,7 @@
 
         </div>
     </div>
+
+     <% }%>
 
 </asp:Content>

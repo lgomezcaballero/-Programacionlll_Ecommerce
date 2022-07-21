@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <% if (Session["TeLogueaste"] != null)
+            { %>
+                      
 
     <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item"><a href="Home.aspx">Inicio</a></li>
@@ -128,6 +131,8 @@
         </div>
         <%}%>
     </div>
+
+     <%  }  %>
 
 
 </asp:Content>
