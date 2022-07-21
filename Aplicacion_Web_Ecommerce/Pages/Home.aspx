@@ -2,6 +2,14 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+        a{
+            text-decoration: none; 
+            color: black;
+        }
+    </style>
+
+
     <%if (Session["Carrito"] != null)
         {  %>
 
@@ -92,6 +100,7 @@
     <div class="row" style="padding-left:10%; padding-right:10%;">
         
         <div class="col">
+          <a href="Busqueda.aspx?value=levi">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_6.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -99,8 +108,10 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+          </a>
         </div>
         <div class="col">
+          <a href="Busqueda.aspx?value=tascani">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_7.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -108,8 +119,10 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+           </a>
         </div>
         <div class="col">
+          <a href="Busqueda.aspx?value=penguin">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_8.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -117,8 +130,10 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+           </a>
         </div>
         <div class="col">
+          <a href="Busqueda.aspx?value=lacoste">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_9.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -126,6 +141,7 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+           </a>
         </div>
     </div>
 
@@ -135,6 +151,7 @@
 
     <div class="row" style="padding-left:10%; padding-right:10%;">
         <div class="col">
+          <a href="Busqueda.aspx?value=infantiles">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_10.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -142,8 +159,10 @@
                         <p class="card-text">Hasta 30% OFF</p>
                 </div>
             </div>
+          </a>
         </div>
         <div class="col">
+          <a href="Busqueda.aspx?value=adidas">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_11.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -151,8 +170,10 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+           </a>
         </div>
         <div class="col">
+          <a href="Busqueda.aspx?value=wanama">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_12.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -160,8 +181,10 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+           </a>
         </div>
         <div class="col">
+          <a href="Busqueda.aspx?value=cheeky">
             <div class="border-0 card col" style="margin-top: 1rem;">
                 <img src="../img/home_13.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -169,6 +192,7 @@
                         <p class="card-text">Shop Now</p>
                 </div>
             </div>
+            </a>
         </div>
     </div>
 
