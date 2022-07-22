@@ -2,8 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%--<asp:ScriptManager ID="scCarrito" runat="server"></asp:ScriptManager>--%>
-
     <% if (Session["TeLogueaste"] != null)
             { %>
                       
@@ -136,6 +134,5 @@
     </div>
 
      <%  }  %>
-
 
 </asp:Content>

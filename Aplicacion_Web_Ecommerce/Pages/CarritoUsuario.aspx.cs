@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -66,7 +66,7 @@ namespace Aplicacion_Web_Ecommerce
             long aux = obtenerNuevaCantidad(idArticulo, idTalle);
             foreach (var item in carrito.ArticulosCarrito)
             {
-                if(item.Articulo.ID == idArticulo)
+                if(item.Articulo.ID == idArticulo && item.IDTalle == idTalle)
                 {
                     if(item.Cantidad > 0 && cantidad == -1)
                     {

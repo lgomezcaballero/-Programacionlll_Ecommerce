@@ -209,7 +209,7 @@ namespace Aplicacion_Web_Ecommerce
   "<table style=\"max-width:670px;margin:50px auto 10px;background-color:#fff;padding:50px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); border-top: solid 10px green;\">" +
 "<thead>" +
 "<tr>" +
-"<th style=\"text-align:left;\"><img style=\"max-width: 150px;\" src=\"https://www.bachanatours.in/book/img/logo.png\" alt=\"bachana tours\"></th>" +
+"<th style=\"text-align:left;\"><img style=\"max-width: 30px;\" src=\"https://img.freepik.com/premium-vector/ecommerce-minimal-vector-line-icon-3d-button-isolated-black-background-premium-vector_570929-1055.jpg?w=360\" alt=\"Tienda Virtual\"></th>" +
 "<th style=\"text-align:right;font-weight:400;\"> 05th Apr, 2017 </th>" +
 "</tr>" +
 "</thead>" +

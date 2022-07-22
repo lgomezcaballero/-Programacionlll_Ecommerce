@@ -265,7 +265,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             articulo.Talles[23].Stock = a_txtStockTalla46.Text != "" ? long.Parse(a_txtStockTalla46.Text) : 0;
 
             articuloNegocio.agregarArticulo(articulo);
-            Response.Redirect("HomeAdmin.aspx", false);
+            Response.Redirect("ListarArticulos.aspx", false);
         }
 
         protected List<ArticuloTalla> setTallesArticulo()
