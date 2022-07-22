@@ -211,7 +211,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             articulo.Talles[23].Stock = long.Parse(e_txtStockTalla46.Text);
 
             negocio.modificarArticulo(articulo);
-            Response.Redirect("HomeAdmin.aspx");
+            Response.Redirect("ListarArticulos.aspx");
         }
 
         protected void a_btnAtrás_Click(object sender, EventArgs e)
