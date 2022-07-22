@@ -178,53 +178,59 @@ namespace Aplicacion_Web_Ecommerce.Pages
                         //Valido que la contraseña se escriba bien las dos veces
                         if (validarContraseña(TextBoxContraseña.Text, TextBoxRepetirContraseña.Text) == true)
                         {
-
-                            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-                            Usuario usuario = new Usuario();
-
-
-                            ContactoNegocio contactoNegocio = new ContactoNegocio();
+                            if (validarEmail(TextBoxEmail.Text))
+                            {
+                                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                                Usuario usuario = new Usuario();
 
 
-                            //Datos Usuario
-                            usuario.Apellidos = txtApellidos.Text;
-                            usuario.Nombres = TxtNombres.Text;
-                            usuario.DNI = TextBoxDni.Text;
-                            usuario.NombreUsuario = TextBoxNombreUsuario.Text;
-                            usuario.Contraseña = TextBoxContraseña.Text;
+                                ContactoNegocio contactoNegocio = new ContactoNegocio();
 
 
-                            //Tipo Usuario
-                            //Esto se carga de manera automatica
-                            usuario.TipoUsuario = new TipoUsuario();
-                            usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
+                                //Datos Usuario
+                                usuario.Apellidos = txtApellidos.Text;
+                                usuario.Nombres = TxtNombres.Text;
+                                usuario.DNI = TextBoxDni.Text;
+                                usuario.NombreUsuario = TextBoxNombreUsuario.Text;
+                                usuario.Contraseña = TextBoxContraseña.Text;
 
 
-                            //Datos Contacto falta que de alguna forma guarde esto
-                            usuario.Contacto = new Contacto();
-                            //usuario.Contacto.ID = como hago para obtener el id del usuario?
-
-                            usuario.Contacto.Email = TextBoxEmail.Text;
-                            usuario.Contacto.Telefono = TextBoxTelefono.Text;
-
-                            //contactoNegocio.agregarContacto(usuario.Contacto);
-
-                            //Localidad
-                            usuario.Localidad = new Localidad();
-                            usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
+                                //Tipo Usuario
+                                //Esto se carga de manera automatica
+                                usuario.TipoUsuario = new TipoUsuario();
+                                usuario.TipoUsuario.ID = 2; // 2 = Normal 1 = Admin
 
 
-                            //Localidad > Provincia
-                            //usuario.Localidad.Provincia = new Provincia();
-                            //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
-                            //Localidad > Provincia > Pais
-                            // usuario.Localidad.Provincia.Pais = new Pais();
-                            //usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownListProvincia.SelectedItem.Value);
+                                //Datos Contacto falta que de alguna forma guarde esto
+                                usuario.Contacto = new Contacto();
+                                //usuario.Contacto.ID = como hago para obtener el id del usuario?
+
+                                usuario.Contacto.Email = TextBoxEmail.Text;
+                                usuario.Contacto.Telefono = TextBoxTelefono.Text;
+
+                                //contactoNegocio.agregarContacto(usuario.Contacto);
+
+                                //Localidad
+                                usuario.Localidad = new Localidad();
+                                usuario.Localidad.ID = int.Parse(DropDownListLocalidad.SelectedItem.Value);
 
 
-                            //Agrego el usuario a la base
-                            if (!existeUsuario(usuario, usuarioNegocio))
-                                usuarioNegocio.agregarUsuario(usuario);
+                                //Localidad > Provincia
+                                //usuario.Localidad.Provincia = new Provincia();
+                                //usuario.Localidad.Provincia.ID = int.Parse(DropDownListProvincia.SelectedItem.Value);
+                                //Localidad > Provincia > Pais
+                                // usuario.Localidad.Provincia.Pais = new Pais();
+                                //usuario.Localidad.Provincia.Pais.ID = byte.Parse(DropDownListProvincia.SelectedItem.Value);
+
+
+                                //Agrego el usuario a la base
+                                if (!existeUsuario(usuario, usuarioNegocio))
+                                    usuarioNegocio.agregarUsuario(usuario);
+                            }
+                            else
+                            {
+                                LabelErrorCampos.Text = "Error, el correo ingresado ya existe.";
+                            }
 
                         }
 
@@ -233,9 +239,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
                             LabelErrorCampos.Text = "Las contraseñas ingresadas no coinciden";
                         }
 
-
                     }
-
 
                 }
 
@@ -311,6 +315,21 @@ namespace Aplicacion_Web_Ecommerce.Pages
             }
 
             return false;
+        }
+
+        protected bool validarEmail(string email)
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            foreach (var item in negocio.listar())
+            {
+                if (item.Contacto.Email == email)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
 
