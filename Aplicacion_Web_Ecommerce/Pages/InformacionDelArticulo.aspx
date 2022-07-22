@@ -49,6 +49,11 @@
             <% } %>
         </div>
     </div>
+    <div class="row col-6">
+        <h4>Descripción</h4>
+        <p><%: articulo.Descripcion %></p>
+
+    </div>
 
     <% }%>
 

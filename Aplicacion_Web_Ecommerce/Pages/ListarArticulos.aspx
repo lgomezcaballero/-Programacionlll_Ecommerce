@@ -41,7 +41,7 @@
                         <td><%: item.Marca.Nombre %></td>
                         <td><%: item.Categoria.Nombre %></td>
                         <td><%: item.Genero.Nombre %></td>
-                        <td><%: item.Precio %></td>
+                        <td><%: string.Format("{0:C}", item.Precio) %></td>
                         <td>
 <%--                            <a href="ABMArticulo?ID=<%: item.ID %>&Type=v" class="btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">

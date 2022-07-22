@@ -166,7 +166,7 @@
 
     <div class="row" style="padding-left: 10%; padding-right: 10%;">
         <div class="col">
-            <a href="Busqueda.aspx?value=infantiles">
+            <a href="Busqueda.aspx?value=cheeky">
                 <div class="border-0 card col" style="margin-top: 1rem;">
                     <img src="../img/home_10.jpg" class="card-img-top" alt="...">
                     <div class="card-body">

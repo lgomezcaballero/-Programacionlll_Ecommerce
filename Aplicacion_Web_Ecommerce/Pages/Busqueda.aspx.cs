@@ -40,7 +40,7 @@ namespace Aplicacion_Web_Ecommerce
                 else
                     Filtro = Session["Busqueda"].ToString();
 
-                if (Filtro.Length > 2)
+                if (Filtro.Length >= 2)
                 {
                     ListaArticulos = (List<Articulo>)Session["listaArticulos"];
                     //Con esta condicion de aca se pueden buscar articulos por su nombre, por su marca , por su categoria y por su genero

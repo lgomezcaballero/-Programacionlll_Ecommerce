@@ -210,7 +210,7 @@ namespace Aplicacion_Web_Ecommerce
 "<thead>" +
 "<tr>" +
 "<th style=\"text-align:left;\"><img style=\"max-width: 30px;\" src=\"https://img.freepik.com/premium-vector/ecommerce-minimal-vector-line-icon-3d-button-isolated-black-background-premium-vector_570929-1055.jpg?w=360\" alt=\"Tienda Virtual\"></th>" +
-"<th style=\"text-align:right;font-weight:400;\"> 05th Apr, 2017 </th>" +
+"<th style=\"text-align:right;font-weight:400;\"> Tienda Virtual </th>" +
 "</tr>" +
 "</thead>" +
 "<tbody>" +
