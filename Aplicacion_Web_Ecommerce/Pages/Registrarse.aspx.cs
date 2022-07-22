@@ -13,10 +13,6 @@ namespace Aplicacion_Web_Ecommerce.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-
-
             //Estam parte es para cargar las dropdowns
             //Pais dropdownlist
             List<Pais> listapaises = new List<Pais>();
@@ -66,17 +62,6 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
                 throw ex;
             }
-
-
-
-            //usuario.Localidad.
-
-
-
-            //Se cargan los datos del usuario
-            //usuarioNegocio.agregarUsuario(usuario);*/
-
-
         }
 
         protected void DropDownListPaises_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,17 +69,14 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             int id = int.Parse(DropDownListPaises.SelectedItem.Value);
 
-            //Esta es la dropdown de provincia
-
             DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaprovincia"]).FindAll(x => x.Pais.ID == id);
-            //if(DropDownListProvincia.DataSource[)
-            //{
-
-            //}
-            DropDownListProvincia.DataValueField = "ID";
-            DropDownListProvincia.DataTextField = "NombreProvincia";
             DropDownListProvincia.DataBind();
-            string nombre = DropDownListProvincia.SelectedItem.Value;
+            if (DropDownListProvincia.Items.Count > 0)
+            {
+                DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listalocalidad"]).FindAll
+                    (x => x.Provincia.ID == int.Parse(DropDownListProvincia.SelectedItem.Value));
+                DropDownListLocalidad.DataBind();
+            }
 
 
         }
@@ -106,10 +88,7 @@ namespace Aplicacion_Web_Ecommerce.Pages
             int id = int.Parse(DropDownListProvincia.SelectedItem.Value);
 
             DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listalocalidad"]).FindAll(x => x.Provincia.ID == id);
-            DropDownListLocalidad.DataValueField = "ID";
-            DropDownListLocalidad.DataTextField = "NombreLocalidad";
             DropDownListLocalidad.DataBind();
-            //string nombre = DropDownListLocalidad.SelectedItem.Value;
         }
 
 
@@ -198,7 +177,9 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
 
                                 //Agrego el usuario a la base
-                                usuarioNegocio.agregarUsuario(usuario);
+                                if (!existeUsuario(usuario, usuarioNegocio))
+                                    usuarioNegocio.agregarUsuario(usuario);
+
                                 Response.Redirect("LoginSinMaster.aspx", false);
 
 
@@ -222,6 +203,18 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
         }
 
+        protected bool existeUsuario(Usuario usuario, UsuarioNegocio usuarioNegocio)
+        {
+            foreach (var item in usuarioNegocio.listar(true))
+            {
+                if (item.NombreUsuario.Equals(usuario.NombreUsuario))
+                {
+                    usuarioNegocio.RestaurarUsuario(usuario);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         protected bool CompletarCampos()
         {

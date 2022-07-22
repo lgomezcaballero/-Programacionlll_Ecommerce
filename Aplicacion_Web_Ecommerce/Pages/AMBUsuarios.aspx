@@ -89,13 +89,13 @@
                   </ContentTemplate>         
         </asp:UpdatePanel>
 
-          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+<%--          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>--%>
                     <div>
                         <asp:Label ID="LabelErrorCampos" runat="server" Text="" style="color:red"></asp:Label>
                     </div>         
-                    </ContentTemplate>         
-          </asp:UpdatePanel>
+<%--                    </ContentTemplate>         
+          </asp:UpdatePanel>--%>
 
         </div>
    

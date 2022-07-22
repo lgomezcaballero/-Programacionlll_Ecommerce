@@ -109,29 +109,29 @@ namespace Aplicacion_Web_Ecommerce
             return aux.Stock;
         }
 
-        protected void btnCompra_Click(object sender, EventArgs e)
-        {
-            /*Dominio.Carrito carro = new Dominio.Carrito();
-            carro = (Dominio.Carrito)Session["CarritoUsuario"];
-            foreach (var item in carro.ArticulosCarrito)
-            {
-                //if ((obtenerStock(item.Articulo.ID, item.IDTalle) - item.Cantidad) < 0)
-            }*/
-            Response.Redirect("Compra.aspx", false);
+        //protected void btnCompra_Click(object sender, EventArgs e)
+        //{
+        //    /*Dominio.Carrito carro = new Dominio.Carrito();
+        //    carro = (Dominio.Carrito)Session["CarritoUsuario"];
+        //    foreach (var item in carro.ArticulosCarrito)
+        //    {
+        //        //if ((obtenerStock(item.Articulo.ID, item.IDTalle) - item.Cantidad) < 0)
+        //    }*/
+        //    Response.Redirect("Compra.aspx", false);
 
 
-            //CarritoNegocio cNegocio = new CarritoNegocio();
-            //FacturaNegocio fNegocio = new FacturaNegocio();
-            //Factura factura = new Factura();
-            //factura.FormaPago = new FormaPago();
-            ////factura.FormaPago.ID = 1;
-            //factura.Carrito = new Dominio.Carrito();
-            //factura.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
-            //factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
-            //factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
-            //fNegocio.comprar(factura);
-            //actualizarCarrito();
-        }
+        //    //CarritoNegocio cNegocio = new CarritoNegocio();
+        //    //FacturaNegocio fNegocio = new FacturaNegocio();
+        //    //Factura factura = new Factura();
+        //    //factura.FormaPago = new FormaPago();
+        //    ////factura.FormaPago.ID = 1;
+        //    //factura.Carrito = new Dominio.Carrito();
+        //    //factura.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
+        //    //factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
+        //    //factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
+        //    //fNegocio.comprar(factura);
+        //    //actualizarCarrito();
+        //}
 
 
 

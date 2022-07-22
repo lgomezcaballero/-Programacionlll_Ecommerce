@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <%--<asp:ScriptManager ID="scCarrito" runat="server"></asp:ScriptManager>--%>
+
     <% if (Session["TeLogueaste"] != null)
             { %>
                       
@@ -119,7 +121,8 @@
                 </div>
                 <div class="col"><%: aux = string.Format("{0:C}", PrecioTotal)%></div>
                 <div class="col">
-                    <asp:Button ID="btnCompra" CssClass="btn btn-success" runat="server" Text="Realizar Compra" OnClick="btnCompra_Click" />
+                    <a href="Compra.aspx" class="btn btn-success">Realizar Compra</a>
+                    <%--<asp:Button ID="btnCompra" CssClass="btn btn-success" runat="server" Text="Realizar Compra" OnClick="btnCompra_Click" />--%>
                 </div>
             </div>
         </div>

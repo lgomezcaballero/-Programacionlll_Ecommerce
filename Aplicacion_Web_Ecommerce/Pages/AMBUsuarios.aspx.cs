@@ -122,13 +122,14 @@ namespace Aplicacion_Web_Ecommerce.Pages
 
             int id = int.Parse(DropDownListPaises.SelectedItem.Value);
 
-            //Esta es la dropdown de provincia
-
             DropDownListProvincia.DataSource = ((List<Provincia>)Session["listaDeprovincia"]).FindAll(x => x.Pais.ID == id);
             DropDownListProvincia.DataBind();
-            DropDownListLocalidad.DataSource= ((List<Localidad>)Session["listaDelocalidad"]).FindAll(x => x.Provincia.ID == id);
-            DropDownListLocalidad.DataBind();
-            //string nombre = DropDownListProvincia.SelectedItem.Value;
+            if (DropDownListProvincia.Items.Count > 0)
+            {
+                DropDownListLocalidad.DataSource = ((List<Localidad>)Session["listaDelocalidad"]).FindAll
+                    (x => x.Provincia.ID == int.Parse(DropDownListProvincia.SelectedItem.Value));
+                DropDownListLocalidad.DataBind();
+            }
 
         }
 

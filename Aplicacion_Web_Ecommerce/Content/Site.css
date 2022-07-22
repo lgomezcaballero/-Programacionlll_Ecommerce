@@ -9,7 +9,6 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    background: linear-gradient(90deg, rgba(233,230,230,1) 0%, rgba(182,181,181,1) 48%, rgba(190,190,190,1) 100%);
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
