@@ -274,16 +274,16 @@
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              <a href="Busqueda.aspx?value=camperas" class="text-white">Camperas</a>
+              <a href="Busqueda.aspx?value=campera" class="text-white">Camperas</a>
             </p>
             <p>
-              <a href="Busqueda.aspx?value=remeras" class="text-white">Remeras</a>
+              <a href="Busqueda.aspx?value=remera" class="text-white">Remeras</a>
             </p>
             <p>
-              <a href="Busqueda.aspx?value=zapatillas" class="text-white">Zapatillas</a>
+              <a href="Busqueda.aspx?value=zapatilla" class="text-white">Zapatillas</a>
             </p>
             <p>
-              <a href="Busqueda.aspx?value=jeans" class="text-white">Jeans</a>
+              <a href="Busqueda.aspx?value=jean" class="text-white">Jeans</a>
             </p>
           </div>
           <!-- Grid column -->

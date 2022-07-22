@@ -167,7 +167,7 @@ namespace Aplicacion_Web_Ecommerce
                               "<h5>Marca: " + item.Articulo.Marca.Nombre + "</h5>"+
                               "<h5>Categoria: " + item.Articulo.Categoria.Nombre + "</h5>"+
                               "<h5>Género: " + item.Articulo.Genero.Nombre + "</h5>"+
-                              "<h5>Precio: " + item.Articulo.Precio + "</h5>"+
+                              "<h5>Precio: " + string.Format("{0:C}", item.Articulo.Precio) + "</h5>"+
                               "<h5>Talle: " + obtenerTalla(item.IDTalle) + "</h5>"+
                               "<h5>Cantidad: " + item.Cantidad + "</h5>"+
                               "<h5>---------------------------------------------------------</h5>";
@@ -200,7 +200,7 @@ namespace Aplicacion_Web_Ecommerce
             string articulo="";
             foreach (var item in factura.Carrito.ArticulosCarrito)
             {
-                articulo += @"<p style=\"+"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> " + item.Articulo.Nombre + " Talle " + obtenerTalla(item.IDTalle) + " </span> " + string.Format("{0:C}", item.Articulo.Precio*item.Cantidad) + " <b style=\"font-size:12px;font-weight:300;\"> / " + item.Cantidad + " x " + item.Articulo.Precio + " </b></p>";
+                articulo += @"<p style=\"+"font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;\"><span style=\"display:block;font-size:13px;font-weight:normal;\"> " + item.Articulo.Nombre + " Talle " + obtenerTalla(item.IDTalle) + " </span> " + string.Format("{0:C}", item.Articulo.Precio*item.Cantidad) + " <b style=\"font-size:12px;font-weight:300;\"> / " + item.Cantidad + " x " + string.Format("{0:C}", item.Articulo.Precio) + " </b></p>";
             }
 
             string body = @"<html>" +

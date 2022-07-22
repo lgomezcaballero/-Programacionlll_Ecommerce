@@ -38,6 +38,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div><b>Marcas</b></div>
+                        <div><b><%: listademarcas.Count %></b></div>
                         <%-- <div id="total-productos">40</div>--%>
                     </div>
                 </div>
@@ -55,6 +56,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div><b>Categorias</b></div>
+                        <div><b><%: listacategoria.Count %></b></div>
                         <%--<div id="total-marcas">30</div>--%>
                     </div>
                 </div>
@@ -74,6 +76,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div><b>Provincias</b></div>
+                        <div><b><%: listaProvincias.Count %></b></div>
                         <%--<div id="total-marcas">30</div>--%>
                     </div>
                 </div>
@@ -92,6 +95,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div><b>Pais</b></div>
+                        <div><b><%: listaPaises.Count %></b></div>
                         <%--<div id="total-marcas">30</div>--%>
                     </div>
                 </div>
@@ -109,6 +113,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div><b>Articulos</b></div>
+                        <div><b><%: listaArticulos.Count %></b></div>
                         <%--<div id="total-marcas">30</div>--%>
                     </div>
                 </div>
@@ -126,6 +131,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div><b>Usuarios</b></div>
+                        <div><b><%: listausuarios.Count %></b></div>
                         <%--<div id="total-productos">40</div>--%>
                     </div>
                 </div>

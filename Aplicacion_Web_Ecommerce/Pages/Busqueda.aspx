@@ -15,7 +15,7 @@
                         <img src="<%: item.Imagenes[0].URLImagen %>" class="card-img-top" style="max-width:100%;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%: string.Format("{0:C}", item.Precio) %></h5>
-                            <p class="card-text"><%: item.Marca.Nombre %></p>
+                            <p class="card-text"><b><%: item.Marca.Nombre %></b></p>
                             <p class="card-text"><%: item.Nombre %></p>
                         </div>
 <%--                        <div class="card-footer">
