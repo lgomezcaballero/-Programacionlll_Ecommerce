@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
 
 </head>
-<body style="font-family:Calibri,Arial,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";>
+<body style="font-family:Calibri,Arial,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
     <form runat="server">        
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -274,16 +274,16 @@
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              <a href="#!" class="text-white">Camperas</a>
+              <a href="Busqueda.aspx?value=camperas" class="text-white">Camperas</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Remeras</a>
+              <a href="Busqueda.aspx?value=remeras" class="text-white">Remeras</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Zapatillas</a>
+              <a href="Busqueda.aspx?value=zapatillas" class="text-white">Zapatillas</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Jeans</a>
+              <a href="Busqueda.aspx?value=jeans" class="text-white">Jeans</a>
             </p>
           </div>
           <!-- Grid column -->
