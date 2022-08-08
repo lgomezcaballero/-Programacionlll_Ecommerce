@@ -1,1 +1,0 @@
-La funcionalidad de mandar un mail 
