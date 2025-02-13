@@ -1,6 +1,6 @@
 Use Master
 go
-Drop Database Ecommerce_Programacionlll
+--Drop Database Ecommerce_Programacionlll
 go
 Create Database Ecommerce_Programacionlll
 go
