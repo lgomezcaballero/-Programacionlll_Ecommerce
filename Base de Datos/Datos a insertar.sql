@@ -104,6 +104,12 @@ Insert into TiposUsuarios (Nombre) values ('Administrador')
 go
 Insert into TiposUsuarios (Nombre) values ('Cliente')
 go
+Insert into FormasPagos (Nombre) values ('Efectivo')
+go
+Insert into FormasPagos (Nombre) values ('Mercado Pago')
+go
+Insert into TiposUsuarios (Nombre) values ('Cliente')
+go
 Insert into Pais(Nombre) values ('Argentina')
 go
 Insert into Provincias(IDPais, Nombre) values (1, 'Buenos Aires')
