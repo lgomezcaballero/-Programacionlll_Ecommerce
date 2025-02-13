@@ -113,7 +113,7 @@ namespace Aplicacion_Web_Ecommerce
             factura.Carrito = new Dominio.Carrito();
             factura.Carrito.ArticulosCarrito = new List<ArticuloCarrito>();
             factura.Carrito = (Dominio.Carrito)Session["CarritoUsuario"];
-            factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
+             factura.PrecioTotal = calcularPrecioTotal(factura.Carrito.ArticulosCarrito);
             fNegocio.comprar(factura);
             actualizarCarrito();
             enviarMail(factura);
